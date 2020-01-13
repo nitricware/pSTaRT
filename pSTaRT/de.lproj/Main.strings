@@ -1,0 +1,33 @@
+
+/* Class = "UIButton"; normalTitle = "done"; ObjectID = "EQ7-Kq-bD7"; */
+"EQ7-Kq-bD7.normalTitle" = "done";
+
+/* Class = "UIButton"; normalTitle = "No"; ObjectID = "Gsa-rr-ZhY"; */
+"Gsa-rr-ZhY.normalTitle" = "No";
+
+/* Class = "UILabel"; text = "Welcome to pSTaRT"; ObjectID = "Gsc-PJ-Hjr"; */
+"Gsc-PJ-Hjr.text" = "Welcome to pSTaRT";
+
+/* Class = "UILabel"; text = "Kein Triagevorschlag möglich."; ObjectID = "JVJ-rY-5b7"; */
+"JVJ-rY-5b7.text" = "Kein Triagevorschlag möglich.";
+
+/* Class = "UIButton"; normalTitle = "Yes"; ObjectID = "LdM-Y9-UPW"; */
+"LdM-Y9-UPW.normalTitle" = "Yes";
+
+/* Class = "UIButton"; normalTitle = "new PLS"; ObjectID = "SXQ-vU-ZMi"; */
+"SXQ-vU-ZMi.normalTitle" = "new PLS";
+
+/* Class = "UILabel"; text = "X"; ObjectID = "Usm-Cf-HQP"; */
+"Usm-Cf-HQP.text" = "X";
+
+/* Class = "UILabel"; text = "Can the patient walk?"; ObjectID = "iim-n2-Hiy"; */
+"iim-n2-Hiy.text" = "Can the patient walk?";
+
+/* Class = "UIButton"; normalTitle = "new patient"; ObjectID = "mTJ-WZ-XPc"; */
+"mTJ-WZ-XPc.normalTitle" = "new patient";
+
+/* Class = "UIButton"; normalTitle = "cancel triage"; ObjectID = "nvs-pR-R0Z"; */
+"nvs-pR-R0Z.normalTitle" = "cancel triage";
+
+/* Class = "UILabel"; text = "pocket Simple Triage and Rapid Treatment"; ObjectID = "zOp-iN-rWg"; */
+"zOp-iN-rWg.text" = "pocket Simple Triage and Rapid Treatment";
