@@ -5,3 +5,17 @@
   Created by Kurt Höblinger on 16.11.19.
   Copyright © 2019 Kurt Höblinger. All rights reserved.
 */
+
+"DEAD" = "Nicht mit dem Leben vereinbare Verletzung?";
+"AIRWAY" = "Atmung vorhanden?";
+"BREATHING" = "Atemfrequenz > 10 bzw. < 30/min?";
+"BLEEDING" = "Bestehende spritzende Blutung?";
+"PULSE" = "Radialispuls vorhanden?";
+"MOVEMENT" = "Kann einfache Befehle befolgen?";
+"ASPIRATION" = "Inhalationstrauma mit Stridor?";
+
+"T1" = "Sofortige Behandlung";
+"T2" = "Dringende Behandlung";
+"T3" = "Nicht dringliche Behandlung";
+"T4" = "Beobachtung und Schmerzreduktion";
+"T0" = "Kein Triagevorschlag möglich";

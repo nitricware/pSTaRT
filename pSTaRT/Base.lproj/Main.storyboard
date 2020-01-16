@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,22 +16,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wz-QL-xAd">
-                                <rect key="frame" x="0.0" y="363" width="414" height="170"/>
+                                <rect key="frame" x="0.0" y="313.5" width="414" height="269"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to pSTaRT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsc-PJ-Hjr">
-                                        <rect key="frame" x="60" y="25.5" width="294" height="41"/>
+                                        <rect key="frame" x="60" y="8" width="294" height="108"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pocket Simple Triage and Rapid Treatment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOp-iN-rWg">
-                                        <rect key="frame" x="45" y="74.5" width="324" height="21"/>
+                                        <rect key="frame" x="45" y="124" width="324" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTJ-WZ-XPc">
-                                        <rect key="frame" x="8" y="103.5" width="398" height="50"/>
+                                        <rect key="frame" x="8" y="153" width="398" height="50"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="TxZ-3s-b8H"/>
@@ -48,38 +48,42 @@
                                             <segue destination="BqP-EX-b0U" kind="presentation" modalPresentationStyle="fullScreen" id="uNq-Y1-MID"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXQ-vU-ZMi">
+                                        <rect key="frame" x="8" y="211" width="398" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="dux-01-q6o"/>
+                                        </constraints>
+                                        <state key="normal" title="scan new PLS">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="scanPLS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F82-O2-LlZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SXQ-vU-ZMi" secondAttribute="trailing" constant="8" id="1TG-HJ-U1j"/>
                                     <constraint firstItem="mTJ-WZ-XPc" firstAttribute="leading" secondItem="5wz-QL-xAd" secondAttribute="leading" constant="8" id="3e3-An-pWV"/>
                                     <constraint firstItem="zOp-iN-rWg" firstAttribute="top" secondItem="Gsc-PJ-Hjr" secondAttribute="bottom" constant="8" id="Cm4-uM-sw5"/>
                                     <constraint firstItem="mTJ-WZ-XPc" firstAttribute="centerX" secondItem="5wz-QL-xAd" secondAttribute="centerX" id="DrR-5Y-xXS"/>
                                     <constraint firstItem="zOp-iN-rWg" firstAttribute="centerY" secondItem="5wz-QL-xAd" secondAttribute="centerY" id="Kik-Cf-gUU"/>
-                                    <constraint firstAttribute="height" constant="170" id="V7M-l9-NmW"/>
+                                    <constraint firstItem="Gsc-PJ-Hjr" firstAttribute="top" secondItem="5wz-QL-xAd" secondAttribute="top" constant="8" id="XiN-LS-tDY"/>
                                     <constraint firstItem="Gsc-PJ-Hjr" firstAttribute="centerX" secondItem="5wz-QL-xAd" secondAttribute="centerX" id="gSt-eA-gCZ"/>
+                                    <constraint firstItem="SXQ-vU-ZMi" firstAttribute="leading" secondItem="5wz-QL-xAd" secondAttribute="leading" constant="8" id="gXH-pR-AHv"/>
                                     <constraint firstItem="zOp-iN-rWg" firstAttribute="centerX" secondItem="5wz-QL-xAd" secondAttribute="centerX" id="gau-f8-cXL"/>
                                     <constraint firstAttribute="trailing" secondItem="mTJ-WZ-XPc" secondAttribute="trailing" constant="8" id="l7y-hh-MmV"/>
+                                    <constraint firstItem="SXQ-vU-ZMi" firstAttribute="top" secondItem="mTJ-WZ-XPc" secondAttribute="bottom" constant="8" id="mwl-az-o5e"/>
+                                    <constraint firstAttribute="bottom" secondItem="SXQ-vU-ZMi" secondAttribute="bottom" constant="8" id="piV-C3-ahL"/>
                                     <constraint firstItem="mTJ-WZ-XPc" firstAttribute="top" secondItem="zOp-iN-rWg" secondAttribute="bottom" constant="8" id="yod-Yf-gEa"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXQ-vU-ZMi">
-                                <rect key="frame" x="8" y="541" width="167" height="50"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="E3p-Rs-Hfd"/>
-                                </constraints>
-                                <state key="normal" title="new PLS">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="scanPLS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F82-O2-LlZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -209,7 +213,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enY-CI-FV8">
                                 <rect key="frame" x="8" y="279" width="398" height="284"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kein Triagevorschlag möglich." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVJ-rY-5b7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No triage suggestion possible." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVJ-rY-5b7">
                                         <rect key="frame" x="8" y="243" width="382" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
