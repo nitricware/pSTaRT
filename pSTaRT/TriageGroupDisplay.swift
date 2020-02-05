@@ -14,10 +14,13 @@ class TriageGroupDisplay: UIViewController {
     var triageColor: UIColor = UIColor.green
     var triageTextColor: UIColor = UIColor.white
     var triageText: String = NSLocalizedString("T0", comment: "")
+    let feedbackDone = UINotificationFeedbackGenerator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isModalInPresentation = true
         // Do any additional setup after loading the view.
+        feedbackDone.prepare()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +67,7 @@ class TriageGroupDisplay: UIViewController {
     }
     
     @IBAction func newPatientPressed(_ sender: Any) {
+        feedbackDone.notificationOccurred(.success)
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     /*

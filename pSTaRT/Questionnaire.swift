@@ -12,6 +12,9 @@ class Questionnaire: UIViewController {
     var currentQuestion: Int  = 0
     var triageGroup: Int = 0
     
+    let feedbackLight = UIImpactFeedbackGenerator(style: .light)
+    let feedbackDone = UINotificationFeedbackGenerator()
+    
     let matches: [[Any]] = [
         [UIColor.systemGreen,"WALK"],
         [UIColor.systemBlue,"DEAD"],
@@ -25,9 +28,12 @@ class Questionnaire: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        feedbackLight.prepare()
+        feedbackDone.prepare()
     }
     
     @IBAction func closeQuestionnaire(_ sender: Any) {
+        feedbackDone.notificationOccurred(.error)
         dismiss(animated: true, completion: nil)
     }
     
@@ -36,6 +42,8 @@ class Questionnaire: UIViewController {
     @IBOutlet weak var noButton: UIButton!
     
     @IBAction func yesPressed(_ sender: Any) {
+        feedbackLight.impactOccurred()
+        
         switch currentQuestion {
         case 0:
             /*
@@ -97,6 +105,7 @@ class Questionnaire: UIViewController {
     }
     
     @IBAction func noPressed(_ sender: Any) {
+        feedbackLight.impactOccurred()
         switch currentQuestion {
         case 0, 1, 4:
             continueQuestionnaire(current: currentQuestion + 1)
@@ -125,7 +134,7 @@ class Questionnaire: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        feedbackDone.notificationOccurred(.success)
         if(segue.identifier == "showTriageGroup") {
             let triageGroupDetail = (segue.destination as! TriageGroupDisplay)
             triageGroupDetail.triageGroup = self.triageGroup

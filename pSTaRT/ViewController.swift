@@ -9,9 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let feedbackLight = UIImpactFeedbackGenerator(style: .light)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        feedbackLight.prepare()
         // Do any additional setup after loading the view.
     }
     
@@ -34,6 +37,11 @@ class ViewController: UIViewController {
         let ac = UIAlertController(title: NSLocalizedString("ERROR_HEADLINE", comment: ""), message: NSLocalizedString("ERROR_BODY", comment: ""), preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
         present(ac, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // haptic feedback
+        feedbackLight.impactOccurred()
     }
 
 }
