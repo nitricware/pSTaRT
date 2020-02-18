@@ -12,6 +12,10 @@ class Questionnaire: UIViewController {
     var currentQuestion: Int  = 0
     var triageGroup: Int = 0
     
+    var plsNumber: String = "XXXXX"
+    
+    var startDate: Date = Date()
+    
     let feedbackLight = UIImpactFeedbackGenerator(style: .light)
     let feedbackDone = UINotificationFeedbackGenerator()
     
@@ -30,16 +34,17 @@ class Questionnaire: UIViewController {
         super.viewDidLoad()
         feedbackLight.prepare()
         feedbackDone.prepare()
+        plsNumberLabel.text = plsNumber
     }
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var yesButton: UIButton!
+    @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var plsNumberLabel: UILabel!
     
     @IBAction func closeQuestionnaire(_ sender: Any) {
         feedbackDone.notificationOccurred(.error)
         dismiss(animated: true, completion: nil)
     }
-    
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var yesButton: UIButton!
-    @IBOutlet weak var noButton: UIButton!
     
     @IBAction func yesPressed(_ sender: Any) {
         feedbackLight.impactOccurred()
@@ -77,33 +82,6 @@ class Questionnaire: UIViewController {
         }
     }
     
-    private func triageDone(group: Int) {
-        print("Triage done ... assigned group: " + String(group))
-        self.triageGroup = group
-        self.performSegue(withIdentifier: "showTriageGroup", sender: self)
-    }
-    
-    private func continueQuestionnaire(current: Int) {
-        questionLabel.text = NSLocalizedString(matches[current][1] as! String, comment: "")
-        animateLabel(label: questionLabel)
-        currentQuestion = current
-        /*
-         if matches[current][2] is 0, the current questio's no-button will lead to triage
-         else the yes button will
-         */
-        switch currentQuestion {
-        case 0, 1, 4:
-            noButton.backgroundColor = UIColor.systemOrange
-            yesButton.backgroundColor = matches[current][0] as? UIColor
-        case 7:
-            noButton.backgroundColor = UIColor.systemYellow
-            yesButton.backgroundColor = matches[current][0] as? UIColor
-        default:
-            yesButton.backgroundColor = UIColor.systemOrange
-            noButton.backgroundColor = matches[current][0] as? UIColor
-        }
-    }
-    
     @IBAction func noPressed(_ sender: Any) {
         feedbackLight.impactOccurred()
         switch currentQuestion {
@@ -129,8 +107,54 @@ class Questionnaire: UIViewController {
         }
     }
     
-    func animateLabel(label: UILabel) {
+    private func triageDone(group: Int) {
+        print("Triage done ... assigned group: " + String(group))
         
+        /*
+        Questionnaire finished,
+        saving to database
+        */
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let db = pSTaRTDBHelper()
+        db.context = appDelegate.persistentContainer.viewContext
+        db.savePLS(plsNo: plsNumber, start: startDate, end: Date(), triageNo: group)
+        
+        /*
+         Displaying result
+         */
+        self.triageGroup = group
+        self.performSegue(withIdentifier: "showTriageGroup", sender: self)
+    }
+    
+    private func continueQuestionnaire(current: Int) {
+        UIView.transition(with: questionLabel,
+                          duration: 0.25,
+                          options: .transitionFlipFromTop,
+                          animations: {
+                            [weak self] in
+                            self?.questionLabel.text = NSLocalizedString(
+                                self?.matches[current][1] as! String,
+                                comment: ""
+                            )
+                            },
+                          completion: nil)
+        currentQuestion = current
+        /*
+         if matches[current][2] is 0, the current question's no-button will lead to triage
+         else the yes button will
+         */
+        switch currentQuestion {
+        case 0, 1, 4:
+            noButton.backgroundColor = UIColor.systemOrange
+            yesButton.backgroundColor = matches[current][0] as? UIColor
+        case 7:
+            noButton.backgroundColor = UIColor.systemYellow
+            yesButton.backgroundColor = matches[current][0] as? UIColor
+        default:
+            yesButton.backgroundColor = UIColor.systemOrange
+            noButton.backgroundColor = matches[current][0] as? UIColor
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

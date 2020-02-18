@@ -19,3 +19,10 @@
 "T3" = "Nicht dringliche Behandlung";
 "T4" = "Beobachtung und Schmerzreduktion";
 "T0" = "Kein Triagevorschlag möglich";
+
+"TRIAGEGROUP" = "Triagegruppe";
+
+"SCANNING_NOT_SUPPORTED_TITLE" = "Das Gerät kann nicht scannen.";
+"SCANNING_NOT_SUPPORTED_BODY" = "Das verwendete Gerät unterstütz das Scannen von Strichcodes nicht. Verwenden Sie bitte ein Gerät mit Kamera.";
+
+"OK" = "OK";

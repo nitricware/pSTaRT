@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4520E64923F955A800BBD06F /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520E64823F955A800BBD06F /* DBHelper.swift */; };
+		4520E64B23F95B5400BBD06F /* personViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520E64A23F95B5400BBD06F /* personViewController.swift */; };
+		4520E64D23F95D2300BBD06F /* personCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520E64C23F95D2300BBD06F /* personCell.swift */; };
+		452ECC6E23F96F3900909ED5 /* pSTaRTErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */; };
+		452ECC9423F9844A00909ED5 /* ScannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452ECC9623F9844A00909ED5 /* ScannerView.xib */; };
+		452ECC9B23F986ED00909ED5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 452ECC9D23F986ED00909ED5 /* InfoPlist.strings */; };
 		457AA76B23806AF100A11755 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 457AA76D23806AF100A11755 /* Localizable.strings */; };
 		458FB809237F0F1A0060A8FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB808237F0F1A0060A8FB /* AppDelegate.swift */; };
 		458FB80B237F0F1A0060A8FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB80A237F0F1A0060A8FB /* SceneDelegate.swift */; };
@@ -21,6 +27,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4520E64823F955A800BBD06F /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		4520E64A23F95B5400BBD06F /* personViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = personViewController.swift; sourceTree = "<group>"; };
+		4520E64C23F95D2300BBD06F /* personCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = personCell.swift; sourceTree = "<group>"; };
+		452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pSTaRTErrors.swift; sourceTree = "<group>"; };
+		452ECC9523F9844A00909ED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ScannerView.xib; sourceTree = "<group>"; };
+		452ECC9823F9845100909ED5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ScannerView.strings; sourceTree = "<group>"; };
+		452ECC9C23F986ED00909ED5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		452ECC9E23F986F100909ED5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		457AA76E23806AF300A11755 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		458FB805237F0F1A0060A8FB /* pSTaRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pSTaRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458FB808237F0F1A0060A8FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +95,12 @@
 				458FB821237FF1D30060A8FB /* TriageGroupDisplay.swift */,
 				457AA76D23806AF100A11755 /* Localizable.strings */,
 				45FB5742239BA082005B3417 /* ScannerView.swift */,
+				452ECC9623F9844A00909ED5 /* ScannerView.xib */,
+				4520E64823F955A800BBD06F /* DBHelper.swift */,
+				4520E64A23F95B5400BBD06F /* personViewController.swift */,
+				4520E64C23F95D2300BBD06F /* personCell.swift */,
+				452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */,
+				452ECC9D23F986ED00909ED5 /* InfoPlist.strings */,
 			);
 			path = pSTaRT;
 			sourceTree = "<group>";
@@ -145,6 +165,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				458FB818237F0F1B0060A8FB /* LaunchScreen.storyboard in Resources */,
+				452ECC9B23F986ED00909ED5 /* InfoPlist.strings in Resources */,
+				452ECC9423F9844A00909ED5 /* ScannerView.xib in Resources */,
 				457AA76B23806AF100A11755 /* Localizable.strings in Resources */,
 				458FB815237F0F1B0060A8FB /* Assets.xcassets in Resources */,
 				458FB810237F0F1A0060A8FB /* Main.storyboard in Resources */,
@@ -158,19 +180,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4520E64B23F95B5400BBD06F /* personViewController.swift in Sources */,
 				458FB820237F119A0060A8FB /* Questionnaire.swift in Sources */,
 				458FB80D237F0F1A0060A8FB /* ViewController.swift in Sources */,
 				458FB822237FF1D30060A8FB /* TriageGroupDisplay.swift in Sources */,
 				458FB813237F0F1A0060A8FB /* pSTaRT.xcdatamodeld in Sources */,
+				452ECC6E23F96F3900909ED5 /* pSTaRTErrors.swift in Sources */,
 				458FB809237F0F1A0060A8FB /* AppDelegate.swift in Sources */,
+				4520E64D23F95D2300BBD06F /* personCell.swift in Sources */,
 				45FB5743239BA082005B3417 /* ScannerView.swift in Sources */,
 				458FB80B237F0F1A0060A8FB /* SceneDelegate.swift in Sources */,
+				4520E64923F955A800BBD06F /* DBHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		452ECC9623F9844A00909ED5 /* ScannerView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				452ECC9523F9844A00909ED5 /* Base */,
+				452ECC9823F9845100909ED5 /* de */,
+			);
+			name = ScannerView.xib;
+			sourceTree = "<group>";
+		};
+		452ECC9D23F986ED00909ED5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				452ECC9C23F986ED00909ED5 /* en */,
+				452ECC9E23F986F100909ED5 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		457AA76D23806AF100A11755 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -322,14 +366,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -342,14 +386,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

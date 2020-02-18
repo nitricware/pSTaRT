@@ -5,9 +5,6 @@
 /* Class = "UIButton"; normalTitle = "No"; ObjectID = "Gsa-rr-ZhY"; */
 "Gsa-rr-ZhY.normalTitle" = "Nein";
 
-/* Class = "UILabel"; text = "Welcome to pSTaRT"; ObjectID = "Gsc-PJ-Hjr"; */
-"Gsc-PJ-Hjr.text" = "Willkommen bei pSTaRT";
-
 /* Class = "UILabel"; text = "Kein Triagevorschlag möglich."; ObjectID = "JVJ-rY-5b7"; */
 "JVJ-rY-5b7.text" = "Kein Triagevorschlag möglich.";
 
@@ -31,3 +28,14 @@
 
 /* Class = "UILabel"; text = "pocket Simple Triage and Rapid Treatment"; ObjectID = "zOp-iN-rWg"; */
 "zOp-iN-rWg.text" = "pocket Simple Triage and Rapid Treatment";
+
+/* Class = "UITextField"; text = "PLS-Number"; ObjectID = "ODH-oH-vZA"; */
+"ODH-oH-vZA.placeholder" = "PLS-Nummer";
+
+"Wto-qs-f9I.title" = "Personen";
+
+"zXt-Bk-cBW.title" = "PatientIn hinzufügen";
+
+"QRb-Xi-DTz.text" = "von";
+
+"NYF-Zd-HmV.text" = "bis";
