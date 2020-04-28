@@ -12,13 +12,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     let feedbackLight = UIImpactFeedbackGenerator(style: .light)
     let feedbackGenerator = UINotificationFeedbackGenerator()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         feedbackLight.prepare()
         feedbackGenerator.prepare()
         plsNumberInput.delegate = self
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -28,6 +27,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var plsNumberInput: UITextField!
     
+    
+    /// Launches the PLS barcode Scanner
+    /// - Parameter sender
     @IBAction func launchScanner(_ sender: Any) {
         let scannerView = Bundle.main.loadNibNamed("ScannerView", owner: self, options: nil)?.first as! ScannerViewController
         scannerView.delegate = self
@@ -44,6 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
           },
         completion: nil)
     }
+    
     
     func shake(view: UIView) {
         let animation = CABasicAnimation(keyPath: "position")

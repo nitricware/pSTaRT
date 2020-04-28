@@ -81,6 +81,10 @@ class personViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    @IBAction func exportData(_ sender: Any) {
+        // export all data to csv and open share sheet
+    }
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
