@@ -26,3 +26,6 @@
 "SCANNING_NOT_SUPPORTED_BODY" = "Das verwendete Gerät unterstütz das Scannen von Strichcodes nicht. Verwenden Sie bitte ein Gerät mit Kamera.";
 
 "OK" = "OK";
+
+"EXPORT_COLS" = "PLS Nummer;Start;Ende;Triagegruppe\n";
+"EXPORT_FILENAME" = "Liste von Personen (%@).csv";

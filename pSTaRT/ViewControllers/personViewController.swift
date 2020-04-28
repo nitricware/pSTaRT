@@ -12,15 +12,11 @@ import CoreData
 class personViewController: UITableViewController {
     var triagegroups:[[NSManagedObject?]] = [[],[],[],[]]
     var db: pSTaRTDBHelper = pSTaRTDBHelper()
-    var context: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let db = pSTaRTDBHelper()
-        db.context = appDelegate.persistentContainer.viewContext
-        print ("context is set...")
         
         do {
             try triagegroups[0] = db.fetchPersons(triageGroup: 1)
@@ -28,17 +24,14 @@ class personViewController: UITableViewController {
             try triagegroups[2] = db.fetchPersons(triageGroup: 3)
             try triagegroups[3] = db.fetchPersons(triageGroup: 4)
         } catch {
+            // TODO: display alert
             print("Error")
         }
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem?.title = ""
+        self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "pencil")
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -64,6 +57,8 @@ class personViewController: UITableViewController {
         let endDate = entry?.value(forKey: "endTime") as! Date
         
         let dateFormatter = DateFormatter()
+        
+        // TODO: localize
         dateFormatter.dateFormat = "EEEE, d MMM y - HH:mm:ss"
         
         cell.plsNumber.text = plsNumber
@@ -74,56 +69,41 @@ class personViewController: UITableViewController {
     }
     
     @IBAction func deleteAll(_ sender: Any) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        db.context = appDelegate.persistentContainer.viewContext
         db.deleteAll()
         triagegroups = [[],[],[],[]]
         self.tableView.reloadData()
     }
     
     @IBAction func exportData(_ sender: Any) {
-        // export all data to csv and open share sheet
+        do {
+            if let filename = try db.exportData() {
+                if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                    let fileURL = dir.appendingPathComponent(filename)
+                    /*
+                     Prepare and show the share sheet
+                     */
+                    let objectsToShare = [fileURL]
+                    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                    self.present(activityVC, animated: true, completion: nil)
+                }
+            }
+        } catch {
+            // TODO: display alert
+            print("Error")
+        }
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+        // Return false if you do not want the specified item to be editable. Deleting is also editing.
         return true
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            db.context = appDelegate.persistentContainer.viewContext
             db.deletePerson(person: triagegroups[indexPath.section][indexPath.row]!)
             triagegroups[indexPath.section].remove(at: indexPath.row)
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

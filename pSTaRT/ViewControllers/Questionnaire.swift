@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+/// Questionnaire ViewController displays the questions and handles the answers. Finally, it also saves the result to the database.
 class Questionnaire: UIViewController {
     var currentQuestion: Int  = 0
     var triageGroup: Int = 0
@@ -107,17 +109,15 @@ class Questionnaire: UIViewController {
         }
     }
     
+    
+    /// triageDone is called once the user gives a terminating answer.
+    /// - Parameter group: The currently active triage group at the time of the terminating answer
     private func triageDone(group: Int) {
-        print("Triage done ... assigned group: " + String(group))
-        
         /*
         Questionnaire finished,
         saving to database
         */
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let db = pSTaRTDBHelper()
-        db.context = appDelegate.persistentContainer.viewContext
         db.savePLS(plsNo: plsNumber, start: startDate, end: Date(), triageNo: group)
         
         /*
@@ -127,7 +127,15 @@ class Questionnaire: UIViewController {
         self.performSegue(withIdentifier: "showTriageGroup", sender: self)
     }
     
+    
+    /// continueQuestionnaire is called whenever the user gives a non-terminating answer.
+    /// - Parameter current: The currently active triage group at the time of the terminating answer
     private func continueQuestionnaire(current: Int) {
+        /*
+         In order to alert the user that a new question popped up,
+         because the last answer was non-terminating, the questionLabel
+         is animated.
+         */
         UIView.transition(with: questionLabel,
                           duration: 0.25,
                           options: .transitionFlipFromTop,
@@ -157,6 +165,11 @@ class Questionnaire: UIViewController {
         }
     }
     
+    
+    /// Called right before the transition to the triage group display screen.
+    /// - Parameters:
+    ///   - segue
+    ///   - sender
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         feedbackDone.notificationOccurred(.success)
         if(segue.identifier == "showTriageGroup") {

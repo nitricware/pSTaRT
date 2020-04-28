@@ -179,11 +179,19 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Persons" id="Wto-qs-f9I">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="trash.fill" catalog="system" id="zkK-Eq-5lS">
-                            <connections>
-                                <action selector="deleteAll:" destination="ZLT-8G-RUU" id="3ta-tD-XCK"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="pencil" catalog="system" id="CQy-ty-7MV"/>
+                            <barButtonItem title="delete" image="trash.fill" catalog="system" id="zkK-Eq-5lS">
+                                <connections>
+                                    <action selector="deleteAll:" destination="ZLT-8G-RUU" id="3ta-tD-XCK"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="export" image="square.and.arrow.up" catalog="system" id="i5d-fx-hu7">
+                                <connections>
+                                    <action selector="exportData:" destination="ZLT-8G-RUU" id="4FT-KV-gV1"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GaA-wj-guA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -414,6 +422,8 @@
     <resources>
         <image name="barcode.viewfinder" catalog="system" width="64" height="56"/>
         <image name="list.dash" catalog="system" width="64" height="42"/>
+        <image name="pencil" catalog="system" width="64" height="56"/>
+        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
         <image name="trash.fill" catalog="system" width="60" height="64"/>
     </resources>
 </document>

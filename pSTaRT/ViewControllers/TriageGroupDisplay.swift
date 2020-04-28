@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Displays the result of the questionnaire.
 class TriageGroupDisplay: UIViewController {
     var triageGroup: Int = 0
     var triageRoman: String = ""
@@ -70,15 +71,4 @@ class TriageGroupDisplay: UIViewController {
         feedbackDone.notificationOccurred(.success)
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-
 }

@@ -26,3 +26,6 @@
 "SCANNING_NOT_SUPPORTED_BODY" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
 
 "OK" = "OK";
+
+"EXPORT_COLS" = "PLS Number;Start;End;Triage Group\n";
+"EXPORT_FILENAME" = "List of Persons (%@).csv";
