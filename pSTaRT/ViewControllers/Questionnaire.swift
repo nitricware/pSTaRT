@@ -11,6 +11,7 @@ import UIKit
 
 /// Questionnaire ViewController displays the questions and handles the answers. Finally, it also saves the result to the database.
 class Questionnaire: UIViewController {
+    // MARK: fields
     var currentQuestion: Int  = 0
     var triageGroup: Int = 0
     
@@ -32,16 +33,34 @@ class Questionnaire: UIViewController {
         [UIColor.systemRed,"ASPIRATION"]
     ]
     
+    // MARK: view controler overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         feedbackLight.prepare()
         feedbackDone.prepare()
         plsNumberLabel.text = plsNumber
     }
+    
+    /// Called right before the transition to the triage group display screen.
+    /// - Parameters:
+    ///   - segue
+    ///   - sender
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        feedbackDone.notificationOccurred(.success)
+        if(segue.identifier == "showTriageGroup") {
+            let triageGroupDetail = (segue.destination as! TriageGroupDisplay)
+            triageGroupDetail.triageGroup = self.triageGroup
+        }
+    }
+    
+    // MARK: outlets
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var plsNumberLabel: UILabel!
+    
+    // MARK: actions
     
     @IBAction func closeQuestionnaire(_ sender: Any) {
         feedbackDone.notificationOccurred(.error)
@@ -109,6 +128,7 @@ class Questionnaire: UIViewController {
         }
     }
     
+    // MARK: custom functions
     
     /// triageDone is called once the user gives a terminating answer.
     /// - Parameter group: The currently active triage group at the time of the terminating answer
@@ -162,19 +182,6 @@ class Questionnaire: UIViewController {
         default:
             yesButton.backgroundColor = UIColor.systemOrange
             noButton.backgroundColor = matches[current][0] as? UIColor
-        }
-    }
-    
-    
-    /// Called right before the transition to the triage group display screen.
-    /// - Parameters:
-    ///   - segue
-    ///   - sender
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        feedbackDone.notificationOccurred(.success)
-        if(segue.identifier == "showTriageGroup") {
-            let triageGroupDetail = (segue.destination as! TriageGroupDisplay)
-            triageGroupDetail.triageGroup = self.triageGroup
         }
     }
 }

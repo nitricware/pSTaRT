@@ -10,8 +10,12 @@ import UIKit
 import CoreData
 
 class personViewController: UITableViewController {
+    // MARK: fields
+    
     var triagegroups:[[NSManagedObject?]] = [[],[],[],[]]
     var db: pSTaRTDBHelper = pSTaRTDBHelper()
+    
+    // MARK: view controller overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +72,22 @@ class personViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable. Deleting is also editing.
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            db.deletePerson(person: triagegroups[indexPath.section][indexPath.row]!)
+            triagegroups[indexPath.section].remove(at: indexPath.row)
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    // MARK: actions
+    
     @IBAction func deleteAll(_ sender: Any) {
         db.deleteAll()
         triagegroups = [[],[],[],[]]
@@ -90,20 +110,6 @@ class personViewController: UITableViewController {
         } catch {
             // TODO: display alert
             print("Error")
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable. Deleting is also editing.
-        return true
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            db.deletePerson(person: triagegroups[indexPath.section][indexPath.row]!)
-            triagegroups[indexPath.section].remove(at: indexPath.row)
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }

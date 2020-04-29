@@ -54,7 +54,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="TxZ-3s-b8H"/>
                                 </constraints>
-                                <state key="normal" title="new patient">
+                                <state key="normal" title="new person">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -82,7 +82,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="pSTaRT" largeTitleDisplayMode="always" id="ebX-BP-e5y">
-                        <barButtonItem key="backBarButtonItem" title="add patient" id="zXt-Bk-cBW"/>
+                        <barButtonItem key="backBarButtonItem" title="new person" id="zXt-Bk-cBW"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="list.dash" catalog="system" id="eQw-ZW-Mdb">
                             <connections>
                                 <segue destination="ZLT-8G-RUU" kind="show" id="9rc-fY-TdG"/>
@@ -101,7 +101,7 @@
         <scene sceneID="Bx4-i2-Zfv">
             <objects>
                 <tableViewController id="ZLT-8G-RUU" customClass="personViewController" customModule="pSTaRT" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hWu-7h-hy8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hWu-7h-hy8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -217,7 +217,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7M-dw-gdM">
                                 <rect key="frame" x="0.0" y="298" width="414" height="300"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can the patient walk?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iim-n2-Hiy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can the person walk?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iim-n2-Hiy">
                                         <rect key="frame" x="8" y="8" width="398" height="61"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="61" id="crU-gx-8ez"/>

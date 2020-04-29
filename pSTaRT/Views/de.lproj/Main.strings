@@ -18,10 +18,10 @@
 "Usm-Cf-HQP.text" = "X";
 
 /* Class = "UILabel"; text = "Can the patient walk?"; ObjectID = "iim-n2-Hiy"; */
-"iim-n2-Hiy.text" = "PatientIn ist gehfähig?";
+"iim-n2-Hiy.text" = "Person ist gehfähig?";
 
 /* Class = "UIButton"; normalTitle = "new patient"; ObjectID = "mTJ-WZ-XPc"; */
-"mTJ-WZ-XPc.normalTitle" = "PatientIn anlegen";
+"mTJ-WZ-XPc.normalTitle" = "Person anlegen";
 
 /* Class = "UIButton"; normalTitle = "cancel triage"; ObjectID = "nvs-pR-R0Z"; */
 "nvs-pR-R0Z.normalTitle" = "Triage abbrechen";
@@ -34,7 +34,7 @@
 
 "Wto-qs-f9I.title" = "Personen";
 
-"zXt-Bk-cBW.title" = "PatientIn hinzufügen";
+"zXt-Bk-cBW.title" = "neue Person";
 
 "QRb-Xi-DTz.text" = "von";
 

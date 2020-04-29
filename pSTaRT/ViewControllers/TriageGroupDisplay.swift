@@ -10,12 +10,15 @@ import UIKit
 
 /// Displays the result of the questionnaire.
 class TriageGroupDisplay: UIViewController {
+    // MARK: fields
     var triageGroup: Int = 0
     var triageRoman: String = ""
     var triageColor: UIColor = UIColor.green
     var triageTextColor: UIColor = UIColor.white
     var triageText: String = NSLocalizedString("T0", comment: "")
     let feedbackDone = UINotificationFeedbackGenerator()
+    
+    // MARK: view controller overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +35,21 @@ class TriageGroupDisplay: UIViewController {
         triageTextLabel.text = triageText
     }
     
+    // MARK: outlets
+    
     @IBOutlet weak var triageGroupNumber: UILabel!
     
     @IBOutlet weak var triageTextLabel: UILabel!
+    
+    // MARK: actions
+    
+    
+    @IBAction func newPatientPressed(_ sender: Any) {
+        feedbackDone.notificationOccurred(.success)
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: custom functions
     
     func parseTriageNumber() {
         switch self.triageGroup {
@@ -65,10 +80,5 @@ class TriageGroupDisplay: UIViewController {
         default:
             self.triageRoman = "X"
         }
-    }
-    
-    @IBAction func newPatientPressed(_ sender: Any) {
-        feedbackDone.notificationOccurred(.success)
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
 }

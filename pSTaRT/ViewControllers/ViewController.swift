@@ -9,24 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    
     let feedbackLight = UIImpactFeedbackGenerator(style: .light)
     let feedbackGenerator = UINotificationFeedbackGenerator()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        feedbackLight.prepare()
-        feedbackGenerator.prepare()
-        plsNumberInput.delegate = self
-    }
-    
+    // MARK: plsNumberInput delegate functions
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return false
     }
     
+    // MARK: outlets
     @IBOutlet weak var plsNumberInput: UITextField!
     
+    // MARK: actions
     
     /// Launches the PLS barcode Scanner
     /// - Parameter sender
@@ -36,6 +31,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.present(scannerView, animated: true, completion: nil)
     }
     
+    // MARK: scannerView delegate
+    
+    /// Triggered once a matching code was found
+    /// - Parameter code: The code found by the scanner.
     func foundCode(code: String) {
         UIView.transition(with: self.plsNumberInput,
         duration: 0.25,
@@ -47,25 +46,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         completion: nil)
     }
     
+    // MARK: view controller overrides
     
-    func shake(view: UIView) {
-        let animation = CABasicAnimation(keyPath: "position")
-        animation.duration = 0.07
-        animation.repeatCount = 4
-        animation.autoreverses = true
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: view.center.x - 10, y: view.center.y))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: view.center.x + 10, y: view.center.y))
-        
-        view.layer.add(animation, forKey: "position")
-        // Send haptic feedback
-        feedbackGenerator.notificationOccurred(.error)
-    }
-    
-    func displayError(e: Error) {
-        print(e)
-        let ac = UIAlertController(title: NSLocalizedString("ERROR_HEADLINE", comment: ""), message: NSLocalizedString("ERROR_BODY", comment: ""), preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
-        present(ac, animated: true)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        feedbackLight.prepare()
+        feedbackGenerator.prepare()
+        plsNumberInput.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,6 +72,33 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
         return true
+    }
+    
+    // MARK: custom functions
+    
+    /// Shakes the specified view to indicate an error.
+    /// - Parameter view: The view to be shaken.
+    func shake(view: UIView) {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 4
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: view.center.x - 10, y: view.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: view.center.x + 10, y: view.center.y))
+        
+        view.layer.add(animation, forKey: "position")
+        // Send haptic feedback
+        feedbackGenerator.notificationOccurred(.error)
+    }
+    
+    /// Displays an alert box with information about the error.
+    /// - Parameter e: The error to be displayed.
+    func displayError(e: Error) {
+        print(e)
+        // TODO: change ERROR_BODY depending on e
+        let ac = UIAlertController(title: NSLocalizedString("ERROR_HEADLINE", comment: ""), message: NSLocalizedString("ERROR_BODY", comment: ""), preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
+        present(ac, animated: true)
     }
 }
 
