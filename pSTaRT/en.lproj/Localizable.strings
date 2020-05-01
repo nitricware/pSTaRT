@@ -20,12 +20,23 @@
 "T4" = "Observation";
 "T0" = "No triage possible";
 
-"TRIAGEGROUP" = "triage groupe";
+"TRIAGEGROUP" = "triage group";
+
+"PERSONS" = "person(s)";
 
 "SCANNING_NOT_SUPPORTED_TITLE" = "Scanning not supported";
 "SCANNING_NOT_SUPPORTED_BODY" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
 
 "OK" = "OK";
+"CANCEL" = "Cancel";
 
 "EXPORT_COLS" = "PLS Number;Start;End;Triage Group\n";
 "EXPORT_FILENAME" = "List of Persons (%@).csv";
+
+"ERROR_HEADLINE" = "Error";
+"ERROR_FETCH" = "Couldn't fetch persons.";
+"ERROR_EXPORT" = "Couldn't export list.";
+"ERROR_DELETE" = "Couldn't delete record.";
+
+"CONFIRM_HEADLINE" = "Confirm";
+"CONFIRM_BODY" = "Are you sure?";

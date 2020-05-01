@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
     let feedbackLight = UIImpactFeedbackGenerator(style: .light)
     let feedbackGenerator = UINotificationFeedbackGenerator()
+    let db: pSTaRTDBHelper = pSTaRTDBHelper()
     
     // MARK: plsNumberInput delegate functions
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -20,6 +21,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: outlets
     @IBOutlet weak var plsNumberInput: UITextField!
+    @IBOutlet weak var group1Numbers: UILabel!
+    @IBOutlet weak var group2Numbers: UILabel!
+    @IBOutlet weak var group3Numbers: UILabel!
+    @IBOutlet weak var group4Numbers: UILabel!
     
     // MARK: actions
     
@@ -53,6 +58,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         feedbackLight.prepare()
         feedbackGenerator.prepare()
         plsNumberInput.delegate = self
+        populateNumbers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        populateNumbers()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,6 +86,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: custom functions
     
+    func populateNumbers() {
+        do {
+            let numbers = try db.getPersonCount()
+            group1Numbers.text = String(numbers[0]) + " " + NSLocalizedString("PERSONS", comment: "persons")
+            group2Numbers.text = String(numbers[1]) + " " + NSLocalizedString("PERSONS", comment: "persons")
+            group3Numbers.text = String(numbers[2]) + " " + NSLocalizedString("PERSONS", comment: "persons")
+            group4Numbers.text = String(numbers[3]) + " " + NSLocalizedString("PERSONS", comment: "persons")
+        } catch {
+            let ac = createErrorAlert(with: "ERROR_FETCH")
+            present(ac, animated: true)
+        }
+    }
+    
     /// Shakes the specified view to indicate an error.
     /// - Parameter view: The view to be shaken.
     func shake(view: UIView) {
@@ -89,16 +112,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.layer.add(animation, forKey: "position")
         // Send haptic feedback
         feedbackGenerator.notificationOccurred(.error)
-    }
-    
-    /// Displays an alert box with information about the error.
-    /// - Parameter e: The error to be displayed.
-    func displayError(e: Error) {
-        print(e)
-        // TODO: change ERROR_BODY depending on e
-        let ac = UIAlertController(title: NSLocalizedString("ERROR_HEADLINE", comment: ""), message: NSLocalizedString("ERROR_BODY", comment: ""), preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
-        present(ac, animated: true)
     }
 }
 

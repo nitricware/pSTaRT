@@ -14,6 +14,7 @@
 		452ECC9423F9844A00909ED5 /* ScannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452ECC9623F9844A00909ED5 /* ScannerView.xib */; };
 		452ECC9B23F986ED00909ED5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 452ECC9D23F986ED00909ED5 /* InfoPlist.strings */; };
 		457AA76B23806AF100A11755 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 457AA76D23806AF100A11755 /* Localizable.strings */; };
+		458DB651245C23110072CF45 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458DB650245C23110072CF45 /* HelperFunctions.swift */; };
 		458FB809237F0F1A0060A8FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB808237F0F1A0060A8FB /* AppDelegate.swift */; };
 		458FB80B237F0F1A0060A8FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB80A237F0F1A0060A8FB /* SceneDelegate.swift */; };
 		458FB80D237F0F1A0060A8FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB80C237F0F1A0060A8FB /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 		452ECC9C23F986ED00909ED5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		452ECC9E23F986F100909ED5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		457AA76E23806AF300A11755 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		458DB650245C23110072CF45 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		458FB805237F0F1A0060A8FB /* pSTaRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pSTaRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458FB808237F0F1A0060A8FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		458FB80A237F0F1A0060A8FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				4520E64823F955A800BBD06F /* DBHelper.swift */,
 				452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */,
 				452ECC9D23F986ED00909ED5 /* InfoPlist.strings */,
+				458DB650245C23110072CF45 /* HelperFunctions.swift */,
 			);
 			path = pSTaRT;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4520E64B23F95B5400BBD06F /* personViewController.swift in Sources */,
+				458DB651245C23110072CF45 /* HelperFunctions.swift in Sources */,
 				458FB820237F119A0060A8FB /* Questionnaire.swift in Sources */,
 				458FB80D237F0F1A0060A8FB /* ViewController.swift in Sources */,
 				458FB822237FF1D30060A8FB /* TriageGroupDisplay.swift in Sources */,

@@ -23,13 +23,13 @@ class personViewController: UITableViewController {
         let db = pSTaRTDBHelper()
         
         do {
-            try triagegroups[0] = db.fetchPersons(triageGroup: 1)
-            try triagegroups[1] = db.fetchPersons(triageGroup: 2)
-            try triagegroups[2] = db.fetchPersons(triageGroup: 3)
-            try triagegroups[3] = db.fetchPersons(triageGroup: 4)
+            try triagegroups[0] = db.fetchPersons(for: 1)
+            try triagegroups[1] = db.fetchPersons(for: 2)
+            try triagegroups[2] = db.fetchPersons(for: 3)
+            try triagegroups[3] = db.fetchPersons(for: 4)
         } catch {
-            // TODO: display alert
-            print("Error")
+            let ac: UIAlertController = createErrorAlert(with: "ERROR_FETCH")
+            present(ac, animated: true)
         }
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -79,19 +79,33 @@ class personViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            db.deletePerson(person: triagegroups[indexPath.section][indexPath.row]!)
-            triagegroups[indexPath.section].remove(at: indexPath.row)
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            do {
+                try db.deletePerson(person: triagegroups[indexPath.section][indexPath.row]!)
+                triagegroups[indexPath.section].remove(at: indexPath.row)
+                // Delete the row from the data source
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                let ac: UIAlertController = createErrorAlert(with: "ERROR_DELETE")
+                present(ac, animated: true)
+            }
         }
     }
     
     // MARK: actions
     
     @IBAction func deleteAll(_ sender: Any) {
-        db.deleteAll()
-        triagegroups = [[],[],[],[]]
-        self.tableView.reloadData()
+        let confirm: UIAlertController = createConfirmAlert(with: {
+            do {
+                try self.db.deleteAll()
+            } catch {
+                let ac: UIAlertController = createErrorAlert(with: "ERROR_DELETE")
+                self.present(ac, animated: true)
+            }
+            
+            self.triagegroups = [[],[],[],[]]
+            self.tableView.reloadData()
+        })
+        present(confirm, animated: true)
     }
     
     @IBAction func exportData(_ sender: Any) {
@@ -108,8 +122,8 @@ class personViewController: UITableViewController {
                 }
             }
         } catch {
-            // TODO: display alert
-            print("Error")
+            let ac: UIAlertController = createErrorAlert(with: "ERROR_EXPORT")
+            present(ac, animated: true)
         }
     }
 }
