@@ -64,6 +64,24 @@ class pSTaRTDBHelper {
         }
     }
     
+    func getPersonCount() throws -> [Int] {
+        var returnArray: [Int] = []
+        do {
+            let t1 = try fetchPersons(for: 1)
+            returnArray.append(t1.count)
+            let t2 = try fetchPersons(for: 2)
+            returnArray.append(t2.count)
+            let t3 = try fetchPersons(for: 3)
+            returnArray.append(t3.count)
+            let t4 = try fetchPersons(for: 4)
+            returnArray.append(t4.count)
+        } catch {
+            throw pSTaRTErrors.dbFetchError
+        }
+        
+        return returnArray
+    }
+    
     /// Deletes all persons
     func deleteAll() throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")

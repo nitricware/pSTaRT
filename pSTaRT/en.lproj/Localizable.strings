@@ -22,10 +22,13 @@
 
 "TRIAGEGROUP" = "triage group";
 
+"PERSONS" = "person(s)";
+
 "SCANNING_NOT_SUPPORTED_TITLE" = "Scanning not supported";
 "SCANNING_NOT_SUPPORTED_BODY" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
 
 "OK" = "OK";
+"CANCEL" = "Cancel";
 
 "EXPORT_COLS" = "PLS Number;Start;End;Triage Group\n";
 "EXPORT_FILENAME" = "List of Persons (%@).csv";
