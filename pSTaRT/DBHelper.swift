@@ -19,7 +19,6 @@ class pSTaRTDBHelper {
         self.context = appDelegate.persistentContainer.viewContext
     }
     
-    
     /// Saves a person to the database
     /// - Parameters:
     ///   - plsNo: the entered PLS number
@@ -41,6 +40,8 @@ class pSTaRTDBHelper {
         }
     }
     
+    /// Fetches all persons or persons in the specified triage group.
+    /// - Parameter triageGroup: the selected triage group. `nil` if any triage group
     func fetchPersons(for triageGroup: Int? = nil) throws -> [NSManagedObject] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")
         request.returnsObjectsAsFaults = false
@@ -63,6 +64,7 @@ class pSTaRTDBHelper {
         }
     }
     
+    /// Deletes all persons
     func deleteAll() throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -75,6 +77,8 @@ class pSTaRTDBHelper {
         }
     }
     
+    /// Deletes a single person
+    /// - Parameter person: the person to delete
     func deletePerson(person: NSManagedObject) throws {
         context.delete(person)
         do {
@@ -84,6 +88,7 @@ class pSTaRTDBHelper {
         }
     }
     
+    /// Exports all records to a CSV file and returns the file name.
     func exportData() throws -> String? {
         // This is the foundation of the CSV file that will be saved - it contains the header
         var exportString = NSLocalizedString("EXPORT_COLS", comment: "column headings")
