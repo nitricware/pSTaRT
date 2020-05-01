@@ -90,15 +90,5 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Send haptic feedback
         feedbackGenerator.notificationOccurred(.error)
     }
-    
-    /// Displays an alert box with information about the error.
-    /// - Parameter e: The error to be displayed.
-    func displayError(e: Error) {
-        print(e)
-        // TODO: change ERROR_BODY depending on e
-        let ac = UIAlertController(title: NSLocalizedString("ERROR_HEADLINE", comment: ""), message: NSLocalizedString("ERROR_BODY", comment: ""), preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
-        present(ac, animated: true)
-    }
 }
 

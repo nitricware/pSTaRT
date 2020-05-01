@@ -10,4 +10,6 @@ import Foundation
 
 enum pSTaRTErrors: Error {
     case dbFetchError
+    case dbDeleteError
+    case dbExportError
 }

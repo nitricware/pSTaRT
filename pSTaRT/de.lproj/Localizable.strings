@@ -29,3 +29,11 @@
 
 "EXPORT_COLS" = "PLS Nummer;Start;Ende;Triagegruppe\n";
 "EXPORT_FILENAME" = "Liste von Personen (%@).csv";
+
+"ERROR_HEADLINE" = "Fehler";
+"ERROR_FETCH" = "Die Personen konnten nicht abgerufen werden.";
+"ERROR_EXPORT" = "Die Liste konnte nicht exportiert werden.";
+"ERROR_DELETE" = "Der Eintrag konnte nicht gelöscht werden.";
+
+"CONFIRM_HEADLINE" = "Bestätigen";
+"CONFIRM_BODY" = "Sind Sie sicher?";
