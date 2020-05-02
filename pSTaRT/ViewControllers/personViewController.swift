@@ -94,17 +94,21 @@ class personViewController: UITableViewController {
     // MARK: actions
     
     @IBAction func deleteAll(_ sender: Any) {
-        let confirm: UIAlertController = createConfirmAlert(with: {
-            do {
-                try self.db.deleteAll()
-            } catch {
-                let ac: UIAlertController = createErrorAlert(with: "ERROR_DELETE")
-                self.present(ac, animated: true)
+        let confirm: UIAlertController = createConfirmAlert(
+            cancelAction: {
+                print("User canceled delete all records.")
+            }, confirmAction: {
+                do {
+                    try self.db.deleteAll()
+                } catch {
+                    let ac: UIAlertController = createErrorAlert(with: "ERROR_DELETE")
+                    self.present(ac, animated: true)
+                }
+                
+                self.triagegroups = [[],[],[],[]]
+                self.tableView.reloadData()
             }
-            
-            self.triagegroups = [[],[],[],[]]
-            self.tableView.reloadData()
-        })
+        )
         present(confirm, animated: true)
     }
     

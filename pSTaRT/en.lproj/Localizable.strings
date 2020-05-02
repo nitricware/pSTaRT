@@ -30,6 +30,9 @@
 "OK" = "OK";
 "CANCEL" = "Cancel";
 
+"DUPLICATE_IGNORE" = "Ignore and assess";
+"DUPLICATE_CHANGE" = "Change ID";
+
 "EXPORT_COLS" = "PLS Number;Start;End;Triage Group\n";
 "EXPORT_FILENAME" = "List of Persons (%@).csv";
 
@@ -40,3 +43,6 @@
 
 "CONFIRM_HEADLINE" = "Confirm";
 "CONFIRM_BODY" = "Are you sure?";
+
+"DUPLICATE_HEADLINE" = "Duplicate";
+"DUPLICATE_BODY" = "A person with this ID already exists";

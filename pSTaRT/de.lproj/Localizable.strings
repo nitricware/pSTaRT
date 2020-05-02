@@ -30,6 +30,9 @@
 "OK" = "OK";
 "CANCEL" = "Abbrechen";
 
+"DUPLICATE_IGNORE" = "Ignorieren und triagieren";
+"DUPLICATE_CHANGE" = "PLS-Nummer ändern";
+
 "EXPORT_COLS" = "PLS Nummer;Start;Ende;Triagegruppe\n";
 "EXPORT_FILENAME" = "Liste von Personen (%@).csv";
 
@@ -40,3 +43,6 @@
 
 "CONFIRM_HEADLINE" = "Bestätigen";
 "CONFIRM_BODY" = "Sind Sie sicher?";
+
+"DUPLICATE_HEADLINE" = "Duplikat";
+"DUPLICATE_BODY" = "Eine Person mit dieser PLS-Nummer existiert bereits.";

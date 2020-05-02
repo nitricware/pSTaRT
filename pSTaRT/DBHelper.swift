@@ -82,6 +82,27 @@ class pSTaRTDBHelper {
         return returnArray
     }
     
+    func isDuplicate(id: String) throws -> Bool {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")
+        request.returnsObjectsAsFaults = false
+        
+        let predicate = NSPredicate(format: "plsNumber == %@", id)
+        request.predicate = predicate
+        
+        do {
+            // Get the results into an array of NSManagedObjects
+            let persons = try context.fetch(request) as! [NSManagedObject]
+            // Return this array
+            if persons.count > 0 {
+                return true
+            }
+        } catch {
+            throw pSTaRTErrors.dbFetchError
+        }
+            
+        return false
+    }
+    
     /// Deletes all persons
     func deleteAll() throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")

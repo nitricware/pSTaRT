@@ -63,7 +63,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="BqP-EX-b0U" kind="presentation" identifier="startQuestionnaire" modalPresentationStyle="fullScreen" id="uNq-Y1-MID"/>
+                                    <action selector="newPersonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pKU-Pm-JEM"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6C-hC-Xt9">
@@ -207,11 +207,12 @@
                         <outlet property="group3Numbers" destination="RPQ-Db-UkQ" id="hoQ-rt-owd"/>
                         <outlet property="group4Numbers" destination="uDz-ak-5pq" id="YLc-kw-nZn"/>
                         <outlet property="plsNumberInput" destination="ODH-oH-vZA" id="OUF-BB-ozt"/>
+                        <segue destination="BqP-EX-b0U" kind="presentation" identifier="startQuestionnaire" modalPresentationStyle="fullScreen" id="WCe-kH-jRm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+            <point key="canvasLocation" x="1078" y="138"/>
         </scene>
         <!--Persons-->
         <scene sceneID="Bx4-i2-Zfv">

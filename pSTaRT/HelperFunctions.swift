@@ -31,16 +31,16 @@ func createErrorAlert(with msgIdentifier: String) -> UIAlertController {
 
 /// Creates a confirm alert  and performs the confirmAction completion handler.
 /// - Parameter confirmAction: completion handler
-func createConfirmAlert(with confirmAction: @escaping () -> Void) -> UIAlertController {
+func createConfirmAlert(headline: String = "CONFIRM_HEADLINE", body: String = "CONFIRM_BODY", confirm: String = "OK", cancel: String = "CANCEL", cancelAction: @escaping () -> Void, confirmAction: @escaping () -> Void) -> UIAlertController {
     let ac = UIAlertController(
-        title: NSLocalizedString("CONFIRM_HEADLINE", comment: "confirm headline"),
-        message: NSLocalizedString("CONFIRM_BODY", comment: "confirm body"),
+        title: NSLocalizedString(headline, comment: "confirm headline"),
+        message: NSLocalizedString(body, comment: "confirm body"),
         preferredStyle: .actionSheet
     )
     
     ac.addAction(
         UIAlertAction(
-            title: NSLocalizedString("OK", comment: "ok"),
+            title: NSLocalizedString(confirm, comment: "ok"),
             style: .destructive,
             handler: {
                 (response) in
@@ -51,9 +51,12 @@ func createConfirmAlert(with confirmAction: @escaping () -> Void) -> UIAlertCont
     
     ac.addAction(
         UIAlertAction(
-            title: NSLocalizedString("CANCEL", comment: "cancel"),
+            title: NSLocalizedString(cancel, comment: "cancel"),
             style: .cancel,
-            handler: nil
+            handler: {
+                (response) in
+                cancelAction()
+            }
         )
     )
     

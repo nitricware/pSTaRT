@@ -36,6 +36,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.present(scannerView, animated: true, completion: nil)
     }
     
+    @IBAction func newPersonPressed(_ sender: Any) {
+        if let text = plsNumberInput.text, text.isEmpty {
+            shake(view: plsNumberInput)
+        }
+        do {
+            if try db.isDuplicate(id: plsNumberInput.text!) {
+                shake(view: plsNumberInput)
+                let confirm: UIAlertController = createConfirmAlert(
+                    headline: "DUPLICATE_HEADLINE",
+                    body: "DUPLICATE_BODY",
+                    confirm: "DUPLICATE_IGNORE",
+                    cancel: "DUPLICATE_CHANGE",
+                    cancelAction: {
+                        print("User cancelled creation of duplicate record.")
+                    }, confirmAction: {
+                        self.performSegue(withIdentifier: "startQuestionnaire", sender: self)
+                        print("User confirmed creation of duplicate record.")
+                    }
+                )
+                present(confirm, animated: true)
+            } else {
+                self.performSegue(withIdentifier: "startQuestionnaire", sender: self)
+            }
+        } catch {
+            let ac = createErrorAlert(with: "ERROR_FETCH")
+            present(ac, animated: true)
+        }
+    }
+    
     // MARK: scannerView delegate
     
     /// Triggered once a matching code was found
@@ -72,16 +101,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             questionnaire.plsNumber = plsNumberInput.text ?? "XXXXX"
             self.plsNumberInput.text = ""
         }
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if (identifier == "startQuestionnaire") {
-            if let text = plsNumberInput.text, text.isEmpty {
-                self.shake(view: plsNumberInput)
-                return false
-            }
-        }
-        return true
     }
     
     // MARK: custom functions
