@@ -39,29 +39,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func newPersonPressed(_ sender: Any) {
         if let text = plsNumberInput.text, text.isEmpty {
             shake(view: plsNumberInput)
-        }
-        do {
-            if try db.isDuplicate(id: plsNumberInput.text!) {
-                shake(view: plsNumberInput)
-                let confirm: UIAlertController = createConfirmAlert(
-                    headline: "DUPLICATE_HEADLINE",
-                    body: "DUPLICATE_BODY",
-                    confirm: "DUPLICATE_IGNORE",
-                    cancel: "DUPLICATE_CHANGE",
-                    cancelAction: {
-                        print("User cancelled creation of duplicate record.")
-                    }, confirmAction: {
-                        self.performSegue(withIdentifier: "startQuestionnaire", sender: self)
-                        print("User confirmed creation of duplicate record.")
-                    }
-                )
-                present(confirm, animated: true)
-            } else {
-                self.performSegue(withIdentifier: "startQuestionnaire", sender: self)
+        } else {
+            do {
+                if try db.isDuplicate(id: plsNumberInput.text!) {
+                    shake(view: plsNumberInput)
+                    let confirm: UIAlertController = createConfirmAlert(
+                        headline: "DUPLICATE_HEADLINE",
+                        body: "DUPLICATE_BODY",
+                        confirm: "DUPLICATE_IGNORE",
+                        cancel: "DUPLICATE_CHANGE",
+                        cancelAction: {
+                            print("User cancelled creation of duplicate record.")
+                        }, confirmAction: {
+                            self.performSegue(withIdentifier: "startQuestionnaire", sender: self)
+                            print("User confirmed creation of duplicate record.")
+                        }
+                    )
+                    present(confirm, animated: true)
+                } else {
+                    self.performSegue(withIdentifier: "startQuestionnaire", sender: self)
+                }
+            } catch {
+                let ac = createErrorAlert(with: "ERROR_FETCH")
+                present(ac, animated: true)
             }
-        } catch {
-            let ac = createErrorAlert(with: "ERROR_FETCH")
-            present(ac, animated: true)
         }
     }
     
