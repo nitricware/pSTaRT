@@ -21,10 +21,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: outlets
     @IBOutlet weak var plsNumberInput: UITextField!
-    @IBOutlet weak var group1Numbers: UILabel!
-    @IBOutlet weak var group2Numbers: UILabel!
-    @IBOutlet weak var group3Numbers: UILabel!
-    @IBOutlet weak var group4Numbers: UILabel!
     
     // MARK: actions
     
@@ -89,6 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         feedbackGenerator.prepare()
         plsNumberInput.delegate = self
         populateNumbers()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,10 +106,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func populateNumbers() {
         do {
             let numbers = try db.getPersonCount()
-            group1Numbers.text = String(numbers[0]) + " " + NSLocalizedString("PERSONS", comment: "persons")
-            group2Numbers.text = String(numbers[1]) + " " + NSLocalizedString("PERSONS", comment: "persons")
-            group3Numbers.text = String(numbers[2]) + " " + NSLocalizedString("PERSONS", comment: "persons")
-            group4Numbers.text = String(numbers[3]) + " " + NSLocalizedString("PERSONS", comment: "persons")
+            /*triageGroupOverview.t1.text = String(numbers[0]) + " " + NSLocalizedString("PERSONS", comment: "persons")
+            triageGroupOverview.t2.text = String(numbers[1]) + " " + NSLocalizedString("PERSONS", comment: "persons")
+            triageGroupOverview.t3.text = String(numbers[2]) + " " + NSLocalizedString("PERSONS", comment: "persons")
+            triageGroupOverview.t4.text = String(numbers[3]) + " " + NSLocalizedString("PERSONS", comment: "persons")*/
         } catch {
             let ac = createErrorAlert(with: "ERROR_FETCH")
             present(ac, animated: true)

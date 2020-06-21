@@ -55,25 +55,25 @@ class TriageGroupDisplay: UIViewController {
         switch self.triageGroup {
         case 1:
             self.triageRoman = "I"
-            self.triageColor = UIColor.red
+            self.triageColor = UIColor.systemRed
             self.triageTextColor = UIColor.white
             self.triageText = NSLocalizedString("T1", comment: "")
             break
         case 2:
             self.triageRoman = "II"
-            self.triageColor = UIColor.yellow
+            self.triageColor = UIColor.systemYellow
             self.triageTextColor = UIColor.black
             self.triageText = NSLocalizedString("T2", comment: "")
             break
         case 3:
             self.triageRoman = "III"
-            self.triageColor = UIColor.green
+            self.triageColor = UIColor.systemGreen
             self.triageTextColor = UIColor.white
             self.triageText = NSLocalizedString("T3", comment: "")
             break
         case 4:
             self.triageRoman = "IV"
-            self.triageColor = UIColor.blue
+            self.triageColor = UIColor.systemBlue
             self.triageTextColor = UIColor.white
             self.triageText = NSLocalizedString("T4", comment: "")
             break

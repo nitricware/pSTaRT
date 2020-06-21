@@ -14,6 +14,7 @@ class personViewController: UITableViewController {
     
     var triagegroups:[[NSManagedObject?]] = [[],[],[],[]]
     var db: pSTaRTDBHelper = pSTaRTDBHelper()
+    var tgo: TriageGroupOverviewViewController?
     
     // MARK: view controller overrides
     
@@ -83,11 +84,18 @@ class personViewController: UITableViewController {
                 try db.deletePerson(person: triagegroups[indexPath.section][indexPath.row]!)
                 triagegroups[indexPath.section].remove(at: indexPath.row)
                 // Delete the row from the data source
+                tgo!.populateNumbers()
                 tableView.deleteRows(at: [indexPath], with: .fade)
             } catch {
                 let ac: UIAlertController = createErrorAlert(with: "ERROR_DELETE")
                 present(ac, animated: true)
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? TriageGroupOverviewViewController {
+            tgo = vc
         }
     }
     
@@ -104,7 +112,7 @@ class personViewController: UITableViewController {
                     let ac: UIAlertController = createErrorAlert(with: "ERROR_DELETE")
                     self.present(ac, animated: true)
                 }
-                
+                self.tgo?.populateNumbers()
                 self.triagegroups = [[],[],[],[]]
                 self.tableView.reloadData()
             }

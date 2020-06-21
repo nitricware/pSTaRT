@@ -35,7 +35,7 @@ func createConfirmAlert(headline: String = "CONFIRM_HEADLINE", body: String = "C
     let ac = UIAlertController(
         title: NSLocalizedString(headline, comment: "confirm headline"),
         message: NSLocalizedString(body, comment: "confirm body"),
-        preferredStyle: .actionSheet
+        preferredStyle: .alert
     )
     
     ac.addAction(
