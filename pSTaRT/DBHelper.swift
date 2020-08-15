@@ -171,7 +171,7 @@ class pSTaRTDBHelper {
                 }
             }
         } catch {
-            throw(pSTaRTErrors.dbFetchError)
+            throw pSTaRTErrors.dbFetchError
         }
         
         // Something went wrong along the way but didn't throw an error - return nil

@@ -120,6 +120,7 @@ class personViewController: UITableViewController {
         present(confirm, animated: true)
     }
     
+    @IBOutlet weak var exportBarButtonItem: UIBarButtonItem!
     @IBAction func exportData(_ sender: Any) {
         do {
             if let filename = try db.exportData() {
@@ -131,6 +132,11 @@ class personViewController: UITableViewController {
                     let objectsToShare = [fileURL]
                     let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
                     self.present(activityVC, animated: true, completion: nil)
+                    if let popOver = activityVC.popoverPresentationController {
+                        popOver.sourceView = self.view
+                        popOver.barButtonItem = self.exportBarButtonItem
+                    }
+                    
                 }
             }
         } catch {
