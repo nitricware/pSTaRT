@@ -15,8 +15,7 @@ class pSTaRTDBHelper {
     
     /// Initializes the Helper Class and sets the context
     init() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.context = appDelegate.persistentContainer.viewContext
+        self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
     /// Saves a person to the database
@@ -25,13 +24,19 @@ class pSTaRTDBHelper {
     ///   - start: start time of assessment
     ///   - end: end time of assessment
     ///   - triageNo: triage result
-    func savePLS(plsNo: String, start: Date, end: Date, triageNo: Int) throws {
-        let newPatient = NSEntityDescription.insertNewObject(forEntityName: "PLSStorage", into: context)
+    func savePLS(plsNo: String, start: Date, end: Date, triageNo: Int16) throws {
+        let newPerson = PLSStorage(context: self.context)
+        
+        newPerson.plsNumber = plsNo
+        newPerson.startTime = start
+        newPerson.endTime = end
+        newPerson.triageGroup = triageNo
+        /*let newPatient = NSEntityDescription.insertNewObject(forEntityName: "PLSStorage", into: context)
         
         newPatient.setValue(plsNo, forKey: "plsNumber")
         newPatient.setValue(start, forKey: "startTime")
         newPatient.setValue(end , forKey: "endTime")
-        newPatient.setValue(triageNo , forKey: "triageGroup")
+        newPatient.setValue(triageNo , forKey: "triageGroup")*/
         
         do {
             try context.save()
@@ -42,7 +47,7 @@ class pSTaRTDBHelper {
     
     /// Fetches all persons or persons in the specified triage group.
     /// - Parameter triageGroup: the selected triage group. `nil` if any triage group
-    func fetchPersons(for triageGroup: Int? = nil) throws -> [NSManagedObject] {
+    func fetchPersons(for triageGroup: Int? = nil) throws -> [PLSStorage] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")
         request.returnsObjectsAsFaults = false
         
@@ -56,7 +61,7 @@ class pSTaRTDBHelper {
         
         do {
             // Get the results into an array of NSManagedObjects
-            let persons = try context.fetch(request) as! [NSManagedObject]
+            let persons = try context.fetch(request) as! [PLSStorage]
             // Return this array
             return persons
         } catch {
@@ -91,7 +96,7 @@ class pSTaRTDBHelper {
         
         do {
             // Get the results into an array of NSManagedObjects
-            let persons = try context.fetch(request) as! [NSManagedObject]
+            let persons = try context.fetch(request) as! [PLSStorage]
             // Return this array
             if persons.count > 0 {
                 return true
@@ -108,9 +113,25 @@ class pSTaRTDBHelper {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
+        /*do {
+            let result = try self.context.execute(deleteRequest) as? NSBatchDeleteResult
+
+            let objectIDArray = result?.result as? [NSManagedObjectID]
+
+            let changes = [NSDeletedObjectsKey : objectIDArray]
+
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes as [AnyHashable : Any], into: [context])
+            try self.context.save()
+        } catch {
+            throw pSTaRTErrors.dbDeleteError
+        }*/
+        
         do {
             try self.context.execute(deleteRequest)
             try self.context.save()
+            self.context.reset()
+            //(UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+            self.context.refreshAllObjects()
         } catch {
             throw pSTaRTErrors.dbDeleteError
         }
@@ -118,7 +139,7 @@ class pSTaRTDBHelper {
     
     /// Deletes a single person
     /// - Parameter person: the person to delete
-    func deletePerson(person: NSManagedObject) throws {
+    func deletePerson(person: PLSStorage) throws {
         context.delete(person)
         do {
             try context.save()
@@ -144,10 +165,10 @@ class pSTaRTDBHelper {
             let persons = try self.fetchPersons()
             // Iterate over this array, and append the entries as a row to the CSV file
             for person in persons {
-                let plsNumber = person.value(forKey: "plsNumber") as! String
-                let startDate = person.value(forKey: "startTime") as! Date
-                let endDate = person.value(forKey: "endTime") as! Date
-                let triageGroup = person.value(forKey: "triageGroup") as! Int
+                let plsNumber = person.plsNumber!
+                let startDate = person.startTime!
+                let endDate = person.endTime!
+                let triageGroup = person.triageGroup
                 
                 let dataLine = String(format: exportLine, plsNumber, df.string(from: startDate), df.string(from: endDate), triageGroup)
                 

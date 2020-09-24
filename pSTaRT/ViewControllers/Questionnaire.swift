@@ -139,7 +139,7 @@ class Questionnaire: UIViewController {
         */
         let db = pSTaRTDBHelper()
         do {
-           try db.savePLS(plsNo: plsNumber, start: startDate, end: Date(), triageNo: group)
+           try db.savePLS(plsNo: plsNumber, start: startDate, end: Date(), triageNo: Int16(group))
         } catch {
             
         }

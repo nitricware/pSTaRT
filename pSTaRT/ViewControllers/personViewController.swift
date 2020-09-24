@@ -9,57 +9,121 @@
 import UIKit
 import CoreData
 
+/*
+ an extions improves readability.
+ This extension houses the NSFetchedResultsController which handles the animations
+ when data is deleted and so on.
+ */
+extension personViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            self.tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
+            self.tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .move:
+            self.tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        case .update:
+            self.tableView.reloadRows(at: [indexPath!], with: .automatic)
+        @unknown default:
+            // TODO: proper default implementation
+            print("uh oh...")
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+            case .insert:
+                tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+            case .delete:
+                tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+            @unknown default:
+                // TODO: proper default implementation
+                print("uh oh...")
+        }
+    }
+}
+
 class personViewController: UITableViewController {
     // MARK: fields
-    
-    var triagegroups:[[NSManagedObject?]] = [[],[],[],[]]
+
     var db: pSTaRTDBHelper = pSTaRTDBHelper()
     var tgo: TriageGroupOverviewViewController?
+    
+    var nsfetchedresultscontroller: NSFetchedResultsController<NSFetchRequestResult>!
     
     // MARK: view controller overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let db = pSTaRTDBHelper()
-        
-        do {
-            try triagegroups[0] = db.fetchPersons(for: 1)
-            try triagegroups[1] = db.fetchPersons(for: 2)
-            try triagegroups[2] = db.fetchPersons(for: 3)
-            try triagegroups[3] = db.fetchPersons(for: 4)
-        } catch {
-            let ac: UIAlertController = createErrorAlert(with: "ERROR_FETCH")
-            present(ac, animated: true)
-        }
+        // TODO: move the creation of the fetch request into pSTaRTDBHelper
+        //let db = pSTaRTDBHelper()
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem?.title = ""
         self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "pencil")
+        
+        /*
+         we'll prepare the fetch request that conatins all the datasets from the database
+         and hand it over to the nsfetchedresultscontroller which then handles animations
+         */
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "triageGroup", ascending: true),
+            NSSortDescriptor(key: "plsNumber", ascending: true)
+        ]
+        
+        nsfetchedresultscontroller = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext,
+            sectionNameKeyPath: "triageGroup", cacheName: nil
+        )
+        
+        nsfetchedresultscontroller.delegate = self
+        
+        do {
+            /*
+             this "links" the nsfetchedresultscontroller to the database
+             actually, it links it to the context. see deleteAll() for more...
+             */
+            try nsfetchedresultscontroller.performFetch()
+        } catch {
+            print("Error while fetching with NSFetchedResultsController")
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 4
+        return nsfetchedresultscontroller.sections?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return triagegroups[section].count
+        return (nsfetchedresultscontroller.sections?[section])?.numberOfObjects ?? 0
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSLocalizedString("TRIAGEGROUP", comment: "triagegroup") + " " + String(section + 1)
+        let title = nsfetchedresultscontroller.sections?[section].name
+        return NSLocalizedString("TRIAGEGROUP", comment: "triagegroup") + " " + title!
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as! personCell
         
-        let entry = triagegroups[indexPath.section][indexPath.row]
+        let entry = nsfetchedresultscontroller.object(at: indexPath) as! PLSStorage
+        //let entry = triagegroups[indexPath.section][indexPath.row]
         
-        let plsNumber = entry?.value(forKey: "plsNumber") as! String
-        let startDate = entry?.value(forKey: "startTime") as! Date
-        let endDate = entry?.value(forKey: "endTime") as! Date
+        let plsNumber = entry.plsNumber
+        let startDate = entry.startTime
+        let endDate = entry.endTime
         
         let dateFormatter = DateFormatter()
         
@@ -67,8 +131,8 @@ class personViewController: UITableViewController {
         dateFormatter.dateFormat = "EEEE, d MMM y - HH:mm:ss"
         
         cell.plsNumber.text = plsNumber
-        cell.startDate.text = dateFormatter.string(from: startDate)
-        cell.endDate.text = dateFormatter.string(from: endDate)
+        cell.startDate.text = dateFormatter.string(from: startDate!)
+        cell.endDate.text = dateFormatter.string(from: endDate!)
 
         return cell
     }
@@ -81,11 +145,12 @@ class personViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             do {
-                try db.deletePerson(person: triagegroups[indexPath.section][indexPath.row]!)
-                triagegroups[indexPath.section].remove(at: indexPath.row)
+                //let person = nsfetchedresultscontroller.object(at: indexPath)
+                try db.deletePerson(person: nsfetchedresultscontroller.object(at: indexPath) as! PLSStorage)
+                //triagegroups[indexPath.section].remove(at: indexPath.row)
                 // Delete the row from the data source
                 tgo!.populateNumbers()
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                //tableView.deleteRows(at: [indexPath], with: .fade)
             } catch {
                 let ac: UIAlertController = createErrorAlert(with: "ERROR_DELETE")
                 present(ac, animated: true)
@@ -106,15 +171,29 @@ class personViewController: UITableViewController {
             cancelAction: {
                 print("User canceled delete all records.")
             }, confirmAction: {
-                do {
-                    try self.db.deleteAll()
-                } catch {
-                    let ac: UIAlertController = createErrorAlert(with: "ERROR_DELETE")
-                    self.present(ac, animated: true)
+                DispatchQueue.main.async {
+                    do {
+                        try self.db.deleteAll()
+                        try self.nsfetchedresultscontroller.performFetch()
+                        
+                        /*
+                         deleteAll performs a batchDeleteRequest which does not use the context.
+                         Therefor the NSFetchedResultsController is not informed about the changes.
+                         We have to manually reload the date and can't use the animations of the table view.
+                         
+                         This transition animates the batch delete nicely.
+                         */
+
+                        UIView.transition(with: self.tableView,
+                                          duration: 0.35,
+                                          options: .transitionCrossDissolve,
+                                          animations: { self.tableView.reloadData() })
+                    } catch {
+                        let ac: UIAlertController = createErrorAlert(with: "ERROR_DELETE")
+                        self.present(ac, animated: true)
+                    }
+                    self.tgo?.populateNumbers()
                 }
-                self.tgo?.populateNumbers()
-                self.triagegroups = [[],[],[],[]]
-                self.tableView.reloadData()
             }
         )
         present(confirm, animated: true)
