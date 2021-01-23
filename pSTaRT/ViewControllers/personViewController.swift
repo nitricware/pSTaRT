@@ -33,7 +33,7 @@ extension personViewController: NSFetchedResultsControllerDelegate {
             self.tableView.moveRow(at: indexPath!, to: newIndexPath!)
         case .update:
             self.tableView.reloadRows(at: [indexPath!], with: .automatic)
-        @unknown default:
+        default:
             // TODO: proper default implementation
             print("uh oh...")
         }
@@ -45,7 +45,7 @@ extension personViewController: NSFetchedResultsControllerDelegate {
                 tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
             case .delete:
                 tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
-            @unknown default:
+            default:
                 // TODO: proper default implementation
                 print("uh oh...")
         }

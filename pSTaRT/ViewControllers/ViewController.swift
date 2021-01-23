@@ -105,7 +105,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func populateNumbers() {
         do {
-            let numbers = try db.getPersonCount()
+            try db.getPersonCount()
             /*triageGroupOverview.t1.text = String(numbers[0]) + " " + NSLocalizedString("PERSONS", comment: "persons")
             triageGroupOverview.t2.text = String(numbers[1]) + " " + NSLocalizedString("PERSONS", comment: "persons")
             triageGroupOverview.t3.text = String(numbers[2]) + " " + NSLocalizedString("PERSONS", comment: "persons")

@@ -46,3 +46,13 @@
 
 "DUPLICATE_HEADLINE" = "Duplicate";
 "DUPLICATE_BODY" = "A person with this ID already exists";
+
+"TIP_SPARE_TIME" = "";
+"TIP_DESCRIPTION" = "%.2f is roughly what I get for one voluntary shift at my local ambulance.";
+"TIP_PURCHASE_BUTTON" = "Give %.2f tip";
+"TIP_CURRENT_STATE" = "Thank you, you already gave %.2f!";
+"TIP_NOT_READY_HEAD" = "Not Ready";
+"TIP_NOT_READY_BODY" = "In-App-Purchases are not ready yet.";
+"THANKS_HEAD" = "Thanks!";
+"THANKS_BODY" = "Thanks for supporting me!";
+"WAIT_FOR_REQUEST" = "Please wait, the app is loading the tip.";

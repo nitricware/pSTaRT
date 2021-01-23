@@ -18,6 +18,8 @@ class TriageGroupDisplay: UIViewController {
     var triageText: String = NSLocalizedString("T0", comment: "")
     let feedbackDone = UINotificationFeedbackGenerator()
     
+    var triagedPerson: PLSStorage?
+    
     // MARK: view controller overrides
     
     override func viewDidLoad() {
@@ -45,11 +47,47 @@ class TriageGroupDisplay: UIViewController {
     
     
     @IBAction func newPatientPressed(_ sender: Any) {
+        self.closeQuestionnaire()
+    }
+    
+    @IBAction func changeGroupToOne(_ sender: Any) {
+        changeTriageGroup(to: 1)
+        self.closeQuestionnaire()
+    }
+    @IBAction func changeGroupToTwo(_ sender: Any) {
+        changeTriageGroup(to: 2)
+        self.closeQuestionnaire()
+    }
+    @IBAction func changeGroupToThree(_ sender: Any) {
+        changeTriageGroup(to: 3)
+        self.closeQuestionnaire()
+    }
+    @IBAction func changeGroupToFour(_ sender: Any) {
+        changeTriageGroup(to: 4)
+        self.closeQuestionnaire()
+    }
+    
+    
+    // MARK: custom functions
+    
+    func closeQuestionnaire() {
         feedbackDone.notificationOccurred(.success)
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
-    // MARK: custom functions
+    func changeTriageGroup(to group: Int) {
+        let db = pSTaRTDBHelper()
+        if let tP = self.triagedPerson {
+            do {
+                try db.updateTriageGroup(pls: tP, group: group)
+            } catch {
+                /*
+                 Core Data Error
+                 */
+            }
+        }
+        
+    }
     
     func parseTriageNumber() {
         switch self.triageGroup {

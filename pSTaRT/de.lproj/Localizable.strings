@@ -46,3 +46,12 @@
 
 "DUPLICATE_HEADLINE" = "Duplikat";
 "DUPLICATE_BODY" = "Eine Person mit dieser PLS-Nummer existiert bereits.";
+
+"TIP_DESCRIPTION" = "%.2f bekomme ich ca für einen 12 Stunden Nachtdienst im örtlichen Rettungsdienst.";
+"TIP_PURCHASE_BUTTON" = "%.2f Trinkgeld geben";
+"TIP_CURRENT_STATE" = "Danke, du hast mir bereits %.2f gegeben!";
+"TIP_NOT_READY_HEAD" = "Nicht bereit";
+"TIP_NOT_READY_BODY" = "In-App-Purchases sind noch nicht bereit.";
+"THANKS_HEAD" = "Danke!";
+"THANKS_BODY" = "Danke für Deine Unterstützung!";
+"WAIT_FOR_REQUEST" = "Please wait, die App lädt das Trinkgeld.";

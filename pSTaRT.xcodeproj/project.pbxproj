@@ -14,6 +14,8 @@
 		452ECC9423F9844A00909ED5 /* ScannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452ECC9623F9844A00909ED5 /* ScannerView.xib */; };
 		452ECC9B23F986ED00909ED5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 452ECC9D23F986ED00909ED5 /* InfoPlist.strings */; };
 		457AA76B23806AF100A11755 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 457AA76D23806AF100A11755 /* Localizable.strings */; };
+		457C6F4525B9739F00F0205B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457C6F4425B9739F00F0205B /* StoreKit.framework */; };
+		457C6F4825B977D200F0205B /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C6F4725B977D200F0205B /* TipViewController.swift */; };
 		45870CD8249F4EC100D6F2E5 /* TriageGroupOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45870CD6249F4EC100D6F2E5 /* TriageGroupOverviewViewController.swift */; };
 		45870CD9249F4EC100D6F2E5 /* TriageGroupOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45870CD7249F4EC100D6F2E5 /* TriageGroupOverviewViewController.xib */; };
 		458DB651245C23110072CF45 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458DB650245C23110072CF45 /* HelperFunctions.swift */; };
@@ -26,6 +28,8 @@
 		458FB818237F0F1B0060A8FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458FB816237F0F1B0060A8FB /* LaunchScreen.storyboard */; };
 		458FB820237F119A0060A8FB /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB81F237F119A0060A8FB /* Questionnaire.swift */; };
 		458FB822237FF1D30060A8FB /* TriageGroupDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB821237FF1D30060A8FB /* TriageGroupDisplay.swift */; };
+		45AA119B25BACA8900CD5530 /* NWUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA119A25BACA8900CD5530 /* NWUtils.swift */; };
+		45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 45AA119D25BAF5C000CD5530 /* Configuration.storekit */; };
 		45FB5743239BA082005B3417 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB5742239BA082005B3417 /* ScannerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +43,8 @@
 		452ECC9C23F986ED00909ED5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		452ECC9E23F986F100909ED5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		457AA76E23806AF300A11755 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		457C6F4425B9739F00F0205B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		457C6F4725B977D200F0205B /* TipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
 		45870CD6249F4EC100D6F2E5 /* TriageGroupOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupOverviewViewController.swift; sourceTree = "<group>"; };
 		45870CD7249F4EC100D6F2E5 /* TriageGroupOverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TriageGroupOverviewViewController.xib; sourceTree = "<group>"; };
 		458DB650245C23110072CF45 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
@@ -51,6 +57,8 @@
 		458FB819237F0F1B0060A8FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		458FB81F237F119A0060A8FB /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		458FB821237FF1D30060A8FB /* TriageGroupDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupDisplay.swift; sourceTree = "<group>"; };
+		45AA119A25BACA8900CD5530 /* NWUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWUtils.swift; sourceTree = "<group>"; };
+		45AA119D25BAF5C000CD5530 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		45FB5742239BA082005B3417 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		45FB574D239BA617005B3417 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		45FB574E239BA617005B3417 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457C6F4525B9739F00F0205B /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,8 +100,17 @@
 				4520E64A23F95B5400BBD06F /* personViewController.swift */,
 				4520E64C23F95D2300BBD06F /* personCell.swift */,
 				45870CD6249F4EC100D6F2E5 /* TriageGroupOverviewViewController.swift */,
+				457C6F4725B977D200F0205B /* TipViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		457C6F4325B9739F00F0205B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				457C6F4425B9739F00F0205B /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		458FB7FC237F0F1A0060A8FB = {
@@ -100,6 +118,7 @@
 			children = (
 				458FB807237F0F1A0060A8FB /* pSTaRT */,
 				458FB806237F0F1A0060A8FB /* Products */,
+				457C6F4325B9739F00F0205B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +145,8 @@
 				452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */,
 				452ECC9D23F986ED00909ED5 /* InfoPlist.strings */,
 				458DB650245C23110072CF45 /* HelperFunctions.swift */,
+				45AA119A25BACA8900CD5530 /* NWUtils.swift */,
+				45AA119D25BAF5C000CD5530 /* Configuration.storekit */,
 			);
 			path = pSTaRT;
 			sourceTree = "<group>";
@@ -190,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				458FB818237F0F1B0060A8FB /* LaunchScreen.storyboard in Resources */,
+				45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */,
 				452ECC9B23F986ED00909ED5 /* InfoPlist.strings in Resources */,
 				452ECC9423F9844A00909ED5 /* ScannerView.xib in Resources */,
 				457AA76B23806AF100A11755 /* Localizable.strings in Resources */,
@@ -210,12 +232,14 @@
 				458DB651245C23110072CF45 /* HelperFunctions.swift in Sources */,
 				458FB820237F119A0060A8FB /* Questionnaire.swift in Sources */,
 				458FB80D237F0F1A0060A8FB /* ViewController.swift in Sources */,
+				45AA119B25BACA8900CD5530 /* NWUtils.swift in Sources */,
 				458FB822237FF1D30060A8FB /* TriageGroupDisplay.swift in Sources */,
 				458FB813237F0F1A0060A8FB /* pSTaRT.xcdatamodeld in Sources */,
 				452ECC6E23F96F3900909ED5 /* pSTaRTErrors.swift in Sources */,
 				45870CD8249F4EC100D6F2E5 /* TriageGroupOverviewViewController.swift in Sources */,
 				458FB809237F0F1A0060A8FB /* AppDelegate.swift in Sources */,
 				4520E64D23F95D2300BBD06F /* personCell.swift in Sources */,
+				457C6F4825B977D200F0205B /* TipViewController.swift in Sources */,
 				45FB5743239BA082005B3417 /* ScannerView.swift in Sources */,
 				458FB80B237F0F1A0060A8FB /* SceneDelegate.swift in Sources */,
 				4520E64923F955A800BBD06F /* DBHelper.swift in Sources */,
@@ -396,14 +420,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.1;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -416,14 +440,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.1;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

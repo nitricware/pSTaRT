@@ -22,6 +22,8 @@ class Questionnaire: UIViewController {
     let feedbackLight = UIImpactFeedbackGenerator(style: .light)
     let feedbackDone = UINotificationFeedbackGenerator()
     
+    var newPerson: PLSStorage?
+    
     let matches: [[Any]] = [
         [UIColor.systemGreen,"WALK"],
         [UIColor.systemBlue,"DEAD"],
@@ -51,6 +53,9 @@ class Questionnaire: UIViewController {
         if(segue.identifier == "showTriageGroup") {
             let triageGroupDetail = (segue.destination as! TriageGroupDisplay)
             triageGroupDetail.triageGroup = self.triageGroup
+            if let tP = newPerson {
+                triageGroupDetail.triagedPerson = tP
+            }
         }
     }
     
@@ -139,16 +144,18 @@ class Questionnaire: UIViewController {
         */
         let db = pSTaRTDBHelper()
         do {
-           try db.savePLS(plsNo: plsNumber, start: startDate, end: Date(), triageNo: Int16(group))
+           let newPerson = try db.savePLS(plsNo: plsNumber, start: startDate, end: Date(), triageNo: Int16(group))
+            /*
+             Displaying result
+             */
+            self.triageGroup = group
+            self.newPerson = newPerson
+            self.performSegue(withIdentifier: "showTriageGroup", sender: self)
         } catch {
-            
+            /*
+             Core Data Error
+             */
         }
-        
-        /*
-         Displaying result
-         */
-        self.triageGroup = group
-        self.performSegue(withIdentifier: "showTriageGroup", sender: self)
     }
     
     

@@ -24,24 +24,29 @@ class pSTaRTDBHelper {
     ///   - start: start time of assessment
     ///   - end: end time of assessment
     ///   - triageNo: triage result
-    func savePLS(plsNo: String, start: Date, end: Date, triageNo: Int16) throws {
+    func savePLS(plsNo: String, start: Date, end: Date, triageNo: Int16) throws -> PLSStorage {
         let newPerson = PLSStorage(context: self.context)
         
         newPerson.plsNumber = plsNo
         newPerson.startTime = start
         newPerson.endTime = end
         newPerson.triageGroup = triageNo
-        /*let newPatient = NSEntityDescription.insertNewObject(forEntityName: "PLSStorage", into: context)
         
-        newPatient.setValue(plsNo, forKey: "plsNumber")
-        newPatient.setValue(start, forKey: "startTime")
-        newPatient.setValue(end , forKey: "endTime")
-        newPatient.setValue(triageNo , forKey: "triageGroup")*/
+        do {
+            try context.save()
+            return newPerson
+        } catch {
+            throw pSTaRTErrors.dbDeleteError
+        }
+    }
+    
+    func updateTriageGroup(pls: PLSStorage, group: Int) throws {
+        pls.triageGroup = Int16(group)
         
         do {
             try context.save()
         } catch {
-            throw pSTaRTErrors.dbDeleteError
+            throw pSTaRTErrors.dbUpdateError
         }
     }
     
