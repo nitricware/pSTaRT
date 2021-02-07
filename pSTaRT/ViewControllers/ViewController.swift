@@ -84,12 +84,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         feedbackLight.prepare()
         feedbackGenerator.prepare()
         plsNumberInput.delegate = self
-        populateNumbers()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        populateNumbers()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,21 +92,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let questionnaire = (segue.destination as! Questionnaire)
             questionnaire.plsNumber = plsNumberInput.text ?? "XXXXX"
             self.plsNumberInput.text = ""
-        }
-    }
-    
-    // MARK: custom functions
-    
-    func populateNumbers() {
-        do {
-            try db.getPersonCount()
-            /*triageGroupOverview.t1.text = String(numbers[0]) + " " + NSLocalizedString("PERSONS", comment: "persons")
-            triageGroupOverview.t2.text = String(numbers[1]) + " " + NSLocalizedString("PERSONS", comment: "persons")
-            triageGroupOverview.t3.text = String(numbers[2]) + " " + NSLocalizedString("PERSONS", comment: "persons")
-            triageGroupOverview.t4.text = String(numbers[3]) + " " + NSLocalizedString("PERSONS", comment: "persons")*/
-        } catch {
-            let ac = createErrorAlert(with: "ERROR_FETCH")
-            present(ac, animated: true)
         }
     }
     

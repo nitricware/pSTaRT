@@ -15,6 +15,7 @@ import CoreData
  when data is deleted and so on.
  */
 extension personViewController: NSFetchedResultsControllerDelegate {
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
@@ -57,6 +58,7 @@ class personViewController: UITableViewController {
 
     var db: pSTaRTDBHelper = pSTaRTDBHelper()
     var tgo: TriageGroupOverviewViewController?
+    private var selectedPLS: PLSStorage?
     
     var nsfetchedresultscontroller: NSFetchedResultsController<NSFetchRequestResult>!
     
@@ -64,6 +66,8 @@ class personViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.allowsSelection = true
         
         // TODO: move the creation of the fetch request into pSTaRTDBHelper
         //let db = pSTaRTDBHelper()
@@ -133,6 +137,7 @@ class personViewController: UITableViewController {
         cell.plsNumber.text = plsNumber
         cell.startDate.text = dateFormatter.string(from: startDate!)
         cell.endDate.text = dateFormatter.string(from: endDate!)
+        cell.pls = entry
 
         return cell
     }
@@ -158,9 +163,24 @@ class personViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedPLS = (nsfetchedresultscontroller.object(at: indexPath) as! PLSStorage)
+        
+        //performSegue(withIdentifier: "showPersonDetail", sender: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+        print(self.selectedPLS)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? TriageGroupOverviewViewController {
-            tgo = vc
+        print("preparing...")
+        if (segue.identifier == "showPersonDetail") {
+            let personDetailTableViewController = (segue.destination as! PersonDetailTableViewController)
+            let sendingCell = sender as! personCell
+            personDetailTableViewController.person = sendingCell.pls
+        } else {
+            if let vc = segue.destination as? TriageGroupOverviewViewController {
+                tgo = vc
+            }
         }
     }
     

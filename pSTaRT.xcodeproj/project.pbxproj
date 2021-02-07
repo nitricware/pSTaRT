@@ -28,6 +28,7 @@
 		458FB818237F0F1B0060A8FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458FB816237F0F1B0060A8FB /* LaunchScreen.storyboard */; };
 		458FB820237F119A0060A8FB /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB81F237F119A0060A8FB /* Questionnaire.swift */; };
 		458FB822237FF1D30060A8FB /* TriageGroupDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB821237FF1D30060A8FB /* TriageGroupDisplay.swift */; };
+		4593C68525CFE7D100FF02CD /* PersonDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593C68425CFE7D100FF02CD /* PersonDetailTableViewController.swift */; };
 		45AA119B25BACA8900CD5530 /* NWUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA119A25BACA8900CD5530 /* NWUtils.swift */; };
 		45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 45AA119D25BAF5C000CD5530 /* Configuration.storekit */; };
 		45FB5743239BA082005B3417 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB5742239BA082005B3417 /* ScannerView.swift */; };
@@ -57,6 +58,7 @@
 		458FB819237F0F1B0060A8FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		458FB81F237F119A0060A8FB /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		458FB821237FF1D30060A8FB /* TriageGroupDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupDisplay.swift; sourceTree = "<group>"; };
+		4593C68425CFE7D100FF02CD /* PersonDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailTableViewController.swift; sourceTree = "<group>"; };
 		45AA119A25BACA8900CD5530 /* NWUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWUtils.swift; sourceTree = "<group>"; };
 		45AA119D25BAF5C000CD5530 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		45FB5742239BA082005B3417 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				4520E64C23F95D2300BBD06F /* personCell.swift */,
 				45870CD6249F4EC100D6F2E5 /* TriageGroupOverviewViewController.swift */,
 				457C6F4725B977D200F0205B /* TipViewController.swift */,
+				4593C68425CFE7D100FF02CD /* PersonDetailTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4520E64B23F95B5400BBD06F /* personViewController.swift in Sources */,
+				4593C68525CFE7D100FF02CD /* PersonDetailTableViewController.swift in Sources */,
 				458DB651245C23110072CF45 /* HelperFunctions.swift in Sources */,
 				458FB820237F119A0060A8FB /* Questionnaire.swift in Sources */,
 				458FB80D237F0F1A0060A8FB /* ViewController.swift in Sources */,

@@ -23,6 +23,10 @@
  Througout the code, the requested products will be referenced.
  Thus, the VC has a private var that is an array of the requested
  products.
+ 
+ In App Store Connect (ASC) the following things must be done:
+
+ TODO: Copy reddit post
  */
 
 import UIKit
@@ -47,7 +51,7 @@ class TipViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         self.updateTipStatus()
     }
     
-    func updateTipStatus() {
+    private func updateTipStatus() {
         tipStatus.text = String(
             format: NSLocalizedString("TIP_CURRENT_STATE", comment: "current state"),
             UserDefaults.standard.float(forKey: "givenMoney")
@@ -94,7 +98,7 @@ class TipViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
      The identifier is exactly what was entered in App Store Connect.
      There is no developer identification (com.developer) prepended.
      */
-    func fetchProducts() {
+    private func fetchProducts() {
         print("Products requested.")
         let request = SKProductsRequest(productIdentifiers: ["4euroTip"])
         request.delegate = self
@@ -107,7 +111,7 @@ class TipViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
      and adding a payment to a SKPaymentQueue.
      */
     
-    func purchase(product: SKProduct) {
+    private func purchase(product: SKProduct) {
         guard SKPaymentQueue.canMakePayments() else {
             return
         }
