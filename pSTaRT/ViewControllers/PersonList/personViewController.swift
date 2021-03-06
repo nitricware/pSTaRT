@@ -123,21 +123,8 @@ class personViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as! personCell
         
         let entry = nsfetchedresultscontroller.object(at: indexPath) as! PLSStorage
-        //let entry = triagegroups[indexPath.section][indexPath.row]
         
-        let plsNumber = entry.plsNumber
-        let startDate = entry.startTime
-        let endDate = entry.endTime
-        
-        let dateFormatter = DateFormatter()
-        
-        // TODO: localize
-        dateFormatter.dateFormat = "EEEE, d MMM y - HH:mm:ss"
-        
-        cell.plsNumber.text = plsNumber
-        cell.startDate.text = dateFormatter.string(from: startDate!)
-        cell.endDate.text = dateFormatter.string(from: endDate!)
-        cell.pls = entry
+        cell.setPLS(pls: entry)
 
         return cell
     }
@@ -168,7 +155,6 @@ class personViewController: UITableViewController {
         
         //performSegue(withIdentifier: "showPersonDetail", sender: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
-        print(self.selectedPLS)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

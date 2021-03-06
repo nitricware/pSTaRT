@@ -24,5 +24,15 @@ class personCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    public func setPLS(pls: PLSStorage) {
+        self.pls = pls
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, d MMM y - HH:mm:ss"
+        
+        self.plsNumber.text = pls.plsNumber
+        self.startDate.text = dateFormatter.string(from: pls.startTime!)
+        self.endDate.text = dateFormatter.string(from: pls.endTime!)
+    }
 
 }

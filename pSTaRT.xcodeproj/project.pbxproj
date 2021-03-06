@@ -95,15 +95,10 @@
 		45552BB72458860B006E241D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				458FB80C237F0F1A0060A8FB /* ViewController.swift */,
-				458FB81F237F119A0060A8FB /* Questionnaire.swift */,
-				458FB821237FF1D30060A8FB /* TriageGroupDisplay.swift */,
-				45FB5742239BA082005B3417 /* ScannerView.swift */,
-				4520E64A23F95B5400BBD06F /* personViewController.swift */,
-				4520E64C23F95D2300BBD06F /* personCell.swift */,
+				45C29F7325D04E0000E5A50E /* PersonList */,
+				45C29F7225D04DE900E5A50E /* Questionnaire */,
+				45C29F7125D04DDA00E5A50E /* LandingView */,
 				45870CD6249F4EC100D6F2E5 /* TriageGroupOverviewViewController.swift */,
-				457C6F4725B977D200F0205B /* TipViewController.swift */,
-				4593C68425CFE7D100FF02CD /* PersonDetailTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -152,6 +147,35 @@
 				45AA119D25BAF5C000CD5530 /* Configuration.storekit */,
 			);
 			path = pSTaRT;
+			sourceTree = "<group>";
+		};
+		45C29F7125D04DDA00E5A50E /* LandingView */ = {
+			isa = PBXGroup;
+			children = (
+				458FB80C237F0F1A0060A8FB /* ViewController.swift */,
+				45FB5742239BA082005B3417 /* ScannerView.swift */,
+			);
+			path = LandingView;
+			sourceTree = "<group>";
+		};
+		45C29F7225D04DE900E5A50E /* Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+				458FB81F237F119A0060A8FB /* Questionnaire.swift */,
+				458FB821237FF1D30060A8FB /* TriageGroupDisplay.swift */,
+				457C6F4725B977D200F0205B /* TipViewController.swift */,
+			);
+			path = Questionnaire;
+			sourceTree = "<group>";
+		};
+		45C29F7325D04E0000E5A50E /* PersonList */ = {
+			isa = PBXGroup;
+			children = (
+				4520E64A23F95B5400BBD06F /* personViewController.swift */,
+				4520E64C23F95D2300BBD06F /* personCell.swift */,
+				4593C68425CFE7D100FF02CD /* PersonDetailTableViewController.swift */,
+			);
+			path = PersonList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
