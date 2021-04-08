@@ -23,3 +23,10 @@ Kurt Höblinger is developer and ambulance man in austria. Gerald Niedermayer he
 ## Availability
 
 This software is available on the iOS App Store: https://apps.apple.com/us/app/pstart/id1488221355?l=de
+
+## To-Do
+* in better_retriage: save triage as Person.triage = new Triages()
+* in better_retriage: display most recent triage group
+* in better_retriage: export all changes to triage group
+* in better_retriage: when retriaging, save new group as new Triage() 
+* in better_retriage: display triage history

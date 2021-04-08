@@ -5,8 +5,15 @@
         <attribute name="plsNumber" optional="YES" attributeType="String"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="triageGroup" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="triages" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Triages" inverseName="person" inverseEntity="Triages"/>
+    </entity>
+    <entity name="Triages" representedClassName="Triages" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="group" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Persons" inverseName="triages" inverseEntity="Persons"/>
     </entity>
     <elements>
-        <element name="Persons" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="Persons" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Triages" positionX="-63" positionY="18" width="128" height="74"/>
     </elements>
 </model>

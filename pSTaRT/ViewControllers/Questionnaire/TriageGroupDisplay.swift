@@ -18,7 +18,7 @@ class TriageGroupDisplay: UIViewController {
     var triageText: String = NSLocalizedString("T0", comment: "")
     let feedbackDone = UINotificationFeedbackGenerator()
     
-    var triagedPerson: PLSStorage?
+    var triagedPerson: Persons?
     
     // MARK: view controller overrides
     

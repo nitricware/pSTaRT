@@ -58,7 +58,7 @@ class personViewController: UITableViewController {
 
     var db: pSTaRTDBHelper = pSTaRTDBHelper()
     var tgo: TriageGroupOverviewViewController?
-    private var selectedPLS: PLSStorage?
+    private var selectedPLS: Persons?
     
     var nsfetchedresultscontroller: NSFetchedResultsController<NSFetchRequestResult>!
     
@@ -81,7 +81,7 @@ class personViewController: UITableViewController {
          and hand it over to the nsfetchedresultscontroller which then handles animations
          */
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Persons")
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "triageGroup", ascending: true),
             NSSortDescriptor(key: "plsNumber", ascending: true)
@@ -122,7 +122,7 @@ class personViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as! personCell
         
-        let entry = nsfetchedresultscontroller.object(at: indexPath) as! PLSStorage
+        let entry = nsfetchedresultscontroller.object(at: indexPath) as! Persons
         
         cell.setPLS(pls: entry)
 
@@ -138,7 +138,7 @@ class personViewController: UITableViewController {
         if editingStyle == .delete {
             do {
                 //let person = nsfetchedresultscontroller.object(at: indexPath)
-                try db.deletePerson(person: nsfetchedresultscontroller.object(at: indexPath) as! PLSStorage)
+                try db.deletePerson(person: nsfetchedresultscontroller.object(at: indexPath) as! Persons)
                 //triagegroups[indexPath.section].remove(at: indexPath.row)
                 // Delete the row from the data source
                 tgo!.populateNumbers()
@@ -151,7 +151,7 @@ class personViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedPLS = (nsfetchedresultscontroller.object(at: indexPath) as! PLSStorage)
+        self.selectedPLS = (nsfetchedresultscontroller.object(at: indexPath) as! Persons)
         
         //performSegue(withIdentifier: "showPersonDetail", sender: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)

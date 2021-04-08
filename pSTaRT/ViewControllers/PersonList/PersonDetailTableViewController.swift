@@ -10,7 +10,7 @@ import UIKit
 
 class PersonDetailTableViewController: UITableViewController {
     
-    public var person: PLSStorage?
+    public var person: Persons?
 
     override func viewDidLoad() {
         super.viewDidLoad()

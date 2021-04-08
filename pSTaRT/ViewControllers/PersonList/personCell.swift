@@ -19,13 +19,13 @@ class personCell: UITableViewCell {
     @IBOutlet weak var startDate: UILabel!
     @IBOutlet weak var endDate: UILabel!
     
-    public var pls: PLSStorage?
+    public var pls: Persons?
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    public func setPLS(pls: PLSStorage) {
+    public func setPLS(pls: Persons) {
         self.pls = pls
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, d MMM y - HH:mm:ss"

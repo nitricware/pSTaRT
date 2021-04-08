@@ -24,8 +24,8 @@ class pSTaRTDBHelper {
     ///   - start: start time of assessment
     ///   - end: end time of assessment
     ///   - triageNo: triage result
-    func savePLS(plsNo: String, start: Date, end: Date, triageNo: Int16) throws -> PLSStorage {
-        let newPerson = PLSStorage(context: self.context)
+    func savePLS(plsNo: String, start: Date, end: Date, triageNo: Int16) throws -> Persons {
+        let newPerson = Persons(context: self.context)
         
         newPerson.plsNumber = plsNo
         newPerson.startTime = start
@@ -40,7 +40,7 @@ class pSTaRTDBHelper {
         }
     }
     
-    func updateTriageGroup(pls: PLSStorage, group: Int) throws {
+    func updateTriageGroup(pls: Persons, group: Int) throws {
         pls.triageGroup = Int16(group)
         
         do {
@@ -52,8 +52,8 @@ class pSTaRTDBHelper {
     
     /// Fetches all persons or persons in the specified triage group.
     /// - Parameter triageGroup: the selected triage group. `nil` if any triage group
-    func fetchPersons(for triageGroup: Int? = nil) throws -> [PLSStorage] {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")
+    func fetchPersons(for triageGroup: Int? = nil) throws -> [Persons] {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Persons")
         request.returnsObjectsAsFaults = false
         
         let sort = NSSortDescriptor(key: "startTime", ascending: false)
@@ -66,7 +66,7 @@ class pSTaRTDBHelper {
         
         do {
             // Get the results into an array of NSManagedObjects
-            let persons = try context.fetch(request) as! [PLSStorage]
+            let persons = try context.fetch(request) as! [Persons]
             // Return this array
             return persons
         } catch {
@@ -93,7 +93,7 @@ class pSTaRTDBHelper {
     }
     
     func isDuplicate(id: String) throws -> Bool {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Persons")
         request.returnsObjectsAsFaults = false
         
         let predicate = NSPredicate(format: "plsNumber == %@", id)
@@ -101,7 +101,7 @@ class pSTaRTDBHelper {
         
         do {
             // Get the results into an array of NSManagedObjects
-            let persons = try context.fetch(request) as! [PLSStorage]
+            let persons = try context.fetch(request) as! [Persons]
             // Return this array
             if persons.count > 0 {
                 return true
@@ -115,7 +115,7 @@ class pSTaRTDBHelper {
     
     /// Deletes all persons
     func deleteAll() throws {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PLSStorage")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Persons")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
         /*do {
@@ -144,7 +144,7 @@ class pSTaRTDBHelper {
     
     /// Deletes a single person
     /// - Parameter person: the person to delete
-    func deletePerson(person: PLSStorage) throws {
+    func deletePerson(person: Persons) throws {
         context.delete(person)
         do {
             try context.save()

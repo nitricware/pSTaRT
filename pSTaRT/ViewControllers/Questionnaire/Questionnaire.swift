@@ -22,7 +22,7 @@ class Questionnaire: UIViewController {
     let feedbackLight = UIImpactFeedbackGenerator(style: .light)
     let feedbackDone = UINotificationFeedbackGenerator()
     
-    var newPerson: PLSStorage?
+    var newPerson: Persons?
     
     let matches: [[Any]] = [
         [UIColor.systemGreen,"WALK"],
