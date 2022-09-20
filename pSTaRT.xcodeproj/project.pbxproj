@@ -3,10 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45098B0E28D8739C00DD524A /* PersonDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45098B0D28D8739C00DD524A /* PersonDetailRow.swift */; };
+		45098B1028D887EA00DD524A /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45098B0F28D887EA00DD524A /* MainToolbar.swift */; };
+		45098B1328D89A2E00DD524A /* TriageGroupCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45098B1228D89A2E00DD524A /* TriageGroupCounter.swift */; };
+		45098B1528D89BFB00DD524A /* TriageGroupsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45098B1428D89BFB00DD524A /* TriageGroupsRow.swift */; };
+		45098B1C28D9CC9900DD524A /* TipJar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45098B1B28D9CC9900DD524A /* TipJar.swift */; };
+		45098B1E28D9D31F00DD524A /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45098B1D28D9D31F00DD524A /* StoreManager.swift */; };
+		450C3BEF28CCC8F600BEF415 /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BEE28CCC8F600BEF415 /* Overview.swift */; };
+		450C3BF128CCCA3A00BEF415 /* TriageGroupsOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BF028CCCA3A00BEF415 /* TriageGroupsOverview.swift */; };
+		450C3BF428CCCA9C00BEF415 /* TriageGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BF328CCCA9C00BEF415 /* TriageGroups.swift */; };
+		450C3BF728CCCBE200BEF415 /* TriageGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BF628CCCBE200BEF415 /* TriageGroup.swift */; };
+		450C3BFB28CCCDEA00BEF415 /* IdentificationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BFA28CCCDEA00BEF415 /* IdentificationInput.swift */; };
+		450C3C0028CDC6C600BEF415 /* pSTaRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BFF28CDC6C600BEF415 /* pSTaRTApp.swift */; };
+		450C3C0228CDC6E300BEF415 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3C0128CDC6E300BEF415 /* Persistence.swift */; };
+		450C3C0828CDE4E000BEF415 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 450C3C0728CDE4E000BEF415 /* CodeScanner */; };
+		450C3C0A28CDFA0C00BEF415 /* TriageQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3C0928CDFA0C00BEF415 /* TriageQuestionnaire.swift */; };
 		451FA2DA261F454A00E25BA0 /* pSTaRT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 458FB811237F0F1A0060A8FB /* pSTaRT.xcdatamodeld */; };
 		4520E64923F955A800BBD06F /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520E64823F955A800BBD06F /* DBHelper.swift */; };
 		4520E64B23F95B5400BBD06F /* personViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520E64A23F95B5400BBD06F /* personViewController.swift */; };
@@ -29,12 +44,35 @@
 		458FB820237F119A0060A8FB /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB81F237F119A0060A8FB /* Questionnaire.swift */; };
 		458FB822237FF1D30060A8FB /* TriageGroupDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FB821237FF1D30060A8FB /* TriageGroupDisplay.swift */; };
 		4593C68525CFE7D100FF02CD /* PersonDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593C68425CFE7D100FF02CD /* PersonDetailTableViewController.swift */; };
+		459B211D28CE3EF000E8305B /* CurrentTriage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B211C28CE3EF000E8305B /* CurrentTriage.swift */; };
+		459B211F28CE4A6900E8305B /* TriageGroupIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */; };
 		45AA119B25BACA8900CD5530 /* NWUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA119A25BACA8900CD5530 /* NWUtils.swift */; };
 		45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 45AA119D25BAF5C000CD5530 /* Configuration.storekit */; };
+		45E924D328CEF57500C5FC9A /* TriageQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E924D228CEF57500C5FC9A /* TriageQuestion.swift */; };
+		45E924D728CEF84400C5FC9A /* Questionnaire.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E924D928CEF84400C5FC9A /* Questionnaire.strings */; };
+		45E924DD28CF28BC00C5FC9A /* TriageConclusion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E924DC28CF28BC00C5FC9A /* TriageConclusion.swift */; };
+		45ECCA8B28CF562E005E4D39 /* PersonsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECCA8A28CF562E005E4D39 /* PersonsList.swift */; };
+		45ECCA8D28CF610B005E4D39 /* PersonListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECCA8C28CF610B005E4D39 /* PersonListSection.swift */; };
+		45ECCA8F28CF6449005E4D39 /* PersonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECCA8E28CF6449005E4D39 /* PersonDetail.swift */; };
+		45ECCA9128D062ED005E4D39 /* TriageRetriage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECCA9028D062ED005E4D39 /* TriageRetriage.swift */; };
 		45FB5743239BA082005B3417 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB5742239BA082005B3417 /* ScannerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45098B0D28D8739C00DD524A /* PersonDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailRow.swift; sourceTree = "<group>"; };
+		45098B0F28D887EA00DD524A /* MainToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
+		45098B1228D89A2E00DD524A /* TriageGroupCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupCounter.swift; sourceTree = "<group>"; };
+		45098B1428D89BFB00DD524A /* TriageGroupsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupsRow.swift; sourceTree = "<group>"; };
+		45098B1B28D9CC9900DD524A /* TipJar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJar.swift; sourceTree = "<group>"; };
+		45098B1D28D9D31F00DD524A /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		450C3BEE28CCC8F600BEF415 /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
+		450C3BF028CCCA3A00BEF415 /* TriageGroupsOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupsOverview.swift; sourceTree = "<group>"; };
+		450C3BF328CCCA9C00BEF415 /* TriageGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroups.swift; sourceTree = "<group>"; };
+		450C3BF628CCCBE200BEF415 /* TriageGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroup.swift; sourceTree = "<group>"; };
+		450C3BFA28CCCDEA00BEF415 /* IdentificationInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationInput.swift; sourceTree = "<group>"; };
+		450C3BFF28CDC6C600BEF415 /* pSTaRTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pSTaRTApp.swift; sourceTree = "<group>"; };
+		450C3C0128CDC6E300BEF415 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		450C3C0928CDFA0C00BEF415 /* TriageQuestionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageQuestionnaire.swift; sourceTree = "<group>"; };
 		451FA2D5261F414600E25BA0 /* pSTaRT_Retriaging.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pSTaRT_Retriaging.xcdatamodel; sourceTree = "<group>"; };
 		4520E64823F955A800BBD06F /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		4520E64A23F95B5400BBD06F /* personViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = personViewController.swift; sourceTree = "<group>"; };
@@ -60,8 +98,18 @@
 		458FB81F237F119A0060A8FB /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		458FB821237FF1D30060A8FB /* TriageGroupDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupDisplay.swift; sourceTree = "<group>"; };
 		4593C68425CFE7D100FF02CD /* PersonDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailTableViewController.swift; sourceTree = "<group>"; };
+		459B211C28CE3EF000E8305B /* CurrentTriage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTriage.swift; sourceTree = "<group>"; };
+		459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupIcon.swift; sourceTree = "<group>"; };
 		45AA119A25BACA8900CD5530 /* NWUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWUtils.swift; sourceTree = "<group>"; };
 		45AA119D25BAF5C000CD5530 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		45E924D228CEF57500C5FC9A /* TriageQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageQuestion.swift; sourceTree = "<group>"; };
+		45E924D828CEF84400C5FC9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Questionnaire.strings; sourceTree = "<group>"; };
+		45E924DA28CEF84600C5FC9A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Questionnaire.strings; sourceTree = "<group>"; };
+		45E924DC28CF28BC00C5FC9A /* TriageConclusion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageConclusion.swift; sourceTree = "<group>"; };
+		45ECCA8A28CF562E005E4D39 /* PersonsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsList.swift; sourceTree = "<group>"; };
+		45ECCA8C28CF610B005E4D39 /* PersonListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListSection.swift; sourceTree = "<group>"; };
+		45ECCA8E28CF6449005E4D39 /* PersonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetail.swift; sourceTree = "<group>"; };
+		45ECCA9028D062ED005E4D39 /* TriageRetriage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageRetriage.swift; sourceTree = "<group>"; };
 		45FB5742239BA082005B3417 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		45FB574D239BA617005B3417 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		45FB574E239BA617005B3417 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				450C3C0828CDE4E000BEF415 /* CodeScanner in Frameworks */,
 				457C6F4525B9739F00F0205B /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,11 +131,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		450C3BED28CCC69500BEF415 /* SwiftUI Views */ = {
+		45098B0C28D8737900DD524A /* PersonDetail */ = {
 			isa = PBXGroup;
 			children = (
+				45ECCA8E28CF6449005E4D39 /* PersonDetail.swift */,
+				45098B0D28D8739C00DD524A /* PersonDetailRow.swift */,
 			);
-			path = "SwiftUI Views";
+			path = PersonDetail;
+			sourceTree = "<group>";
+		};
+		45098B1128D89A1300DD524A /* TriageGroupsOverview */ = {
+			isa = PBXGroup;
+			children = (
+				450C3BF028CCCA3A00BEF415 /* TriageGroupsOverview.swift */,
+				45098B1228D89A2E00DD524A /* TriageGroupCounter.swift */,
+				45098B1428D89BFB00DD524A /* TriageGroupsRow.swift */,
+			);
+			path = TriageGroupsOverview;
+			sourceTree = "<group>";
+		};
+		450C3BED28CCC69500BEF415 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				45098B1128D89A1300DD524A /* TriageGroupsOverview */,
+				459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */,
+				45ECCA8928CF5621005E4D39 /* PersonsList */,
+				450C3BEE28CCC8F600BEF415 /* Overview.swift */,
+				450C3BFA28CCCDEA00BEF415 /* IdentificationInput.swift */,
+				45E924DB28CF249000C5FC9A /* Questionnaire */,
+				45098B0F28D887EA00DD524A /* MainToolbar.swift */,
+				45098B1B28D9CC9900DD524A /* TipJar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		450C3BF228CCCA8C00BEF415 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */,
+				450C3BF328CCCA9C00BEF415 /* TriageGroups.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		450C3BF528CCCBCB00BEF415 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4520E64823F955A800BBD06F /* DBHelper.swift */,
+				450C3BF628CCCBE200BEF415 /* TriageGroup.swift */,
+				459B211C28CE3EF000E8305B /* CurrentTriage.swift */,
+				45098B1D28D9D31F00DD524A /* StoreManager.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		450C3C0328CDDFE500BEF415 /* @deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				458DB650245C23110072CF45 /* HelperFunctions.swift */,
+				45AA119A25BACA8900CD5530 /* NWUtils.swift */,
+				458FB808237F0F1A0060A8FB /* AppDelegate.swift */,
+				458FB80A237F0F1A0060A8FB /* SceneDelegate.swift */,
+				45552BB624588581006E241D /* Views */,
+				45552BB72458860B006E241D /* ViewControllers */,
+			);
+			path = "@deprecated";
 			sourceTree = "<group>";
 		};
 		45552BB624588581006E241D /* Views */ = {
@@ -139,21 +248,18 @@
 		458FB807237F0F1A0060A8FB /* pSTaRT */ = {
 			isa = PBXGroup;
 			children = (
-				450C3BED28CCC69500BEF415 /* SwiftUI Views */,
-				458FB808237F0F1A0060A8FB /* AppDelegate.swift */,
-				458FB80A237F0F1A0060A8FB /* SceneDelegate.swift */,
-				45552BB624588581006E241D /* Views */,
+				45E924D428CEF80300C5FC9A /* Strings */,
+				450C3C0328CDDFE500BEF415 /* @deprecated */,
+				450C3BF528CCCBCB00BEF415 /* Classes */,
+				450C3BF228CCCA8C00BEF415 /* Enums */,
+				450C3BED28CCC69500BEF415 /* Views */,
 				458FB814237F0F1B0060A8FB /* Assets.xcassets */,
 				458FB819237F0F1B0060A8FB /* Info.plist */,
 				458FB811237F0F1A0060A8FB /* pSTaRT.xcdatamodeld */,
-				45552BB72458860B006E241D /* ViewControllers */,
-				457AA76D23806AF100A11755 /* Localizable.strings */,
-				4520E64823F955A800BBD06F /* DBHelper.swift */,
-				452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */,
 				452ECC9D23F986ED00909ED5 /* InfoPlist.strings */,
-				458DB650245C23110072CF45 /* HelperFunctions.swift */,
-				45AA119A25BACA8900CD5530 /* NWUtils.swift */,
 				45AA119D25BAF5C000CD5530 /* Configuration.storekit */,
+				450C3BFF28CDC6C600BEF415 /* pSTaRTApp.swift */,
+				450C3C0128CDC6E300BEF415 /* Persistence.swift */,
 			);
 			path = pSTaRT;
 			sourceTree = "<group>";
@@ -187,6 +293,36 @@
 			path = PersonList;
 			sourceTree = "<group>";
 		};
+		45E924D428CEF80300C5FC9A /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				457AA76D23806AF100A11755 /* Localizable.strings */,
+				45E924D928CEF84400C5FC9A /* Questionnaire.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		45E924DB28CF249000C5FC9A /* Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+				45E924DC28CF28BC00C5FC9A /* TriageConclusion.swift */,
+				450C3C0928CDFA0C00BEF415 /* TriageQuestionnaire.swift */,
+				45E924D228CEF57500C5FC9A /* TriageQuestion.swift */,
+				45ECCA9028D062ED005E4D39 /* TriageRetriage.swift */,
+			);
+			path = Questionnaire;
+			sourceTree = "<group>";
+		};
+		45ECCA8928CF5621005E4D39 /* PersonsList */ = {
+			isa = PBXGroup;
+			children = (
+				45098B0C28D8737900DD524A /* PersonDetail */,
+				45ECCA8A28CF562E005E4D39 /* PersonsList.swift */,
+				45ECCA8C28CF610B005E4D39 /* PersonListSection.swift */,
+			);
+			path = PersonsList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -203,6 +339,9 @@
 			dependencies = (
 			);
 			name = pSTaRT;
+			packageProductDependencies = (
+				450C3C0728CDE4E000BEF415 /* CodeScanner */,
+			);
 			productName = pSTaRT;
 			productReference = 458FB805237F0F1A0060A8FB /* pSTaRT.app */;
 			productType = "com.apple.product-type.application";
@@ -232,6 +371,9 @@
 				de,
 			);
 			mainGroup = 458FB7FC237F0F1A0060A8FB;
+			packageReferences = (
+				450C3C0428CDE4C800BEF415 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 458FB806237F0F1A0060A8FB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -248,6 +390,7 @@
 			files = (
 				458FB818237F0F1B0060A8FB /* LaunchScreen.storyboard in Resources */,
 				45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */,
+				45E924D728CEF84400C5FC9A /* Questionnaire.strings in Resources */,
 				452ECC9B23F986ED00909ED5 /* InfoPlist.strings in Resources */,
 				452ECC9423F9844A00909ED5 /* ScannerView.xib in Resources */,
 				457AA76B23806AF100A11755 /* Localizable.strings in Resources */,
@@ -268,18 +411,40 @@
 				4593C68525CFE7D100FF02CD /* PersonDetailTableViewController.swift in Sources */,
 				458DB651245C23110072CF45 /* HelperFunctions.swift in Sources */,
 				458FB820237F119A0060A8FB /* Questionnaire.swift in Sources */,
+				45098B1328D89A2E00DD524A /* TriageGroupCounter.swift in Sources */,
+				45E924D328CEF57500C5FC9A /* TriageQuestion.swift in Sources */,
 				458FB80D237F0F1A0060A8FB /* ViewController.swift in Sources */,
 				45AA119B25BACA8900CD5530 /* NWUtils.swift in Sources */,
+				45ECCA8B28CF562E005E4D39 /* PersonsList.swift in Sources */,
+				459B211D28CE3EF000E8305B /* CurrentTriage.swift in Sources */,
+				45098B0E28D8739C00DD524A /* PersonDetailRow.swift in Sources */,
 				458FB822237FF1D30060A8FB /* TriageGroupDisplay.swift in Sources */,
 				452ECC6E23F96F3900909ED5 /* pSTaRTErrors.swift in Sources */,
 				45870CD8249F4EC100D6F2E5 /* TriageGroupOverviewViewController.swift in Sources */,
+				450C3BF728CCCBE200BEF415 /* TriageGroup.swift in Sources */,
+				450C3BEF28CCC8F600BEF415 /* Overview.swift in Sources */,
+				450C3BF428CCCA9C00BEF415 /* TriageGroups.swift in Sources */,
+				45098B1028D887EA00DD524A /* MainToolbar.swift in Sources */,
 				451FA2DA261F454A00E25BA0 /* pSTaRT.xcdatamodeld in Sources */,
+				459B211F28CE4A6900E8305B /* TriageGroupIcon.swift in Sources */,
 				458FB809237F0F1A0060A8FB /* AppDelegate.swift in Sources */,
+				450C3BFB28CCCDEA00BEF415 /* IdentificationInput.swift in Sources */,
+				450C3C0228CDC6E300BEF415 /* Persistence.swift in Sources */,
 				4520E64D23F95D2300BBD06F /* personCell.swift in Sources */,
 				457C6F4825B977D200F0205B /* TipViewController.swift in Sources */,
+				450C3BF128CCCA3A00BEF415 /* TriageGroupsOverview.swift in Sources */,
 				45FB5743239BA082005B3417 /* ScannerView.swift in Sources */,
+				45ECCA8D28CF610B005E4D39 /* PersonListSection.swift in Sources */,
 				458FB80B237F0F1A0060A8FB /* SceneDelegate.swift in Sources */,
+				45098B1E28D9D31F00DD524A /* StoreManager.swift in Sources */,
+				45098B1C28D9CC9900DD524A /* TipJar.swift in Sources */,
 				4520E64923F955A800BBD06F /* DBHelper.swift in Sources */,
+				450C3C0028CDC6C600BEF415 /* pSTaRTApp.swift in Sources */,
+				45E924DD28CF28BC00C5FC9A /* TriageConclusion.swift in Sources */,
+				45098B1528D89BFB00DD524A /* TriageGroupsRow.swift in Sources */,
+				45ECCA8F28CF6449005E4D39 /* PersonDetail.swift in Sources */,
+				45ECCA9128D062ED005E4D39 /* TriageRetriage.swift in Sources */,
+				450C3C0A28CDFA0C00BEF415 /* TriageQuestionnaire.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +494,15 @@
 				45FB5750239BA67C005B3417 /* de */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		45E924D928CEF84400C5FC9A /* Questionnaire.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45E924D828CEF84400C5FC9A /* en */,
+				45E924DA28CEF84600C5FC9A /* de */,
+			);
+			name = Questionnaire.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -386,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -442,7 +616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -457,14 +631,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -477,14 +651,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -514,6 +688,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		450C3C0428CDE4C800BEF415 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		450C3C0728CDE4E000BEF415 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 450C3C0428CDE4C800BEF415 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		458FB811237F0F1A0060A8FB /* pSTaRT.xcdatamodeld */ = {

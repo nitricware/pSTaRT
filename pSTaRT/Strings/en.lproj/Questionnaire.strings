@@ -1,0 +1,16 @@
+/* 
+  Questionnaire.strings
+  pSTaRT
+
+  Created by Kurt Höblinger on 12.09.22.
+  Copyright © 2022 Kurt Höblinger. All rights reserved.
+*/
+
+"WALKING" = "Can the person walk?";
+"DEAD" = "Deadly injuries?";
+"AIRWAY" = "Person does breath?";
+"BREATHING" = "Breathing frequency >10 and <30/min?";
+"BLEEDING" = "Uncontrolled bleeding?";
+"PULSE" = "Person has radial pulse?";
+"MOVEMENT" = "Does the person follow simple orders?";
+"ASPIRATION" = "Inhalation trauma with stridor?";

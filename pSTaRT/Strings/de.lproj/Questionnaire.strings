@@ -1,0 +1,16 @@
+/* 
+  Questionnaire.strings
+  pSTaRT
+
+  Created by Kurt Höblinger on 12.09.22.
+  Copyright © 2022 Kurt Höblinger. All rights reserved.
+*/
+
+"WALKING" = "Ist die Person gehfähig?";
+"DEAD" = "Nicht mit dem Leben vereinbare Verletzung?";
+"AIRWAY" = "Atmung vorhanden?";
+"BREATHING" = "Atemfrequenz >10 bzw. <30/min?";
+"BLEEDING" = "Bestehende spritzende Blutung?";
+"PULSE" = "Radialispuls vorhanden?";
+"MOVEMENT" = "Kann einfache Befehle befolgen?";
+"ASPIRATION" = "Inhalationstrauma mit Stridor?";

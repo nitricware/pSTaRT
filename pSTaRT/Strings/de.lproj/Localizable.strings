@@ -21,25 +21,39 @@
 "T0" = "Kein Triagevorschlag möglich";
 
 "TRIAGEGROUP" = "Triagegruppe";
+"TRIAGEGROUP %@" = "Triagegruppe %@";
 
 "PERSONS" = "Person(en)";
+"PERSONS_LIST" = "Personen";
 
 "SCANNING_NOT_SUPPORTED_TITLE" = "Das Gerät kann nicht scannen.";
 "SCANNING_NOT_SUPPORTED_BODY" = "Das verwendete Gerät unterstütz das Scannen von Strichcodes nicht. Verwenden Sie bitte ein Gerät mit Kamera.";
+"SCAN_ERROR_TITLE" = "Scanner Fehler";
+"SCAN_ERROR_TEXT" = "Identifiaktions-Strichcode konnte nicht gescannt werden. Bitte manuell eingeben.";
 
 "OK" = "OK";
 "CANCEL" = "Abbrechen";
+"START_TRIAGE" = "Triage beginnen";
+"END_TRIAGE" = "Triage beenden";
+"NEXT_TRIAGE" = "Nächste Triage";
 
 "DUPLICATE_IGNORE" = "Ignorieren und triagieren";
 "DUPLICATE_CHANGE" = "PLS-Nummer ändern";
 
-"EXPORT_COLS" = "PLS Nummer;Start;Ende;Triagegruppe\n";
+"EXPORT_COLS" = "Identifikation;Start;Ende;Aktuelle Triagegruppe";
 "EXPORT_FILENAME" = "Liste von Personen (%@).csv";
+"EXPORT_COL_RETRIAGE" = "Umtriagierung";
+"EXPORT_COL_DATE" = "Datum";
+"EXPORT_COL_TRIAGEDECISION" = "Triageentscheidung";
 
 "ERROR_HEADLINE" = "Fehler";
 "ERROR_FETCH" = "Die Personen konnten nicht abgerufen werden.";
 "ERROR_EXPORT" = "Die Liste konnte nicht exportiert werden.";
 "ERROR_DELETE" = "Der Eintrag konnte nicht gelöscht werden.";
+"EMPTY_ERROR_TITLE" = "Keine Identifikation";
+"EMPTY_ERROR_TEXT" = "Bitte Identifikation eingeben.";
+"ID_ERROR_TITLE" = "Doppelte Identifikation";
+"ID_ERROR_TEXT" = "Eine Person mit dieser Identifikation existiert bereits.";
 
 "CONFIRM_HEADLINE" = "Bestätigen";
 "CONFIRM_BODY" = "Sind Sie sicher?";
@@ -55,3 +69,36 @@
 "THANKS_HEAD" = "Danke!";
 "THANKS_BODY" = "Danke für Deine Unterstützung!";
 "WAIT_FOR_REQUEST" = "Please wait, die App lädt das Trinkgeld.";
+
+"IDENTIFICATION" = "Identifikation";
+
+"CANCEL_TRIAGE" = "Triage abbrechen";
+
+"TRIAGE_QUESTIONNAIRE" = "Triage Fragebogen";
+
+"CURRENT_PERSON" = "Aktuelle Person";
+"TRIAGE_START" = "Triage Beginn";
+
+"NUM_PERSONS %lld" = "%lld Personen";
+
+"NO_PERSON" = "keine Person";
+
+"PERSON_DETAIL" = "Personendetails";
+
+"SELECT_TRIAGE_GROUP_NOW" = "Triagegruppe sofort wählen";
+
+"SELECT_GROUP %@" = "Gruppe %@ auswählen";
+
+"TRIAGE_GROUP %@" = "Triagegruppe %@";
+
+"DELETE_ALL" = "Alle Personen löschen?";
+"DELETE_PERSON" = "Person löschen";
+
+"DELETE_ERROR" = "Personen konnten nicht gelöscht werden.";
+"TRIAGE_HISTORY" = "Triageverlauf";
+
+"TIPJAR_TITLE" = "Trinkgeld";
+"TIPJAR_BUTTON %@ %@" = " %@\U00A0%@spenden";
+"TIPJAR_INTRODUCTION" = "Ich programmiere die App in meiner Freizeit. Wenn dir gefällt, was du nutzt (inklusive der gratis Upgrades), ziehe eine Spende in betracht. Für einen ehrenamtlichen Dienst bei meiner Rettungsdienststelle, erhalte ich €\U00A04,49.";
+"TIPJAR_THANKS %@ %lf" = "Danke für deine Unterstützung. Du hast mit diesem Gerät bereits %@\U00A0%.2f gespendet.";
+"TIPJAR_LOADING" = "Lade Trinkgelder...";
