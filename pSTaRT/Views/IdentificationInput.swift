@@ -26,6 +26,8 @@ struct IdentificationInput: View {
     @State private var isShowingEmptyError: Bool = false
     @State private var errorText: String = ""
     
+    @State private var isTorchOn: Bool = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -38,6 +40,8 @@ struct IdentificationInput: View {
                     .disableAutocorrection(true)
                     .textInputAutocapitalization(.none)
                     .frame(maxHeight: 40.0)
+                    .autocorrectionDisabled(true)
+                    .keyboardType(.asciiCapable)
                 Button(action: {
                     isShowingScanner.toggle()
                 }) {
@@ -86,12 +90,49 @@ struct IdentificationInput: View {
         // MARK: Scanner
         .sheet(isPresented: $isShowingScanner) {
             // https://www.hackingwithswift.com/books/ios-swiftui/scanning-qr-codes-with-swiftui
-            CodeScannerView(
-                codeTypes: [.code39],
-                simulatedData: "04 ASO SCANTEST123",
-                isTorchOn: true,
-                completion: handleScan)
-            .ignoresSafeArea()
+            ZStack {
+                CodeScannerView(
+                    // Code39: ASB
+                    codeTypes: [.code39],
+                    simulatedData: "04 ASO SCANTEST123",
+                    isTorchOn: isTorchOn,
+                    completion: handleScan
+                ).background(Color.red)
+                .ignoresSafeArea()
+                
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button {
+                            isShowingScanner.toggle()
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                        }
+                        .frame(width: 30.0,height: 30.0)
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                        .offset(x: -50.0, y: 50.0)
+                    }
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Spacer()
+                        Button {
+                            isTorchOn.toggle()
+                        } label: {
+                            isTorchOn ?
+                            Image(systemName: "flashlight.on.fill") :
+                            Image(systemName: "flashlight.off.fill")
+                        }
+                        .frame(width: 30.0,height: 30.0)
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                        .tint(Color.yellow)
+                        .offset(x: -50.0, y: -50.0)
+                    }
+                }
+            }
         }
         // MARK: Alerts
         .alert("SCAN_ERROR_TITLE", isPresented: $isShowingScannerError) {
@@ -114,6 +155,7 @@ struct IdentificationInput: View {
     
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
+        isTorchOn = false
         switch result {
         case .success(let result):
             self.currentTriage.identification = result.string

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,7 +20,6 @@
 		450C3BFB28CCCDEA00BEF415 /* IdentificationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BFA28CCCDEA00BEF415 /* IdentificationInput.swift */; };
 		450C3C0028CDC6C600BEF415 /* pSTaRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BFF28CDC6C600BEF415 /* pSTaRTApp.swift */; };
 		450C3C0228CDC6E300BEF415 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3C0128CDC6E300BEF415 /* Persistence.swift */; };
-		450C3C0828CDE4E000BEF415 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 450C3C0728CDE4E000BEF415 /* CodeScanner */; };
 		450C3C0A28CDFA0C00BEF415 /* TriageQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3C0928CDFA0C00BEF415 /* TriageQuestionnaire.swift */; };
 		451FA2DA261F454A00E25BA0 /* pSTaRT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 458FB811237F0F1A0060A8FB /* pSTaRT.xcdatamodeld */; };
 		4520E64923F955A800BBD06F /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520E64823F955A800BBD06F /* DBHelper.swift */; };
@@ -48,6 +47,7 @@
 		459B211F28CE4A6900E8305B /* TriageGroupIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */; };
 		45AA119B25BACA8900CD5530 /* NWUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA119A25BACA8900CD5530 /* NWUtils.swift */; };
 		45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 45AA119D25BAF5C000CD5530 /* Configuration.storekit */; };
+		45E4EB912A5ED6320048ED6C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 45E4EB902A5ED6320048ED6C /* CodeScanner */; };
 		45E924D328CEF57500C5FC9A /* TriageQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E924D228CEF57500C5FC9A /* TriageQuestion.swift */; };
 		45E924D728CEF84400C5FC9A /* Questionnaire.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E924D928CEF84400C5FC9A /* Questionnaire.strings */; };
 		45E924DD28CF28BC00C5FC9A /* TriageConclusion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E924DC28CF28BC00C5FC9A /* TriageConclusion.swift */; };
@@ -123,7 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				450C3C0828CDE4E000BEF415 /* CodeScanner in Frameworks */,
+				45E4EB912A5ED6320048ED6C /* CodeScanner in Frameworks */,
 				457C6F4525B9739F00F0205B /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,7 +340,7 @@
 			);
 			name = pSTaRT;
 			packageProductDependencies = (
-				450C3C0728CDE4E000BEF415 /* CodeScanner */,
+				45E4EB902A5ED6320048ED6C /* CodeScanner */,
 			);
 			productName = pSTaRT;
 			productReference = 458FB805237F0F1A0060A8FB /* pSTaRT.app */;
@@ -352,8 +352,9 @@
 		458FB7FD237F0F1A0060A8FB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Kurt Höblinger";
 				TargetAttributes = {
 					458FB804237F0F1A0060A8FB = {
@@ -372,7 +373,7 @@
 			);
 			mainGroup = 458FB7FC237F0F1A0060A8FB;
 			packageReferences = (
-				450C3C0428CDE4C800BEF415 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				45E4EB8F2A5ED6320048ED6C /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 458FB806237F0F1A0060A8FB /* Products */;
 			projectDirPath = "";
@@ -512,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -546,6 +548,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -574,6 +577,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -608,6 +612,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -631,14 +636,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3;
+				MARKETING_VERSION = 3.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -651,14 +656,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3;
+				MARKETING_VERSION = 3.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -690,9 +695,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		450C3C0428CDE4C800BEF415 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+		45E4EB8F2A5ED6320048ED6C /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
@@ -701,9 +706,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		450C3C0728CDE4E000BEF415 /* CodeScanner */ = {
+		45E4EB902A5ED6320048ED6C /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 450C3C0428CDE4C800BEF415 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			package = 45E4EB8F2A5ED6320048ED6C /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
