@@ -16,7 +16,6 @@ struct PersonDetail: View {
     
     @FetchRequest public var triages: FetchedResults<Triages>
     
-    
     init(person: Persons) {
         self.person = person
 
@@ -33,51 +32,59 @@ struct PersonDetail: View {
     }
     
     var body: some View {
-        List {
-            Section {
-                PersonDetailRow(caption: "IDENTIFICATION") {
-                    Text(person.plsNumber ?? "4 AS NONUM")
+        ZStack(alignment: .bottom) {
+            List {
+                Section {
+                    PersonDetailRow(caption: "IDENTIFICATION") {
+                        Text(person.plsNumber ?? "4 AS NONUM")
+                    }
+                    PersonDetailRow(caption: "START_TRIAGE") {
+                        Text((person.startTime ?? Date()).formatted())
+                    }
+                    PersonDetailRow(caption: "END_TRIAGE") {
+                        Text((person.endTime ?? Date()).formatted())
+                    }
+                    PersonDetailRow(caption: "TRIAGEGROUP") {
+                        HStack {
+                            TriageGroupIcon(triageGroup: TriageGroup(Int(person.triageGroup)))
+                                .frame(width: 28.0)
+                            Text("TRIAGE_GROUP \(TriageGroup(Int(person.triageGroup)).roman)")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
                 }
-                PersonDetailRow(caption: "START_TRIAGE") {
-                    Text((person.startTime ?? Date()).formatted())
-                }
-                PersonDetailRow(caption: "END_TRIAGE") {
-                    Text((person.endTime ?? Date()).formatted())
-                }
-                PersonDetailRow(caption: "TRIAGEGROUP") {
-                    HStack {
-                        TriageGroupIcon(triageGroup: TriageGroup(Int(person.triageGroup)))
-                            .frame(width: 28.0)
-                        Text("TRIAGE_GROUP \(TriageGroup(Int(person.triageGroup)).roman)")
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Section ("TRIAGE_HISTORY") {
+                    ForEach(self.triages) { triage in
+                        HStack {
+                            TriageGroupIcon(triageGroup: TriageGroup(Int(triage.group)))
+                                .frame(width: 28.0)
+                            Text(triage.date?.formatted() ?? "NO_DATE")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        
                     }
                 }
             }
+            .safeAreaPadding(.bottom, 150)
+            .navigationTitle("PERSON_DETAIL")
             
-            TriageRetriage()
-            .environmentObject(CurrentTriage(person: person))
-            .listRowBackground(Color.clear)
-            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-            .padding(.bottom)
-            
-            Button("DELETE_PERSON", role: .destructive) {
-                delete()
+            GlassEffectContainer {
+                TriageRetriage()
+                    .padding(25)
+                    .environmentObject(CurrentTriage(person: person))
             }
-            .frame(maxWidth: .infinity, alignment: .center)
-            
-            Section ("TRIAGE_HISTORY") {
-                ForEach(self.triages) { triage in
-                    HStack {
-                        TriageGroupIcon(triageGroup: TriageGroup(Int(triage.group)))
-                            .frame(width: 28.0)
-                        Text(triage.date?.formatted() ?? "NO_DATE")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    
+            .glassEffect()
+            .padding()
+        }.toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    delete()
+                }) {
+                    Image(systemName: "trash")
                 }
             }
         }
-        .navigationTitle("PERSON_DETAIL")
     }
     
     func delete() {

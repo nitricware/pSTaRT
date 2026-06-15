@@ -48,8 +48,8 @@ struct Overview: View {
                     isShowingTriage: $isShowingTriage
                 )
                 .environmentObject(currentTriage)
-                .interactiveDismissDisabled()
             }
+            .interactiveDismissDisabled()
         }
         .sheet(isPresented: $isShowingTipJar) {
             TipJar(isShowingTipJar: $isShowingTipJar)

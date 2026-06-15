@@ -30,8 +30,7 @@ struct TriageQuestion: View {
                     .frame(maxWidth: .infinity)
                 
             }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.roundedRectangle)
+            .buttonStyle(.glassProminent)
             .tint(currentTriage.yesColor)
             
             Button(action: {
@@ -43,8 +42,7 @@ struct TriageQuestion: View {
                     )
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.roundedRectangle)
+            .buttonStyle(.glassProminent)
             .tint(currentTriage.noColor)
         }
     }

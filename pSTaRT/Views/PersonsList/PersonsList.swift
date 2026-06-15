@@ -14,7 +14,7 @@ struct PersonsList: View {
     @State public var isShowingShareSheet: Bool = false
     @State public var isShowingActivityIndicator: Bool = false
     
-    @FetchRequest (
+    @FetchRequest(
         sortDescriptors: [
             NSSortDescriptor(
                 keyPath: \Persons.objectID,
@@ -29,9 +29,9 @@ struct PersonsList: View {
     var body: some View {
         List {
             if !UIDevice.current.model.contains("iPad") {
-                TriageGroupsOverview()
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                Section ("OVERVIEW") {
+                    TriageGroupsOverview()
+                }
             }
             
             PersonListSection(with: TriageGroup(.one))

@@ -18,14 +18,6 @@ struct MainToolbar: ToolbarContent {
                 Image(systemName: "giftcard")
             }
         }
-        ToolbarItem(placement: .navigationBarTrailing) {
-            Button(action: {
-                
-            }) {
-                Image(systemName: "gearshape")
-            }
-            .hidden()
-        }
         if UIDevice.current.model.contains("iPhone") {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink{

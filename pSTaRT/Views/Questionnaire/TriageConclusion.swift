@@ -39,8 +39,7 @@ struct TriageConclusion: View {
                     .frame(maxWidth: .infinity)
                 
             }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.roundedRectangle)
+            .buttonStyle(.glassProminent)
             .tint(currentTriage.triageGroup.first!.color)
         }
     }

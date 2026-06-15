@@ -13,4 +13,5 @@ enum pSTaRTErrors: Error {
     case dbDeleteError
     case dbExportError
     case dbUpdateError
+    case iapError
 }

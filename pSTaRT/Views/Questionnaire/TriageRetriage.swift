@@ -26,7 +26,7 @@ struct TriageRetriage: View {
                     Text("I")
                         .frame(maxWidth: buttonWidth)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.glassProminent)
                 .tint(.red)
                 
                 Button(action: {
@@ -35,7 +35,7 @@ struct TriageRetriage: View {
                     Text("II")
                         .frame(maxWidth: buttonWidth)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.glassProminent)
                 .tint(.yellow)
                 
                 Button(action: {
@@ -44,7 +44,7 @@ struct TriageRetriage: View {
                     Text("III")
                         .frame(maxWidth: buttonWidth)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.glassProminent)
                 .tint(.green)
                 
                 Button(action: {
@@ -53,7 +53,7 @@ struct TriageRetriage: View {
                     Text("IV")
                         .frame(maxWidth: buttonWidth)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.glassProminent)
                 .tint(.blue)
             }
         }

@@ -48,7 +48,6 @@ class CurrentTriage: ObservableObject {
     func reset() {
         self.identification = ""
         self.triageStart = Date()
-        //self.triageGroup = TriageGroup()
         self.triageGroup = [TriageGroup()]
         self.currentQuestion = NSLocalizedString("WALKING", tableName: "Questionnaire", comment: "Can the person walk?")
         self.yesColor = .green

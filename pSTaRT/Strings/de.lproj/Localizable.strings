@@ -85,7 +85,7 @@
 
 "PERSON_DETAIL" = "Personendetails";
 
-"SELECT_TRIAGE_GROUP_NOW" = "Triagegruppe sofort wählen";
+"SELECT_TRIAGE_GROUP_NOW" = "eigene Triagegruppe sofort wählen (umtriagieren)";
 
 "SELECT_GROUP %@" = "Gruppe %@ auswählen";
 
@@ -94,11 +94,15 @@
 "DELETE_ALL" = "Alle Personen löschen?";
 "DELETE_PERSON" = "Person löschen";
 
+"CONFIRM" = "Bestätigen";
+
 "DELETE_ERROR" = "Personen konnten nicht gelöscht werden.";
 "TRIAGE_HISTORY" = "Triageverlauf";
 
 "TIPJAR_TITLE" = "Trinkgeld";
-"TIPJAR_BUTTON %@ %@" = " %@\U00A0%@spenden";
+"TIPJAR_BUTTON" = "Spende";
 "TIPJAR_INTRODUCTION" = "Ich programmiere die App in meiner Freizeit. Wenn dir gefällt, was du nutzt (inklusive der gratis Upgrades), ziehe eine Spende in betracht. Für einen ehrenamtlichen Dienst bei meiner Rettungsdienststelle, erhalte ich €\U00A04,49.";
-"TIPJAR_THANKS %@ %lf" = "Danke für deine Unterstützung. Du hast mit diesem Gerät bereits %@\U00A0%.2f gespendet.";
+"TIPJAR_THANKS %@ %lf" = "Danke für deine Unterstützung. Du hast mit diesem Gerät bereits %@\U00A0%.2f gespendet seit du die App installiert hast.";
 "TIPJAR_LOADING" = "Lade Trinkgelder...";
+
+"OVERVIEW" = "Übersicht";

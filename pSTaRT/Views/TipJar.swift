@@ -17,21 +17,37 @@ struct TipJar: View {
     var body: some View {
         NavigationView {
             VStack (spacing: 20) {
+                Text("🚑")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .font(.system(size: 200.0, weight: .bold, design: .default))
+                Text("Support pSTaRT")
+                    .font(.title)
+                    .bold()
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 Text("TIPJAR_INTRODUCTION")
+                    .multilineTextAlignment(.leading)
                 if storeManager.myProducts.count > 0 {
                     ForEach(storeManager.myProducts, id: \.self) { product in
                         Button(action: {
                             print("Purchasing \(product)")
-                            storeManager.purchaseProduct(product: product)
+                            Task {
+                                await storeManager.purchaseProduct(product: product)
+                            }
+
                         }) {
-                            Text("TIPJAR_BUTTON \(product.priceLocale.currencySymbol ?? "") \(product.price)")
+                            Text("TIPJAR_BUTTON \(product.displayPrice)")
+                                .frame(maxWidth: .infinity)
                         }
+                        .buttonStyle(.glassProminent)
                     }
                 } else {
                     Text("TIPJAR_LOADING")
                 }
                 
                 Text("TIPJAR_THANKS \(Locale.current.currencySymbol ?? "") \(tipJar)")
+            }
+            .task {
+                await storeManager.getProducts(productIDs: ["4euroTip"])
             }
             .multilineTextAlignment(.center)
             .padding()
@@ -40,16 +56,12 @@ struct TipJar: View {
                     Button(action: {
                         self.isShowingTipJar.toggle()
                     }) {
-                        Image(systemName: "xmark.circle")
+                        Image(systemName: "xmark")
                     }
                 }
             }
-            .navigationTitle("TIPJAR_TITLE")
         }
-        .onAppear {
-            storeManager.getProducts(productIDs: ["4euroTip"])
-            SKPaymentQueue.default().add(storeManager)
-        }
+        
     }
 }
 

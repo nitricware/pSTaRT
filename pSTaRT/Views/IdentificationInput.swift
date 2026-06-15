@@ -31,17 +31,16 @@ struct IdentificationInput: View {
     var body: some View {
         VStack {
             HStack {
-                // TextField("IDENTIFICATION", text: $currentTriage.identification)
                 TextField("IDENTIFICATION", text: $currentTriage.identification)
                     .font(
                         .system(size: 36.0, weight: .regular, design: .monospaced)
                     )
+                    .padding(.vertical, 8.0)
                     .minimumScaleFactor(0.1)
                     .disableAutocorrection(true)
                     .textInputAutocapitalization(.none)
-                    .frame(maxHeight: 40.0)
-                    .autocorrectionDisabled(true)
                     .keyboardType(.asciiCapable)
+                
                 Button(action: {
                     isShowingScanner.toggle()
                 }) {
@@ -53,6 +52,9 @@ struct IdentificationInput: View {
                     self.currentTriage.identification = ""
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: 50.0)
+            .padding()
+            .glassEffect()
             
             Button(action: {
                 if currentTriage.identification.isEmpty {
@@ -76,80 +78,80 @@ struct IdentificationInput: View {
             }) {
                 Text("START_TRIAGE")
                     .font(
-                        .system(size: 36.0, weight: .bold, design: .default)
+                        .system(size: 36.0, weight: .bold)
                     )
-            
-                    .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.roundedRectangle)
+            .buttonStyle(.glassProminent)
             .tint(.green)
-            
         }
+        
         // MARK: Scanner
         .sheet(isPresented: $isShowingScanner) {
             // https://www.hackingwithswift.com/books/ios-swiftui/scanning-qr-codes-with-swiftui
-            ZStack {
+            ZStack (alignment: .top) {
                 CodeScannerView(
                     // Code39: ASB
                     codeTypes: [.code39],
                     simulatedData: "04 ASO SCANTEST123",
                     isTorchOn: isTorchOn,
                     completion: handleScan
-                ).background(Color.red)
+                )
+                .background(Color.red)
                 .ignoresSafeArea()
                 
-                VStack {
-                    HStack {
-                        Spacer()
-                        Button {
-                            isShowingScanner.toggle()
-                        } label: {
-                            Image(systemName: "xmark.circle.fill")
-                        }
-                        .frame(width: 30.0,height: 30.0)
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.large)
-                        .offset(x: -50.0, y: 50.0)
+                HStack {
+                    Button {
+                        isShowingScanner.toggle()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 20, weight: .medium))
+                            .frame(width: 20, height: 20)
                     }
+                    .buttonStyle(.glassProminent)
+                    .buttonBorderShape(.circle)
+                    .controlSize(.large)
+                    .tint(Color.red)
                     
                     Spacer()
                     
-                    HStack {
-                        Spacer()
-                        Button {
-                            isTorchOn.toggle()
-                        } label: {
-                            isTorchOn ?
-                            Image(systemName: "flashlight.on.fill") :
-                            Image(systemName: "flashlight.off.fill")
-                        }
-                        .frame(width: 30.0,height: 30.0)
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.large)
-                        .tint(Color.yellow)
-                        .offset(x: -50.0, y: -50.0)
+                    Button {
+                        isTorchOn.toggle()
+                    } label: {
+                        Image(
+                            systemName: isTorchOn ? "flashlight.on.fill" : "flashlight.off.fill"
+                        )
+                        .font(.system(size: 20, weight: .medium))
+                        .frame(width: 20, height: 20)
                     }
+                    .buttonStyle(.glassProminent)
+                    .buttonBorderShape(.circle)
+                    .controlSize(.large)
+                    .tint(Color.yellow)
                 }
+                .padding(20.0)
             }
         }
+        
         // MARK: Alerts
         .alert("SCAN_ERROR_TITLE", isPresented: $isShowingScannerError) {
+            Button("OK", role: .cancel) { }
+        } message: {
             Text("SCAN_ERROR_TEXT")
             Text(errorText)
-            Button("OK", role: .cancel) { }
         }
         .alert("ID_ERROR_TITLE", isPresented: $isShowingIDError) {
-            Text("ID_ERROR_TEXT")
-            Button("DUPLICATE_IGNORE") {
+            Button("DUPLICATE_IGNORE", role: .confirm) {
                 self.isShowingTriage.toggle()
             }
             Button("DUPLICATE_CHANGE", role: .cancel) { }
+        } message: {
+            Text("ID_ERROR_TEXT")
         }
         .alert("EMPTY_ERROR_TITLE", isPresented: $isShowingEmptyError) {
-            Text("EMPTY_ERROR_TEXT")
             Button("DUPLICATE_CHANGE", role: .cancel) { }
+        } message: {
+            Text("EMPTY_ERROR_TEXT")
         }
     }
     
