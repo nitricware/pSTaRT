@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct PersonsList: View {
     @State public var isShowingDeleteAll: Bool = false

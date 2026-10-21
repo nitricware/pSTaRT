@@ -64,6 +64,7 @@
 		452ECC9C23F986ED00909ED5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		452ECC9E23F986F100909ED5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		453B9C732F9FD6810034350C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		456D65A13088EC9F009AAB75 /* pSTaRT_TriageLocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pSTaRT_TriageLocation.xcdatamodel; sourceTree = "<group>"; };
 		457AA76E23806AF300A11755 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		457C08BB2FD9E4CE0031CD5C /* NWIAPListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWIAPListener.swift; sourceTree = "<group>"; };
 		457C6F4425B9739F00F0205B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -584,10 +585,11 @@
 		458FB811237F0F1A0060A8FB /* pSTaRT.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				456D65A13088EC9F009AAB75 /* pSTaRT_TriageLocation.xcdatamodel */,
 				451FA2D5261F414600E25BA0 /* pSTaRT_Retriaging.xcdatamodel */,
 				458FB812237F0F1A0060A8FB /* pSTaRT.xcdatamodel */,
 			);
-			currentVersion = 451FA2D5261F414600E25BA0 /* pSTaRT_Retriaging.xcdatamodel */;
+			currentVersion = 456D65A13088EC9F009AAB75 /* pSTaRT_TriageLocation.xcdatamodel */;
 			path = pSTaRT.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

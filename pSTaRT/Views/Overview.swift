@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct Overview: View {
     @Environment(\.managedObjectContext) private var viewContext

@@ -8,6 +8,8 @@
 
 import Foundation
 import SwiftUI
+import CoreData
+import MapKit
 
 struct PersonDetail: View {
     public var person: Persons
@@ -50,6 +52,24 @@ struct PersonDetail: View {
                                 .frame(width: 28.0)
                             Text("TRIAGE_GROUP \(TriageGroup(Int(person.triageGroup)).roman)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
+                    if let lat = triages.last?.lat {
+                        if let lon = triages.last?.lon {
+                            let mapCameraPostion = MapCameraPosition.region(
+                                MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(latitude: lat, longitude: lon),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.0006, longitudeDelta: 0.0006)
+                                )
+                            )
+                            VStack() {
+                                Text("INITIAL_LOCATION")
+                                    .font(.caption)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundColor(.gray)
+                                Map(initialPosition: mapCameraPostion,interactionModes: [])
+                                    .frame(height: 150)
+                            }
                         }
                     }
                 }
@@ -99,16 +119,28 @@ struct PersonDetail: View {
 }
 
 struct PersonDetail_Previews: PreviewProvider {
-    static var person = Persons(context: PersistenceController.preview.container.viewContext)
-    
-    init() {
-        PersonDetail_Previews.person.plsNumber = "4 AS PREVIEW101"
-        PersonDetail_Previews.person.triageGroup = 1
-        
-    }
     static var previews: some View {
-        NavigationView {
-            PersonDetail(person: person)
+        // 1. Get your preview context
+        let context = PersistenceController.preview.container.viewContext
+        
+        // 2. Fetch the sample data you generated in your controller
+        let fetchRequest: NSFetchRequest<Persons> = Persons.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        
+        // 3. Try to get the first person, or fall back to creating a temporary one if the fetch fails
+        let samplePerson = (try? context.fetch(fetchRequest))?.first ?? {
+            let fallback = Persons(context: context)
+            fallback.plsNumber = "Fallback Preview"
+            fallback.startTime = Date()
+            fallback.triageGroup = 1
+            return fallback
+        }()
+        
+        // 4. Pass the fetched sample person to your view
+        return NavigationView {
+            PersonDetail(person: samplePerson)
         }
+        // 5. Inject the context into the environment so relationships can resolve correctly
+        .environment(\.managedObjectContext, context)
     }
 }

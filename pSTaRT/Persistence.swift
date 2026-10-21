@@ -36,6 +36,8 @@ struct PersistenceController {
             triage1.person = person
             triage1.group = 1
             triage1.date = Date()
+            triage1.lat = 48.208333
+            triage1.lon = 16.373056
             
             let triage2 = Triages(context: viewContext)
             triage2.person = person

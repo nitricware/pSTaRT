@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct TriageQuestionnaire: View {
     // MARK: Bindings from parent
@@ -39,6 +40,22 @@ struct TriageQuestionnaire: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
                 .frame(maxWidth: .infinity, alignment: .leading)
+            //if let location = currentTriage.location {
+                
+                HStack {
+                    Spacer()
+                    
+                    Map(
+                        position: $currentTriage.mapCameraPostion,
+                        interactionModes: [],
+                    )
+                    .mapStyle(.hybrid)
+                    .frame(
+                        width: 100.0,
+                        height: 100.0
+                    )
+                }
+            //}
             
             Spacer()
             
@@ -51,8 +68,6 @@ struct TriageQuestionnaire: View {
                     )
                 }
             }
-            
-            Spacer()
             
             TriageRetriage(
                 saveOnInteraction: false

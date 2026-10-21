@@ -9,8 +9,10 @@
 import Foundation
 import SwiftUI
 import CoreData
+import CoreLocation
+import MapKit
 
-class CurrentTriage: ObservableObject {
+class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published public var identification: String = ""
     
     @Published public var triageStart: Date = Date()
@@ -26,6 +28,15 @@ class CurrentTriage: ObservableObject {
     // Tint of the button that continues the questionnaire
     @Published public var noColor: Color = .orange
     
+    // Current Location
+    @Published public var mapCameraPostion = MapCameraPosition.region(
+        MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
+            span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+        )
+    )
+    private let locationManager: CLLocationManager = CLLocationManager()
+    
     // How many questions have been asked?
     
     private var currentIteration: Int = 0
@@ -33,9 +44,13 @@ class CurrentTriage: ObservableObject {
     public var person: Persons?
     
     init (person: Persons? = nil) {
+        super.init()
+        self.locationManager.delegate = self
         self.person = person
+        self.getLocation()
     }
     
+    // Used for Preview only
     init(identification: String) {
         self.identification = identification
     }
@@ -154,6 +169,10 @@ class CurrentTriage: ObservableObject {
             triageObject.person = self.person!
             triageObject.group = Int16(triage.intVal)
             triageObject.date = self.triageStart
+            if let l = locationManager.location {
+                triageObject.lat = l.coordinate.latitude
+                triageObject.lon = l.coordinate.longitude
+            }
             
             do {
                 try PersistenceController.shared.container.viewContext.save()
@@ -162,7 +181,33 @@ class CurrentTriage: ObservableObject {
                 print("Error")
             }
         }
-        
-        
+    }
+    
+    func generateCameraPosition(lat: Double, lon: Double) -> MapCameraPosition {
+        return MapCameraPosition.region(
+            MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: lat, longitude: lon),
+                span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+            )
+        )
+    }
+    
+    func getLocation() -> Void{
+        locationManager.requestWhenInUseAuthorization()
+        if locationManager.authorizationStatus != .authorizedWhenInUse {
+            return
+        }
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        withAnimation {
+            self.mapCameraPostion = generateCameraPosition(lat: locations.first?.coordinate.latitude ?? 0 , lon: locations.first?.coordinate.longitude ?? 0)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
+        // TODO: Error Handling
+        print("error")
     }
 }
