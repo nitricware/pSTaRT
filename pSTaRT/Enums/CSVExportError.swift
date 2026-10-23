@@ -1,3 +1,11 @@
+//
+//  CSVExportError.swift
+//  pSTaRT
+//
+//  Created by Kurt Frey on 23.10.26.
+//  Copyright © 2026 Kurt Frey. All rights reserved.
+//
+
 enum CSVExportError: Error {
     case missingData
     case noDocumentDirectory

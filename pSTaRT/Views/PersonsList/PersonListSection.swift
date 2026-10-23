@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct PersonListSection: View {
     public var triageGroup: TriageGroup

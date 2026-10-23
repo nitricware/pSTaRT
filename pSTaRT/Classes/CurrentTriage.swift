@@ -17,7 +17,6 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published public var triageStart: Date = Date()
     
-    //@Published public var triageGroup: TriageGroup = TriageGroup()
     @Published public var triageGroup: [TriageGroup] = [TriageGroup()]
     
     @Published public var currentQuestion: String = NSLocalizedString("WALKING", tableName: "Questionnaire", comment: "Can the person walk?")
@@ -29,12 +28,15 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published public var noColor: Color = .orange
     
     // Current Location
-    @Published public var mapCameraPostion = MapCameraPosition.region(
+    @Published public var mapCameraPostion: MapCameraPosition = MapCameraPosition.region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
             span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         )
     )
+    
+    @Published var location: CLLocation?
+    
     private let locationManager: CLLocationManager = CLLocationManager()
     
     // How many questions have been asked?
@@ -52,7 +54,10 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     // Used for Preview only
     init(identification: String) {
+        super.init()
+        self.locationManager.delegate = self
         self.identification = identification
+        self.getLocation()
     }
     
     func reset(with identification: String) {
@@ -136,9 +141,8 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
+    /// Concludes a triage. Can either be triggered by finishing the questionnaire or by retriaging.
     func conclude(assign triageGroup: TriageGroups) {
-        //self.triageGroup = TriageGroup(triageGroup)
-        
         if self.triageGroup.first?.identifier == .unidentified {
             self.triageGroup = [TriageGroup(triageGroup)]
         } else {
@@ -149,9 +153,21 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     func savePersonToDatabase() {
         self.person = Persons(context: PersistenceController.shared.container.viewContext)
         
-        person!.plsNumber = self.identification
-        person!.startTime = self.triageStart
-        person!.endTime = Date()
+        guard let person = self.person else {
+            return
+        }
+        
+        person.plsNumber = self.identification
+        person.startTime = self.triageStart
+        person.endTime = Date()
+        
+        if let l = locationManager.location {
+            person.preciseLocation = locationManager.accuracyAuthorization == .fullAccuracy
+            person.lat = NSNumber(value: l.coordinate.latitude)
+            person.lon = NSNumber(value: l.coordinate.longitude)
+        }
+        
+        locationManager.stopUpdatingLocation()
         
         do {
             try PersistenceController.shared.container.viewContext.save()
@@ -169,10 +185,6 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
             triageObject.person = self.person!
             triageObject.group = Int16(triage.intVal)
             triageObject.date = self.triageStart
-            if let l = locationManager.location {
-                triageObject.lat = l.coordinate.latitude
-                triageObject.lon = l.coordinate.longitude
-            }
             
             do {
                 try PersistenceController.shared.container.viewContext.save()
@@ -194,6 +206,14 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func getLocation() -> Void{
         locationManager.requestWhenInUseAuthorization()
+    }
+    
+    /// Runs when the authorization status changes:
+    /// 1. on initialization of `CLLocationManager`
+    /// 2. when the user manually changes the autorization
+    /// 3. when the authorization was first approved
+    /// That's why we can place `.startUpdatingLocation()` right here and do not have to put it in `getLocation()`.
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         if locationManager.authorizationStatus != .authorizedWhenInUse {
             return
         }
@@ -201,13 +221,21 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else {
+            return
+        }
+        
         withAnimation {
-            self.mapCameraPostion = generateCameraPosition(lat: locations.first?.coordinate.latitude ?? 0 , lon: locations.first?.coordinate.longitude ?? 0)
+            self.location = location
+            self.mapCameraPostion = generateCameraPosition(
+                lat: location.coordinate.latitude,
+                lon: location.coordinate.longitude
+            )
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
         // TODO: Error Handling
-        print("error")
+        print(error)
     }
 }

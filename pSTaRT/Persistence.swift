@@ -31,13 +31,13 @@ struct PersistenceController {
             person.plsNumber = "4 AS PREVIEW00\(i)"
             person.triageGroup = 1
             person.endTime = Date()
+            person.lat = 48.208333
+            person.lon = 16.373056
             
             let triage1 = Triages(context: viewContext)
             triage1.person = person
             triage1.group = 1
             triage1.date = Date()
-            triage1.lat = 48.208333
-            triage1.lon = 16.373056
             
             let triage2 = Triages(context: viewContext)
             triage2.person = person

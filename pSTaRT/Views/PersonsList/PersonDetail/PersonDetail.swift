@@ -54,21 +54,35 @@ struct PersonDetail: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
-                    if let lat = triages.last?.lat {
-                        if let lon = triages.last?.lon {
-                            let mapCameraPostion = MapCameraPosition.region(
-                                MKCoordinateRegion(
-                                    center: CLLocationCoordinate2D(latitude: lat, longitude: lon),
-                                    span: MKCoordinateSpan(latitudeDelta: 0.0006, longitudeDelta: 0.0006)
-                                )
+                    if let lat = person.lat,
+                       let lon = person.lon {
+                        let mapCameraPostion = MapCameraPosition.region(
+                            MKCoordinateRegion(
+                                center: CLLocationCoordinate2D(
+                                    latitude: lat.doubleValue,
+                                    longitude: lon.doubleValue
+                                ),
+                                span: MKCoordinateSpan(latitudeDelta: 0.0006, longitudeDelta: 0.0006)
                             )
-                            VStack() {
-                                Text("INITIAL_LOCATION")
-                                    .font(.caption)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .foregroundColor(.gray)
-                                Map(initialPosition: mapCameraPostion,interactionModes: [])
-                                    .frame(height: 150)
+                        )
+                        VStack() {
+                            Text("INITIAL_LOCATION")
+                                .font(.caption)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundColor(.gray)
+                            Map(initialPosition: mapCameraPostion,interactionModes: []) {
+                                Marker(
+                                    person.plsNumber ?? "PERSON",
+                                    systemImage: "cross.case",
+                                    coordinate: CLLocationCoordinate2D(
+                                        latitude: lat.doubleValue,
+                                        longitude: lon.doubleValue
+                                    )
+                                )
+                            }
+                            .frame(height: 150)
+                            if !person.preciseLocation {
+                                Text("REDUCED_ACCURACY")
                             }
                         }
                     }

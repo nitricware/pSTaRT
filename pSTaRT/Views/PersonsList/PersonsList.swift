@@ -13,7 +13,7 @@ struct PersonsList: View {
     @State public var isShowingDeleteAll: Bool = false
     @State public var isShowingDeleteError: Bool = false
     @State public var isShowingShareSheet: Bool = false
-    @State public var isShowingActivityIndicator: Bool = false
+    @State public var isShowingCSVExport: Bool = false
     
     @FetchRequest(
         sortDescriptors: [
@@ -41,19 +41,6 @@ struct PersonsList: View {
             PersonListSection(with: TriageGroup(.four))
         }
         .navigationTitle("PERSONS_LIST")
-        .overlay {
-            // https://stackoverflow.com/questions/72324576/transition-issue-on-overlay
-            VStack {
-                if isShowingActivityIndicator {
-                    Text("LOADING CSV")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                        .background(.thinMaterial)
-                        .transition(.opacity)
-                }
-            }
-            .animation(Animation.easeInOut(duration: 0.1), value: isShowingActivityIndicator)
-            
-        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
@@ -65,10 +52,12 @@ struct PersonsList: View {
                 .disabled(self.persons.count < 1)
             }
             ToolbarItem(placement: .navigationBarTrailing) {
+                
                 Button (action: {
-                    shareCSV()
+                    //shareCSV()
+                    isShowingCSVExport.toggle()
                 }) {
-                    Image(systemName: "square.and.arrow.up")
+                    Image(systemName: "tray")
                 }
                 .disabled(self.persons.count < 1)
             }
@@ -87,43 +76,11 @@ struct PersonsList: View {
         .alert("DELETE_ERROR", isPresented: $isShowingDeleteError) {
             Button("OK", role: .cancel) { }
         }
-    }
-    
-    func shareCSV() {
-        self.isShowingActivityIndicator.toggle()
-        DispatchQueue.global(qos: .userInitiated).async {
-            let database = pSTaRTDBHelper()
-            // https://developer.apple.com/forums/thread/707511
-            database.provideCSV(completion: { url in
-                DispatchQueue.main.async {
-                    // TODO: Show error, when URL is nil
-                    let activityVC = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
-                    
-                    guard
-                        let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                        let firstWindow = firstScene.windows.first else {
-                        return
-                    }
-
-                    let viewController = firstWindow.rootViewController
-                    
-                    activityVC.completionWithItemsHandler = { (_,_,_,_) in
-                        database.removeCSV()
-                        self.isShowingActivityIndicator.toggle()
-                    }
-                    activityVC.popoverPresentationController?.sourceView = firstWindow
-                    activityVC.popoverPresentationController?.sourceRect = CGRect(
-                        x: UIScreen.main.bounds.maxX - 20,
-                        y: UIScreen.main.bounds.minY + 70,
-                        width: 0,
-                        height: 0
-                    )
-                    activityVC.popoverPresentationController?.permittedArrowDirections = [.up]
-                    viewController!.present(activityVC, animated: true, completion: nil)
-                    
-                }
-            })
-        }
+        .sheet(isPresented: $isShowingCSVExport, content: {
+            NavigationView {
+                ExportList(isShowing: $isShowingCSVExport)
+            }
+        })
     }
 }
 

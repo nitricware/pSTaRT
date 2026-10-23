@@ -7,3 +7,4 @@
 */
 
 NSCameraUsageDescription = "Die Kamera wird zum Scannen von PLS-Nummern benötigt.";
+NSLocationWhenInUseUsageDescription = "Während dem triagieren kann die Position der Person gespeichert werden.";

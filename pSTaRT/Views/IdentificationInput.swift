@@ -14,7 +14,7 @@ struct IdentificationInput: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     // MARK: Bindings from parent
-    @EnvironmentObject public var currentTriage: CurrentTriage
+    //@EnvironmentObject public var currentTriage: CurrentTriage
     @Binding public var isShowingTriage: Bool
     
     // MARK: Sheet States
@@ -28,10 +28,12 @@ struct IdentificationInput: View {
     
     @State private var isTorchOn: Bool = false
     
+    @Binding public var identification: String
+    
     var body: some View {
         VStack {
             HStack {
-                TextField("IDENTIFICATION", text: $currentTriage.identification)
+                TextField("IDENTIFICATION", text: $identification)
                     .font(
                         .system(size: 36.0, weight: .regular, design: .monospaced)
                     )
@@ -48,23 +50,20 @@ struct IdentificationInput: View {
                         .resizable()
                         .frame(width: 36.0, height: 36.0, alignment: .trailing)
                 }
-                .onDisappear{
-                    self.currentTriage.identification = ""
-                }
             }
             .frame(maxWidth: .infinity, maxHeight: 50.0)
             .padding()
             .glassEffect()
             
             Button(action: {
-                if currentTriage.identification.isEmpty {
+                if identification.isEmpty {
                     self.isShowingEmptyError.toggle()
                     return
                 }
             
                 do {
                     let database = pSTaRTDBHelper()
-                    let duplicateCheck = try database.isDuplicate(id: currentTriage.identification)
+                    let duplicateCheck = try database.isDuplicate(id: identification)
                     if duplicateCheck {
                         self.isShowingIDError.toggle()
                         return
@@ -73,7 +72,7 @@ struct IdentificationInput: View {
                     self.isShowingIDError.toggle()
                     return
                 }
-                self.currentTriage.reset(with: currentTriage.identification)
+                //self..reset(with: identification)
                 self.isShowingTriage.toggle()
             }) {
                 Text("START_TRIAGE")
@@ -160,7 +159,7 @@ struct IdentificationInput: View {
         isTorchOn = false
         switch result {
         case .success(let result):
-            self.currentTriage.identification = result.string
+            self.identification = result.string
         case .failure(let error):
             self.isShowingScannerError.toggle()
             self.errorText = error.localizedDescription
@@ -171,7 +170,7 @@ struct IdentificationInput: View {
 struct PLSInput_Previews: PreviewProvider {
     static var previews: some View {
         IdentificationInput(
-            isShowingTriage: .constant(false)
+            isShowingTriage: .constant(false), identification: .constant("TESTTRIAGE")
         )
         .environmentObject(CurrentTriage())
         .previewLayout(.sizeThatFits)

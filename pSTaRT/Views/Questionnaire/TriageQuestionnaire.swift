@@ -11,9 +11,9 @@ import MapKit
 
 struct TriageQuestionnaire: View {
     // MARK: Bindings from parent
-    //@EnvironmentObject public var currentTriage: CurrentTriage
-    @EnvironmentObject public var currentTriage: CurrentTriage
+    @StateObject public var currentTriage: CurrentTriage = CurrentTriage()
     @Binding public var isShowingTriage: Bool
+    @Binding public var identification: String
     
     var body: some View {
         VStack {
@@ -34,29 +34,30 @@ struct TriageQuestionnaire: View {
                 currentTriage.triageStart,
                 format: Date.FormatStyle().year().month(.twoDigits).day().hour().minute().second()
             )
-                .font(
-                    .system(size: 36.0, weight: .regular, design: .monospaced)
-                )
-                .lineLimit(1)
-                .minimumScaleFactor(0.1)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            //if let location = currentTriage.location {
-                
+            .font(
+                .system(size: 36.0, weight: .regular, design: .monospaced)
+            )
+            .lineLimit(1)
+            .minimumScaleFactor(0.1)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            if let location = currentTriage.location {
                 HStack {
                     Spacer()
-                    
+
                     Map(
                         position: $currentTriage.mapCameraPostion,
-                        interactionModes: [],
-                    )
+                        interactionModes: []
+                    ) {
+                        Marker(currentTriage.identification, systemImage: "cross.case", coordinate: location.coordinate)
+                    }
                     .mapStyle(.hybrid)
                     .frame(
                         width: 100.0,
                         height: 100.0
                     )
+                    .clipShape(RoundedRectangle(cornerRadius: 15.0))
                 }
-            //}
-            
+            }
             Spacer()
             
             VStack {
@@ -72,6 +73,11 @@ struct TriageQuestionnaire: View {
             TriageRetriage(
                 saveOnInteraction: false
             )
+        }
+        .onChange(of: isShowingTriage) { oldValue, newValue in
+            if oldValue && !newValue {
+                identification = ""
+            }
         }
         .environmentObject(currentTriage)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -90,24 +96,21 @@ struct TriageQuestionnaire: View {
         }
         .onAppear {
             self.currentTriage.triageStart = Date()
-        }
-        .onDisappear {
-            self.currentTriage.identification = ""
+            self.currentTriage.identification = identification
         }
     }
 }
 
 struct TriageQuestionnaier_Previews: PreviewProvider {
-    static let currentTriage: CurrentTriage = CurrentTriage(identification: "4 AS TEST1234")
     static let isShowingSheet: Binding<Bool> = .constant(true)
     static var previews: some View {
         Spacer()
             .sheet(isPresented: isShowingSheet) {
                 NavigationView {
                     TriageQuestionnaire(
-                        isShowingTriage: isShowingSheet
+                        isShowingTriage: isShowingSheet,
+                        identification: .constant("TESTTRIAGE")
                     )
-                    .environmentObject(self.currentTriage)
                     .previewLayout(.device)
                 }
             }

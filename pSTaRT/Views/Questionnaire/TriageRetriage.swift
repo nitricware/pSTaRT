@@ -18,13 +18,13 @@ struct TriageRetriage: View {
         VStack {
             Text("SELECT_TRIAGE_GROUP_NOW")
             
-            let buttonWidth = (UIScreen.main.bounds.width - 30) / 4
+            //let buttonWidth = (UIScreen.main.bounds.width - 30) / 4
             HStack (spacing: 10.0) {
                 Button(action: {
                     save(.one)
                 }) {
                     Text("I")
-                        .frame(maxWidth: buttonWidth)
+                        .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.glassProminent)
                 .tint(.red)
@@ -33,7 +33,7 @@ struct TriageRetriage: View {
                     save(.two)
                 }) {
                     Text("II")
-                        .frame(maxWidth: buttonWidth)
+                        .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.glassProminent)
                 .tint(.yellow)
@@ -42,7 +42,7 @@ struct TriageRetriage: View {
                     save(.three)
                 }) {
                     Text("III")
-                        .frame(maxWidth: buttonWidth)
+                        .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.glassProminent)
                 .tint(.green)
@@ -51,7 +51,7 @@ struct TriageRetriage: View {
                     save(.four)
                 }) {
                     Text("IV")
-                        .frame(maxWidth: buttonWidth)
+                        .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.glassProminent)
                 .tint(.blue)

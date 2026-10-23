@@ -12,7 +12,7 @@ import CoreData
 struct Overview: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @ObservedObject public var currentTriage: CurrentTriage = CurrentTriage()
+    //@ObservedObject public var currentTriage: CurrentTriage = CurrentTriage()
     
     // MARK: Sheet States
     @State private var isShowingTriage: Bool = false
@@ -20,12 +20,14 @@ struct Overview: View {
     
     @State public var isShowingTipJar: Bool = false
     
+    @State public var identification: String = ""
+    
     var body: some View {
         VStack {
             IdentificationInput(
-                isShowingTriage: $isShowingTriage
+                isShowingTriage: $isShowingTriage,
+                identification: $identification
             )
-            .environmentObject(currentTriage)
             
             TriageGroupsOverview()
                 .frame(maxHeight: .infinity, alignment: .bottom)
@@ -46,9 +48,10 @@ struct Overview: View {
         .sheet(isPresented: $isShowingTriage) {
             NavigationView {
                 TriageQuestionnaire(
-                    isShowingTriage: $isShowingTriage
+                    isShowingTriage: $isShowingTriage,
+                    identification: $identification
+                    
                 )
-                .environmentObject(currentTriage)
             }
             .interactiveDismissDisabled()
         }

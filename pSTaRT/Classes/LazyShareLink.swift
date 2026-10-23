@@ -3,7 +3,6 @@
 //  pSTaRT
 //
 //  Created by Kurt Frey on 23.10.26.
-//  Copyright © 2026 Kurt Frey. All rights reserved.
 //
 
 
@@ -32,7 +31,15 @@ struct LazyShareLink<Label: View>: View {
 
     var body: some View {
         Button(action: openShare) {
-            label
+            // The label stays in the layout (just hidden) so the button keeps
+            // its size and doesn't jump while the spinner is shown.
+            ZStack {
+                label
+                    .opacity(isPreparing ? 0 : 1)
+                if isPreparing {
+                    ProgressView()
+                }
+            }
         }
         .disabled(isPreparing)
     }
@@ -54,19 +61,29 @@ struct LazyShareLink<Label: View>: View {
 
     @MainActor
     private func present(_ data: [Any]) {
-        let activityVC = UIActivityViewController(activityItems: data, applicationActivities: nil)
-
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            // otherwise iPad crashes
-            let thisViewVC = UIHostingController(rootView: self)
-            activityVC.popoverPresentationController?.sourceView = thisViewVC.view
+        guard var presenter = UIApplication.shared.connectedScenes
+            .flatMap({ ($0 as? UIWindowScene)?.windows ?? [] })
+            .first(where: { $0.isKeyWindow })?
+            .rootViewController else {
+            return
         }
 
-        UIApplication.shared.connectedScenes
-            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
-            .first { $0.isKeyWindow }?
-            .rootViewController?
-            .present(activityVC, animated: true, completion: nil)
+        // The link may live inside a sheet, so present from the topmost
+        // controller instead of the root, which is already presenting.
+        while let presented = presenter.presentedViewController, !presented.isBeingDismissed {
+            presenter = presented
+        }
+
+        let activityVC = UIActivityViewController(activityItems: data, applicationActivities: nil)
+
+        // iPad presents the share sheet as a popover, which needs an on-screen anchor.
+        if let popover = activityVC.popoverPresentationController {
+            popover.sourceView = presenter.view
+            popover.sourceRect = CGRect(x: presenter.view.bounds.midX, y: presenter.view.bounds.midY, width: 0, height: 0)
+            popover.permittedArrowDirections = []
+        }
+
+        presenter.present(activityVC, animated: true, completion: nil)
     }
 }
 

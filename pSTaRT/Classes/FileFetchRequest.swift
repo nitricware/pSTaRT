@@ -1,13 +1,13 @@
 //
 //  FileFetchRequest.swift
 //
-//  Ein SwiftUI-Pendant zu @FetchRequest / FetchedResults – nur für Dateien.
-//  Beobachtet ein Verzeichnis (DispatchSource/kqueue) und aktualisiert die View,
-//  sobald Dateien hinzukommen, verschwinden, umbenannt oder geändert werden.
+//  A SwiftUI counterpart to @FetchRequest / FetchedResults – for files.
+//  Watches a directory (DispatchSource/kqueue) and updates the view whenever
+//  files are added, removed, renamed or modified.
 //
-//  Voraussetzungen: iOS 17 / macOS 14 (Observation), Swift 5.9+ (Swift-6-sauber).
+//  Requirements: iOS 17 / macOS 14 (Observation), Swift 5.9+ (Swift 6 clean).
 //
-//  Verwendung:
+//  Usage:
 //
 //      struct DocumentsView: View {
 //          @FileFetchRequest(
@@ -44,7 +44,7 @@ public struct FileItem: Identifiable, Hashable, Sendable {
     public var pathExtension: String { url.pathExtension }
 }
 
-/// Analog zu `FetchedResults`: eine Random-Access-Collection der aktuellen Dateien.
+/// Analogous to `FetchedResults`: a random-access collection of the current files.
 public struct FileFetchedResults: RandomAccessCollection, Equatable, Sendable {
     public let items: [FileItem]
 
@@ -62,17 +62,19 @@ public struct FileFetchRequest: DynamicProperty {
     private let configuration: DirectoryWatcher.Configuration
     private let sortDescriptors: [KeyPathComparator<FileItem>]
     private let filter: (@Sendable (FileItem) -> Bool)?
+    private let transaction: Transaction
 
     /// - Parameters:
-    ///   - directory: Zu beobachtendes Verzeichnis (nicht rekursiv).
-    ///   - pathExtensions: Nur Dateien mit diesen Endungen (case-insensitive). `nil` = alle.
-    ///   - includesHidden: Versteckte Dateien (".foo") einbeziehen.
-    ///   - includesDirectories: Unterverzeichnisse in den Ergebnissen aufführen.
-    ///   - watchesFileContents: Auch Inhaltsänderungen einzelner Dateien melden
-    ///     (öffnet pro Datei einen File-Descriptor). Ohne: nur Hinzufügen/Entfernen/Umbenennen.
-    ///   - sortDescriptors: Sortierung, z. B. `KeyPathComparator(\.name)`.
-    ///   - filter: Zusätzlicher Filter. Hinweis: Closures sind nicht vergleichbar –
-    ///     ein geänderter Filter greift erst beim nächsten Scan (oder nach `refresh()`).
+    ///   - directory: The directory to watch (not recursive).
+    ///   - pathExtensions: Only include files with these extensions (case-insensitive). `nil` = all.
+    ///   - includesHidden: Include hidden files (".foo").
+    ///   - includesDirectories: Include subdirectories in the results.
+    ///   - watchesFileContents: Also report content changes of individual files
+    ///     (opens one file descriptor per file). Otherwise only add/remove/rename is reported.
+    ///   - sortDescriptors: Sort order, e.g. `KeyPathComparator(\.name)`.
+    ///   - animation: The animation used when the results change. The initial load is never animated.
+    ///   - filter: Additional filter. Note: closures can't be compared, so a changed
+    ///     filter only takes effect on the next scan (or after `refresh()`).
     public init(
         directory: URL,
         pathExtensions: Set<String>? = nil,
@@ -80,6 +82,30 @@ public struct FileFetchRequest: DynamicProperty {
         includesDirectories: Bool = false,
         watchesFileContents: Bool = true,
         sortDescriptors: [KeyPathComparator<FileItem>] = [KeyPathComparator(\.name)],
+        animation: Animation? = nil,
+        filter: (@Sendable (FileItem) -> Bool)? = nil
+    ) {
+        self.init(
+            directory: directory,
+            pathExtensions: pathExtensions,
+            includesHidden: includesHidden,
+            includesDirectories: includesDirectories,
+            watchesFileContents: watchesFileContents,
+            sortDescriptors: sortDescriptors,
+            transaction: Transaction(animation: animation),
+            filter: filter
+        )
+    }
+
+    /// Same as above, but with a full `Transaction` applied when the results change.
+    public init(
+        directory: URL,
+        pathExtensions: Set<String>? = nil,
+        includesHidden: Bool = false,
+        includesDirectories: Bool = false,
+        watchesFileContents: Bool = true,
+        sortDescriptors: [KeyPathComparator<FileItem>] = [KeyPathComparator(\.name)],
+        transaction: Transaction,
         filter: (@Sendable (FileItem) -> Bool)? = nil
     ) {
         self.configuration = .init(
@@ -91,19 +117,27 @@ public struct FileFetchRequest: DynamicProperty {
         )
         self.sortDescriptors = sortDescriptors
         self.filter = filter
+        self.transaction = transaction
     }
 
     @MainActor public var wrappedValue: FileFetchedResults { watcher.results }
 
-    /// Zugriff auf den Watcher: `$files.error`, `$files.isLoading`, `$files.refresh()`.
+    /// Access to the watcher: `$files.error`, `$files.isLoading`, `$files.refresh()`.
     @MainActor public var projectedValue: DirectoryWatcher { watcher }
 
-    // SwiftUI ruft update() immer auf dem Main Thread auf.
+    // SwiftUI always calls update() on the main thread.
     public nonisolated func update() {
         let (watcher, configuration, sortDescriptors, filter) =
             (watcher, configuration, sortDescriptors, filter)
+        // `Transaction` isn't Sendable, but we never actually leave the main thread.
+        nonisolated(unsafe) let transaction = transaction
         MainActor.assumeIsolated {
-            watcher.apply(configuration, sortDescriptors: sortDescriptors, filter: filter)
+            watcher.apply(
+                configuration,
+                sortDescriptors: sortDescriptors,
+                filter: filter,
+                transaction: transaction
+            )
         }
     }
 }
@@ -128,15 +162,17 @@ public final class DirectoryWatcher {
     @ObservationIgnored private var configuration: Configuration?
     @ObservationIgnored private var sortDescriptors: [KeyPathComparator<FileItem>] = []
     @ObservationIgnored private var filter: (@Sendable (FileItem) -> Bool)?
+    @ObservationIgnored private var transaction = Transaction()
+    @ObservationIgnored private var hasLoaded = false
     @ObservationIgnored private let sources = SourceBag()
     @ObservationIgnored private var pendingScan: Task<Void, Never>?
 
-    /// Events innerhalb dieses Fensters werden zu einem Scan zusammengefasst.
+    /// Events within this window are coalesced into a single scan.
     private static let debounce: Duration = .milliseconds(100)
 
     public nonisolated init() {}
 
-    /// Erzwingt einen sofortigen Neu-Scan.
+    /// Forces an immediate rescan.
     public func refresh() {
         scheduleScan(after: .zero)
     }
@@ -144,16 +180,18 @@ public final class DirectoryWatcher {
     func apply(
         _ configuration: Configuration,
         sortDescriptors: [KeyPathComparator<FileItem>],
-        filter: (@Sendable (FileItem) -> Bool)?
+        filter: (@Sendable (FileItem) -> Bool)?,
+        transaction: Transaction
     ) {
         self.filter = filter
+        self.transaction = transaction
         if configuration != self.configuration {
             self.configuration = configuration
             self.sortDescriptors = sortDescriptors
             startWatching()
         } else if sortDescriptors != self.sortDescriptors {
             self.sortDescriptors = sortDescriptors
-            // Nicht synchron sortieren: wir sind mitten in einem View-Update.
+            // Don't sort synchronously: we're in the middle of a view update.
             scheduleScan(after: .zero)
         }
     }
@@ -170,7 +208,7 @@ public final class DirectoryWatcher {
         ) { [weak self] event in
             guard let self else { return }
             if !event.isDisjoint(with: [.delete, .rename, .revoke]) {
-                // Verzeichnis selbst wurde verschoben/gelöscht → neu anbinden.
+                // The directory itself was moved/deleted → re-attach.
                 self.startWatching()
             } else {
                 self.scheduleScan(after: Self.debounce)
@@ -255,14 +293,21 @@ public final class DirectoryWatcher {
         }.value
         isLoading = false
 
-        // Konfiguration hat sich zwischenzeitlich geändert → Ergebnis verwerfen.
+        // Configuration changed in the meantime → discard the result.
         guard configuration == self.configuration, !Task.isCancelled else { return }
 
         switch outcome {
         case .success(let items):
             if error != nil { error = nil }
             let newResults = FileFetchedResults(items: items)
-            if newResults != results { results = newResults }
+            if newResults != results {
+                if hasLoaded {
+                    withTransaction(transaction) { results = newResults }
+                } else {
+                    results = newResults
+                }
+            }
+            hasLoaded = true
             updateFileSources(for: items)
         case .failure(let scanError):
             error = scanError
@@ -303,9 +348,9 @@ public final class DirectoryWatcher {
 
 // MARK: - Source storage
 
-/// Hält die DispatchSources und räumt sie im deinit auf
-/// (der deinit des MainActor-Watchers selbst ist nonisolated).
-/// Wird ausschließlich vom Main Actor aus verändert.
+/// Holds the dispatch sources and cancels them in deinit
+/// (the main-actor watcher's own deinit is nonisolated).
+/// Only mutated from the main actor.
 private final class SourceBag: @unchecked Sendable {
     var directory: DispatchSourceFileSystemObject?
     var files: [URL: DispatchSourceFileSystemObject] = [:]
