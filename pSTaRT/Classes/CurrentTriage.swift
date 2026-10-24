@@ -178,12 +178,12 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func appendTriage() {
-        person!.triageGroup = Int16(self.triageGroup.first!.rawValue)
+        person!.triageGroup = self.triageGroup.first!.rawValue
         for triage in self.triageGroup {
             let triageObject: Triages = Triages(context: PersistenceController.shared.container.viewContext)
 
             triageObject.person = self.person!
-            triageObject.group = Int16(triage.rawValue)
+            triageObject.group = triage.rawValue
             triageObject.date = self.triageStart
             
             do {

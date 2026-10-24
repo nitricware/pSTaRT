@@ -14,7 +14,7 @@ struct TriageGroupCounter: View {
     @FetchRequest var fetchRequest: FetchedResults<Persons>
     
     init(triageGroup: TriageGroup = .unidentified) {
-        self.triageGroup = TriageGroup(stored: triageGroup.rawValue)
+        self.triageGroup = triageGroup
         self._fetchRequest = FetchRequest(
             sortDescriptors: [
                 NSSortDescriptor(
@@ -27,7 +27,7 @@ struct TriageGroupCounter: View {
         )
     }
     
-    private var triageGroup: TriageGroup = TriageGroup(stored: TriageGroup.unidentified.rawValue)
+    private var triageGroup: TriageGroup = .unidentified
     
     var body: some View {
         Text("NUM_PERSONS \(fetchRequest.count)")

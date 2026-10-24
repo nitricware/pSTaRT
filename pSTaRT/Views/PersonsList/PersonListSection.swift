@@ -46,7 +46,7 @@ struct PersonListSection: View {
 struct PersonListSection_Previews: PreviewProvider {
     static var previews: some View {
         PersonListSection(
-            with: TriageGroup(stored: TriageGroup.one.rawValue)
+            with: .one
         )
         .previewLayout(.sizeThatFits)
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)

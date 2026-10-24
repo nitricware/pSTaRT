@@ -14,7 +14,7 @@ struct TriageGroupsRow: View {
     var body: some View {
         HStack {
             TriageGroupIcon(
-                triageGroup: TriageGroup(stored: triageGroup.rawValue)
+                triageGroup: triageGroup
             )
             .frame(width: iconSize, height: iconSize, alignment: .center)
             TriageGroupCounter(

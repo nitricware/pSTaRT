@@ -18,7 +18,6 @@ struct TriageRetriage: View {
         VStack {
             Text("SELECT_TRIAGE_GROUP_NOW")
             
-            //let buttonWidth = (UIScreen.main.bounds.width - 30) / 4
             HStack (spacing: 10.0) {
                 ForEach(TriageGroup.assignable) { group in
                     Button(action: {
