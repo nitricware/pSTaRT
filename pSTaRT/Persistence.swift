@@ -8,14 +8,12 @@
 
 //
 //  Persistence.swift
-//  Aphrodite
 //
 //  Created by Kurt Höblinger on 24.08.22.
 //  Copyright © 2022 Kurt Höblinger. All rights reserved.
 //
 
 import Foundation
-import CloudKit
 import CoreData
 
 

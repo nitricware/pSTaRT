@@ -8,7 +8,7 @@
         <attribute name="preciseLocation" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="triageGroup" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="triages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Triages" inverseName="person" inverseEntity="Triages"/>
+        <relationship name="triages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Triages" inverseName="person" inverseEntity="Triages"/>
     </entity>
     <entity name="Triages" representedClassName="Triages" elementID="Triages" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

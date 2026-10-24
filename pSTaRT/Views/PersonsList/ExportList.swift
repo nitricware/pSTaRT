@@ -12,6 +12,7 @@ struct ExportList: View {
     @FileFetchRequest(
         directory: .documentsDirectory,
         pathExtensions: ["csv"],
+        watchesFileContents: false,
         sortDescriptors: [KeyPathComparator(\.modificationDate, order: .reverse)],
         animation: .default
     ) private var files

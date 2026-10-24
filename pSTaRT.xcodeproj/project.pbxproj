@@ -84,6 +84,7 @@
 		458FB819237F0F1B0060A8FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		459B211C28CE3EF000E8305B /* CurrentTriage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTriage.swift; sourceTree = "<group>"; };
 		459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupIcon.swift; sourceTree = "<group>"; };
+		45A4478F308D3E6F0032B776 /* pSTaRT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pSTaRT.entitlements; sourceTree = "<group>"; };
 		45AA119D25BAF5C000CD5530 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		45E924D228CEF57500C5FC9A /* TriageQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageQuestion.swift; sourceTree = "<group>"; };
 		45E924D828CEF84400C5FC9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Questionnaire.strings; sourceTree = "<group>"; };
@@ -196,6 +197,7 @@
 		458FB807237F0F1A0060A8FB /* pSTaRT */ = {
 			isa = PBXGroup;
 			children = (
+				45A4478F308D3E6F0032B776 /* pSTaRT.entitlements */,
 				45E924D428CEF80300C5FC9A /* Strings */,
 				450C3BF528CCCBCB00BEF415 /* Classes */,
 				450C3BF228CCCA8C00BEF415 /* Enums */,
@@ -523,6 +525,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = pSTaRT/pSTaRT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 18;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
@@ -543,6 +546,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = pSTaRT/pSTaRT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 18;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
