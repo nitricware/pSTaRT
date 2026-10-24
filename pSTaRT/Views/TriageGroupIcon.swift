@@ -9,14 +9,14 @@
 import SwiftUI
 
 struct TriageGroupIcon: View {
-    public var triageGroup: TriageGroup = TriageGroup()
+    public var triageGroup: TriageGroup = .unidentified
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 Circle()
                     .foregroundColor(triageGroup.color)
-                Text(triageGroup.identifier.rawValue)
+                Text(triageGroup.roman)
                     .font(.system(size: geo.size.height - (geo.size.height*0.25), weight: .regular, design: .serif))
                     .minimumScaleFactor(0.1)
             }
@@ -25,7 +25,7 @@ struct TriageGroupIcon: View {
 }
 
 struct TriageGroupIcon_Previews: PreviewProvider {
-    static var triageGroup: TriageGroup = TriageGroup(.four)
+    static var triageGroup: TriageGroup = .four
     static var previews: some View {
         
         TriageGroupIcon(

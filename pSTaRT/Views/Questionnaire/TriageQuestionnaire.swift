@@ -61,7 +61,7 @@ struct TriageQuestionnaire: View {
             Spacer()
             
             VStack {
-                if currentTriage.triageGroup.first!.identifier == .unidentified {
+                if currentTriage.triageGroup.first == .unidentified {
                     TriageQuestion()
                 } else {
                     TriageConclusion(

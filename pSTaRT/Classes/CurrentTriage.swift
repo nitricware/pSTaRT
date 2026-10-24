@@ -17,7 +17,7 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published public var triageStart: Date = Date()
     
-    @Published public var triageGroup: [TriageGroup] = [TriageGroup()]
+    @Published public var triageGroup: [TriageGroup] = [.unidentified]
     
     @Published public var currentQuestion: String = NSLocalizedString("WALKING", tableName: "Questionnaire", comment: "Can the person walk?")
     
@@ -68,7 +68,7 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     func reset() {
         self.identification = ""
         self.triageStart = Date()
-        self.triageGroup = [TriageGroup()]
+        self.triageGroup = [.unidentified]
         self.currentQuestion = NSLocalizedString("WALKING", tableName: "Questionnaire", comment: "Can the person walk?")
         self.yesColor = .green
         self.noColor = .orange
@@ -142,11 +142,11 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     /// Concludes a triage. Can either be triggered by finishing the questionnaire or by retriaging.
-    func conclude(assign triageGroup: TriageGroups) {
-        if self.triageGroup.first?.identifier == .unidentified {
-            self.triageGroup = [TriageGroup(triageGroup)]
+    func conclude(assign triageGroup: TriageGroup) {
+        if self.triageGroup.first == .unidentified {
+            self.triageGroup = [triageGroup]
         } else {
-            self.triageGroup.insert(TriageGroup(triageGroup), at: 0)
+            self.triageGroup.insert(triageGroup, at: 0)
         }
     }
     
@@ -178,12 +178,12 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func appendTriage() {
-        person!.triageGroup = Int16(self.triageGroup.first!.intVal)
+        person!.triageGroup = Int16(self.triageGroup.first!.rawValue)
         for triage in self.triageGroup {
             let triageObject: Triages = Triages(context: PersistenceController.shared.container.viewContext)
 
             triageObject.person = self.person!
-            triageObject.group = Int16(triage.intVal)
+            triageObject.group = Int16(triage.rawValue)
             triageObject.date = self.triageStart
             
             do {

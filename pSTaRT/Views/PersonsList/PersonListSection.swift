@@ -22,7 +22,7 @@ struct PersonListSection: View {
                     ascending: true
                 )
             ],
-            predicate: NSPredicate(format: "triageGroup = %d", triageGroup.intVal),
+            predicate: NSPredicate(format: "triageGroup = %d", triageGroup.rawValue),
             animation: .default
         )
     }
@@ -46,7 +46,7 @@ struct PersonListSection: View {
 struct PersonListSection_Previews: PreviewProvider {
     static var previews: some View {
         PersonListSection(
-            with: TriageGroup(.one)
+            with: TriageGroup(stored: TriageGroup.one.rawValue)
         )
         .previewLayout(.sizeThatFits)
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)

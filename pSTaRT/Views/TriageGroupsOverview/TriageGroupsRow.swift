@@ -9,14 +9,14 @@
 import SwiftUI
 
 struct TriageGroupsRow: View {
-    public var triageGroup: TriageGroups = .unidentified
+    public var triageGroup: TriageGroup = .unidentified
     private let iconSize: CGFloat = 40.0
     var body: some View {
         HStack {
             TriageGroupIcon(
-                triageGroup: TriageGroup(triageGroup)
+                triageGroup: TriageGroup(stored: triageGroup.rawValue)
             )
-                .frame(width: iconSize, height: iconSize, alignment: .center)
+            .frame(width: iconSize, height: iconSize, alignment: .center)
             TriageGroupCounter(
                 triageGroup: triageGroup
             )

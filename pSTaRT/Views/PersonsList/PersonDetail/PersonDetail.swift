@@ -48,9 +48,9 @@ struct PersonDetail: View {
                     }
                     PersonDetailRow(caption: "TRIAGEGROUP") {
                         HStack {
-                            TriageGroupIcon(triageGroup: TriageGroup(Int(person.triageGroup)))
+                            TriageGroupIcon(triageGroup: TriageGroup(stored: person.triageGroup))
                                 .frame(width: 28.0)
-                            Text("TRIAGE_GROUP \(TriageGroup(Int(person.triageGroup)).roman)")
+                            Text("TRIAGE_GROUP \(TriageGroup(stored: person.triageGroup).roman)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
@@ -91,7 +91,7 @@ struct PersonDetail: View {
                 Section ("TRIAGE_HISTORY") {
                     ForEach(self.triages) { triage in
                         HStack {
-                            TriageGroupIcon(triageGroup: TriageGroup(Int(triage.group)))
+                            TriageGroupIcon(triageGroup: TriageGroup(stored: triage.group))
                                 .frame(width: 28.0)
                             Text(triage.date?.formatted() ?? "NO_DATE")
                                 .frame(maxWidth: .infinity, alignment: .leading)

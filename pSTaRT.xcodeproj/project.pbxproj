@@ -15,7 +15,6 @@
 		45098B1E28D9D31F00DD524A /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45098B1D28D9D31F00DD524A /* StoreManager.swift */; };
 		450C3BEF28CCC8F600BEF415 /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BEE28CCC8F600BEF415 /* Overview.swift */; };
 		450C3BF128CCCA3A00BEF415 /* TriageGroupsOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BF028CCCA3A00BEF415 /* TriageGroupsOverview.swift */; };
-		450C3BF428CCCA9C00BEF415 /* TriageGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BF328CCCA9C00BEF415 /* TriageGroups.swift */; };
 		450C3BF728CCCBE200BEF415 /* TriageGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BF628CCCBE200BEF415 /* TriageGroup.swift */; };
 		450C3BFB28CCCDEA00BEF415 /* IdentificationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BFA28CCCDEA00BEF415 /* IdentificationInput.swift */; };
 		450C3C0028CDC6C600BEF415 /* pSTaRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BFF28CDC6C600BEF415 /* pSTaRTApp.swift */; };
@@ -57,7 +56,6 @@
 		45098B1D28D9D31F00DD524A /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		450C3BEE28CCC8F600BEF415 /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
 		450C3BF028CCCA3A00BEF415 /* TriageGroupsOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupsOverview.swift; sourceTree = "<group>"; };
-		450C3BF328CCCA9C00BEF415 /* TriageGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroups.swift; sourceTree = "<group>"; };
 		450C3BF628CCCBE200BEF415 /* TriageGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroup.swift; sourceTree = "<group>"; };
 		450C3BFA28CCCDEA00BEF415 /* IdentificationInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationInput.swift; sourceTree = "<group>"; };
 		450C3BFF28CDC6C600BEF415 /* pSTaRTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pSTaRTApp.swift; sourceTree = "<group>"; };
@@ -147,9 +145,9 @@
 		450C3BF228CCCA8C00BEF415 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				450C3BF628CCCBE200BEF415 /* TriageGroup.swift */,
 				4531D247308BF02200FBEB8F /* CSVExportError.swift */,
 				452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */,
-				450C3BF328CCCA9C00BEF415 /* TriageGroups.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -161,7 +159,6 @@
 				4531D241308B838600FBEB8F /* CSVManager.swift */,
 				457C08BB2FD9E4CE0031CD5C /* NWIAPListener.swift */,
 				4520E64823F955A800BBD06F /* DBHelper.swift */,
-				450C3BF628CCCBE200BEF415 /* TriageGroup.swift */,
 				459B211C28CE3EF000E8305B /* CurrentTriage.swift */,
 				45098B1D28D9D31F00DD524A /* StoreManager.swift */,
 				4531D243308B9F0600FBEB8F /* FileFetchRequest.swift */,
@@ -340,7 +337,6 @@
 				450C3BF728CCCBE200BEF415 /* TriageGroup.swift in Sources */,
 				450C3BEF28CCC8F600BEF415 /* Overview.swift in Sources */,
 				4531D248308BF02200FBEB8F /* CSVExportError.swift in Sources */,
-				450C3BF428CCCA9C00BEF415 /* TriageGroups.swift in Sources */,
 				45098B1028D887EA00DD524A /* MainToolbar.swift in Sources */,
 				451FA2DA261F454A00E25BA0 /* pSTaRT.xcdatamodeld in Sources */,
 				459B211F28CE4A6900E8305B /* TriageGroupIcon.swift in Sources */,

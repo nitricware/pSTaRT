@@ -35,10 +35,9 @@ struct PersonsList: View {
                 }
             }
             
-            PersonListSection(with: TriageGroup(.one))
-            PersonListSection(with: TriageGroup(.two))
-            PersonListSection(with: TriageGroup(.three))
-            PersonListSection(with: TriageGroup(.four))
+            ForEach(TriageGroup.assignable) { group in
+                PersonListSection(with: group)
+            }
         }
         .navigationTitle("PERSONS_LIST")
         .toolbar {

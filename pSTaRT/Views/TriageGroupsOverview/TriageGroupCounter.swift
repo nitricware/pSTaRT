@@ -13,8 +13,8 @@ struct TriageGroupCounter: View {
     
     @FetchRequest var fetchRequest: FetchedResults<Persons>
     
-    init(triageGroup: TriageGroups = .unidentified) {
-        self.triageGroup = TriageGroup(triageGroup)
+    init(triageGroup: TriageGroup = .unidentified) {
+        self.triageGroup = TriageGroup(stored: triageGroup.rawValue)
         self._fetchRequest = FetchRequest(
             sortDescriptors: [
                 NSSortDescriptor(
@@ -22,12 +22,12 @@ struct TriageGroupCounter: View {
                     ascending: true
                 )
             ],
-            predicate: NSPredicate(format: "triageGroup = %d", self.triageGroup.intVal),
+            predicate: NSPredicate(format: "triageGroup = %d", self.triageGroup.rawValue),
             animation: .default
         )
     }
     
-    private var triageGroup: TriageGroup = TriageGroup(.unidentified)
+    private var triageGroup: TriageGroup = TriageGroup(stored: TriageGroup.unidentified.rawValue)
     
     var body: some View {
         Text("NUM_PERSONS \(fetchRequest.count)")

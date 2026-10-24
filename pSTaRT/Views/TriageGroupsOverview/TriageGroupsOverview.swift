@@ -11,18 +11,11 @@ import SwiftUI
 struct TriageGroupsOverview: View {
     var body: some View {
         VStack {
-            TriageGroupsRow(
-                triageGroup: .one
-            )
-            TriageGroupsRow(
-                triageGroup: .two
-            )
-            TriageGroupsRow(
-                triageGroup: .three
-            )
-            TriageGroupsRow(
-                triageGroup: .four
-            )
+            ForEach(TriageGroup.assignable) { group in
+                TriageGroupsRow(
+                    triageGroup: group
+                )
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }

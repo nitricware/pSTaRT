@@ -20,46 +20,21 @@ struct TriageRetriage: View {
             
             //let buttonWidth = (UIScreen.main.bounds.width - 30) / 4
             HStack (spacing: 10.0) {
-                Button(action: {
-                    save(.one)
-                }) {
-                    Text("I")
-                        .frame(maxWidth: .infinity)
+                ForEach(TriageGroup.assignable) { group in
+                    Button(action: {
+                        save(group)
+                    }) {
+                        Text(group.roman)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.glassProminent)
+                    .tint(group.color)
                 }
-                .buttonStyle(.glassProminent)
-                .tint(.red)
-                
-                Button(action: {
-                    save(.two)
-                }) {
-                    Text("II")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.glassProminent)
-                .tint(.yellow)
-                
-                Button(action: {
-                    save(.three)
-                }) {
-                    Text("III")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.glassProminent)
-                .tint(.green)
-                
-                Button(action: {
-                    save(.four)
-                }) {
-                    Text("IV")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.glassProminent)
-                .tint(.blue)
             }
         }
     }
     
-    func save(_ group: TriageGroups) {
+    func save(_ group: TriageGroup) {
         self.currentTriage.conclude(assign: group)
         if saveOnInteraction {
             self.currentTriage.appendTriage()
