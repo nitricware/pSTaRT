@@ -114,3 +114,7 @@
 
 "INITIAL_LOCATION" = "Initial Location";
 "REDUCED_ACCURACY" = "Reduced Location Accuracy";
+"NO_EXPORTED_FILES" = "No files exported yet.";
+"PERSON_LIST_FILE" = "Person List file";
+"DELETE" = "Delete";
+"CSV_FILES" = "CSV files";

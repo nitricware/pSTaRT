@@ -109,3 +109,8 @@
 
 "INITIAL_LOCATION" = "Erste Position";
 "REDUCED_ACCURACY" = "Geringe GPS-Genauigkeit";
+"NO_EXPORTED_FILES" = "Noch keine Dateien exportier.";
+"PERSON_LIST_FILE" = "Personenlisten-Datei";
+"DELETE" = "Löschen";
+"CSV_FILES" = "CSV Dateien";
+
