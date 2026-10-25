@@ -12,11 +12,10 @@ import CoreData
 struct Overview: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    //@ObservedObject public var currentTriage: CurrentTriage = CurrentTriage()
-    
     // MARK: Sheet States
     @State private var isShowingTriage: Bool = false
     @State private var isShowingPersonsList: Bool = false
+    @State private var isShowingSettings: Bool = false
     
     @State public var isShowingTipJar: Bool = false
     
@@ -35,7 +34,8 @@ struct Overview: View {
         .ignoresSafeArea(.keyboard)
         .toolbar {
             MainToolbar(
-                isShowingTipJar: $isShowingTipJar
+                isShowingTipJar: $isShowingTipJar,
+                isShowingSettings: $isShowingSettings
             )
         }
         .navigationTitle("pSTaRT")
@@ -58,6 +58,9 @@ struct Overview: View {
         .sheet(isPresented: $isShowingTipJar) {
             TipJar(isShowingTipJar: $isShowingTipJar)
         }
+        .sheet(isPresented: $isShowingSettings, content: {
+            SettingsView(isShowingSettings: $isShowingSettings)
+        })
     }
 }
 

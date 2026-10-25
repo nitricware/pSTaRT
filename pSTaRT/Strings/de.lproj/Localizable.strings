@@ -113,4 +113,7 @@
 "PERSON_LIST_FILE" = "Personenlisten-Datei";
 "DELETE" = "Löschen";
 "CSV_FILES" = "CSV Dateien";
-
+"CSV_DEFAULT_SUFFIX" = "Triage-Date";
+"CSV_FILE_SUFFIX" = "CSV Dateiname";
+"SHARE_IMMEDIATELY" = "Sofort teilen";
+"SHARE_IMMEDIATELY_DESC" = "Wenn dieser Schalter an ist, erscheint sofort nach dem Erstellen einer CSV-Datei ein Teilen-Dialog.";

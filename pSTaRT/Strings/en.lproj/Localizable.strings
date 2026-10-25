@@ -118,3 +118,7 @@
 "PERSON_LIST_FILE" = "Person List file";
 "DELETE" = "Delete";
 "CSV_FILES" = "CSV files";
+"CSV_DEFAULT_SUFFIX" = "Triage-File";
+"CSV_FILE_SUFFIX" = "CSV file suffix";
+"SHARE_IMMEDIATELY" = "Share immediately";
+"SHARE_IMMEDIATELY_DESC" = "When this toggle is on, creating a new CSV file also triggers a share sheet to appear.";

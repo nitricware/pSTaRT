@@ -10,12 +10,20 @@ import SwiftUI
 
 struct MainToolbar: ToolbarContent {
     @Binding public var isShowingTipJar: Bool
+    @Binding public var isShowingSettings: Bool
     var body: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button(action: {
                 isShowingTipJar.toggle()
             }) {
                 Image(systemName: "giftcard")
+            }
+        }
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button(action: {
+                isShowingSettings.toggle()
+            }) {
+                Image(systemName: "gearshape")
             }
         }
         if UIDevice.current.model.contains("iPhone") {
@@ -36,7 +44,8 @@ struct MainToolbar_Previews: PreviewProvider {
             Text("Hello, World!")
                 .toolbar {
                     MainToolbar(
-                        isShowingTipJar: .constant(false)
+                        isShowingTipJar: .constant(false),
+                        isShowingSettings: .constant(false)
                     )
                 }
         }

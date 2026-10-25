@@ -17,7 +17,7 @@ struct ExportList: View {
         animation: .default
     ) private var files
     @Binding public var isShowing: Bool
-    
+    @AppStorage("csvexport.shareimmediately") var shareImmediately: Bool = true
     var body: some View {
         Group {
             if files.isEmpty {
@@ -59,10 +59,25 @@ struct ExportList: View {
                 }
             })
             ToolbarItem(placement: .topBarTrailing, content: {
-                LazyShareLink(Image(systemName: "document.badge.plus")) {
-                    [try await CSVManager.provideCSV()]
-                } onError: { error in
-                    print(error)
+                if shareImmediately {
+                    LazyShareLink(Image(systemName: "document.badge.plus")) {
+                        [try await CSVManager.provideCSV()]
+                    } onError: { error in
+                        print(error)
+                    }
+                } else {
+                    Button(action: {
+                        Task {
+                            do {
+                                try await CSVManager.provideCSV()
+                            } catch {
+                                print("error")
+                            }
+                        }
+                        
+                    }) {
+                        Image(systemName: "document.badge.plus")
+                    }
                 }
             })
             ToolbarItem(placement: .topBarTrailing, content: {

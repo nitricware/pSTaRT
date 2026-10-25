@@ -18,7 +18,7 @@ struct CSVManager {
         let context = PersistenceController.shared.container.newBackgroundContext()
         let df = DateFormatter()
         // TODO: localize the date format
-        df.dateFormat = "EEEE, d MMM y - HH:mm:ss"
+        df.dateFormat = "d-MMM-y_HH-mm-ss"
         
         let csv: String = try await context.perform {
             
@@ -65,8 +65,10 @@ struct CSVManager {
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             throw CSVExportError.noDocumentDirectory
         }
-        let file = String(format: NSLocalizedString("EXPORT_FILENAME", comment: "filename"),
-                          df.string(from: Date()))
+        let file = "\(df.string(from: Date()))_\(UserDefaults.standard.string(forKey: "csvexport.filesuffix")!).csv"
+        print (file)
+        let file2 = String(format: NSLocalizedString("EXPORT_FILENAME", comment: "filename"),                          df.string(from: Date()))
+        print(file2)
         let fileURL = dir.appendingPathComponent(file)
         
         try csv.write(to: fileURL, atomically: true, encoding: .utf8)
