@@ -38,6 +38,7 @@
 		459B211D28CE3EF000E8305B /* CurrentTriage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B211C28CE3EF000E8305B /* CurrentTriage.swift */; };
 		459B211F28CE4A6900E8305B /* TriageGroupIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */; };
 		45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 45AA119D25BAF5C000CD5530 /* Configuration.storekit */; };
+		45C0C7F7308E739F002163B5 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0C7F6308E739F002163B5 /* AppSettings.swift */; };
 		45E4EB912A5ED6320048ED6C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 45E4EB902A5ED6320048ED6C /* CodeScanner */; };
 		45E924D328CEF57500C5FC9A /* TriageQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E924D228CEF57500C5FC9A /* TriageQuestion.swift */; };
 		45E924D728CEF84400C5FC9A /* Questionnaire.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E924D928CEF84400C5FC9A /* Questionnaire.strings */; };
@@ -86,6 +87,7 @@
 		459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupIcon.swift; sourceTree = "<group>"; };
 		45A4478F308D3E6F0032B776 /* pSTaRT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pSTaRT.entitlements; sourceTree = "<group>"; };
 		45AA119D25BAF5C000CD5530 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		45C0C7F6308E739F002163B5 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		45E924D228CEF57500C5FC9A /* TriageQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageQuestion.swift; sourceTree = "<group>"; };
 		45E924D828CEF84400C5FC9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Questionnaire.strings; sourceTree = "<group>"; };
 		45E924DA28CEF84600C5FC9A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Questionnaire.strings; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		450C3BF228CCCA8C00BEF415 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				45C0C7F6308E739F002163B5 /* AppSettings.swift */,
 				450C3BF628CCCBE200BEF415 /* TriageGroup.swift */,
 				4531D247308BF02200FBEB8F /* CSVExportError.swift */,
 				452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */,
@@ -358,6 +361,7 @@
 				45098B1528D89BFB00DD524A /* TriageGroupsRow.swift in Sources */,
 				45ECCA8F28CF6449005E4D39 /* PersonDetail.swift in Sources */,
 				45ECCA9128D062ED005E4D39 /* TriageRetriage.swift in Sources */,
+				45C0C7F7308E739F002163B5 /* AppSettings.swift in Sources */,
 				450C3C0A28CDFA0C00BEF415 /* TriageQuestionnaire.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

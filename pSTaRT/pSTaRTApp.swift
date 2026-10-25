@@ -12,6 +12,11 @@ import SwiftUI
 @main
 struct pSTaRTApp: App {
     let persistenceController = PersistenceController.shared
+    init () {
+        // initialize default values for several settings.
+        // This does not override already modified settings.
+        AppSettings.registerDefaults()
+    }
     var body: some Scene {
         WindowGroup {
             NavigationView {

@@ -65,7 +65,7 @@ struct CSVManager {
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             throw CSVExportError.noDocumentDirectory
         }
-        let file = "\(df.string(from: Date()))_\(UserDefaults.standard.string(forKey: "csvexport.filesuffix")!).csv"
+        let file = "\(df.string(from: Date()))_\(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!).csv"
         print (file)
         let file2 = String(format: NSLocalizedString("EXPORT_FILENAME", comment: "filename"),                          df.string(from: Date()))
         print(file2)
