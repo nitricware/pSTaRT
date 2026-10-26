@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-struct CSVManager {
+enum CSVManager {
     @concurrent
     @discardableResult
     static func provideCSV() async throws -> URL {

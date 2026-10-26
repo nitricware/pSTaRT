@@ -20,8 +20,8 @@ enum AppSettings {
     
     enum Default {
         static let shareImmediately = true
-        static var csvFileSuffix: String { NSLocalizedString("CSV_DEFAULT_SUFFIX", comment: "") }
-        static var csvDatePrefix: String = "yyyy-MM-dd_HH-mm-ss";
+        static let csvFileSuffix: String = NSLocalizedString("CSV_DEFAULT_SUFFIX", comment: "")
+        static let csvDatePrefix: String = "yyyy-MM-dd_HH-mm-ss"
         static let iCloudSyncEnabled: Bool = false
         static let pendingCloudPurge: Bool = false
         static let scannerCodeTypes: String = "org.iso.Code39"
