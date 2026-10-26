@@ -27,7 +27,7 @@ struct TriageGroupCounter: View {
         )
     }
     
-    private var triageGroup: TriageGroup = .unidentified
+    private let triageGroup: TriageGroup
     
     var body: some View {
         Text("NUM_PERSONS \(fetchRequest.count)")
