@@ -11,7 +11,8 @@ import CoreData
 
 struct CSVManager {
     @concurrent
-    static func provideCSV() async throws {
+    @discardableResult
+    static func provideCSV() async throws -> URL {
         // The context must outlive every access to the fetched objects, so it is
         // held here and all managed object work happens inside its perform block.
         // Only the finished String leaves the block.
@@ -66,11 +67,10 @@ struct CSVManager {
             throw CSVExportError.noDocumentDirectory
         }
         let file = "\(df.string(from: Date()))_\(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!).csv"
-        let file2 = String(format: NSLocalizedString("EXPORT_FILENAME", comment: "filename"),                          df.string(from: Date()))
         let fileURL = dir.appendingPathComponent(file)
         
         try csv.write(to: fileURL, atomically: true, encoding: .utf8)
-        return
+        return fileURL
     }
     
     static func deleteCSV(_ file: URL) throws {
