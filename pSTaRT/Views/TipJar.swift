@@ -11,7 +11,7 @@ import StoreKit
 
 struct TipJar: View {
     @Binding public var isShowingTipJar: Bool
-    @ObservedObject public var storeManager: StoreManager = StoreManager()
+    @StateObject public var storeManager: StoreManager = StoreManager()
     @AppStorage("givenMoney") var tipJar: Double = 0.00
     
     var body: some View {
