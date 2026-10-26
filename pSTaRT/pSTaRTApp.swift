@@ -11,11 +11,12 @@ import SwiftUI
 
 @main
 struct pSTaRTApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController: PersistenceController
     init () {
         // initialize default values for several settings.
         // This does not override already modified settings.
         AppSettings.registerDefaults()
+        persistenceController = PersistenceController.shared
     }
     var body: some Scene {
         WindowGroup {
