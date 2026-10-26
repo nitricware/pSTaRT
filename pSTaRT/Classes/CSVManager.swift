@@ -19,7 +19,9 @@ enum CSVManager {
         let context = PersistenceController.shared.container.newBackgroundContext()
         let df = DateFormatter()
         // TODO: localize the date format
-        df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
+        
+        df.dateStyle = .short
+        df.timeStyle = .long
         
         let csv: String = try await context.perform {
             
@@ -66,7 +68,7 @@ enum CSVManager {
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             throw CSVExportError.noDocumentDirectory
         }
-        
+        df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
         let datePrefix = df.string(from: Date())
         let sanitizedFileName = self.sanitizeFilename(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!)
         let separator:String = sanitizedFileName.isEmpty ? "" : "_"
@@ -75,12 +77,19 @@ enum CSVManager {
         let fileURL = dir.appendingPathComponent(file)
         
         try csv.write(to: fileURL, atomically: true, encoding: .utf8)
+        #if DEBUG
+            print("📄 wrote \(fileURL)")
+        #endif
         return fileURL
     }
     
     static func sanitizeFilename(_ name: String) -> String {
-        let newName = name.filter { char in
+        var newName = name.filter { char in
             char.isASCII && (char.isLetter || char.isNumber || char == "_" || char == "-")
+        }
+        
+        if newName.count > 30 {
+            newName.removeLast(newName.count - 30)
         }
         
         return newName
