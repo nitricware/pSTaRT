@@ -13,7 +13,10 @@ struct SettingsView: View {
     @AppStorage(AppSettings.Key.shareImmediately) var shareimmediately: Bool = AppSettings.Default.shareImmediately
     @Binding var isShowingSettings: Bool
     @State private var datePrefix = "1990-02-19_23-00-00"
-    @State private var separator: String = "_"
+    
+    private var separator: String { filesuffix.isEmpty ? "" : "_" }
+    private var feedbackGenerator: UINotificationFeedbackGenerator = .init()
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -30,9 +33,8 @@ struct SettingsView: View {
                                     
                                     if filtered != newSuffix {
                                         filesuffix = filtered
+                                        feedbackGenerator.notificationOccurred(.warning)
                                     }
-
-                                    separator = filesuffix.isEmpty ? "" : "_"
                                 }
                         }
                         
@@ -44,7 +46,7 @@ struct SettingsView: View {
                                 df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
                                 let date = Date()
                                 datePrefix = df.string(from: date)
-                                separator = filesuffix.isEmpty ? "" : "_"
+                                feedbackGenerator.prepare()
                             }
                     }
                 }
