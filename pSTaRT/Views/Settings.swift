@@ -13,6 +13,7 @@ struct SettingsView: View {
     @AppStorage(AppSettings.Key.shareImmediately) var shareimmediately: Bool = AppSettings.Default.shareImmediately
     @Binding var isShowingSettings: Bool
     @State private var datePrefix = "1990-02-19_23-00-00"
+    @State private var separator: String = "_"
     var body: some View {
         NavigationStack {
             Form {
@@ -26,7 +27,7 @@ struct SettingsView: View {
                                 .labelsVisibility(.visible)
                         }
                         
-                        Text("\(datePrefix)_**\(filesuffix)**.csv")
+                        Text("\(datePrefix)\(separator)**\(filesuffix)**.csv")
                             .font(.caption)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .onChange(of: filesuffix) { _, newSuffix in
@@ -35,12 +36,14 @@ struct SettingsView: View {
                                 if filtered != newSuffix {
                                     filesuffix = filtered
                                 }
+                                separator = filesuffix.isEmpty ? "" : "_"
                             }
                             .onAppear {
                                 let df = DateFormatter()
                                 df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
                                 let date = Date()
                                 datePrefix = df.string(from: date)
+                                separator = filesuffix.isEmpty ? "" : "_"
                             }
                     }
                 }

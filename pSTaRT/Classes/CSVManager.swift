@@ -66,7 +66,12 @@ enum CSVManager {
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             throw CSVExportError.noDocumentDirectory
         }
-        let file = "\(df.string(from: Date()))_\(self.sanitizeFilename(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!)).csv"
+        
+        let datePrefix = df.string(from: Date())
+        let sanitizedFileName = self.sanitizeFilename(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!)
+        let separator:String = sanitizedFileName.isEmpty ? "" : "_"
+        let file = "\(datePrefix)\(separator)\(sanitizedFileName).csv"
+        
         let fileURL = dir.appendingPathComponent(file)
         
         try csv.write(to: fileURL, atomically: true, encoding: .utf8)
