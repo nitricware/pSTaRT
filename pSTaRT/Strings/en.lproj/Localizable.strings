@@ -105,7 +105,7 @@
 
 "TIPJAR_TITLE" = "Tip Jar";
 "TIPJAR_BUTTON %@" = "Donate %@";
-"TIPJAR_INTRODUCTION %@" = "I'm creating this application in my spare time. If you like what you got (including the free upgrades) and want to further support my work, consider donating. For one voluntary shift at my local abulance, I receive about %@.";
+"TIPJAR_INTRODUCTION %@" = "I'm creating this application in my spare time. If you like what you got (including the free upgrades) and want to further support my work, consider donating. For one voluntary shift at my local ambulance, I receive about %@.";
 "TIPJAR_THANKS %@ %lf" = "Thank you for your support. You donated %@\U00A0%.2f using this device since you installed the app.";
 "TIPJAR_LOADING" = "Loading tips...";
 
