@@ -9,25 +9,32 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage(AppSettings.Key.csvFileSuffix) var filesuffix: String = ""
-    @AppStorage(AppSettings.Key.shareImmediately) var shareimmediately: Bool = true
+    @AppStorage(AppSettings.Key.csvFileSuffix) var filesuffix: String = AppSettings.Default.csvFileSuffix
+    @AppStorage(AppSettings.Key.shareImmediately) var shareimmediately: Bool = AppSettings.Default.shareImmediately
     @Binding var isShowingSettings: Bool
+    @State private var datePrefix = "1990-02-19_23-00-00"
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section {
                     VStack {
-                        Text("CSV_FILE_SUFFIX")
+                        /*Text("CSV_FILE_SUFFIX")
                             .font(.caption)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)*/
                         HStack {
-                            Text("2026-01-01_13-56-01_")
-                                .foregroundStyle(Color.secondary)
                             TextField("CSV_FILE_SUFFIX", text: $filesuffix)
                                 .labelsVisibility(.visible)
-                            Text(".csv")
-                                .foregroundStyle(Color.secondary)
                         }
+                        
+                        Text("\(datePrefix)_**\(filesuffix)**.csv")
+                            .font(.caption)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .onAppear {
+                                let df = DateFormatter()
+                                df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
+                                let date = Date()
+                                datePrefix = df.string(from: date)
+                            }
                     }
                 }
                 
@@ -35,6 +42,7 @@ struct SettingsView: View {
                     Toggle("SHARE_IMMEDIATELY", isOn: $shareimmediately)
                 }
             }
+            .navigationTitle(Text("SETTINGS"))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {
@@ -49,7 +57,9 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(
-        isShowingSettings: .constant(true)
-    )
+    NavigationStack {
+        SettingsView(
+            isShowingSettings: .constant(true)
+        )
+    }
 }
