@@ -25,19 +25,20 @@ struct SettingsView: View {
                         HStack {
                             TextField("CSV_FILE_SUFFIX", text: $filesuffix)
                                 .labelsVisibility(.visible)
+                                .onChange(of: filesuffix) { _, newSuffix in
+                                    let filtered = CSVManager.sanitizeFilename(newSuffix)
+                                    
+                                    if filtered != newSuffix {
+                                        filesuffix = filtered
+                                    }
+
+                                    separator = filesuffix.isEmpty ? "" : "_"
+                                }
                         }
                         
                         Text("\(datePrefix)\(separator)**\(filesuffix)**.csv")
                             .font(.caption)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .onChange(of: filesuffix) { _, newSuffix in
-                                let filtered = CSVManager.sanitizeFilename(newSuffix)
-                                
-                                if filtered != newSuffix {
-                                    filesuffix = filtered
-                                }
-                                separator = filesuffix.isEmpty ? "" : "_"
-                            }
                             .onAppear {
                                 let df = DateFormatter()
                                 df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
