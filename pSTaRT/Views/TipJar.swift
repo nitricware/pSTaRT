@@ -24,10 +24,11 @@ struct TipJar: View {
                     .font(.title)
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("TIPJAR_INTRODUCTION")
-                    .multilineTextAlignment(.leading)
+                
                 if storeManager.myProducts.count > 0 {
                     ForEach(storeManager.myProducts, id: \.self) { product in
+                        Text("TIPJAR_INTRODUCTION \(product.displayPrice)")
+                            .multilineTextAlignment(.leading)
                         Button(action: {
                             print("Purchasing \(product)")
                             Task {
