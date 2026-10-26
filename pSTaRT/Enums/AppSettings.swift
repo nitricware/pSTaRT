@@ -11,19 +11,30 @@ import Foundation
 enum AppSettings {
     enum Key {
         static let csvFileSuffix = "csvexport.filesuffix"
+        static let csvDatePrefix = "csvexport.dateprefix"
         static let shareImmediately = "csvexport.shareimmediately"
         static let iCloudSyncEnabled = "icloud.syncenabled"
         static let pendingCloudPurge = "icloud.pendingpurge"
         static let scannerCodeTypes = "scanner.codetypes"
     }
+    
+    enum Default {
+        static let shareImmediately = true
+        static var csvFileSuffix: String { NSLocalizedString("CSV_DEFAULT_SUFFIX", comment: "") }
+        static var csvDatePrefix: String = "yyyy-MM-dd_HH-mm-ss";
+        static let iCloudSyncEnabled: Bool = false
+        static let pendingCloudPurge: Bool = false
+        static let scannerCodeTypes: String = "org.iso.Code39"
+    }
 
     static func registerDefaults() {
         UserDefaults.standard.register(defaults: [
-            Key.csvFileSuffix: NSLocalizedString("CSV_DEFAULT_SUFFIX", comment: ""),
-            Key.shareImmediately: true,
-            Key.iCloudSyncEnabled: false,
-            Key.pendingCloudPurge: false,
-            Key.scannerCodeTypes: "org.iso.Code39",
+            Key.csvFileSuffix: self.Default.csvFileSuffix,
+            Key.csvDatePrefix: self.Default.csvDatePrefix,
+            Key.shareImmediately: self.Default.shareImmediately,
+            Key.iCloudSyncEnabled: self.Default.iCloudSyncEnabled,
+            Key.pendingCloudPurge: self.Default.pendingCloudPurge,
+            Key.scannerCodeTypes: self.Default.scannerCodeTypes,
         ])
     }
 }

@@ -11,14 +11,14 @@ import CoreData
 
 struct CSVManager {
     @concurrent
-    static func provideCSV() async throws -> URL {
+    static func provideCSV() async throws {
         // The context must outlive every access to the fetched objects, so it is
         // held here and all managed object work happens inside its perform block.
         // Only the finished String leaves the block.
         let context = PersistenceController.shared.container.newBackgroundContext()
         let df = DateFormatter()
         // TODO: localize the date format
-        df.dateFormat = "d-MMM-y_HH-mm-ss"
+        df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
         
         let csv: String = try await context.perform {
             
@@ -66,13 +66,11 @@ struct CSVManager {
             throw CSVExportError.noDocumentDirectory
         }
         let file = "\(df.string(from: Date()))_\(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!).csv"
-        print (file)
         let file2 = String(format: NSLocalizedString("EXPORT_FILENAME", comment: "filename"),                          df.string(from: Date()))
-        print(file2)
         let fileURL = dir.appendingPathComponent(file)
         
         try csv.write(to: fileURL, atomically: true, encoding: .utf8)
-        return fileURL
+        return
     }
     
     static func deleteCSV(_ file: URL) throws {

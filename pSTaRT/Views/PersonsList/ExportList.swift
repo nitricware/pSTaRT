@@ -17,7 +17,7 @@ struct ExportList: View {
         animation: .default
     ) private var files
     @Binding public var isShowing: Bool
-    @AppStorage(AppSettings.Key.shareImmediately) var shareImmediately: Bool = true
+    @AppStorage(AppSettings.Key.shareImmediately) var shareImmediately: Bool = AppSettings.Default.shareImmediately
     var body: some View {
         Group {
             if files.isEmpty {
