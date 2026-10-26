@@ -16,11 +16,11 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section {
+                Section (
+                    header: Text("CSV_FILE_SUFFIX"),
+                    footer: Text("CSV_FILE_SUFFIX_TOOLTIP")
+                ) {
                     VStack {
-                        /*Text("CSV_FILE_SUFFIX")
-                            .font(.caption)
-                            .frame(maxWidth: .infinity, alignment: .leading)*/
                         HStack {
                             TextField("CSV_FILE_SUFFIX", text: $filesuffix)
                                 .labelsVisibility(.visible)
@@ -29,6 +29,13 @@ struct SettingsView: View {
                         Text("\(datePrefix)_**\(filesuffix)**.csv")
                             .font(.caption)
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .onChange(of: filesuffix) { _, newSuffix in
+                                let filtered = CSVManager.sanitizeFilename(newSuffix)
+                                
+                                if filtered != newSuffix {
+                                    filesuffix = filtered
+                                }
+                            }
                             .onAppear {
                                 let df = DateFormatter()
                                 df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
@@ -38,7 +45,10 @@ struct SettingsView: View {
                     }
                 }
                 
-                Section (footer: Text("SHARE_IMMEDIATELY_DESC")) {
+                Section (
+                    header: Text("SHARE_IMMEDIATELY_TITLE"),
+                    footer: Text("SHARE_IMMEDIATELY_DESC")
+                ) {
                     Toggle("SHARE_IMMEDIATELY", isOn: $shareimmediately)
                 }
             }

@@ -105,7 +105,7 @@
 
 "TIPJAR_TITLE" = "Tip Jar";
 "TIPJAR_BUTTON %@" = "Donate %@";
-"TIPJAR_INTRODUCTION %@" = "I'm creating this application in my spare time. If you like what you got (including the free upgrades) and want to further support my work, consider donating. For one voluntary shift at my local abulance, I receive about € %@.";
+"TIPJAR_INTRODUCTION %@" = "I'm creating this application in my spare time. If you like what you got (including the free upgrades) and want to further support my work, consider donating. For one voluntary shift at my local abulance, I receive about %@.";
 "TIPJAR_THANKS %@ %lf" = "Thank you for your support. You donated %@\U00A0%.2f using this device since you installed the app.";
 "TIPJAR_LOADING" = "Loading tips...";
 
@@ -118,8 +118,10 @@
 "DELETE" = "Delete";
 "CSV_FILES" = "CSV files";
 "CSV_DEFAULT_SUFFIX" = "Triage-File";
+"CSV_FILE_SUFFIX_TOOLTIP" = "In the filename, only the letters A - Z (upper and lower case), the numbers 0 - 9, _ as well as - are allowed.";
 "CSV_FILE_SUFFIX" = "CSV file suffix";
 "SHARE_IMMEDIATELY" = "Share immediately";
 "SHARE_IMMEDIATELY_DESC" = "When this toggle is on, creating a new CSV file also triggers a share sheet to appear.";
+"SHARE_IMMEDIATELY_TITLE" = "Share CSV";
 
 "SETTINGS" = "Settings";

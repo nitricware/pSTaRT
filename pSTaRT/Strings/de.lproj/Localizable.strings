@@ -100,7 +100,7 @@
 
 "TIPJAR_TITLE" = "Trinkgeld";
 "TIPJAR_BUTTON" = "Spende";
-"TIPJAR_INTRODUCTION" = "Ich programmiere die App in meiner Freizeit. Wenn dir gefällt, was du nutzt (inklusive der gratis Upgrades), ziehe eine Spende in betracht. Für einen ehrenamtlichen Dienst bei meiner Rettungsdienststelle, erhalte ich €\U00A04,49.";
+"TIPJAR_INTRODUCTION %@" = "Ich programmiere die App in meiner Freizeit. Wenn dir gefällt, was du nutzt (inklusive der gratis Upgrades), ziehe eine Spende in betracht. Für einen ehrenamtlichen Dienst bei meiner Rettungsdienststelle, erhalte ich %@.";
 "TIPJAR_THANKS %@ %lf" = "Danke für deine Unterstützung. Du hast mit diesem Gerät bereits %@\U00A0%.2f gespendet seit du die App installiert hast.";
 "TIPJAR_LOADING" = "Lade Trinkgelder...";
 
@@ -114,7 +114,9 @@
 "CSV_FILES" = "CSV Dateien";
 "CSV_DEFAULT_SUFFIX" = "Triage-Datei";
 "CSV_FILE_SUFFIX" = "CSV Dateiname";
+"CSV_FILE_SUFFIX_TOOLTIP" = "Im Dateinamen sind nur die Buchstaben A - Z (in Groß- und Kleinschreibung), die Zahlen 0-9, _ sowie - erlaubt.";
 "SHARE_IMMEDIATELY" = "Sofort teilen";
 "SHARE_IMMEDIATELY_DESC" = "Wenn dieser Schalter an ist, erscheint sofort nach dem Erstellen einer CSV-Datei ein Teilen-Dialog.";
+"SHARE_IMMEDIATELY_TITLE" = "CSV teilen";
 
 "SETTINGS" = "Einstellungen";

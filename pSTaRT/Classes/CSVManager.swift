@@ -66,11 +66,19 @@ enum CSVManager {
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             throw CSVExportError.noDocumentDirectory
         }
-        let file = "\(df.string(from: Date()))_\(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!).csv"
+        let file = "\(df.string(from: Date()))_\(self.sanitizeFilename(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!)).csv"
         let fileURL = dir.appendingPathComponent(file)
         
         try csv.write(to: fileURL, atomically: true, encoding: .utf8)
         return fileURL
+    }
+    
+    static func sanitizeFilename(_ name: String) -> String {
+        let newName = name.filter { char in
+            char.isASCII && (char.isLetter || char.isNumber || char == "_" || char == "-")
+        }
+        
+        return newName
     }
     
     static func deleteCSV(_ file: URL) throws {
