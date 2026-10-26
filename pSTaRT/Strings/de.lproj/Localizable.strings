@@ -41,7 +41,6 @@
 "DUPLICATE_CHANGE" = "PLS-Nummer ändern";
 
 "EXPORT_COLS" = "Identifikation;Start;Ende;Aktuelle Triagegruppe";
-"EXPORT_FILENAME" = "Liste von Personen (%@).csv";
 "EXPORT_COL_RETRIAGE" = "Umtriagierung";
 "EXPORT_COL_DATE" = "Datum";
 "EXPORT_COL_TRIAGEDECISION" = "Triageentscheidung";

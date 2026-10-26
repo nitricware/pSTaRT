@@ -1,5 +1,5 @@
 //
-//  FileManager.swift
+//  CSVManager.swift
 //  pSTaRT
 //
 //  Created by Kurt Frey on 23.10.26.

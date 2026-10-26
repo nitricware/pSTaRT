@@ -41,7 +41,6 @@
 "DUPLICATE_CHANGE" = "Change ID";
 
 "EXPORT_COLS" = "Identification;Start;End;Current Triage Group";
-"EXPORT_FILENAME" = "List of Persons (%@).csv";
 "EXPORT_COL_RETRIAGE" = "Retriage";
 "EXPORT_COL_DATE" = "Date";
 "EXPORT_COL_TRIAGEDECISION" = "Triage Decision";
