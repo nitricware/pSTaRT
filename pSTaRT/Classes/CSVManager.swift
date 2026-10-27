@@ -50,10 +50,11 @@ enum CSVManager {
                 }
 
                 overallMaxTriageNum = max(overallMaxTriageNum, triages.count)
-                rows.append(fields.joined(separator: ";"))
+                rows.append(fields.map(escapeField).joined(separator: ";"))
             }
 
             var header = NSLocalizedString("EXPORT_COLS", comment: "column headings")
+            header = header.components(separatedBy: ";").map(escapeField).joined(separator: ";")
             if overallMaxTriageNum > 0 {
                 for i in 1...overallMaxTriageNum {
                     header += ";" + NSLocalizedString("EXPORT_COL_TRIAGEDECISION", comment: "retriage")
@@ -73,7 +74,7 @@ enum CSVManager {
         
         let datePrefix = df.string(from: Date())
         let sanitizedFileName = self.sanitizeFilename(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!)
-        let separator:String = sanitizedFileName.isEmpty ? "" : "_"
+        let separator: String = sanitizedFileName.isEmpty ? "" : "_"
         let file = "\(datePrefix)\(separator)\(sanitizedFileName).csv"
         
         let fileURL = dir.appendingPathComponent(file)
@@ -91,6 +92,13 @@ enum CSVManager {
         }
         
         return String(newName.prefix(30))
+    }
+    
+    static func escapeField(_ field: String) -> String {
+        var field = field
+        field = field.replacingOccurrences(of: "\"", with: "\"\"")
+        
+        return "\"\(field)\""
     }
     
     static func deleteCSV(_ file: URL) throws {
