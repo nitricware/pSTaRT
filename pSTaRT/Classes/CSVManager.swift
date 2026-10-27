@@ -57,8 +57,8 @@ enum CSVManager {
             header = header.components(separatedBy: ";").map(escapeField).joined(separator: ";")
             if overallMaxTriageNum > 0 {
                 for i in 1...overallMaxTriageNum {
-                    header += ";" + NSLocalizedString("EXPORT_COL_TRIAGEDECISION", comment: "retriage")
-                    + " \(i);" + NSLocalizedString("EXPORT_COL_DATE", comment: "date")
+                    header += ";" + escapeField(NSLocalizedString("EXPORT_COL_TRIAGEDECISION", comment: "retriage")
+                    + " \(i)") + ";" + escapeField(NSLocalizedString("EXPORT_COL_DATE", comment: "date"))
                 }
             }
 
