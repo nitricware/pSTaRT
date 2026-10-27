@@ -43,6 +43,7 @@ struct SettingsView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .onAppear {
                                 let df = DateFormatter()
+                                df.locale = Locale(identifier: "en_US_POSIX")
                                 df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
                                 let date = Date()
                                 datePrefix = df.string(from: date)

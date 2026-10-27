@@ -18,7 +18,6 @@ enum CSVManager {
         // Only the finished String leaves the block.
         let context = PersistenceController.shared.container.newBackgroundContext()
         let df = DateFormatter()
-        // TODO: localize the date format
         
         df.dateStyle = .medium
         df.timeStyle = .medium
