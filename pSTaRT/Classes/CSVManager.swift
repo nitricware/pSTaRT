@@ -62,7 +62,7 @@ enum CSVManager {
                 }
             }
 
-            return ([header] + rows).joined(separator: "\n") + "\n"
+            return "\u{FEFF}" + ([header] + rows).joined(separator: "\r\n") + "\r\n"
         }
 
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
