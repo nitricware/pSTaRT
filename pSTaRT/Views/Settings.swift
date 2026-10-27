@@ -13,9 +13,9 @@ struct SettingsView: View {
     @AppStorage(AppSettings.Key.shareImmediately) var shareimmediately: Bool = AppSettings.Default.shareImmediately
     @Binding var isShowingSettings: Bool
     @State private var datePrefix = "1990-02-19_23-00-00"
+    @State private var fileNameRejection: Int = 0
     
     private var separator: String { filesuffix.isEmpty ? "" : "_" }
-    private var feedbackGenerator: UINotificationFeedbackGenerator = .init()
     
     var body: some View {
         NavigationStack {
@@ -33,9 +33,10 @@ struct SettingsView: View {
                                     
                                     if filtered != newSuffix {
                                         filesuffix = filtered
-                                        feedbackGenerator.notificationOccurred(.warning)
+                                        fileNameRejection += 1
                                     }
                                 }
+                                .sensoryFeedback(.warning, trigger: fileNameRejection)
                         }
                         
                         Text("\(datePrefix)\(separator)**\(filesuffix)**.csv")
@@ -47,7 +48,6 @@ struct SettingsView: View {
                                 df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
                                 let date = Date()
                                 datePrefix = df.string(from: date)
-                                feedbackGenerator.prepare()
                             }
                     }
                 }
