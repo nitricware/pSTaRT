@@ -14,7 +14,6 @@ struct IdentificationInput: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     // MARK: Bindings from parent
-    //@EnvironmentObject public var currentTriage: CurrentTriage
     @Binding public var isShowingTriage: Bool
     
     // MARK: Sheet States
@@ -72,7 +71,6 @@ struct IdentificationInput: View {
                     self.isShowingIDError.toggle()
                     return
                 }
-                //self..reset(with: identification)
                 self.isShowingTriage.toggle()
             }) {
                 Text("START_TRIAGE")

@@ -14,7 +14,6 @@ class pSTaRTDBHelper {
     
     /// Initializes the Helper Class and sets the context
     init() {
-        //self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.context = PersistenceController.shared.container.viewContext
     }
     
