@@ -1,9 +1,20 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "pSTaRT"
+          }
+        }
+      }
+    },
     "NSCameraUsageDescription" : {
-      "comment" : "InfoPlist.strings\n  pSTaRT\n\n  Created by Kurt Höblinger on 16.02.20.\n  Copyright © 2020 Kurt Höblinger. All rights reserved.",
-      "extractionState" : "migrated",
+      "comment" : "Privacy - Camera Usage Description",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -20,7 +31,7 @@
       }
     },
     "NSLocationWhenInUseUsageDescription" : {
-      "extractionState" : "migrated",
+      "comment" : "Privacy - Location When In Use Usage Description",
       "localizations" : {
         "de" : {
           "stringUnit" : {
