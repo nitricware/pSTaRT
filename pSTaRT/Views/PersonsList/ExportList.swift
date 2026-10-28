@@ -137,7 +137,6 @@ struct ExportList: View {
         for file in files {
             try CSVManager.deleteCSV(file.url)
         }
-        throw pSTaRTErrors.dbDeleteError
     }
     
     private func deleteFile(with url: URL) throws {
