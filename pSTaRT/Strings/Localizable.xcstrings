@@ -1,8 +1,21 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@%@**%@**.csv" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@**%3$@**.csv"
+          }
+        }
+      }
+    },
+    "🚑" : {
+
+    },
     "AIRWAY" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -19,7 +32,7 @@
       }
     },
     "ASPIRATION" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -36,7 +49,7 @@
       }
     },
     "BLEEDING" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -53,7 +66,7 @@
       }
     },
     "BREATHING" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -70,7 +83,7 @@
       }
     },
     "CANCEL" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -87,7 +100,6 @@
       }
     },
     "CANCEL_TRIAGE" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -103,8 +115,11 @@
         }
       }
     },
+    "common.unknown" : {
+      "comment" : "unknown patient ID"
+    },
     "CONFIRM" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -121,7 +136,7 @@
       }
     },
     "CONFIRM_BODY" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -138,7 +153,7 @@
       }
     },
     "CONFIRM_HEADLINE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -155,7 +170,6 @@
       }
     },
     "CSV_DEFAULT_SUFFIX" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -172,7 +186,6 @@
       }
     },
     "CSV_FILE_SUFFIX" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -189,7 +202,6 @@
       }
     },
     "CSV_FILE_SUFFIX_TOOLTIP" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -206,7 +218,7 @@
       }
     },
     "CSV_FILES" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -223,7 +235,6 @@
       }
     },
     "CURRENT_PERSON" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -240,8 +251,7 @@
       }
     },
     "DEAD" : {
-      "comment" : "Localizable.strings\n  pSTaRT\n\n  Created by Kurt Höblinger on 16.11.19.\n  Copyright © 2019 Kurt Höblinger. All rights reserved.",
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -258,7 +268,7 @@
       }
     },
     "DELETE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -275,7 +285,7 @@
       }
     },
     "DELETE_ALL" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -292,7 +302,7 @@
       }
     },
     "DELETE_ERROR" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -309,7 +319,7 @@
       }
     },
     "DELETE_PERSON" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -326,7 +336,7 @@
       }
     },
     "DUPLICATE_BODY" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -343,7 +353,7 @@
       }
     },
     "DUPLICATE_CHANGE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -360,7 +370,7 @@
       }
     },
     "DUPLICATE_HEADLINE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -377,7 +387,7 @@
       }
     },
     "DUPLICATE_IGNORE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -394,7 +404,6 @@
       }
     },
     "EMPTY_ERROR_TEXT" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -411,7 +420,7 @@
       }
     },
     "EMPTY_ERROR_TITLE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -428,7 +437,7 @@
       }
     },
     "END_TRIAGE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -445,7 +454,7 @@
       }
     },
     "ERROR_DELETE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -462,7 +471,7 @@
       }
     },
     "ERROR_EXPORT" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -479,7 +488,7 @@
       }
     },
     "ERROR_FETCH" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -496,8 +505,7 @@
       }
     },
     "ERROR_HEADLINE" : {
-      "comment" : "Errors",
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -514,7 +522,7 @@
       }
     },
     "EXPORT_COL_DATE" : {
-      "extractionState" : "migrated",
+      "comment" : "date",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -531,7 +539,7 @@
       }
     },
     "EXPORT_COL_RETRIAGE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -548,7 +556,7 @@
       }
     },
     "EXPORT_COL_TRIAGEDECISION" : {
-      "extractionState" : "migrated",
+      "comment" : "retriage",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -565,7 +573,7 @@
       }
     },
     "EXPORT_COLS" : {
-      "extractionState" : "migrated",
+      "comment" : "column headings",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -582,7 +590,6 @@
       }
     },
     "ID_ERROR_TEXT" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -599,7 +606,7 @@
       }
     },
     "ID_ERROR_TITLE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -616,7 +623,7 @@
       }
     },
     "IDENTIFICATION" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -633,7 +640,6 @@
       }
     },
     "INITIAL_LOCATION" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -650,7 +656,7 @@
       }
     },
     "MOVEMENT" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -667,7 +673,7 @@
       }
     },
     "NEXT_TRIAGE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -683,8 +689,10 @@
         }
       }
     },
+    "NO" : {
+
+    },
     "NO_EXPORTED_FILES" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -701,7 +709,6 @@
       }
     },
     "NO_PERSON" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -717,8 +724,11 @@
         }
       }
     },
+    "NUM_PERSONS %@" : {
+
+    },
     "NUM_PERSONS %lld" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -735,7 +745,7 @@
       }
     },
     "OK" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -752,7 +762,7 @@
       }
     },
     "OVERVIEW" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -769,7 +779,7 @@
       }
     },
     "PERSON_DETAIL" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -786,7 +796,6 @@
       }
     },
     "PERSON_LIST_FILE" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -803,7 +812,7 @@
       }
     },
     "PERSONS" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -820,7 +829,7 @@
       }
     },
     "PERSONS_LIST" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -837,7 +846,7 @@
       }
     },
     "PULSE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -854,7 +863,6 @@
       }
     },
     "REDUCED_ACCURACY" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -871,7 +879,6 @@
       }
     },
     "SCAN_ERROR_TEXT" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -888,7 +895,7 @@
       }
     },
     "SCAN_ERROR_TITLE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -905,7 +912,7 @@
       }
     },
     "SCANNING_NOT_SUPPORTED_BODY" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -922,7 +929,7 @@
       }
     },
     "SCANNING_NOT_SUPPORTED_TITLE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -939,7 +946,6 @@
       }
     },
     "SELECT_GROUP %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -956,7 +962,6 @@
       }
     },
     "SELECT_TRIAGE_GROUP_NOW" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -973,7 +978,6 @@
       }
     },
     "SETTINGS" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -990,7 +994,7 @@
       }
     },
     "SHARE_IMMEDIATELY" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1007,7 +1011,6 @@
       }
     },
     "SHARE_IMMEDIATELY_DESC" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1024,7 +1027,6 @@
       }
     },
     "SHARE_IMMEDIATELY_TITLE" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1041,7 +1043,6 @@
       }
     },
     "START_TRIAGE" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1057,8 +1058,11 @@
         }
       }
     },
+    "Support pSTaRT" : {
+
+    },
     "T0" : {
-      "extractionState" : "migrated",
+      "comment" : "no triage done yet",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1075,7 +1079,7 @@
       }
     },
     "T1" : {
-      "extractionState" : "migrated",
+      "comment" : "T1",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1092,7 +1096,7 @@
       }
     },
     "T2" : {
-      "extractionState" : "migrated",
+      "comment" : "T2",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1109,7 +1113,7 @@
       }
     },
     "T3" : {
-      "extractionState" : "migrated",
+      "comment" : "T3",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1126,7 +1130,7 @@
       }
     },
     "T4" : {
-      "extractionState" : "migrated",
+      "comment" : "T4",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1143,7 +1147,7 @@
       }
     },
     "THANKS_BODY" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1160,7 +1164,7 @@
       }
     },
     "THANKS_HEAD" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1177,7 +1181,7 @@
       }
     },
     "TIP_CURRENT_STATE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1194,7 +1198,7 @@
       }
     },
     "TIP_DESCRIPTION" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1211,7 +1215,7 @@
       }
     },
     "TIP_NOT_READY_BODY" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1228,7 +1232,7 @@
       }
     },
     "TIP_NOT_READY_HEAD" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1245,7 +1249,7 @@
       }
     },
     "TIP_PURCHASE_BUTTON" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1262,7 +1266,7 @@
       }
     },
     "TIP_SPARE_TIME" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1273,7 +1277,7 @@
       }
     },
     "TIPJAR_BUTTON" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1284,18 +1288,22 @@
       }
     },
     "TIPJAR_BUTTON %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schenke %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Donate %@"
+            "value" : "Give %@"
           }
         }
       }
     },
     "TIPJAR_INTRODUCTION %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1312,7 +1320,6 @@
       }
     },
     "TIPJAR_LOADING" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1328,25 +1335,35 @@
         }
       }
     },
+    "TIPJAR_THANKS %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "TIPJAR_THANKS %1$@ %2$@"
+          }
+        }
+      }
+    },
     "TIPJAR_THANKS %@ %lf" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Danke für deine Unterstützung. Du hast mit diesem Gerät bereits %@ %.2f gespendet seit du die App installiert hast."
+            "state" : "needs_review",
+            "value" : "Danke für deine Unterstützung. Du hast mit diesem Gerät bereits %@ %.2f gegeben seit du die App installiert hast."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thank you for your support. You donated %@ %.2f using this device since you installed the app."
+            "value" : "Thank you for your support. You gave %@ %.2f using this device since you installed the app."
           }
         }
       }
     },
     "TIPJAR_TITLE" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1363,7 +1380,6 @@
       }
     },
     "TRIAGE_GROUP %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1380,7 +1396,7 @@
       }
     },
     "TRIAGE_HISTORY" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1397,7 +1413,6 @@
       }
     },
     "TRIAGE_QUESTIONNAIRE" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1414,7 +1429,6 @@
       }
     },
     "TRIAGE_START" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1431,7 +1445,7 @@
       }
     },
     "TRIAGEGROUP" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1448,7 +1462,7 @@
       }
     },
     "TRIAGEGROUP %@" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1465,7 +1479,7 @@
       }
     },
     "WAIT_FOR_REQUEST" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1480,6 +1494,9 @@
           }
         }
       }
+    },
+    "YES" : {
+
     }
   },
   "version" : "1.3"

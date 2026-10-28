@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "AIRWAY" : {
-      "extractionState" : "migrated",
+      "comment" : "Person does breath?",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -19,7 +19,7 @@
       }
     },
     "ASPIRATION" : {
-      "extractionState" : "migrated",
+      "comment" : "Inhalation trauma with stridor?",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -36,7 +36,7 @@
       }
     },
     "BLEEDING" : {
-      "extractionState" : "migrated",
+      "comment" : "Uncontrolled bleeding?",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -53,7 +53,7 @@
       }
     },
     "BREATHING" : {
-      "extractionState" : "migrated",
+      "comment" : "Breathing frequency > 10 and < 30/min?",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -70,7 +70,7 @@
       }
     },
     "DEAD" : {
-      "extractionState" : "migrated",
+      "comment" : "Deadly injuries?",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -86,8 +86,11 @@
         }
       }
     },
+    "INCONCLUSIVE" : {
+      "comment" : "Person dead?"
+    },
     "MOVEMENT" : {
-      "extractionState" : "migrated",
+      "comment" : "Does the person follow simple orders?",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -104,7 +107,7 @@
       }
     },
     "PULSE" : {
-      "extractionState" : "migrated",
+      "comment" : "Person has radial pulse?",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -121,8 +124,7 @@
       }
     },
     "WALKING" : {
-      "comment" : "Questionnaire.strings\n  pSTaRT\n\n  Created by Kurt Höblinger on 12.09.22.\n  Copyright © 2022 Kurt Höblinger. All rights reserved.",
-      "extractionState" : "migrated",
+      "comment" : "Can the person walk?",
       "localizations" : {
         "de" : {
           "stringUnit" : {

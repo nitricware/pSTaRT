@@ -169,6 +169,16 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		45297A6230923D9800078AD5 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				45297A58309230BF00078AD5 /* InfoPlist.xcstrings */,
+				45297A5A3092310300078AD5 /* Localizable.xcstrings */,
+				45297A5B3092310300078AD5 /* Questionnaire.xcstrings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
 		457C6F4325B9739F00F0205B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,9 +207,7 @@
 		458FB807237F0F1A0060A8FB /* pSTaRT */ = {
 			isa = PBXGroup;
 			children = (
-				45297A58309230BF00078AD5 /* InfoPlist.xcstrings */,
-				45297A5A3092310300078AD5 /* Localizable.xcstrings */,
-				45297A5B3092310300078AD5 /* Questionnaire.xcstrings */,
+				45297A6230923D9800078AD5 /* Strings */,
 				45A4478F308D3E6F0032B776 /* pSTaRT.entitlements */,
 				450C3BF528CCCBCB00BEF415 /* Classes */,
 				450C3BF228CCCA8C00BEF415 /* Enums */,
