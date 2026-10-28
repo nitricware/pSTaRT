@@ -72,7 +72,7 @@ struct ExportList: View {
                     LazyShareLink(Image(systemName: "document.badge.plus")) {
                         [try await CSVManager.provideCSV()]
                     } onError: { error in
-                        print(error)
+                        errorMessage = error
                     }
                 } else {
                     Button(action: {
