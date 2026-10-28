@@ -48,7 +48,6 @@ enum CSVManager {
 
                 overallMaxTriageNum = max(overallMaxTriageNum, triages.count)
                 rows.append(fields)
-                //rows.append(fields.map(escapeField).joined(separator: ";"))
             }
             
             // padding rows based on overallMaxTriageNum
