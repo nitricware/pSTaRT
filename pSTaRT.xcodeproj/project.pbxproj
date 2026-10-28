@@ -26,6 +26,7 @@
 		45297A59309230BF00078AD5 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45297A58309230BF00078AD5 /* InfoPlist.xcstrings */; };
 		45297A5C3092310300078AD5 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45297A5A3092310300078AD5 /* Localizable.xcstrings */; };
 		45297A5D3092310300078AD5 /* Questionnaire.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45297A5B3092310300078AD5 /* Questionnaire.xcstrings */; };
+		45297A643092994C00078AD5 /* Errors.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45297A633092994C00078AD5 /* Errors.xcstrings */; };
 		452ECC6E23F96F3900909ED5 /* pSTaRTErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */; };
 		4531D240308B815E00FBEB8F /* ExportList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4531D23F308B815E00FBEB8F /* ExportList.swift */; };
 		4531D242308B839300FBEB8F /* CSVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4531D241308B838600FBEB8F /* CSVManager.swift */; };
@@ -69,6 +70,7 @@
 		45297A58309230BF00078AD5 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		45297A5A3092310300078AD5 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		45297A5B3092310300078AD5 /* Questionnaire.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Questionnaire.xcstrings; sourceTree = "<group>"; };
+		45297A633092994C00078AD5 /* Errors.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Errors.xcstrings; sourceTree = "<group>"; };
 		452ECC6D23F96F3900909ED5 /* pSTaRTErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pSTaRTErrors.swift; sourceTree = "<group>"; };
 		4531D23F308B815E00FBEB8F /* ExportList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportList.swift; sourceTree = "<group>"; };
 		4531D241308B838600FBEB8F /* CSVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVManager.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				45297A58309230BF00078AD5 /* InfoPlist.xcstrings */,
 				45297A5A3092310300078AD5 /* Localizable.xcstrings */,
 				45297A5B3092310300078AD5 /* Questionnaire.xcstrings */,
+				45297A633092994C00078AD5 /* Errors.xcstrings */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			files = (
 				453B9C742F9FD6810034350C /* LaunchScreen.storyboard in Resources */,
 				45297A59309230BF00078AD5 /* InfoPlist.xcstrings in Resources */,
+				45297A643092994C00078AD5 /* Errors.xcstrings in Resources */,
 				45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */,
 				45297A5C3092310300078AD5 /* Localizable.xcstrings in Resources */,
 				45297A5D3092310300078AD5 /* Questionnaire.xcstrings in Resources */,
@@ -428,6 +432,7 @@
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -487,6 +492,7 @@
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -500,7 +506,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 18;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -521,7 +527,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 18;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,7 +1,15 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "error.dbDelete.description" : {
 
+    },
+    "error.dbFetch.description" : {
+
+    },
+    "error.dbUpdate.description" : {
+
+    }
   },
   "version" : "1.3"
 }

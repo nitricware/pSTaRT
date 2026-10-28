@@ -589,6 +589,9 @@
         }
       }
     },
+    "exportList.deleteAll" : {
+
+    },
     "ID_ERROR_TEXT" : {
       "localizations" : {
         "de" : {
@@ -724,9 +727,6 @@
         }
       }
     },
-    "NUM_PERSONS %@" : {
-
-    },
     "NUM_PERSONS %lld" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -844,6 +844,9 @@
           }
         }
       }
+    },
+    "pSTaRT" : {
+
     },
     "PULSE" : {
       "extractionState" : "manual",
@@ -1331,16 +1334,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Loading tips..."
-          }
-        }
-      }
-    },
-    "TIPJAR_THANKS %@ %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "TIPJAR_THANKS %1$@ %2$@"
           }
         }
       }
