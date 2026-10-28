@@ -28,16 +28,13 @@ enum CSVManager {
 
             let sort = NSSortDescriptor(key: "date", ascending: true)
 
-            var rows: [String] = []
+            var rows: [[String]] = []
+            var paddedRows: [String] = []
             var overallMaxTriageNum = 0
+            
+            let headerComponents: [String] = NSLocalizedString("EXPORT_COLS", comment: "column headings").components(separatedBy: ";")
 
             for person in persons {
-                guard let plsNumber = person.plsNumber,
-                      let startDate = person.startTime,
-                      let endDate = person.endTime else {
-                    continue
-                }
-
                 var fields = [person.plsNumber ?? NSLocalizedString("common.unknown", comment: "unknown patient ID"),
                               person.startTime.map(df.string(from:)) ?? "",
                               person.endTime.map(df.string(from:)) ?? "",
@@ -50,11 +47,20 @@ enum CSVManager {
                 }
 
                 overallMaxTriageNum = max(overallMaxTriageNum, triages.count)
-                rows.append(fields.map(escapeField).joined(separator: ";"))
+                rows.append(fields)
+                //rows.append(fields.map(escapeField).joined(separator: ";"))
             }
-
-            var header = NSLocalizedString("EXPORT_COLS", comment: "column headings")
-            header = header.components(separatedBy: ";").map(escapeField).joined(separator: ";")
+            
+            // padding rows based on overallMaxTriageNum
+            for row in rows {
+                let i = ((overallMaxTriageNum * 2) + headerComponents.count) - row.count
+                var newRow: [String] = row
+                newRow.append(contentsOf: Array(repeating: "", count: i))
+                paddedRows.append(newRow.map(escapeField).joined(separator: ";"))
+            }
+            
+            var header = headerComponents.map(escapeField).joined(separator: ";")
+            
             if overallMaxTriageNum > 0 {
                 for i in 1...overallMaxTriageNum {
                     header += ";" + escapeField(NSLocalizedString("EXPORT_COL_TRIAGEDECISION", comment: "retriage")
@@ -62,7 +68,7 @@ enum CSVManager {
                 }
             }
 
-            return "\u{FEFF}" + ([header] + rows).joined(separator: "\r\n") + "\r\n"
+            return "\u{FEFF}" + ([header] + paddedRows).joined(separator: "\r\n") + "\r\n"
         }
 
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
