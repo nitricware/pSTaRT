@@ -50,7 +50,6 @@ struct PersonsList: View {
                 .disabled(self.persons.count < 1)
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                
                 Button (action: {
                     //shareCSV()
                     isShowingCSVExport.toggle()
@@ -75,7 +74,7 @@ struct PersonsList: View {
             Button("OK", role: .cancel) { }
         }
         .sheet(isPresented: $isShowingCSVExport, content: {
-            NavigationView {
+            NavigationStack {
                 ExportList(isShowing: $isShowingCSVExport)
             }
         })
