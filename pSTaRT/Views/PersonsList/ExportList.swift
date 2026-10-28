@@ -31,7 +31,7 @@ struct ExportList: View {
                         HStack {
                             VStack {
                                 Text("PERSON_LIST_FILE")
-                                Text(file.creationDate!, style: .date)
+                                Text(file.creationDate ?? file.modificationDate ?? .now, style: .date)
                                     .font(.caption)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
