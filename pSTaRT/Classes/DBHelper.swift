@@ -11,46 +11,11 @@ import CoreData
 
 class pSTaRTDBHelper {
     var context: NSManagedObjectContext!
-    var currentCSV: URL?
     
     /// Initializes the Helper Class and sets the context
     init() {
         //self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.context = PersistenceController.shared.container.viewContext
-    }
-    
-    /// Saves a person to the database
-    /// - Parameters:
-    ///   - plsNo: the entered PLS number
-    ///   - start: start time of assessment
-    ///   - end: end time of assessment
-    ///   - triageNo: triage result
-    @available(*, deprecated, message: "This function is not required anymore with SwiftUI")
-    func savePLS(plsNo: String, start: Date, end: Date, triageNo: Int16) throws -> Persons {
-        let newPerson = Persons(context: self.context)
-        
-        newPerson.plsNumber = plsNo
-        newPerson.startTime = start
-        newPerson.endTime = end
-        newPerson.triageGroup = triageNo
-        
-        do {
-            try context.save()
-            return newPerson
-        } catch {
-            throw pSTaRTErrors.dbDeleteError
-        }
-    }
-    
-    @available(*, deprecated, message: "This function is not required anymore with SwiftUI")
-    func updateTriageGroup(pls: Persons, group: Int) throws {
-        pls.triageGroup = Int16(group)
-        
-        do {
-            try context.save()
-        } catch {
-            throw pSTaRTErrors.dbUpdateError
-        }
     }
     
     /// Fetches all persons or persons in the specified triage group.

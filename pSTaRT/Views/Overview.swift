@@ -14,7 +14,6 @@ struct Overview: View {
     
     // MARK: Sheet States
     @State private var isShowingTriage: Bool = false
-    @State private var isShowingPersonsList: Bool = false
     @State private var isShowingSettings: Bool = false
     
     @State public var isShowingTipJar: Bool = false

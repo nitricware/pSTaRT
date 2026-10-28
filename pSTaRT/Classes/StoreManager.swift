@@ -12,8 +12,6 @@ import StoreKit
 class StoreManager: ObservableObject {
     @Published var myProducts: [Product] = []
     
-    private var productDict = [String: Double]()
-    
     @MainActor
     func getProducts(productIDs: [String]) async {
         do {

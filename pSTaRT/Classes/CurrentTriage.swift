@@ -52,14 +52,6 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.getLocation()
     }
     
-    // Used for Preview only
-    init(identification: String) {
-        super.init()
-        self.locationManager.delegate = self
-        self.identification = identification
-        self.getLocation()
-    }
-    
     func reset(with identification: String) {
         self.reset()
         self.identification = identification

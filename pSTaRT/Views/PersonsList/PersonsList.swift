@@ -12,7 +12,6 @@ import CoreData
 struct PersonsList: View {
     @State public var isShowingDeleteAll: Bool = false
     @State public var isShowingDeleteError: Bool = false
-    @State public var isShowingShareSheet: Bool = false
     @State public var isShowingCSVExport: Bool = false
     
     @FetchRequest(
