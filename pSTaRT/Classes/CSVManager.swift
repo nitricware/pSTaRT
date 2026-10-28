@@ -35,12 +35,12 @@ enum CSVManager {
                 guard let plsNumber = person.plsNumber,
                       let startDate = person.startTime,
                       let endDate = person.endTime else {
-                    throw CSVExportError.missingData
+                    continue
                 }
 
-                var fields = [plsNumber,
-                              df.string(from: startDate),
-                              df.string(from: endDate),
+                var fields = [person.plsNumber ?? NSLocalizedString("common.unknown", comment: "unknown patient ID"),
+                              person.startTime.map(df.string(from:)) ?? "",
+                              person.endTime.map(df.string(from:)) ?? "",
                               String(person.triageGroup)]
 
                 let triages = (person.triages?.sortedArray(using: [sort]) as? [Triages]) ?? []

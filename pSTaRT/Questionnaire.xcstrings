@@ -1,0 +1,143 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "AIRWAY" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atmung vorhanden?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Person does breath?"
+          }
+        }
+      }
+    },
+    "ASPIRATION" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inhalationstrauma mit Stridor?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inhalation trauma with stridor?"
+          }
+        }
+      }
+    },
+    "BLEEDING" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bestehende spritzende Blutung?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uncontrolled bleeding?"
+          }
+        }
+      }
+    },
+    "BREATHING" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atemfrequenz >10 bzw. <30/min?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing frequency >10 and <30/min?"
+          }
+        }
+      }
+    },
+    "DEAD" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht mit dem Leben vereinbare Verletzung?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deadly injuries?"
+          }
+        }
+      }
+    },
+    "MOVEMENT" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kann einfache Befehle befolgen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Does the person follow simple orders?"
+          }
+        }
+      }
+    },
+    "PULSE" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Radialispuls vorhanden?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Person has radial pulse?"
+          }
+        }
+      }
+    },
+    "WALKING" : {
+      "comment" : "Questionnaire.strings\n  pSTaRT\n\n  Created by Kurt Höblinger on 12.09.22.\n  Copyright © 2022 Kurt Höblinger. All rights reserved.",
+      "extractionState" : "migrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ist die Person gehfähig?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can the person walk?"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.3"
+}

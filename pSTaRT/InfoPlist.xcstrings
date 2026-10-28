@@ -1,0 +1,41 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NSCameraUsageDescription" : {
+      "comment" : "InfoPlist.strings\n  pSTaRT\n\n  Created by Kurt Höblinger on 16.02.20.\n  Copyright © 2020 Kurt Höblinger. All rights reserved.",
+      "extractionState" : "migrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Kamera wird zum Scannen von PLS-Nummern benötigt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The camera is required to scan PLS-Codes."
+          }
+        }
+      }
+    },
+    "NSLocationWhenInUseUsageDescription" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Während dem triagieren kann die Position der Person gespeichert werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "During triaging, the location of the person can be saved."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.3"
+}
