@@ -125,8 +125,8 @@ struct ExportList: View {
                 }
             })
         }
-        .alert(errorMessage?.localizedDescription ?? "common.unknownError", isPresented: $showsErrorAlert) {
-            Button("common.ok", role: .cancel) { showsErrorAlert.toggle() }
+        .alert(errorMessage?.localizedDescription ?? String(localized: "common.unknownError"), isPresented: $showsErrorAlert) {
+            Button("common.ok", role: .cancel) { }
         }
     }
     
@@ -145,7 +145,6 @@ struct ExportList: View {
         for file in files {
             try CSVManager.deleteCSV(file.url)
         }
-        throw pSTaRTErrors.dbDeleteError
     }
     
     private func deleteFile(with url: URL) throws {

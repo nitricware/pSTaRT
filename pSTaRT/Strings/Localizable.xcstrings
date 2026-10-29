@@ -121,6 +121,9 @@
     "common.unknown" : {
       "comment" : "unknown patient ID"
     },
+    "common.unknownError" : {
+
+    },
     "CONFIRM" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -19,12 +19,6 @@ struct IdentificationInput: View {
     // MARK: Sheet States
     @State private var isShowingScanner: Bool = false
     
-    // MARK: Alert States
-    @State private var isShowingScannerError: Bool = false
-    @State private var isShowingIDError: Bool = false
-    @State private var isShowingEmptyError: Bool = false
-    @State private var errorText: String = ""
-    
     @State private var isTorchOn: Bool = false
     
     // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
@@ -135,9 +129,14 @@ struct IdentificationInput: View {
                 }
                 .padding(20.0)
             }
-        }       
-        .alert(errorMessage?.localizedDescription ?? "common.unknownError", isPresented: $showsErrorAlert) {
-            Button("common.ok", role: .cancel) { showsErrorAlert.toggle() }
+        }
+        .alert(errorMessage?.localizedDescription ?? String(localized: "common.unknownError"), isPresented: $showsErrorAlert) {
+            Button("common.ok", role: .cancel) { }
+            if (errorMessage as? pSTaRTErrors) == .duplicateID {
+                Button("DUPLICATE_IGNORE", role: .confirm) {
+                    self.isShowingTriage.toggle()
+                }
+            }
         }
     }
     
@@ -148,8 +147,8 @@ struct IdentificationInput: View {
         case .success(let result):
             self.identification = result.string
         case .failure(let error):
-            self.isShowingScannerError.toggle()
-            self.errorText = error.localizedDescription
+            self.showsErrorAlert.toggle()
+            self.errorMessage = error
         }
     }
 }
