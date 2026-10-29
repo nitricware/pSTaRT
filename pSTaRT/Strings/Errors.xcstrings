@@ -19,9 +19,6 @@
     "error.emptyInput.description" : {
 
     },
-    "error.purchaseCancelled.description" : {
-
-    },
     "error.purchaseUnableToPurchase.description" : {
 
     }
