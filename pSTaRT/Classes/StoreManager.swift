@@ -27,12 +27,14 @@ class StoreManager: ObservableObject {
             switch payment {
             case .success(let verification):
                 if case .verified(let transaction) = verification {
-                    let currentTipJar = UserDefaults.standard.double(forKey: "givenMoney")
-                    UserDefaults.standard.set(currentTipJar + Double(truncating: transaction.price! as NSNumber), forKey: "givenMoney")
+                    if let price = transaction.price {
+                        let currentTipJar = UserDefaults.standard.double(forKey: "givenMoney")
+                        UserDefaults.standard.set(currentTipJar + Double(truncating: price as NSNumber), forKey: "givenMoney")
+                    }
                     await transaction.finish()
                 }
             case .userCancelled:
-                throw pSTaRTErrors.purchaseCancelled
+                break
             default:
                 break
             }

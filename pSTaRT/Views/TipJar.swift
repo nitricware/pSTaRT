@@ -34,12 +34,12 @@ struct TipJar: View {
                         Text("TIPJAR_INTRODUCTION \(product.displayPrice)")
                             .multilineTextAlignment(.leading)
                         Button(action: {
-                            print("Purchasing \(product)")
                             Task {
                                 do {
                                     try await storeManager.purchaseProduct(product: product)
                                 } catch {
-                                    
+                                    errorMessage = error
+                                    showsErrorAlert.toggle()
                                 }
                             }
 
