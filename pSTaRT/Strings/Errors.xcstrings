@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "error.csvExport.description" : {
+
+    },
     "error.dbDelete.description" : {
 
     },
@@ -8,6 +11,12 @@
 
     },
     "error.dbUpdate.description" : {
+
+    },
+    "error.duplicateID.description" : {
+
+    },
+    "error.emptyInput.description" : {
 
     }
   },

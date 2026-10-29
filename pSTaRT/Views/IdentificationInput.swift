@@ -27,6 +27,10 @@ struct IdentificationInput: View {
     
     @State private var isTorchOn: Bool = false
     
+    // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
+    @State private var errorMessage: Error?
+    @State private var showsErrorAlert: Bool = false
+    
     @Binding public var identification: String
     
     var body: some View {
@@ -56,7 +60,8 @@ struct IdentificationInput: View {
             
             Button(action: {
                 if identification.isEmpty {
-                    self.isShowingEmptyError.toggle()
+                    errorMessage = pSTaRTErrors.emptyInput
+                    showsErrorAlert.toggle()
                     return
                 }
             
@@ -64,11 +69,13 @@ struct IdentificationInput: View {
                     let database = pSTaRTDBHelper()
                     let duplicateCheck = try database.isDuplicate(id: identification)
                     if duplicateCheck {
-                        self.isShowingIDError.toggle()
+                        errorMessage = pSTaRTErrors.duplicateID
+                        showsErrorAlert.toggle()
                         return
                     }
                 } catch {
-                    self.isShowingIDError.toggle()
+                    errorMessage = error
+                    showsErrorAlert.toggle()
                     return
                 }
                 self.isShowingTriage.toggle()
@@ -128,27 +135,9 @@ struct IdentificationInput: View {
                 }
                 .padding(20.0)
             }
-        }
-        
-        // MARK: Alerts
-        .alert("SCAN_ERROR_TITLE", isPresented: $isShowingScannerError) {
-            Button("OK", role: .cancel) { }
-        } message: {
-            Text("SCAN_ERROR_TEXT")
-            Text(errorText)
-        }
-        .alert("ID_ERROR_TITLE", isPresented: $isShowingIDError) {
-            Button("DUPLICATE_IGNORE", role: .confirm) {
-                self.isShowingTriage.toggle()
-            }
-            Button("DUPLICATE_CHANGE", role: .cancel) { }
-        } message: {
-            Text("ID_ERROR_TEXT")
-        }
-        .alert("EMPTY_ERROR_TITLE", isPresented: $isShowingEmptyError) {
-            Button("DUPLICATE_CHANGE", role: .cancel) { }
-        } message: {
-            Text("EMPTY_ERROR_TEXT")
+        }       
+        .alert(errorMessage?.localizedDescription ?? "common.unknownError", isPresented: $showsErrorAlert) {
+            Button("common.ok", role: .cancel) { showsErrorAlert.toggle() }
         }
     }
     

@@ -115,6 +115,9 @@
         }
       }
     },
+    "common.ok" : {
+
+    },
     "common.unknown" : {
       "comment" : "unknown patient ID"
     },
@@ -404,6 +407,7 @@
       }
     },
     "EMPTY_ERROR_TEXT" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -593,6 +597,7 @@
 
     },
     "ID_ERROR_TEXT" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -882,6 +887,7 @@
       }
     },
     "SCAN_ERROR_TEXT" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

@@ -85,9 +85,7 @@ enum CSVManager {
         let fileURL = dir.appendingPathComponent(file)
         
         try csv.write(to: fileURL, atomically: true, encoding: .utf8)
-        #if DEBUG
-            print("📄 wrote \(fileURL)")
-        #endif
+        
         return fileURL
     }
     
@@ -107,6 +105,10 @@ enum CSVManager {
     }
     
     static func deleteCSV(_ file: URL) throws {
-        try FileManager.default.removeItem(at: file)
+        do {
+            try FileManager.default.removeItem(at: file)
+        } catch {
+            throw pSTaRTErrors.csvExportError
+        }
     }
 }

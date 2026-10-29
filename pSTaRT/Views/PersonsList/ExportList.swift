@@ -21,7 +21,10 @@ struct ExportList: View {
     
     @State private var isExporting: Bool = false
     @State public var isShowingDeleteAll: Bool = false
-    @State public var errorMessage: Error?
+    
+    // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
+    @State private var errorMessage: Error?
+    @State private var showsErrorAlert: Bool = false
     
     @AppStorage(AppSettings.Key.shareImmediately) var shareImmediately: Bool = AppSettings.Default.shareImmediately
     
@@ -49,6 +52,7 @@ struct ExportList: View {
                                     try deleteFile(with: file.url)
                                 } catch {
                                     errorMessage = error
+                                    showsErrorAlert.toggle()
                                 }
                             }
                         })
@@ -56,8 +60,10 @@ struct ExportList: View {
                     .onDelete(perform: deleteFile)
                 }
                 .overlay {
-                        if files.isEmpty { ContentUnavailableView("NO_EXPORTED_FILES", systemImage: "doc") }
+                    if files.isEmpty {
+                        ContentUnavailableView("NO_EXPORTED_FILES", systemImage: "doc")
                     }
+                }
         .navigationTitle("CSV_FILES")
         .toolbar {
             ToolbarItem(placement: .topBarLeading, content: {
@@ -73,6 +79,7 @@ struct ExportList: View {
                         [try await CSVManager.provideCSV()]
                     } onError: { error in
                         errorMessage = error
+                        showsErrorAlert.toggle()
                     }
                 } else {
                     Button(action: {
@@ -83,6 +90,7 @@ struct ExportList: View {
                                 try await CSVManager.provideCSV()
                             } catch {
                                 errorMessage = error
+                                showsErrorAlert.toggle()
                             }
                         }
                         
@@ -111,16 +119,15 @@ struct ExportList: View {
                             try deleteFiles()
                         } catch {
                             errorMessage = error
+                            showsErrorAlert.toggle()
                         }
                     }
                 }
             })
         }
-        .alert(error: $errorMessage, actions: {
-            Button("OK") {
-                return
-            }
-        })
+        .alert(errorMessage?.localizedDescription ?? "common.unknownError", isPresented: $showsErrorAlert) {
+            Button("common.ok", role: .cancel) { showsErrorAlert.toggle() }
+        }
     }
     
     private func deleteFile(at offsets: IndexSet) {
@@ -129,6 +136,7 @@ struct ExportList: View {
                 try deleteFile(with: files[index].url)
             } catch {
                 errorMessage = error
+                showsErrorAlert.toggle()
             }
         }
     }
@@ -137,6 +145,7 @@ struct ExportList: View {
         for file in files {
             try CSVManager.deleteCSV(file.url)
         }
+        throw pSTaRTErrors.dbDeleteError
     }
     
     private func deleteFile(with url: URL) throws {
