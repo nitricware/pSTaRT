@@ -45,11 +45,10 @@ struct Overview: View {
             alignment: .top
         )
         .sheet(isPresented: $isShowingTriage) {
-            NavigationView {
-                TriageQuestionnaire(
+            NavigationStack {
+                TriageQuestionnaireView(
                     isShowingTriage: $isShowingTriage,
                     identification: $identification
-                    
                 )
             }
             .interactiveDismissDisabled()

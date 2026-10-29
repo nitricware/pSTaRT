@@ -19,8 +19,9 @@
 		450C3BFB28CCCDEA00BEF415 /* IdentificationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BFA28CCCDEA00BEF415 /* IdentificationInput.swift */; };
 		450C3C0028CDC6C600BEF415 /* pSTaRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BFF28CDC6C600BEF415 /* pSTaRTApp.swift */; };
 		450C3C0228CDC6E300BEF415 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3C0128CDC6E300BEF415 /* Persistence.swift */; };
-		450C3C0A28CDFA0C00BEF415 /* TriageQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3C0928CDFA0C00BEF415 /* TriageQuestionnaire.swift */; };
+		450C3C0A28CDFA0C00BEF415 /* TriageQuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3C0928CDFA0C00BEF415 /* TriageQuestionnaireView.swift */; };
 		451D7973308E545A008150CB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7972308E545A008150CB /* Settings.swift */; };
+		451E81013093DDA200E3A183 /* TriageQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E81003093DD9C00E3A183 /* TriageQuestionnaire.swift */; };
 		451FA2DA261F454A00E25BA0 /* pSTaRT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 458FB811237F0F1A0060A8FB /* pSTaRT.xcdatamodeld */; };
 		4520E64923F955A800BBD06F /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520E64823F955A800BBD06F /* DBHelper.swift */; };
 		45297A59309230BF00078AD5 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45297A58309230BF00078AD5 /* InfoPlist.xcstrings */; };
@@ -63,8 +64,9 @@
 		450C3BFA28CCCDEA00BEF415 /* IdentificationInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationInput.swift; sourceTree = "<group>"; };
 		450C3BFF28CDC6C600BEF415 /* pSTaRTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pSTaRTApp.swift; sourceTree = "<group>"; };
 		450C3C0128CDC6E300BEF415 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		450C3C0928CDFA0C00BEF415 /* TriageQuestionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageQuestionnaire.swift; sourceTree = "<group>"; };
+		450C3C0928CDFA0C00BEF415 /* TriageQuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageQuestionnaireView.swift; sourceTree = "<group>"; };
 		451D7972308E545A008150CB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		451E81003093DD9C00E3A183 /* TriageQuestionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageQuestionnaire.swift; sourceTree = "<group>"; };
 		451FA2D5261F414600E25BA0 /* pSTaRT_Retriaging.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pSTaRT_Retriaging.xcdatamodel; sourceTree = "<group>"; };
 		4520E64823F955A800BBD06F /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		45297A58309230BF00078AD5 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		450C3BF528CCCBCB00BEF415 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				451E81003093DD9C00E3A183 /* TriageQuestionnaire.swift */,
 				4531D245308BA6A900FBEB8F /* LazyShareLink.swift */,
 				4531D241308B838600FBEB8F /* CSVManager.swift */,
 				457C08BB2FD9E4CE0031CD5C /* NWIAPListener.swift */,
@@ -230,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				45E924DC28CF28BC00C5FC9A /* TriageConclusion.swift */,
-				450C3C0928CDFA0C00BEF415 /* TriageQuestionnaire.swift */,
+				450C3C0928CDFA0C00BEF415 /* TriageQuestionnaireView.swift */,
 				45E924D228CEF57500C5FC9A /* TriageQuestion.swift */,
 				45ECCA9028D062ED005E4D39 /* TriageRetriage.swift */,
 			);
@@ -350,6 +353,7 @@
 				450C3BFB28CCCDEA00BEF415 /* IdentificationInput.swift in Sources */,
 				450C3C0228CDC6E300BEF415 /* Persistence.swift in Sources */,
 				450C3BF128CCCA3A00BEF415 /* TriageGroupsOverview.swift in Sources */,
+				451E81013093DDA200E3A183 /* TriageQuestionnaire.swift in Sources */,
 				45ECCA8D28CF610B005E4D39 /* PersonListSection.swift in Sources */,
 				45098B1E28D9D31F00DD524A /* StoreManager.swift in Sources */,
 				457C08BC2FD9E4D80031CD5C /* NWIAPListener.swift in Sources */,
@@ -363,7 +367,7 @@
 				45ECCA8F28CF6449005E4D39 /* PersonDetail.swift in Sources */,
 				45ECCA9128D062ED005E4D39 /* TriageRetriage.swift in Sources */,
 				45C0C7F7308E739F002163B5 /* AppSettings.swift in Sources */,
-				450C3C0A28CDFA0C00BEF415 /* TriageQuestionnaire.swift in Sources */,
+				450C3C0A28CDFA0C00BEF415 /* TriageQuestionnaireView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

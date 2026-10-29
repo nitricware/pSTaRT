@@ -9,26 +9,20 @@
 import SwiftUI
 import MapKit
 
-struct TriageQuestionnaire: View {
+struct TriageQuestionnaireView: View {
     // MARK: Bindings from parent
-    @StateObject public var currentTriage: CurrentTriage
+    //@State public var currentTriage: TriageQuestionnaire = TriageQuestionnaire()
+    @StateObject public var currentTriage: CurrentTriage = CurrentTriage()
+    
     @Binding public var isShowingTriage: Bool
     @Binding public var identification: String
-    
-    init(isShowingTriage: Binding<Bool>, identification: Binding<String>) {
-        _isShowingTriage = isShowingTriage
-        _identification = identification
-        _currentTriage = StateObject(
-            wrappedValue: CurrentTriage(identification: identification.wrappedValue)
-        )
-    }
     
     var body: some View {
         VStack {
             Text("CURRENT_PERSON")
                 .font(.caption)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text(currentTriage.person.plsNumber ?? "common.unidentified")
+            Text(currentTriage.identification)
                 .font(
                     .system(size: 36.0, weight: .regular, design: .monospaced)
                 )
@@ -56,7 +50,7 @@ struct TriageQuestionnaire: View {
                         position: $currentTriage.mapCameraPostion,
                         interactionModes: []
                     ) {
-                        Marker(self.currentTriage.person.plsNumber ?? String(localized: "common.unidentified"), systemImage: "cross.case", coordinate: location.coordinate)
+                        Marker(identification, systemImage: "cross.case", coordinate: location.coordinate)
                     }
                     .mapStyle(.hybrid)
                     .frame(
@@ -81,6 +75,9 @@ struct TriageQuestionnaire: View {
             TriageRetriage(
                 saveOnInteraction: false
             )
+        }
+        .onAppear() {
+            currentTriage.identification = identification
         }
         .onChange(of: isShowingTriage) { oldValue, newValue in
             // reset identification on close
@@ -112,7 +109,7 @@ struct TriageQuestionnaier_Previews: PreviewProvider {
         Spacer()
             .sheet(isPresented: isShowingSheet) {
                 NavigationView {
-                    TriageQuestionnaire(
+                    TriageQuestionnaireView(
                         isShowingTriage: isShowingSheet,
                         identification: .constant("TESTTRIAGE")
                     )

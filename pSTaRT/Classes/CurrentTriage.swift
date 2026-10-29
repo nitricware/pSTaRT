@@ -13,9 +13,9 @@ import CoreLocation
 import MapKit
 
 class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
-    public var identification: String { person.plsNumber ?? String(localized: "common.unidentified")}
+    //public var identification: String { person.plsNumber ?? String(localized: "common.unidentified")}
     public var currentGroup: TriageGroup { TriageGroup(stored: triageList.last?.group ?? TriageGroup.unidentified.rawValue) }
-    
+    @Published public var identification: String = ""
     @Published public var triageStart: Date = Date()
     
     @Published public var triageList: [Triages] = []
@@ -47,6 +47,17 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published public var person: Persons
     
     private let context: NSManagedObjectContext = PersistenceController.shared.container.viewContext
+    
+    override init() {
+        let newPerson = Persons(context: context)
+        newPerson.startTime = .now
+        self.person = newPerson
+        super.init()
+        
+        self.getLocation()
+    }
+    
+    
     
     init (identification: String) {
         let newPerson: Persons = Persons(context: context)
@@ -156,6 +167,9 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         
         person.endTime = .now
+        if person.plsNumber == nil {
+            person.plsNumber = identification
+        }
         
         do {
             try context.save()
