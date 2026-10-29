@@ -42,6 +42,8 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published var location: CLLocation?
     
+    var currentGroup: TriageGroup { triages.first?.group ?? .unidentified }
+    
     private let locationManager: CLLocationManager = CLLocationManager()
     
     // How many questions have been asked?
@@ -55,22 +57,6 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.locationManager.delegate = self
         self.person = person
         self.getLocation()
-    }
-    
-    func reset(with identification: String) {
-        self.reset()
-        self.identification = identification
-    }
-    
-    func reset() {
-        self.identification = ""
-        self.triageStart = Date()
-        self.triages = []
-        self.currentQuestion = NSLocalizedString("WALKING", tableName: "Questionnaire", comment: "Can the person walk?")
-        self.yesColor = .green
-        self.noColor = .orange
-        self.currentIteration = 0
-        self.person = nil
     }
     
     func yes() {
@@ -151,7 +137,7 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
-    func savePersonToDatabase() {
+    func savePersonToDatabase() throws {
         self.person = Persons(context: PersistenceController.shared.container.viewContext)
         
         guard let person = self.person else {
@@ -173,26 +159,27 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
         do {
             try PersistenceController.shared.container.viewContext.save()
         } catch {
-            // TODO: Error handling
-            print("Error")
+            throw pSTaRTErrors.dbSaveError
         }
     }
     
-    func appendTriage() {
-        person!.triageGroup = self.triages.first!.group.rawValue
-        for triage in self.triages {
-            let triageObject: Triages = Triages(context: PersistenceController.shared.container.viewContext)
+    func appendTriage() throws {
+        guard let person, let latest = triages.first, latest.group != .unidentified else { return }
+        let context = PersistenceController.shared.container.viewContext
 
-            triageObject.person = self.person!
-            triageObject.group = triage.group.rawValue
-            triageObject.date = triage.date
-            
-            do {
-                try PersistenceController.shared.container.viewContext.save()
-            } catch {
-                // TODO: Error handling
-                print("Error")
-            }
+        person.triageGroup = latest.group.rawValue
+        for decision in triages {
+            let triage = Triages(context: context)
+            triage.person = person
+            triage.group = decision.group.rawValue
+            triage.date = decision.date
+        }
+
+        do {
+            try context.save()
+        } catch {
+            context.rollback()
+            throw pSTaRTErrors.dbUpdateError
         }
     }
     

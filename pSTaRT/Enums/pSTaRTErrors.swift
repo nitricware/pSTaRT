@@ -13,6 +13,7 @@ enum pSTaRTErrors: LocalizedError {
     case dbFetchError
     case dbDeleteError
     case dbUpdateError
+    case dbSaveError
     
     // MARK: CSV Errors
     case csvExportError
@@ -31,6 +32,7 @@ enum pSTaRTErrors: LocalizedError {
             case .dbFetchError: return String(localized: "error.dbFetch.description", table: "Errors")
             case .dbDeleteError: return String(localized: "error.dbDelete.description", table: "Errors")
             case .dbUpdateError: return String(localized: "error.dbUpdate.description", table: "Errors")
+            case .dbSaveError: return String(localized: "error.dbSave.description", table: "Errors")
             
             case .csvExportError: return String(localized: "error.csvExport.description", table: "Errors")
             

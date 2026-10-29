@@ -10,6 +10,9 @@
     "error.dbFetch.description" : {
 
     },
+    "error.dbSave.description" : {
+
+    },
     "error.dbUpdate.description" : {
 
     },

@@ -12,14 +12,18 @@ struct TriageConclusion: View {
     @EnvironmentObject public var currentTriage: CurrentTriage
     @Binding public var isShowingTriage: Bool
     
+    // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
+    @State private var errorMessage: Error?
+    @State private var showsErrorAlert: Bool = false
+    
     var body: some View {
         VStack {
             TriageGroupIcon(
-                triageGroup: currentTriage.triages.first!.group
+                triageGroup: currentTriage.currentGroup
             )
                 .frame(width: 210, height: 210, alignment: .center)
                 .environmentObject(currentTriage)
-            Text(currentTriage.triages.first!.group.description)
+            Text(currentTriage.currentGroup.description)
                 .font(
                     .system(size: 36.0, weight: .bold, design: .rounded)
                 )
@@ -28,11 +32,16 @@ struct TriageConclusion: View {
                 .multilineTextAlignment(.center)
             
             Button(action: {
-                self.currentTriage.savePersonToDatabase()
-                self.currentTriage.appendTriage()
-                self.isShowingTriage.toggle()
+                do {
+                    try self.currentTriage.savePersonToDatabase()
+                    try self.currentTriage.appendTriage()
+                    self.isShowingTriage.toggle()
+                } catch {
+                    showsErrorAlert.toggle()
+                    errorMessage = error
+                }
             }) {
-                Text("SELECT_GROUP \(currentTriage.triages.first!.group.roman)")
+                Text("SELECT_GROUP \(currentTriage.currentGroup.roman)")
                     .font(
                         .system(size: 36.0, weight: .bold, design: .default)
                     )
@@ -40,7 +49,10 @@ struct TriageConclusion: View {
                 
             }
             .buttonStyle(.glassProminent)
-            .tint(currentTriage.triages.first!.group.color)
+            .tint(currentTriage.currentGroup.color)
+        }
+        .alert(errorMessage?.localizedDescription ?? String(localized: "common.unknownError"), isPresented: $showsErrorAlert) {
+            Button("common.ok", role: .cancel) { }
         }
     }
 }
