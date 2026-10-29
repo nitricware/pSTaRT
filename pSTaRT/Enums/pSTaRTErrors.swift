@@ -22,6 +22,12 @@ enum pSTaRTErrors: LocalizedError {
     case emptyInput
     case duplicateID
     
+    // MARK: IAP Errors
+    
+    case purchaseCancelled
+    case purchaseUnableToPurchase
+    
+    
     var errorDescription: String? {
         switch self {
             case .dbFetchError: return String(localized: "error.dbFetch.description", table: "Errors")
@@ -30,6 +36,8 @@ enum pSTaRTErrors: LocalizedError {
             case .csvExportError: return String(localized: "error.csvExport.description", table: "Errors")
             case .emptyInput: return String(localized: "error.emptyInput.description", table: "Errors")
             case .duplicateID: return String(localized: "error.duplicateID.description", table: "Errors")
+            case .purchaseCancelled: return String(localized: "error.purchaseCancelled.description", table: "Errors")
+            case .purchaseUnableToPurchase: return String(localized: "error.purchaseUnableToPurchase.description", table: "Errors")
         }
     }
 }

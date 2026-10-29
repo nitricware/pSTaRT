@@ -17,7 +17,6 @@ final class NWIAPListener {
     var updates: Task<Void, Never>? = nil
     
     init() {
-        print("init!")
         updates = newTransactionListenerTask()
     }
 
@@ -29,15 +28,13 @@ final class NWIAPListener {
     
     private func newTransactionListenerTask() -> Task<Void, Never> {
         Task(priority: .background) {
-            print("task started")
             for await verificationResult in Transaction.updates {
-                self.handle(updatedTransaction: verificationResult)
+                await self.handle(updatedTransaction: verificationResult)
             }
         }
     }
     
-    private func handle(updatedTransaction verificationResult: VerificationResult<Transaction>) {
-        print("time to shine!")
+    private func handle(updatedTransaction verificationResult: VerificationResult<Transaction>) async {
         guard case .verified(let transaction) = verificationResult else {
             // Ignore unverified transactions.
             return
@@ -45,8 +42,11 @@ final class NWIAPListener {
         // Here should be code to handle different kinds of transactions, like revocation, expiration, etc.
         // This is not really required for this app. So whenever handle() fires, we add the price to the
         // internal counter (UserDefaults) which will be reset on re-install of the app anyway.
+        if let price = transaction.price {
+            let currentTipJar = UserDefaults.standard.double(forKey: "givenMoney")
+            UserDefaults.standard.set(currentTipJar + Double(truncating: price as NSNumber), forKey: "givenMoney")
+        }
         
-        let currentTipJar = UserDefaults.standard.double(forKey: "tipJar")
-        UserDefaults.standard.set(currentTipJar + Double(truncating: transaction.price! as NSNumber), forKey: "tipJar")
+        await transaction.finish()
     }
 }

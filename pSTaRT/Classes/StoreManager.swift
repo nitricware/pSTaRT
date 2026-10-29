@@ -21,29 +21,23 @@ class StoreManager: ObservableObject {
         }
     }
     
-    func purchaseProduct(product: Product) async {
+    func purchaseProduct(product: Product) async throws {
         if AppStore.canMakePayments {
-            print("purchasing product ... \(product)")
-            do {
-                let payment = try await product.purchase()
-                switch payment {
-                case .success(let verification):
-                    if case .verified(let transaction) = verification {
-                        print("Purchase successful: \(transaction.id)")
-                        await transaction.finish()
-                        let currentTipJar = UserDefaults.standard.double(forKey: "givenMoney")
-                        UserDefaults.standard.set(currentTipJar + Double(truncating: transaction.price! as NSNumber), forKey: "givenMoney")
-                    }
-                case .userCancelled:
-                    print("User cancelled the purchase.")
-                default:
-                    break
+            let payment = try await product.purchase()
+            switch payment {
+            case .success(let verification):
+                if case .verified(let transaction) = verification {
+                    let currentTipJar = UserDefaults.standard.double(forKey: "givenMoney")
+                    UserDefaults.standard.set(currentTipJar + Double(truncating: transaction.price! as NSNumber), forKey: "givenMoney")
+                    await transaction.finish()
                 }
-            } catch {
-                print(error)
+            case .userCancelled:
+                throw pSTaRTErrors.purchaseCancelled
+            default:
+                break
             }
         } else {
-            print("User can't make payment.")
+            throw pSTaRTErrors.purchaseUnableToPurchase
         }
     }
 }

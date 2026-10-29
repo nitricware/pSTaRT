@@ -12,6 +12,7 @@ import SwiftUI
 @main
 struct pSTaRTApp: App {
     let persistenceController: PersistenceController
+    let iapListener = NWIAPListener()
     init () {
         // initialize default values for several settings.
         // This does not override already modified settings.

@@ -14,6 +14,10 @@ struct TipJar: View {
     @StateObject public var storeManager: StoreManager = StoreManager()
     @AppStorage("givenMoney") var tipJar: Double = 0.00
     
+    // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
+    @State private var errorMessage: Error?
+    @State private var showsErrorAlert: Bool = false
+    
     var body: some View {
         NavigationView {
             VStack (spacing: 20) {
@@ -32,7 +36,11 @@ struct TipJar: View {
                         Button(action: {
                             print("Purchasing \(product)")
                             Task {
-                                await storeManager.purchaseProduct(product: product)
+                                do {
+                                    try await storeManager.purchaseProduct(product: product)
+                                } catch {
+                                    
+                                }
                             }
 
                         }) {
@@ -60,6 +68,9 @@ struct TipJar: View {
                         Image(systemName: "xmark")
                     }
                 }
+            }
+            .alert(errorMessage?.localizedDescription ?? String(localized: "common.unknownError"), isPresented: $showsErrorAlert) {
+                Button("common.ok", role: .cancel) { }
             }
         }
         
