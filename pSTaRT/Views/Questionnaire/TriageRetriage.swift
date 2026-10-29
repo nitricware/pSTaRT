@@ -37,18 +37,22 @@ struct TriageRetriage: View {
                     }
                     .buttonStyle(.glassProminent)
                     .tint(group.color)
-                    .alert(errorMessage?.localizedDescription ?? String(localized: "common.unknownError"), isPresented: $showsErrorAlert) {
-                        Button("common.ok", role: .cancel) { }
-                    }
+                    
                 }
             }
+        }
+        .alert(errorMessage?.localizedDescription ?? String(localized: "common.unknownError"), isPresented: $showsErrorAlert) {
+            Button("common.ok", role: .cancel) { }
         }
     }
     
     func save(_ group: TriageGroup) throws {
         self.currentTriage.conclude(assign: group)
-        if saveOnInteraction {
-            try self.currentTriage.appendTriage()
+        do {
+            try self.currentTriage.finish()
+        } catch {
+            showsErrorAlert.toggle()
+            errorMessage = error
         }
     }
 }

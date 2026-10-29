@@ -158,7 +158,7 @@ struct PLSInput_Previews: PreviewProvider {
         IdentificationInput(
             isShowingTriage: .constant(false), identification: .constant("TESTTRIAGE")
         )
-        .environmentObject(CurrentTriage())
+        .environmentObject(CurrentTriage(identification: "PREVIEW"))
         .previewLayout(.sizeThatFits)
     }
 }

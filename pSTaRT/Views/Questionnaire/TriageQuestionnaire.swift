@@ -11,16 +11,24 @@ import MapKit
 
 struct TriageQuestionnaire: View {
     // MARK: Bindings from parent
-    @StateObject public var currentTriage: CurrentTriage = CurrentTriage()
+    @StateObject public var currentTriage: CurrentTriage
     @Binding public var isShowingTriage: Bool
     @Binding public var identification: String
+    
+    init(isShowingTriage: Binding<Bool>, identification: Binding<String>) {
+        _isShowingTriage = isShowingTriage
+        _identification = identification
+        _currentTriage = StateObject(
+            wrappedValue: CurrentTriage(identification: identification.wrappedValue)
+        )
+    }
     
     var body: some View {
         VStack {
             Text("CURRENT_PERSON")
                 .font(.caption)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text(currentTriage.identification)
+            Text(currentTriage.person.plsNumber ?? "common.unidentified")
                 .font(
                     .system(size: 36.0, weight: .regular, design: .monospaced)
                 )
@@ -48,7 +56,7 @@ struct TriageQuestionnaire: View {
                         position: $currentTriage.mapCameraPostion,
                         interactionModes: []
                     ) {
-                        Marker(currentTriage.identification, systemImage: "cross.case", coordinate: location.coordinate)
+                        Marker(self.currentTriage.person.plsNumber ?? String(localized: "common.unidentified"), systemImage: "cross.case", coordinate: location.coordinate)
                     }
                     .mapStyle(.hybrid)
                     .frame(
@@ -75,6 +83,7 @@ struct TriageQuestionnaire: View {
             )
         }
         .onChange(of: isShowingTriage) { oldValue, newValue in
+            // reset identification on close
             if oldValue && !newValue {
                 identification = ""
             }
@@ -85,7 +94,6 @@ struct TriageQuestionnaire: View {
         .navigationTitle(Text("TRIAGE_QUESTIONNAIRE"))
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                // TODO: show confirmation dialogue
                 Button(action: {
                     self.isShowingTriage.toggle()
                 }) {
@@ -94,10 +102,7 @@ struct TriageQuestionnaire: View {
                 }
             }
         }
-        .onAppear {
-            self.currentTriage.triageStart = Date()
-            self.currentTriage.identification = identification
-        }
+        
     }
 }
 

@@ -52,6 +52,6 @@ struct TriageQuestion_Previews: PreviewProvider {
     static var previews: some View {
         TriageQuestion()
             .previewLayout(.sizeThatFits)
-            .environmentObject(CurrentTriage())
+            .environmentObject(CurrentTriage(identification: "PREVIEW"))
     }
 }

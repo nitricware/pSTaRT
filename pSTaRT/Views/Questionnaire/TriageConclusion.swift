@@ -33,8 +33,8 @@ struct TriageConclusion: View {
             
             Button(action: {
                 do {
-                    try self.currentTriage.savePersonToDatabase()
-                    try self.currentTriage.appendTriage()
+                    print(self.currentTriage.person)
+                    try currentTriage.finish()
                     self.isShowingTriage.toggle()
                 } catch {
                     showsErrorAlert.toggle()
@@ -63,6 +63,6 @@ struct TriageConclusion_Previews: PreviewProvider {
             isShowingTriage: .constant(true)
         )
         .previewLayout(.sizeThatFits)
-        .environmentObject(CurrentTriage())
+        .environmentObject(CurrentTriage(identification: "PREVIEW"))
     }
 }

@@ -12,17 +12,13 @@ import CoreData
 import CoreLocation
 import MapKit
 
-struct TriageDecision {
-    let group: TriageGroup
-    let date: Date
-}
-
 class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
-    @Published public var identification: String = ""
+    public var identification: String { person.plsNumber ?? String(localized: "common.unidentified")}
+    public var currentGroup: TriageGroup { TriageGroup(stored: triageList.last?.group ?? TriageGroup.unidentified.rawValue) }
     
     @Published public var triageStart: Date = Date()
     
-    @Published public var triages: [TriageDecision] = [TriageDecision(group: .unidentified, date: Date())]
+    @Published public var triageList: [Triages] = []
     
     @Published public var currentQuestion: String = NSLocalizedString("WALKING", tableName: "Questionnaire", comment: "Can the person walk?")
     
@@ -42,20 +38,35 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published var location: CLLocation?
     
-    var currentGroup: TriageGroup { triages.first?.group ?? .unidentified }
-    
     private let locationManager: CLLocationManager = CLLocationManager()
     
     // How many questions have been asked?
     
     private var currentIteration: Int = 0
     
-    public var person: Persons?
+    @Published public var person: Persons
     
-    init (person: Persons? = nil) {
+    private let context: NSManagedObjectContext = PersistenceController.shared.container.viewContext
+    
+    init (identification: String) {
+        let newPerson: Persons = Persons(context: context)
+        newPerson.startTime = .now
+        newPerson.plsNumber = identification
+        self.person = newPerson
         super.init()
+        
         self.locationManager.delegate = self
+
+        self.getLocation()
+    }
+    
+    init (person: Persons) {
+        // All stored properties must be initialized before super.init()
         self.person = person
+        super.init()
+        
+        self.locationManager.delegate = self
+
         self.getLocation()
     }
     
@@ -126,28 +137,36 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     /// Concludes a triage. Can either be triggered by finishing the questionnaire or by retriaging.
     func conclude(assign triageGroup: TriageGroup) {
-        let newTriage = TriageDecision(
-            group: triageGroup,
-            date: Date()
-        )
-        if self.triages.first?.group == .unidentified {
-            self.triages = [newTriage]
-        } else {
-            self.triages.insert(newTriage, at: 0)
+        let newTriage = Triages(context: context)
+        newTriage.person = person
+        newTriage.group = triageGroup.rawValue
+        newTriage.date = Date()
+        
+        person.triageGroup = triageGroup.rawValue
+        
+        triageList.append(newTriage)
+    }
+    
+    func finish() throws {
+        if let l = locationManager.location {
+            person.preciseLocation = locationManager.accuracyAuthorization == .fullAccuracy
+            person.lat = NSNumber(value: l.coordinate.latitude)
+            person.lon = NSNumber(value: l.coordinate.longitude)
+        }
+        locationManager.stopUpdatingLocation()
+        
+        person.endTime = .now
+        
+        do {
+            try context.save()
+        } catch {
+            context.rollback()
+            throw pSTaRTErrors.dbSaveError
         }
     }
     
-    func savePersonToDatabase() throws {
-        self.person = Persons(context: PersistenceController.shared.container.viewContext)
-        
-        guard let person = self.person else {
-            return
-        }
-        
-        person.plsNumber = self.identification
-        person.startTime = self.triageStart
-        person.endTime = Date()
-        
+    /*
+    func savePersonToDatabaseX() throws {
         if let l = locationManager.location {
             person.preciseLocation = locationManager.accuracyAuthorization == .fullAccuracy
             person.lat = NSNumber(value: l.coordinate.latitude)
@@ -157,14 +176,16 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         
         do {
-            try PersistenceController.shared.container.viewContext.save()
+            try context.save()
         } catch {
+            context.rollback()
             throw pSTaRTErrors.dbSaveError
         }
-    }
+    }*/
     
+    /*
     func appendTriage() throws {
-        guard let person, let latest = triages.first, latest.group != .unidentified else { return }
+        guard let latest = triages.first, latest.group != .unidentified else { return }
         let context = PersistenceController.shared.container.viewContext
 
         person.triageGroup = latest.group.rawValue
@@ -182,6 +203,7 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
             throw pSTaRTErrors.dbUpdateError
         }
     }
+     */
     
     func generateCameraPosition(lat: Double, lon: Double) -> MapCameraPosition {
         return MapCameraPosition.region(

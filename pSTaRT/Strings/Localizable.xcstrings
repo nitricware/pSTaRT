@@ -118,6 +118,9 @@
     "common.ok" : {
 
     },
+    "common.unidentified" : {
+
+    },
     "common.unknown" : {
       "comment" : "unknown patient ID"
     },
