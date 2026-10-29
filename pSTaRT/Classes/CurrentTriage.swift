@@ -12,12 +12,17 @@ import CoreData
 import CoreLocation
 import MapKit
 
+struct TriageDecision {
+    let group: TriageGroup
+    let date: Date
+}
+
 class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published public var identification: String = ""
     
     @Published public var triageStart: Date = Date()
     
-    @Published public var triageGroup: [TriageGroup] = [.unidentified]
+    @Published public var triages: [TriageDecision] = [TriageDecision(group: .unidentified, date: Date())]
     
     @Published public var currentQuestion: String = NSLocalizedString("WALKING", tableName: "Questionnaire", comment: "Can the person walk?")
     
@@ -60,7 +65,7 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     func reset() {
         self.identification = ""
         self.triageStart = Date()
-        self.triageGroup = [.unidentified]
+        self.triages = []
         self.currentQuestion = NSLocalizedString("WALKING", tableName: "Questionnaire", comment: "Can the person walk?")
         self.yesColor = .green
         self.noColor = .orange
@@ -135,10 +140,14 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     /// Concludes a triage. Can either be triggered by finishing the questionnaire or by retriaging.
     func conclude(assign triageGroup: TriageGroup) {
-        if self.triageGroup.first == .unidentified {
-            self.triageGroup = [triageGroup]
+        let newTriage = TriageDecision(
+            group: triageGroup,
+            date: Date()
+        )
+        if self.triages.first?.group == .unidentified {
+            self.triages = [newTriage]
         } else {
-            self.triageGroup.insert(triageGroup, at: 0)
+            self.triages.insert(newTriage, at: 0)
         }
     }
     
@@ -170,13 +179,13 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func appendTriage() {
-        person!.triageGroup = self.triageGroup.first!.rawValue
-        for triage in self.triageGroup {
+        person!.triageGroup = self.triages.first!.group.rawValue
+        for triage in self.triages {
             let triageObject: Triages = Triages(context: PersistenceController.shared.container.viewContext)
 
             triageObject.person = self.person!
-            triageObject.group = triage.rawValue
-            triageObject.date = self.triageStart
+            triageObject.group = triage.group.rawValue
+            triageObject.date = triage.date
             
             do {
                 try PersistenceController.shared.container.viewContext.save()

@@ -15,11 +15,11 @@ struct TriageConclusion: View {
     var body: some View {
         VStack {
             TriageGroupIcon(
-                triageGroup: currentTriage.triageGroup.first!
+                triageGroup: currentTriage.triages.first!.group
             )
                 .frame(width: 210, height: 210, alignment: .center)
                 .environmentObject(currentTriage)
-            Text(currentTriage.triageGroup.first!.description)
+            Text(currentTriage.triages.first!.group.description)
                 .font(
                     .system(size: 36.0, weight: .bold, design: .rounded)
                 )
@@ -32,7 +32,7 @@ struct TriageConclusion: View {
                 self.currentTriage.appendTriage()
                 self.isShowingTriage.toggle()
             }) {
-                Text("SELECT_GROUP \(currentTriage.triageGroup.first!.roman)")
+                Text("SELECT_GROUP \(currentTriage.triages.first!.group.roman)")
                     .font(
                         .system(size: 36.0, weight: .bold, design: .default)
                     )
@@ -40,7 +40,7 @@ struct TriageConclusion: View {
                 
             }
             .buttonStyle(.glassProminent)
-            .tint(currentTriage.triageGroup.first!.color)
+            .tint(currentTriage.triages.first!.group.color)
         }
     }
 }
