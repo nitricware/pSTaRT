@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CoreLocation
 
 extension NSManagedObjectContext {
     func deleteAll() throws {
@@ -55,19 +56,76 @@ extension NSManagedObjectContext {
         }
     }
     
-    func fetchPersons(for triageGroup: Int? = nil) throws -> [Persons] {
-        let request = NSFetchRequest<Persons>(entityName: "Persons")
+    func fetchPersons(in group: TriageGroup? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Persons] {
+        let request = Persons.fetchRequest(in: group)
         request.relationshipKeyPathsForPrefetching = ["triages"]
-        request.sortDescriptors = [NSSortDescriptor(key: "startTime", ascending: false)]
-
-        if let group = triageGroup {
-            request.predicate = NSPredicate(format: "triageGroup == %@", NSNumber(value: group))
+        
+        if let sortDescriptors {
+            request.sortDescriptors = sortDescriptors
         }
-
+        
         do {
-            return try self.fetch(request)
+            return try fetch(request)
         } catch {
             throw pSTaRTErrors.dbFetchError
         }
     }
+    
+    func retriage(_ person: Persons, to group: TriageGroup) throws {
+        let triage = Triages(context: self)
+        triage.person = person
+        triage.group = group.rawValue
+        triage.date = .now
+        person.triageGroup = group.rawValue
+
+        do {
+            try save()
+        } catch {
+            rollback()
+            throw pSTaRTErrors.dbUpdateError
+        }
+    }
+    
+    func saveTriage(identification: String,
+                    start: Date,
+                    decisions: [TriageDecision],
+                    location: CLLocation?,
+                    isPrecise: Bool) throws {
+        guard let latest = decisions.last else { return }
+
+        let person = Persons(context: self)
+        person.plsNumber = identification
+        person.startTime = start
+        person.endTime = .now
+        person.triageGroup = latest.group.rawValue
+        if let location {
+            person.preciseLocation = isPrecise
+            person.lat = NSNumber(value: location.coordinate.latitude)
+            person.lon = NSNumber(value: location.coordinate.longitude)
+        }
+        for decision in decisions {
+            let triage = Triages(context: self)
+            triage.person = person
+            triage.group = decision.group.rawValue
+            triage.date = decision.date
+        }
+
+        do {
+            try save()
+        } catch {
+            rollback()
+            throw pSTaRTErrors.dbSaveError
+        }
+    }
+    
+    func validateNewIdentification(_ identification: String) throws {
+        guard !identification.isEmpty else {
+            throw pSTaRTErrors.emptyInput
+        }
+        if try isDuplicate(id: identification) {
+            throw pSTaRTErrors.duplicateID
+        }
+    }
+    
+    
 }

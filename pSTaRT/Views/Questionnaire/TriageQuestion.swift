@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TriageQuestion: View {
-    @EnvironmentObject public var currentTriage: CurrentTriage
+    @Environment(TriageSession.self) private var currentTriage
     
     var body: some View {
         VStack {
@@ -52,6 +52,6 @@ struct TriageQuestion_Previews: PreviewProvider {
     static var previews: some View {
         TriageQuestion()
             .previewLayout(.sizeThatFits)
-            .environmentObject(CurrentTriage(identification: "PREVIEW"))
+            .environment(TriageSession(identification: "PREVIEW"))
     }
 }

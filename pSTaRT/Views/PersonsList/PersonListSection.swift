@@ -15,16 +15,7 @@ struct PersonListSection: View {
     
     init(with group: TriageGroup) {
         self.triageGroup = group
-        _fetchRequest = FetchRequest(
-            sortDescriptors: [
-                NSSortDescriptor(
-                    keyPath: \Persons.startTime,
-                    ascending: true
-                )
-            ],
-            predicate: NSPredicate(format: "triageGroup = %d", triageGroup.rawValue),
-            animation: .default
-        )
+        _fetchRequest = FetchRequest(fetchRequest: Persons.fetchRequest(in: group), animation: .default)
     }
     
     var body: some View {

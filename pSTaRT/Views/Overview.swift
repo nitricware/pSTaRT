@@ -11,9 +11,9 @@ import CoreData
 
 struct Overview: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @State private var activeSession: TriageSession?
     
     // MARK: Sheet States
-    @State private var isShowingTriage: Bool = false
     @State private var isShowingSettings: Bool = false
     
     @State public var isShowingTipJar: Bool = false
@@ -22,10 +22,9 @@ struct Overview: View {
     
     var body: some View {
         VStack {
-            IdentificationInput(
-                isShowingTriage: $isShowingTriage,
-                identification: $identification
-            )
+            IdentificationInput(identification: $identification) { id in
+                activeSession = TriageSession(identification: id)
+            }
             
             TriageGroupsOverview()
                 .frame(maxHeight: .infinity, alignment: .bottom)
@@ -44,12 +43,12 @@ struct Overview: View {
             maxHeight: .infinity,
             alignment: .top
         )
-        .sheet(isPresented: $isShowingTriage) {
+        .sheet(item: $activeSession) { session in
             NavigationStack {
-                TriageQuestionnaireView(
-                    isShowingTriage: $isShowingTriage,
-                    identification: $identification
-                )
+                TriageQuestionnaireView(session: session) {
+                    activeSession = nil
+                    identification = ""
+                }
             }
             .interactiveDismissDisabled()
         }

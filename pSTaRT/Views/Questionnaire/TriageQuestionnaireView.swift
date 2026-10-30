@@ -11,19 +11,16 @@ import MapKit
 
 struct TriageQuestionnaireView: View {
     // MARK: Bindings from parent
-    //@State public var currentTriage: TriageQuestionnaire = TriageQuestionnaire()
-    @State public var locationProvider: NWLocationProvider = NWLocationProvider()
-    @StateObject public var currentTriage: CurrentTriage = CurrentTriage()
-    
-    @Binding public var isShowingTriage: Bool
-    @Binding public var identification: String
+    let session: TriageSession
+    let onClose: () -> Void
+    @State private var locationProvider = NWLocationProvider()
     
     var body: some View {
         VStack {
             Text("CURRENT_PERSON")
                 .font(.caption)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text(currentTriage.identification)
+            Text(session.identification)
                 .font(
                     .system(size: 36.0, weight: .regular, design: .monospaced)
                 )
@@ -34,7 +31,7 @@ struct TriageQuestionnaireView: View {
                 .font(.caption)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text(
-                currentTriage.triageStart,
+                session.triageStart,
                 format: Date.FormatStyle().year().month(.twoDigits).day().hour().minute().second()
             )
             .font(
@@ -51,7 +48,7 @@ struct TriageQuestionnaireView: View {
                         position: $locationProvider.mapCameraPosition,
                         interactionModes: []
                     ) {
-                        Marker(identification, systemImage: "cross.case", coordinate: location.coordinate)
+                        Marker(session.identification, systemImage: "cross.case", coordinate: location.coordinate)
                     }
                     .mapStyle(.hybrid)
                     .frame(
@@ -64,41 +61,34 @@ struct TriageQuestionnaireView: View {
             Spacer()
             
             VStack {
-                if currentTriage.currentGroup == .unidentified {
+                if session.currentGroup == .unidentified {
                     TriageQuestion()
                 } else {
                     TriageConclusion(
-                        isShowingTriage: $isShowingTriage
+                        onClose: onClose
                     )
                     .environment(locationProvider)
                 }
             }
             
-            TriageRetriage(
-                saveOnInteraction: false
-            )
+            TriageRetriage {
+                session.conclude(assign: $0)
+            }
         }
         .onAppear() {
-            currentTriage.identification = identification
             locationProvider.start()
         }
         .onDisappear {
             locationProvider.stop()
         }
-        .onChange(of: isShowingTriage) { oldValue, newValue in
-            // reset identification on close
-            if oldValue && !newValue {
-                identification = ""
-            }
-        }
-        .environmentObject(currentTriage)
+        .environment(session)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding()
         .navigationTitle(Text("TRIAGE_QUESTIONNAIRE"))
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    self.isShowingTriage.toggle()
+                    onClose()
                 }) {
                     Text("CANCEL_TRIAGE")
                         .foregroundColor(.red)
@@ -116,9 +106,8 @@ struct TriageQuestionnaier_Previews: PreviewProvider {
             .sheet(isPresented: isShowingSheet) {
                 NavigationView {
                     TriageQuestionnaireView(
-                        isShowingTriage: isShowingSheet,
-                        identification: .constant("TESTTRIAGE")
-                    )
+                        session: TriageSession(identification: "PREVIEW")
+                    ) { }
                     .previewLayout(.device)
                 }
             }

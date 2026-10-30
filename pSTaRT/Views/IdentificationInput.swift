@@ -13,9 +13,6 @@ import CoreData
 struct IdentificationInput: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    // MARK: Bindings from parent
-    @Binding public var isShowingTriage: Bool
-    
     // MARK: Sheet States
     @State private var isShowingScanner: Bool = false
     
@@ -26,6 +23,7 @@ struct IdentificationInput: View {
     @State private var showsErrorAlert: Bool = false
     
     @Binding public var identification: String
+    let onStart: (String) -> Void
     
     var body: some View {
         VStack {
@@ -53,31 +51,20 @@ struct IdentificationInput: View {
             .glassEffect()
             
             Button(action: {
-                if identification.isEmpty {
-                    errorMessage = pSTaRTErrors.emptyInput
-                    showsErrorAlert.toggle()
-                    return
-                }
-            
                 do {
-                    let duplicateCheck = try viewContext.isDuplicate(id: identification)
-                    if duplicateCheck {
-                        errorMessage = pSTaRTErrors.duplicateID
-                        showsErrorAlert.toggle()
-                        return
-                    }
+                    let id = identification.trimmingCharacters(in: .whitespacesAndNewlines)
+                    try viewContext.validateNewIdentification(id)
+                    onStart(id)
                 } catch {
                     errorMessage = error
-                    showsErrorAlert.toggle()
-                    return
+                    showsErrorAlert = true
                 }
-                self.isShowingTriage.toggle()
             }) {
                 Text("START_TRIAGE")
-                    .font(
-                        .system(size: 36.0, weight: .bold)
-                    )
-                    .frame(maxWidth: .infinity)
+                .font(
+                    .system(size: 36.0, weight: .bold)
+                )
+                .frame(maxWidth: .infinity)
             }
             .buttonStyle(.glassProminent)
             .tint(.green)
@@ -133,7 +120,7 @@ struct IdentificationInput: View {
             Button("common.ok", role: .cancel) { }
             if (errorMessage as? pSTaRTErrors) == .duplicateID {
                 Button("DUPLICATE_IGNORE", role: .confirm) {
-                    self.isShowingTriage.toggle()
+                    onStart(identification.trimmingCharacters(in: .whitespacesAndNewlines))
                 }
             }
         }
@@ -155,9 +142,8 @@ struct IdentificationInput: View {
 struct PLSInput_Previews: PreviewProvider {
     static var previews: some View {
         IdentificationInput(
-            isShowingTriage: .constant(false), identification: .constant("TESTTRIAGE")
-        )
-        .environmentObject(CurrentTriage(identification: "PREVIEW"))
+            identification: .constant("TESTTRIAGE")
+        ) { _ in }
         .previewLayout(.sizeThatFits)
     }
 }

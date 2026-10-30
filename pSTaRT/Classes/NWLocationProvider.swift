@@ -35,7 +35,7 @@ final class NWLocationProvider: NSObject, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
     }
     
-    func update() {
+    private func update() {
         switch locationManager.authorizationStatus {
             case .notDetermined: locationManager.requestWhenInUseAuthorization()
             case .authorizedWhenInUse, .authorizedAlways: locationManager.startUpdatingLocation()
@@ -57,15 +57,6 @@ final class NWLocationProvider: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
         return
-    }
-    
-    func generateCameraPosition(lat: Double, lon: Double) -> MapCameraPosition {
-        return MapCameraPosition.region(
-            MKCoordinateRegion(
-                center: CLLocationCoordinate2D(latitude: lat, longitude: lon),
-                span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
-            )
-        )
     }
 }
 

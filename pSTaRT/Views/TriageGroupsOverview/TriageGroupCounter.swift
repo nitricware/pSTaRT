@@ -10,24 +10,13 @@ import SwiftUI
 import CoreData
 
 struct TriageGroupCounter: View {
-    
+    private let triageGroup: TriageGroup
     @FetchRequest var fetchRequest: FetchedResults<Persons>
-    
+
     init(triageGroup: TriageGroup = .unidentified) {
         self.triageGroup = triageGroup
-        self._fetchRequest = FetchRequest(
-            sortDescriptors: [
-                NSSortDescriptor(
-                    keyPath: \Persons.objectID,
-                    ascending: true
-                )
-            ],
-            predicate: NSPredicate(format: "triageGroup = %d", self.triageGroup.rawValue),
-            animation: .default
-        )
+        _fetchRequest = FetchRequest(fetchRequest: Persons.fetchRequest(in: triageGroup), animation: .default)
     }
-    
-    private let triageGroup: TriageGroup
     
     var body: some View {
         Text("NUM_PERSONS \(fetchRequest.count)")

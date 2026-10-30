@@ -24,7 +24,7 @@ enum CSVManager {
         
         let csv: String = try await context.perform {
             
-            let persons = try context.fetchPersons()
+            let persons = try context.fetchPersons(sortDescriptors: [NSSortDescriptor(keyPath: \Persons.startTime, ascending: false)])
 
             let sort = NSSortDescriptor(key: "date", ascending: true)
 

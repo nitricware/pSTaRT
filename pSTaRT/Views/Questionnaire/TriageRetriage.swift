@@ -7,12 +7,23 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct TriageRetriage: View {
-    @EnvironmentObject public var currentTriage: CurrentTriage
-    @Environment(\.dismiss) private var dismiss
-    public var saveOnInteraction: Bool = true
+    /// This is an explanation for future me: This is a closure.
+    /// So you can integrate this View in a parent View like so:
+    ///
+    /// ```
+    /// TriageRetriage {
+    ///     somefunc($0)
+    /// }
+    /// ```
+    ///
+    /// In this view you then call onSelect(value) and the parent
+    /// View executes what it had stored in the closure. That's
+    /// smart.
+    ///
+    /// Thrown errors are caught in this View.
+    let onSelect: (TriageGroup) throws -> Void
     
     // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
     @State private var errorMessage: Error?
@@ -26,7 +37,7 @@ struct TriageRetriage: View {
                 ForEach(TriageGroup.assignable) { group in
                     Button(action: {
                         do {
-                            try save(group)
+                            try onSelect(group)
                         } catch {
                             showsErrorAlert.toggle()
                             errorMessage = error
@@ -37,7 +48,6 @@ struct TriageRetriage: View {
                     }
                     .buttonStyle(.glassProminent)
                     .tint(group.color)
-                    
                 }
             }
         }
@@ -45,21 +55,11 @@ struct TriageRetriage: View {
             Button("common.ok", role: .cancel) { }
         }
     }
-    
-    func save(_ group: TriageGroup) throws {
-        self.currentTriage.conclude(assign: group)
-        do {
-            try self.currentTriage.finish()
-        } catch {
-            showsErrorAlert.toggle()
-            errorMessage = error
-        }
-    }
 }
 
 struct TriageRetriage_Previews: PreviewProvider {
     static var previews: some View {
-        TriageRetriage()
+        TriageRetriage { _ in }
             .previewLayout(.sizeThatFits)
     }
 }

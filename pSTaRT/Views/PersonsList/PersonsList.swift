@@ -15,17 +15,7 @@ struct PersonsList: View {
     @State public var isShowingCSVExport: Bool = false
     
     @Environment(\.managedObjectContext) private var managedObjectContext
-    @FetchRequest(
-        sortDescriptors: [
-            NSSortDescriptor(
-                keyPath: \Persons.objectID,
-                ascending: true
-            )
-        ],
-        animation: .default
-    )
-    
-    private var persons: FetchedResults<Persons>
+    @FetchRequest(fetchRequest: Persons.fetchRequest(in: nil), animation: .default) private var persons: FetchedResults<Persons>
     
     var body: some View {
         List {
@@ -48,7 +38,7 @@ struct PersonsList: View {
                     Image(systemName: "trash")
                         .tint(.red)
                 }
-                .disabled(self.persons.count < 1)
+                .disabled(persons.isEmpty)
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button (action: {
@@ -57,12 +47,12 @@ struct PersonsList: View {
                 }) {
                     Image(systemName: "tray")
                 }
-                .disabled(self.persons.count < 1)
+                .disabled(persons.isEmpty)
             }
         }
         .alert("DELETE_ALL", isPresented: $isShowingDeleteAll) {
             Button("CANCEL", role: .cancel) { }
-            Button("CONFIRM", role: .destructive) {                
+            Button("CONFIRM", role: .destructive) {
                 do {
                     try managedObjectContext.deleteAll()
                 } catch {

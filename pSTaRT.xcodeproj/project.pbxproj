@@ -23,6 +23,9 @@
 		451D7973308E545A008150CB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7972308E545A008150CB /* Settings.swift */; };
 		451E81033093E7E200E3A183 /* NSManagedObjectContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E81023093E7D200E3A183 /* NSManagedObjectContextExtension.swift */; };
 		451E8105309495E200E3A183 /* NWLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E8104309495DD00E3A183 /* NWLocationProvider.swift */; };
+		451E81073094BBDC00E3A183 /* TriageSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E81063094BBD800E3A183 /* TriageSession.swift */; };
+		451E81093094BC3700E3A183 /* TriageDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E81083094BC2E00E3A183 /* TriageDecision.swift */; };
+		451E810C3094C8B800E3A183 /* PersonsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E810A3094C5B100E3A183 /* PersonsExtension.swift */; };
 		451FA2DA261F454A00E25BA0 /* pSTaRT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 458FB811237F0F1A0060A8FB /* pSTaRT.xcdatamodeld */; };
 		45297A59309230BF00078AD5 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45297A58309230BF00078AD5 /* InfoPlist.xcstrings */; };
 		45297A5C3092310300078AD5 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45297A5A3092310300078AD5 /* Localizable.xcstrings */; };
@@ -38,7 +41,6 @@
 		457C08BC2FD9E4D80031CD5C /* NWIAPListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C08BB2FD9E4CE0031CD5C /* NWIAPListener.swift */; };
 		457C6F4525B9739F00F0205B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457C6F4425B9739F00F0205B /* StoreKit.framework */; };
 		458FB815237F0F1B0060A8FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458FB814237F0F1B0060A8FB /* Assets.xcassets */; };
-		459B211D28CE3EF000E8305B /* CurrentTriage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B211C28CE3EF000E8305B /* CurrentTriage.swift */; };
 		459B211F28CE4A6900E8305B /* TriageGroupIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */; };
 		45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 45AA119D25BAF5C000CD5530 /* Configuration.storekit */; };
 		45C0C7F7308E739F002163B5 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0C7F6308E739F002163B5 /* AppSettings.swift */; };
@@ -68,6 +70,9 @@
 		451D7972308E545A008150CB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		451E81023093E7D200E3A183 /* NSManagedObjectContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtension.swift; sourceTree = "<group>"; };
 		451E8104309495DD00E3A183 /* NWLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWLocationProvider.swift; sourceTree = "<group>"; };
+		451E81063094BBD800E3A183 /* TriageSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageSession.swift; sourceTree = "<group>"; };
+		451E81083094BC2E00E3A183 /* TriageDecision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageDecision.swift; sourceTree = "<group>"; };
+		451E810A3094C5B100E3A183 /* PersonsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsExtension.swift; sourceTree = "<group>"; };
 		451FA2D5261F414600E25BA0 /* pSTaRT_Retriaging.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pSTaRT_Retriaging.xcdatamodel; sourceTree = "<group>"; };
 		45297A58309230BF00078AD5 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		45297A5A3092310300078AD5 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -87,7 +92,6 @@
 		458FB812237F0F1A0060A8FB /* pSTaRT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pSTaRT.xcdatamodel; sourceTree = "<group>"; };
 		458FB814237F0F1B0060A8FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		458FB819237F0F1B0060A8FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		459B211C28CE3EF000E8305B /* CurrentTriage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTriage.swift; sourceTree = "<group>"; };
 		459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupIcon.swift; sourceTree = "<group>"; };
 		45A4478F308D3E6F0032B776 /* pSTaRT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pSTaRT.entitlements; sourceTree = "<group>"; };
 		45AA119D25BAF5C000CD5530 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
@@ -162,12 +166,14 @@
 		450C3BF528CCCBCB00BEF415 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				451E810A3094C5B100E3A183 /* PersonsExtension.swift */,
+				451E81083094BC2E00E3A183 /* TriageDecision.swift */,
+				451E81063094BBD800E3A183 /* TriageSession.swift */,
 				451E8104309495DD00E3A183 /* NWLocationProvider.swift */,
 				451E81023093E7D200E3A183 /* NSManagedObjectContextExtension.swift */,
 				4531D245308BA6A900FBEB8F /* LazyShareLink.swift */,
 				4531D241308B838600FBEB8F /* CSVManager.swift */,
 				457C08BB2FD9E4CE0031CD5C /* NWIAPListener.swift */,
-				459B211C28CE3EF000E8305B /* CurrentTriage.swift */,
 				45098B1D28D9D31F00DD524A /* StoreManager.swift */,
 				4531D243308B9F0600FBEB8F /* FileFetchRequest.swift */,
 			);
@@ -340,7 +346,6 @@
 				45E924D328CEF57500C5FC9A /* TriageQuestion.swift in Sources */,
 				45ECCA8B28CF562E005E4D39 /* PersonsList.swift in Sources */,
 				4531D242308B839300FBEB8F /* CSVManager.swift in Sources */,
-				459B211D28CE3EF000E8305B /* CurrentTriage.swift in Sources */,
 				4531D246308BA6A900FBEB8F /* LazyShareLink.swift in Sources */,
 				4531D240308B815E00FBEB8F /* ExportList.swift in Sources */,
 				45098B0E28D8739C00DD524A /* PersonDetailRow.swift in Sources */,
@@ -351,15 +356,18 @@
 				45098B1028D887EA00DD524A /* MainToolbar.swift in Sources */,
 				451FA2DA261F454A00E25BA0 /* pSTaRT.xcdatamodeld in Sources */,
 				459B211F28CE4A6900E8305B /* TriageGroupIcon.swift in Sources */,
+				451E810C3094C8B800E3A183 /* PersonsExtension.swift in Sources */,
 				450C3BFB28CCCDEA00BEF415 /* IdentificationInput.swift in Sources */,
 				450C3C0228CDC6E300BEF415 /* Persistence.swift in Sources */,
 				450C3BF128CCCA3A00BEF415 /* TriageGroupsOverview.swift in Sources */,
 				45ECCA8D28CF610B005E4D39 /* PersonListSection.swift in Sources */,
 				45098B1E28D9D31F00DD524A /* StoreManager.swift in Sources */,
 				457C08BC2FD9E4D80031CD5C /* NWIAPListener.swift in Sources */,
+				451E81073094BBDC00E3A183 /* TriageSession.swift in Sources */,
 				451D7973308E545A008150CB /* Settings.swift in Sources */,
 				4531D244308B9F0600FBEB8F /* FileFetchRequest.swift in Sources */,
 				45098B1C28D9CC9900DD524A /* TipJar.swift in Sources */,
+				451E81093094BC3700E3A183 /* TriageDecision.swift in Sources */,
 				451E81033093E7E200E3A183 /* NSManagedObjectContextExtension.swift in Sources */,
 				450C3C0028CDC6C600BEF415 /* pSTaRTApp.swift in Sources */,
 				45E924DD28CF28BC00C5FC9A /* TriageConclusion.swift in Sources */,

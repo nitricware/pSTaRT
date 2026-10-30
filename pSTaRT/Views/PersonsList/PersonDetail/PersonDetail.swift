@@ -101,9 +101,8 @@ struct PersonDetail: View {
             .navigationTitle("PERSON_DETAIL")
             
             GlassEffectContainer {
-                TriageRetriage()
-                    .padding(25)
-                    .environmentObject(CurrentTriage(person: person))
+                TriageRetriage{ try managedObjectContext.retriage(person, to: $0) }
+                .padding(25)
             }
             .glassEffect()
             .padding()
