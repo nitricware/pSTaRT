@@ -38,6 +38,17 @@ struct IdentificationInput: View {
                     .textInputAutocapitalization(.none)
                     .keyboardType(.asciiCapable)
                 
+                if !identification.isEmpty {
+                    Button {
+                        identification = ""
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(Text("CLEAR_IDENTIFICATION"))
+                }
+                
                 Button(action: {
                     isShowingScanner.toggle()
                 }) {

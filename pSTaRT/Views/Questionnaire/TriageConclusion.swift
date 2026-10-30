@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TriageConclusion: View {
     @Environment(TriageSession.self) private var currentTriage
