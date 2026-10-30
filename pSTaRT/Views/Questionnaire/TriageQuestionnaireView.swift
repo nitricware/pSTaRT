@@ -12,6 +12,7 @@ import MapKit
 struct TriageQuestionnaireView: View {
     // MARK: Bindings from parent
     //@State public var currentTriage: TriageQuestionnaire = TriageQuestionnaire()
+    @State public var locationProvider: NWLocationProvider = NWLocationProvider()
     @StateObject public var currentTriage: CurrentTriage = CurrentTriage()
     
     @Binding public var isShowingTriage: Bool
@@ -42,12 +43,12 @@ struct TriageQuestionnaireView: View {
             .lineLimit(1)
             .minimumScaleFactor(0.1)
             .frame(maxWidth: .infinity, alignment: .leading)
-            if let location = currentTriage.location {
+            if let location = locationProvider.location {
                 HStack {
                     Spacer()
 
                     Map(
-                        position: $currentTriage.mapCameraPostion,
+                        position: $locationProvider.mapCameraPosition,
                         interactionModes: []
                     ) {
                         Marker(identification, systemImage: "cross.case", coordinate: location.coordinate)
@@ -69,6 +70,7 @@ struct TriageQuestionnaireView: View {
                     TriageConclusion(
                         isShowingTriage: $isShowingTriage
                     )
+                    .environment(locationProvider)
                 }
             }
             
@@ -78,6 +80,10 @@ struct TriageQuestionnaireView: View {
         }
         .onAppear() {
             currentTriage.identification = identification
+            locationProvider.start()
+        }
+        .onDisappear {
+            locationProvider.stop()
         }
         .onChange(of: isShowingTriage) { oldValue, newValue in
             // reset identification on close

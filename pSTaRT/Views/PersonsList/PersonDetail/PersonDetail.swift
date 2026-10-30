@@ -61,15 +61,7 @@ struct PersonDetail: View {
                     }
                     if let lat = person.lat,
                        let lon = person.lon {
-                        let mapCameraPostion = MapCameraPosition.region(
-                            MKCoordinateRegion(
-                                center: CLLocationCoordinate2D(
-                                    latitude: lat.doubleValue,
-                                    longitude: lon.doubleValue
-                                ),
-                                span: MKCoordinateSpan(latitudeDelta: 0.0006, longitudeDelta: 0.0006)
-                            )
-                        )
+                        let mapCameraPostion = MapCameraPosition.person(at: CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue), span: 0.0006)
                         VStack() {
                             Text("INITIAL_LOCATION")
                                 .font(.caption)

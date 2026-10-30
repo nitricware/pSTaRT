@@ -9,10 +9,8 @@
 import Foundation
 import SwiftUI
 import CoreData
-import CoreLocation
-import MapKit
 
-class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
+class CurrentTriage: ObservableObject {
     //public var identification: String { person.plsNumber ?? String(localized: "common.unidentified")}
     public var currentGroup: TriageGroup { TriageGroup(stored: triageList.last?.group ?? TriageGroup.unidentified.rawValue) }
     @Published public var identification: String = ""
@@ -28,14 +26,6 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     // Tint of the button that continues the questionnaire
     @Published public var noColor: Color = .orange
     
-    // Current Location
-    @Published public var mapCameraPostion: MapCameraPosition = MapCameraPosition.region(
-        MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
-            span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
-        )
-    )
-    
     @Published var location: CLLocation?
     
     private let locationManager: CLLocationManager = CLLocationManager()
@@ -48,37 +38,22 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     private let context: NSManagedObjectContext = PersistenceController.shared.container.viewContext
     
-    override init() {
+    init() {
         let newPerson = Persons(context: context)
         newPerson.startTime = .now
         self.person = newPerson
-        super.init()
-        
-        self.getLocation()
     }
-    
-    
     
     init (identification: String) {
         let newPerson: Persons = Persons(context: context)
         newPerson.startTime = .now
         newPerson.plsNumber = identification
         self.person = newPerson
-        super.init()
-        
-        self.locationManager.delegate = self
-
-        self.getLocation()
     }
     
     init (person: Persons) {
         // All stored properties must be initialized before super.init()
         self.person = person
-        super.init()
-        
-        self.locationManager.delegate = self
-
-        self.getLocation()
     }
     
     func yes() {
@@ -157,15 +132,7 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         triageList.append(newTriage)
     }
-    
     func finish() throws {
-        if let l = locationManager.location {
-            person.preciseLocation = locationManager.accuracyAuthorization == .fullAccuracy
-            person.lat = NSNumber(value: l.coordinate.latitude)
-            person.lon = NSNumber(value: l.coordinate.longitude)
-        }
-        locationManager.stopUpdatingLocation()
-        
         person.endTime = .now
         if person.plsNumber == nil {
             person.plsNumber = identification
@@ -178,16 +145,17 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
             throw pSTaRTErrors.dbSaveError
         }
     }
-    
-    /*
-    func savePersonToDatabaseX() throws {
-        if let l = locationManager.location {
-            person.preciseLocation = locationManager.accuracyAuthorization == .fullAccuracy
+    func finish(at location: CLLocation?, isPrecise: Bool) throws {
+        if let l = location {
+            person.preciseLocation = isPrecise
             person.lat = NSNumber(value: l.coordinate.latitude)
             person.lon = NSNumber(value: l.coordinate.longitude)
         }
         
-        locationManager.stopUpdatingLocation()
+        person.endTime = .now
+        if person.plsNumber == nil {
+            person.plsNumber = identification
+        }
         
         do {
             try context.save()
@@ -195,71 +163,5 @@ class CurrentTriage: NSObject, ObservableObject, CLLocationManagerDelegate {
             context.rollback()
             throw pSTaRTErrors.dbSaveError
         }
-    }*/
-    
-    /*
-    func appendTriage() throws {
-        guard let latest = triages.first, latest.group != .unidentified else { return }
-        let context = PersistenceController.shared.container.viewContext
-
-        person.triageGroup = latest.group.rawValue
-        for decision in triages {
-            let triage = Triages(context: context)
-            triage.person = person
-            triage.group = decision.group.rawValue
-            triage.date = decision.date
-        }
-
-        do {
-            try context.save()
-        } catch {
-            context.rollback()
-            throw pSTaRTErrors.dbUpdateError
-        }
-    }
-     */
-    
-    func generateCameraPosition(lat: Double, lon: Double) -> MapCameraPosition {
-        return MapCameraPosition.region(
-            MKCoordinateRegion(
-                center: CLLocationCoordinate2D(latitude: lat, longitude: lon),
-                span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
-            )
-        )
-    }
-    
-    func getLocation() -> Void{
-        locationManager.requestWhenInUseAuthorization()
-    }
-    
-    /// Runs when the authorization status changes:
-    /// 1. on initialization of `CLLocationManager`
-    /// 2. when the user manually changes the autorization
-    /// 3. when the authorization was first approved
-    /// That's why we can place `.startUpdatingLocation()` right here and do not have to put it in `getLocation()`.
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        if locationManager.authorizationStatus != .authorizedWhenInUse {
-            return
-        }
-        locationManager.startUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else {
-            return
-        }
-        
-        withAnimation {
-            self.location = location
-            self.mapCameraPostion = generateCameraPosition(
-                lat: location.coordinate.latitude,
-                lon: location.coordinate.longitude
-            )
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        // TODO: Error Handling
-        print(error)
     }
 }

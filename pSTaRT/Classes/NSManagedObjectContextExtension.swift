@@ -21,7 +21,6 @@ extension NSManagedObjectContext {
                 let result = try self.execute(request) as? NSBatchDeleteResult
                 deletedIDs += result?.result as? [NSManagedObjectID] ?? []
             } catch {
-                self.rollback()
                 throw pSTaRTErrors.dbDeleteError
             }
         }
@@ -50,23 +49,14 @@ extension NSManagedObjectContext {
         request.predicate = predicate
         
         do {
-            // Get the results into an array of NSManagedObjects
-            let personCount = try self.count(for: request)
-            // Return this array
-            if personCount > 0 {
-                return true
-            }
+            return try self.count(for: request) > 0
         } catch {
             throw pSTaRTErrors.dbFetchError
         }
-            
-        return false
     }
     
     func fetchPersons(for triageGroup: Int? = nil) throws -> [Persons] {
         let request = NSFetchRequest<Persons>(entityName: "Persons")
-        request.returnsObjectsAsFaults = false
-        // Load all triages in one extra query instead of one fault per person.
         request.relationshipKeyPathsForPrefetching = ["triages"]
         request.sortDescriptors = [NSSortDescriptor(key: "startTime", ascending: false)]
 

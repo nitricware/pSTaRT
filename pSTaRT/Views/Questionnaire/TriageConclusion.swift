@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TriageConclusion: View {
     @EnvironmentObject public var currentTriage: CurrentTriage
+    @Environment(NWLocationProvider.self) private var locationProvider
     @Binding public var isShowingTriage: Bool
     
     // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
@@ -34,7 +35,7 @@ struct TriageConclusion: View {
             Button(action: {
                 do {
                     print(self.currentTriage.person)
-                    try currentTriage.finish()
+                    try currentTriage.finish(at: locationProvider.location, isPrecise: locationProvider.isPrecise)
                     self.isShowingTriage.toggle()
                 } catch {
                     showsErrorAlert.toggle()
@@ -64,5 +65,6 @@ struct TriageConclusion_Previews: PreviewProvider {
         )
         .previewLayout(.sizeThatFits)
         .environmentObject(CurrentTriage(identification: "PREVIEW"))
+        .environment(NWLocationProvider())
     }
 }
