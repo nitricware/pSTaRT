@@ -63,21 +63,24 @@ class pSTaRTDBHelper {
     
     /// Deletes all persons
     func deleteAll() throws {
-        let fetchPersons = NSFetchRequest<NSFetchRequestResult>(entityName: "Persons")
-        let deletePersons = NSBatchDeleteRequest(fetchRequest: fetchPersons)
-        
-        let fetchTriages = NSFetchRequest<NSFetchRequestResult>(entityName: "Triages")
-        let deleteTriages = NSBatchDeleteRequest(fetchRequest: fetchTriages)
-        
-        do {
-            try self.context.execute(deletePersons)
-            try self.context.execute(deleteTriages)
-            try self.context.save()
-            self.context.reset()
-            self.context.refreshAllObjects()
-        } catch {
-            throw pSTaRTErrors.dbDeleteError
+        var deletedIDs: [NSManagedObjectID] = []
+
+        for entity in ["Persons", "Triages"] {
+            let request = NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: entity))
+            request.resultType = .resultTypeObjectIDs
+
+            do {
+                let result = try context.execute(request) as? NSBatchDeleteResult
+                deletedIDs += result?.result as? [NSManagedObjectID] ?? []
+            } catch {
+                throw pSTaRTErrors.dbDeleteError
+            }
         }
+
+        NSManagedObjectContext.mergeChanges(
+            fromRemoteContextSave: [NSDeletedObjectsKey: deletedIDs],
+            into: [context]
+        )
     }
     
     /// Deletes a single person
