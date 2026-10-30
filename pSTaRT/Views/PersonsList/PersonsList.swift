@@ -10,6 +10,7 @@ import SwiftUI
 import CoreData
 
 struct PersonsList: View {
+    @State private var searchText = ""
     @State public var isShowingDeleteAll: Bool = false
     @State public var isShowingDeleteError: Bool = false
     @State public var isShowingCSVExport: Bool = false
@@ -17,6 +18,7 @@ struct PersonsList: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @FetchRequest(fetchRequest: Persons.fetchRequest(in: nil), animation: .default) private var persons: FetchedResults<Persons>
+    @FetchRequest(fetchRequest: Persons.fetchRequest(in: nil), animation: .default) private var matches: FetchedResults<Persons>
     
     var body: some View {
         List {
@@ -26,9 +28,19 @@ struct PersonsList: View {
                 }
             }
             
-            ForEach(TriageGroup.assignable) { group in
-                PersonListSection(with: group)
+            if !searchText.isEmpty && matches.isEmpty {
+                Section {
+                    ContentUnavailableView.search(text: searchText)
+                }
+            } else {
+                ForEach(TriageGroup.assignable) { group in
+                    PersonListSection(with: group, searchText: searchText)
+                }
             }
+        }
+        .searchable(text: $searchText, prompt: Text("SEARCH_IDENTIFICATION"))
+        .onChange(of: searchText) { _, newValue in
+            matches.nsPredicate = Persons.predicate(in: nil, matching: newValue)
         }
         .navigationTitle("PERSONS_LIST")
         .toolbar {

@@ -940,6 +940,9 @@
         }
       }
     },
+    "SEARCH_IDENTIFICATION" : {
+
+    },
     "SELECT_GROUP %@" : {
       "localizations" : {
         "de" : {

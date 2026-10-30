@@ -10,26 +10,33 @@ import SwiftUI
 import CoreData
 
 struct PersonListSection: View {
-    public var triageGroup: TriageGroup
-    @FetchRequest var fetchRequest: FetchedResults<Persons>
+    let triageGroup: TriageGroup
+    let searchText: String
+    @FetchRequest var persons: FetchedResults<Persons>
     
-    init(with group: TriageGroup) {
+    init(with group: TriageGroup, searchText: String = "") {
         self.triageGroup = group
-        _fetchRequest = FetchRequest(fetchRequest: Persons.fetchRequest(in: group), animation: .default)
+        self.searchText = searchText
+        _persons = FetchRequest(fetchRequest: Persons.fetchRequest(in: group, matching: searchText), animation: .default)
     }
     
     var body: some View {
         Section("TRIAGEGROUP \(triageGroup.roman)") {
-            if fetchRequest.count > 0 {
-                ForEach(fetchRequest) { person in
-                    NavigationLink(destination: PersonDetail(person: person)) {
-                        Text(person.plsNumber ?? "AS 04 NONUM")
+            if searchText.isEmpty || !persons.isEmpty {
+                if !persons.isEmpty {
+                    ForEach(persons) { person in
+                        NavigationLink(destination: PersonDetail(person: person)) {
+                            Text(person.plsNumber ?? "AS 04 NONUM")
+                        }
                     }
+                } else {
+                    Text("NO_PERSON")
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
-            } else {
-                Text("NO_PERSON")
-                    .frame(maxWidth: .infinity, alignment: .center)
             }
+        }
+        .onChange(of: searchText) { _, newValue in
+            persons.nsPredicate = Persons.predicate(in: triageGroup, matching: newValue)
         }
     }
 }
