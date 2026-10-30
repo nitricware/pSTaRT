@@ -11,6 +11,9 @@ import SwiftUI
 struct MainToolbar: ToolbarContent {
     @Binding public var isShowingTipJar: Bool
     @Binding public var isShowingSettings: Bool
+    
+    let showsPersonsListLink: Bool
+    
     var body: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button(action: {
@@ -26,9 +29,9 @@ struct MainToolbar: ToolbarContent {
                 Image(systemName: "gearshape")
             }
         }
-        if UIDevice.current.model.contains("iPhone") {
+        if showsPersonsListLink {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink{
+                NavigationLink {
                     PersonsList()
                 } label: {
                     Image(systemName: "tablecells")
@@ -45,7 +48,8 @@ struct MainToolbar_Previews: PreviewProvider {
                 .toolbar {
                     MainToolbar(
                         isShowingTipJar: .constant(false),
-                        isShowingSettings: .constant(false)
+                        isShowingSettings: .constant(false),
+                        showsPersonsListLink: false
                     )
                 }
         }

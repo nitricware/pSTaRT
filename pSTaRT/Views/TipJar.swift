@@ -19,7 +19,7 @@ struct TipJar: View {
     @State private var showsErrorAlert: Bool = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack (spacing: 20) {
                 Text("🚑")
                     .frame(maxWidth: .infinity, alignment: .center)

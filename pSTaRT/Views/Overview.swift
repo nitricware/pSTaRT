@@ -11,6 +11,7 @@ import CoreData
 
 struct Overview: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State private var activeSession: TriageSession?
     
     // MARK: Sheet States
@@ -33,7 +34,8 @@ struct Overview: View {
         .toolbar {
             MainToolbar(
                 isShowingTipJar: $isShowingTipJar,
-                isShowingSettings: $isShowingSettings
+                isShowingSettings: $isShowingSettings,
+                showsPersonsListLink: horizontalSizeClass == .compact
             )
         }
         .navigationTitle("pSTaRT")

@@ -15,12 +15,13 @@ struct PersonsList: View {
     @State public var isShowingCSVExport: Bool = false
     
     @Environment(\.managedObjectContext) private var managedObjectContext
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @FetchRequest(fetchRequest: Persons.fetchRequest(in: nil), animation: .default) private var persons: FetchedResults<Persons>
     
     var body: some View {
         List {
-            if !UIDevice.current.model.contains("iPad") {
-                Section ("OVERVIEW") {
+            if horizontalSizeClass == .compact {
+                Section("OVERVIEW") {
                     TriageGroupsOverview()
                 }
             }

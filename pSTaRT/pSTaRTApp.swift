@@ -21,9 +21,10 @@ struct pSTaRTApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NavigationSplitView {
                 Overview()
-                if UIDevice.current.userInterfaceIdiom == .pad {
+            } detail: {
+                NavigationStack {
                     PersonsList()
                 }
             }
