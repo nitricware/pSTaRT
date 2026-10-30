@@ -60,8 +60,7 @@ struct IdentificationInput: View {
                 }
             
                 do {
-                    let database = pSTaRTDBHelper()
-                    let duplicateCheck = try database.isDuplicate(id: identification)
+                    let duplicateCheck = try viewContext.isDuplicate(id: identification)
                     if duplicateCheck {
                         errorMessage = pSTaRTErrors.duplicateID
                         showsErrorAlert.toggle()

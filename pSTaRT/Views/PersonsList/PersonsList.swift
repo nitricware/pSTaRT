@@ -14,6 +14,7 @@ struct PersonsList: View {
     @State public var isShowingDeleteError: Bool = false
     @State public var isShowingCSVExport: Bool = false
     
+    @Environment(\.managedObjectContext) private var managedObjectContext
     @FetchRequest(
         sortDescriptors: [
             NSSortDescriptor(
@@ -61,10 +62,9 @@ struct PersonsList: View {
         }
         .alert("DELETE_ALL", isPresented: $isShowingDeleteAll) {
             Button("CANCEL", role: .cancel) { }
-            Button("CONFIRM", role: .destructive) {
-                let database = pSTaRTDBHelper()
+            Button("CONFIRM", role: .destructive) {                
                 do {
-                    try database.deleteAll()
+                    try managedObjectContext.deleteAll()
                 } catch {
                     self.isShowingDeleteError.toggle()
                 }

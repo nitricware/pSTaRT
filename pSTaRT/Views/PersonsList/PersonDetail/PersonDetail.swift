@@ -16,7 +16,12 @@ struct PersonDetail: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @Environment(\.managedObjectContext) private var managedObjectContext
     @FetchRequest public var triages: FetchedResults<Triages>
+    
+    // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
+    @State private var errorMessage: Error?
+    @State private var showsErrorAlert: Bool = false
     
     init(person: Persons) {
         self.person = person
@@ -113,22 +118,25 @@ struct PersonDetail: View {
         }.toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    delete()
+                    do {
+                        try delete()
+                    } catch {
+                        showsErrorAlert.toggle()
+                        errorMessage = error
+                    }
                 }) {
                     Image(systemName: "trash")
                 }
             }
         }
+        .alert(errorMessage?.localizedDescription ?? String(localized: "common.unknownError"), isPresented: $showsErrorAlert) {
+            Button("common.ok", role: .cancel) { }
+        }
     }
     
-    func delete() {
-        let database = pSTaRTDBHelper()
-        do {
-            try database.deletePerson(person: self.person)
-            self.dismiss()
-        } catch {
-            print ("delete error")
-        }
+    func delete() throws {
+        try managedObjectContext.deletePerson(person: self.person)
+        self.dismiss()
     }
 }
 
