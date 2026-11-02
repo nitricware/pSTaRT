@@ -27,12 +27,11 @@ struct TriageGroupIcon: View {
 struct TriageGroupIcon_Previews: PreviewProvider {
     static var triageGroup: TriageGroup = .four
     static var previews: some View {
-        
         TriageGroupIcon(
             triageGroup: triageGroup
         )
-            .previewLayout(.sizeThatFits)
-            .preferredColorScheme(.dark)
-            .frame(width: 50, height: 50, alignment: .center)
+        .previewLayout(.sizeThatFits)
+        .preferredColorScheme(.dark)
+        .frame(width: 50, height: 50, alignment: .center)
     }
 }

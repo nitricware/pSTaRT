@@ -19,6 +19,7 @@ struct TriageQuestion: View {
                 )
                 .frame(maxWidth: .infinity, maxHeight: 100.0, alignment: .center)
                 .lineLimit(2)
+                .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.center)
             Button(action: {
                 self.currentTriage.yes()

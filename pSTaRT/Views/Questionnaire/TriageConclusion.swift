@@ -24,13 +24,15 @@ struct TriageConclusion: View {
             TriageGroupIcon(
                 triageGroup: currentTriage.currentGroup
             )
-                .frame(width: 210, height: 210, alignment: .center)
+            .aspectRatio(1, contentMode: .fit)
+            .frame(maxWidth: 210, maxHeight: 210)
             Text(currentTriage.currentGroup.description)
                 .font(
                     .system(size: 36.0, weight: .bold, design: .rounded)
                 )
                 .frame(maxWidth: .infinity, maxHeight: 100.0, alignment: .center)
                 .lineLimit(2)
+                .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.center)
             
             Button(action: {
@@ -49,6 +51,8 @@ struct TriageConclusion: View {
                         .system(size: 36.0, weight: .bold, design: .default)
                     )
                     .frame(maxWidth: .infinity)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
                 
             }
             .buttonStyle(.glassProminent)

@@ -30,7 +30,6 @@ struct Overview: View {
             TriageGroupsOverview()
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
-        .ignoresSafeArea(.keyboard)
         .toolbar {
             MainToolbar(
                 isShowingTipJar: $isShowingTipJar,
@@ -42,9 +41,11 @@ struct Overview: View {
         .padding()
         .frame(
             maxWidth: .infinity,
+            minHeight: 0,
             maxHeight: .infinity,
             alignment: .top
         )
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .sheet(item: $activeSession) { session in
             NavigationStack {
                 TriageQuestionnaireView(session: session) {
@@ -52,6 +53,7 @@ struct Overview: View {
                     identification = ""
                 }
             }
+            .presentationSizing(.page)
             .interactiveDismissDisabled()
         }
         .sheet(isPresented: $isShowingTipJar) {

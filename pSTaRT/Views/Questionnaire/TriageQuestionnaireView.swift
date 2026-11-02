@@ -40,6 +40,7 @@ struct TriageQuestionnaireView: View {
             .lineLimit(1)
             .minimumScaleFactor(0.1)
             .frame(maxWidth: .infinity, alignment: .leading)
+            
             if let location = locationProvider.location {
                 HStack {
                     Spacer()
@@ -58,7 +59,8 @@ struct TriageQuestionnaireView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 15.0))
                 }
             }
-            Spacer()
+            
+            Spacer(minLength: 0)
             
             VStack {
                 if session.currentGroup == .unidentified {
