@@ -11,6 +11,9 @@ import SwiftUI
 struct SettingsView: View {
     @AppStorage(AppSettings.Key.csvFileSuffix) var filesuffix: String = AppSettings.Default.csvFileSuffix
     @AppStorage(AppSettings.Key.shareImmediately) var shareimmediately: Bool = AppSettings.Default.shareImmediately
+    @AppStorage(AppSettings.Key.scannerCodeTypes) private var storedTypes = AppSettings.Default.scannerCodeTypes
+    @AppStorage(AppSettings.Key.identificationMaxLength) var identificationMaxLength: Int = AppSettings.Default.identificationMaxLength
+
     @Binding var isShowingSettings: Bool
     @State private var datePrefix = "1990-02-19_23-00-00"
     @State private var fileNameRejection: Int = 0
@@ -57,6 +60,37 @@ struct SettingsView: View {
                     footer: Text("SHARE_IMMEDIATELY_DESC")
                 ) {
                     Toggle("SHARE_IMMEDIATELY", isOn: $shareimmediately)
+                }
+                
+                Section(
+                    header:Text("SCANNER"),
+                    footer: Text("SCANNER_CODE_TYPES_TOOLTIP")
+                ) {
+                    NavigationLink {
+                        BarcodeTypesView()
+                    } label: {
+                        LabeledContent("SCANNER_CODE_TYPES") {
+                            Text(BarcodeType.allCases
+                                .filter(BarcodeType.decode(storedTypes).contains)
+                                .map(\.displayName)
+                                .formatted(.list(type: .and)))
+                                .lineLimit(1)
+                        }
+                    }
+                    
+                }
+                
+                Section(
+                    header: Text("settings.identificationMaxLength.Title"),
+                    footer: Text("settings.identificationMaxLength.Desc")
+                ) {
+                    LabeledContent {
+                        Stepper(value: $identificationMaxLength, in: 1...50) {
+                            Text(identificationMaxLength.formatted(.number))
+                        }
+                    } label: {
+                        Text("settings.identificationMaxLength.Label")
+                    }
                 }
             }
             .navigationTitle(Text("SETTINGS"))

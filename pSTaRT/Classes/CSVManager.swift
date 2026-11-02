@@ -99,8 +99,10 @@ enum CSVManager {
     
     static func escapeField(_ field: String) -> String {
         var field = field
+        if let first = field.first, "=+-@\t\r".contains(first) {
+            field = "'" + field
+        }
         field = field.replacingOccurrences(of: "\"", with: "\"\"")
-        
         return "\"\(field)\""
     }
     

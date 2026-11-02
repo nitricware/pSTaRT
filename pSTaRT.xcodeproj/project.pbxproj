@@ -45,6 +45,8 @@
 		45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 45AA119D25BAF5C000CD5530 /* Configuration.storekit */; };
 		45C0C7F7308E739F002163B5 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0C7F6308E739F002163B5 /* AppSettings.swift */; };
 		45E4EB912A5ED6320048ED6C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 45E4EB902A5ED6320048ED6C /* CodeScanner */; };
+		45E59A94309892E30083CABC /* BarcodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59A93309892E30083CABC /* BarcodeType.swift */; };
+		45E59A97309893710083CABC /* BarcodeTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59A96309893710083CABC /* BarcodeTypesView.swift */; };
 		45E924D328CEF57500C5FC9A /* TriageQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E924D228CEF57500C5FC9A /* TriageQuestion.swift */; };
 		45E924DD28CF28BC00C5FC9A /* TriageConclusion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E924DC28CF28BC00C5FC9A /* TriageConclusion.swift */; };
 		45ECCA8B28CF562E005E4D39 /* PersonsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECCA8A28CF562E005E4D39 /* PersonsList.swift */; };
@@ -96,6 +98,8 @@
 		45A4478F308D3E6F0032B776 /* pSTaRT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pSTaRT.entitlements; sourceTree = "<group>"; };
 		45AA119D25BAF5C000CD5530 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		45C0C7F6308E739F002163B5 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		45E59A93309892E30083CABC /* BarcodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeType.swift; sourceTree = "<group>"; };
+		45E59A96309893710083CABC /* BarcodeTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeTypesView.swift; sourceTree = "<group>"; };
 		45E924D228CEF57500C5FC9A /* TriageQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageQuestion.swift; sourceTree = "<group>"; };
 		45E924DC28CF28BC00C5FC9A /* TriageConclusion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageConclusion.swift; sourceTree = "<group>"; };
 		45ECCA8A28CF562E005E4D39 /* PersonsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsList.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				45098B0F28D887EA00DD524A /* MainToolbar.swift */,
 				45098B1B28D9CC9900DD524A /* TipJar.swift */,
 				451D7972308E545A008150CB /* Settings.swift */,
+				45E59A953098936C0083CABC /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 		450C3BF228CCCA8C00BEF415 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				45E59A93309892E30083CABC /* BarcodeType.swift */,
 				45C0C7F6308E739F002163B5 /* AppSettings.swift */,
 				450C3BF628CCCBE200BEF415 /* TriageGroup.swift */,
 				4531D247308BF02200FBEB8F /* CSVExportError.swift */,
@@ -233,6 +239,14 @@
 				453B9C732F9FD6810034350C /* LaunchScreen.storyboard */,
 			);
 			path = pSTaRT;
+			sourceTree = "<group>";
+		};
+		45E59A953098936C0083CABC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				45E59A96309893710083CABC /* BarcodeTypesView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		45E924DB28CF249000C5FC9A /* Questionnaire */ = {
@@ -367,6 +381,8 @@
 				451D7973308E545A008150CB /* Settings.swift in Sources */,
 				4531D244308B9F0600FBEB8F /* FileFetchRequest.swift in Sources */,
 				45098B1C28D9CC9900DD524A /* TipJar.swift in Sources */,
+				45E59A94309892E30083CABC /* BarcodeType.swift in Sources */,
+				45E59A97309893710083CABC /* BarcodeTypesView.swift in Sources */,
 				451E81093094BC3700E3A183 /* TriageDecision.swift in Sources */,
 				451E81033093E7E200E3A183 /* NSManagedObjectContextExtension.swift in Sources */,
 				450C3C0028CDC6C600BEF415 /* pSTaRTApp.swift in Sources */,

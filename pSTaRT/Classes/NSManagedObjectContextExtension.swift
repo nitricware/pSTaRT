@@ -119,13 +119,10 @@ extension NSManagedObjectContext {
     }
     
     func validateNewIdentification(_ identification: String) throws {
-        guard !identification.isEmpty else {
-            throw pSTaRTErrors.emptyInput
+        guard !identification.isEmpty else { throw pSTaRTErrors.emptyInput }
+        guard identification.count <= UserDefaults.standard.integer(forKey: AppSettings.Key.identificationMaxLength) else {
+            throw pSTaRTErrors.identificationTooLong
         }
-        if try isDuplicate(id: identification) {
-            throw pSTaRTErrors.duplicateID
-        }
+        if try isDuplicate(id: identification) { throw pSTaRTErrors.duplicateID }
     }
-    
-    
 }

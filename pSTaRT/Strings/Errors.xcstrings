@@ -22,6 +22,9 @@
     "error.emptyInput.description" : {
 
     },
+    "error.identificationTooLong.description" : {
+
+    },
     "error.purchaseUnableToPurchase.description" : {
 
     }

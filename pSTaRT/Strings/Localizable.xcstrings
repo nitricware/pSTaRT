@@ -48,6 +48,15 @@
         }
       }
     },
+    "BARCODE_1D" : {
+
+    },
+    "BARCODE_2D" : {
+
+    },
+    "BARCODE_TYPES_FOOTER" : {
+
+    },
     "BLEEDING" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -909,6 +918,15 @@
         }
       }
     },
+    "SCANNER" : {
+
+    },
+    "SCANNER_CODE_TYPES" : {
+
+    },
+    "SCANNER_CODE_TYPES_TOOLTIP" : {
+
+    },
     "SCANNING_NOT_SUPPORTED_BODY" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -993,6 +1011,15 @@
           }
         }
       }
+    },
+    "settings.identificationMaxLength.Desc" : {
+
+    },
+    "settings.identificationMaxLength.Label" : {
+
+    },
+    "settings.identificationMaxLength.Title" : {
+
     },
     "SHARE_IMMEDIATELY" : {
       "extractionState" : "manual",

@@ -22,6 +22,7 @@ enum pSTaRTErrors: LocalizedError {
     
     case emptyInput
     case duplicateID
+    case identificationTooLong
     
     // MARK: IAP Errors
     
@@ -38,6 +39,7 @@ enum pSTaRTErrors: LocalizedError {
             
             case .emptyInput: return String(localized: "error.emptyInput.description", table: "Errors")
             case .duplicateID: return String(localized: "error.duplicateID.description", table: "Errors")
+            case .identificationTooLong: return String(localized: "error.identificationTooLong.description", table: "Errors")
             
             case .purchaseUnableToPurchase: return String(localized: "error.purchaseUnableToPurchase.description", table: "Errors")
         }

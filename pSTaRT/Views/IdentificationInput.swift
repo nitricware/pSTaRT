@@ -25,6 +25,8 @@ struct IdentificationInput: View {
     @Binding public var identification: String
     let onStart: (String) -> Void
     
+    @AppStorage(AppSettings.Key.scannerCodeTypes) private var storedTypes = AppSettings.Default.scannerCodeTypes
+    
     var body: some View {
         VStack {
             HStack {
@@ -37,6 +39,13 @@ struct IdentificationInput: View {
                     .disableAutocorrection(true)
                     .textInputAutocapitalization(.none)
                     .keyboardType(.asciiCapable)
+                    .onChange(of: identification) { _, newValue in
+                        let scalars = newValue.unicodeScalars.filter { !CharacterSet.controlCharacters.contains($0) }
+                        let filtered = String(String.UnicodeScalarView(scalars))
+                        if filtered != newValue {
+                            identification = filtered
+                        }
+                    }
                 
                 if !identification.isEmpty {
                     Button {
@@ -86,8 +95,7 @@ struct IdentificationInput: View {
             // https://www.hackingwithswift.com/books/ios-swiftui/scanning-qr-codes-with-swiftui
             ZStack (alignment: .top) {
                 CodeScannerView(
-                    // Code39: ASB
-                    codeTypes: [.code39],
+                    codeTypes: BarcodeType.decode(storedTypes).map(\.objectType),
                     simulatedData: "04 ASO SCANTEST123",
                     isTorchOn: isTorchOn,
                     completion: handleScan
