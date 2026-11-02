@@ -471,7 +471,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "exportList.deleteAll"
+            "value" : "Alle löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete All"
           }
         }
       }
@@ -778,7 +784,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Um falsche Scans zu vermeiden, kann eine Sammlung scanbarer Code Typen ausgewählteren. "
+            "value" : "Um falsche Scans zu vermeiden, kann eine Sammlung scanbarer Code Typen ausgewählt werden. "
           }
         },
         "en" : {
@@ -849,6 +855,182 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.confirmOff.button" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausschalten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn Off"
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.confirmOff.message" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach dem nächsten App-Start werden Änderungen nicht mehr mit iCloud synchronisiert, und pSTaRT entfernt seine Daten aus iCloud. Die Daten auf diesem Gerät bleiben erhalten.\n\nPrüfe vor dem Ausschalten der iCloud-Synchronisierung, ob lokale Gesetze oder die Richtlinien deiner Organisation verlangen, eine Kopie der Daten aufzubewahren – exportiere zum Beispiel vorher eine CSV-Datei.\n\nAndere Geräte, auf denen die iCloud-Synchronisierung noch aktiv ist, können ihre Daten erneut hochladen. Schalte die iCloud-Synchronisierung auf allen Geräten aus, um alle pSTaRT-Daten aus iCloud zu entfernen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After the next app launch, changes are no longer synced to iCloud, and pSTaRT removes its data from iCloud. The data on this device is kept.\n\nBefore turning iCloud sync off, check whether your local laws or your organisation’s policies require you to keep a copy of the data – for example, export a CSV file first.\n\nOther devices with iCloud Sync still on can upload their data again. Turn off iCloud Sync on every device to remove all pSTaRT data from iCloud."
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.confirmOff.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud-Synchronisierung ausschalten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn iCloud Sync Off"
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.confirmOn.button" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einschalten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn On"
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.confirmOn.message" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach dem nächsten App-Start werden die Daten dieses Geräts in deine private iCloud hochgeladen und mit all deinen Geräten synchronisiert.\n\nPrüfe vor dem Einschalten, ob lokale Gesetze und die Richtlinien deiner Organisation das erlauben."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After the next app launch, the data on this device is uploaded to your private iCloud and synced to all your devices.\n\nBefore turning iCloud Sync on, check whether your local laws and your organisation’s policies allow it."
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.confirmOn.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud-Synchronisierung einschalten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn iCloud Sync On"
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pSTaRT kann iCloud verwenden, um Daten zwischen Geräten zu synchronisieren.\n\nPrüfe vor dem Einschalten der iCloud-Synchronisierung, ob lokale Gesetze und die Richtlinien deiner Organisation das erlauben.\n\nPrüfe vor dem Ausschalten der iCloud-Synchronisierung, ob lokale Gesetze oder die Richtlinien deiner Organisation verlangen, eine Kopie der Daten aufzubewahren – exportiere zum Beispiel vorher eine CSV-Datei."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pSTaRT can use iCloud to sync data between devices.\n\nBefore turning iCloud Sync on, check whether your local laws and your organisation’s policies allow it.\n\nBefore turning iCloud Sync off, check whether your local laws or your organisation’s policies require you to keep a copy of the data – for example, export a CSV file first."
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.label" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisierung mit iCloud"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync with iCloud"
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.pendingPurge" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud-Daten werden beim nächsten App-Start gelöscht, sobald das Gerät online ist."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud data will be deleted at the next app launch while the device is online."
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.restartRequired" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starte die App neu, um die Änderungen an der iCloud-Synchronisierung zu übernehmen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart the app to apply the changes to iCloud Sync."
+          }
+        }
+      }
+    },
+    "settings.iCloudSync.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud-Synchronisierung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud Sync"
           }
         }
       }
@@ -971,7 +1153,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Support pSTaRT"
+            "value" : "pSTaRT unterstützen"
           }
         },
         "en" : {

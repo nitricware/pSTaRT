@@ -47,12 +47,26 @@ struct PersistenceController {
     }()
     
     let container: NSPersistentCloudKitContainer
+    
+    var isCloudSyncActive: Bool {
+        container.persistentStoreDescriptions.first?.cloudKitContainerOptions != nil
+    }
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "pSTaRT")
+        let description = container.persistentStoreDescriptions.first!
+        
         if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+            description.url = URL(fileURLWithPath: "/dev/null")
         }
+        
+        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        
+        if inMemory || !UserDefaults.standard.bool(forKey: AppSettings.Key.iCloudSyncEnabled) {
+            description.cloudKitContainerOptions = nil   // local only
+        }
+        
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

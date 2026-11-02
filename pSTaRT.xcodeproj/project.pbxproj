@@ -47,6 +47,7 @@
 		45E59A94309892E30083CABC /* BarcodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59A93309892E30083CABC /* BarcodeType.swift */; };
 		45E59A97309893710083CABC /* BarcodeTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59A96309893710083CABC /* BarcodeTypesView.swift */; };
 		45E59A993098BA660083CABC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45E59A983098BA660083CABC /* Localizable.xcstrings */; };
+		45E59A9B3098C2880083CABC /* CloudSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59A9A3098C2880083CABC /* CloudSync.swift */; };
 		45E924D328CEF57500C5FC9A /* TriageQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E924D228CEF57500C5FC9A /* TriageQuestion.swift */; };
 		45E924DD28CF28BC00C5FC9A /* TriageConclusion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E924DC28CF28BC00C5FC9A /* TriageConclusion.swift */; };
 		45ECCA8B28CF562E005E4D39 /* PersonsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECCA8A28CF562E005E4D39 /* PersonsList.swift */; };
@@ -100,6 +101,7 @@
 		45E59A93309892E30083CABC /* BarcodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeType.swift; sourceTree = "<group>"; };
 		45E59A96309893710083CABC /* BarcodeTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeTypesView.swift; sourceTree = "<group>"; };
 		45E59A983098BA660083CABC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		45E59A9A3098C2880083CABC /* CloudSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSync.swift; sourceTree = "<group>"; };
 		45E924D228CEF57500C5FC9A /* TriageQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageQuestion.swift; sourceTree = "<group>"; };
 		45E924DC28CF28BC00C5FC9A /* TriageConclusion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageConclusion.swift; sourceTree = "<group>"; };
 		45ECCA8A28CF562E005E4D39 /* PersonsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsList.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		450C3BF528CCCBCB00BEF415 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				45E59A9A3098C2880083CABC /* CloudSync.swift */,
 				451E810A3094C5B100E3A183 /* PersonsExtension.swift */,
 				451E81083094BC2E00E3A183 /* TriageDecision.swift */,
 				451E81063094BBD800E3A183 /* TriageSession.swift */,
@@ -391,6 +394,7 @@
 				45ECCA8F28CF6449005E4D39 /* PersonDetail.swift in Sources */,
 				45ECCA9128D062ED005E4D39 /* TriageRetriage.swift in Sources */,
 				45C0C7F7308E739F002163B5 /* AppSettings.swift in Sources */,
+				45E59A9B3098C2880083CABC /* CloudSync.swift in Sources */,
 				450C3C0A28CDFA0C00BEF415 /* TriageQuestionnaireView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

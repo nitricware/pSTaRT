@@ -13,10 +13,36 @@ struct SettingsView: View {
     @AppStorage(AppSettings.Key.shareImmediately) var shareimmediately: Bool = AppSettings.Default.shareImmediately
     @AppStorage(AppSettings.Key.scannerCodeTypes) private var storedTypes = AppSettings.Default.scannerCodeTypes
     @AppStorage(AppSettings.Key.identificationMaxLength) var identificationMaxLength: Int = AppSettings.Default.identificationMaxLength
+    @AppStorage(AppSettings.Key.iCloudSyncEnabled) var iCloudSyncEnabled: Bool = AppSettings.Default.iCloudSyncEnabled
+    @AppStorage(AppSettings.Key.pendingCloudPurge) var pendingCloudPurge: Bool = AppSettings.Default.pendingCloudPurge
 
     @Binding var isShowingSettings: Bool
     @State private var datePrefix = "1990-02-19_23-00-00"
     @State private var fileNameRejection: Int = 0
+    
+    /// The value the user wants to switch to; `nil` = no alert.
+    @State private var requestedSync: Bool?
+    private let syncActiveAtLaunch = PersistenceController.shared.isCloudSyncActive
+
+    /// The toggle only asks – nothing is written until the user confirms.
+    private var syncBinding: Binding<Bool> {
+        Binding(
+            get: { iCloudSyncEnabled },
+            set: { requestedSync = $0 }
+        )
+    }
+
+    private var isShowingSyncAlert: Binding<Bool> {
+        Binding(
+            get: { requestedSync != nil },
+            set: { if !$0 { requestedSync = nil } }
+        )
+    }
+
+    private func applySync(_ enable: Bool) {
+        iCloudSyncEnabled = enable
+        pendingCloudPurge = !enable
+    }
     
     private var separator: String { filesuffix.isEmpty ? "" : "_" }
     
@@ -90,6 +116,39 @@ struct SettingsView: View {
                         }
                     } label: {
                         Text("settings.identificationMaxLength.Label")
+                    }
+                }
+                
+                Section(
+                    header: Text("settings.iCloudSync.title"),
+                    footer: Text("settings.iCloudSync.description")
+                ) {
+                    Toggle("settings.iCloudSync.label", isOn: syncBinding)
+                        .alert(
+                            requestedSync == true
+                                ? Text("settings.iCloudSync.confirmOn.title")
+                                : Text("settings.iCloudSync.confirmOff.title"),
+                            isPresented: isShowingSyncAlert,
+                            presenting: requestedSync
+                        ) { enable in
+                            if enable {
+                                Button("settings.iCloudSync.confirmOn.button") { applySync(true) }
+                            } else {
+                                Button("settings.iCloudSync.confirmOff.button", role: .destructive) { applySync(false) }
+                            }
+                            Button("CANCEL", role: .cancel) { }
+                        } message: { enable in
+                            Text(enable ? "settings.iCloudSync.confirmOn.message" : "settings.iCloudSync.confirmOff.message")
+                        }
+
+                    if iCloudSyncEnabled != syncActiveAtLaunch {
+                        Label("settings.iCloudSync.restartRequired", systemImage: "arrow.clockwise")
+                            .foregroundStyle(.orange)
+                    }
+
+                    if pendingCloudPurge && !iCloudSyncEnabled {
+                        Label("settings.iCloudSync.pendingPurge", systemImage: "icloud.slash")
+                            .foregroundStyle(.secondary)
                     }
                 }
             }

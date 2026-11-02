@@ -29,6 +29,9 @@ struct pSTaRTApp: App {
                 }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            .task {
+                await CloudSync.purgeIfNeeded()
+            }
         }
     }
 }
