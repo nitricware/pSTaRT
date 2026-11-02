@@ -3,6 +3,12 @@
   "strings" : {
     "%@%@**%@**.csv" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@%2$@**%3$@**.csv"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -10,9 +16,6 @@
           }
         }
       }
-    },
-    "🚑" : {
-
     },
     "AIRWAY" : {
       "extractionState" : "manual",
@@ -49,13 +52,36 @@
       }
     },
     "BARCODE_1D" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eindimensionale Codes"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ondimensional Codes"
+          }
+        }
+      }
     },
     "BARCODE_2D" : {
-
-    },
-    "BARCODE_TYPES_FOOTER" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zweidimensionale Codes"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Twodimensional Codes"
+          }
+        }
+      }
     },
     "BLEEDING" : {
       "extractionState" : "manual",
@@ -125,52 +151,71 @@
       }
     },
     "CLEAR_IDENTIFICATION" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifikation leeren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "clear ID"
+          }
+        }
+      }
     },
     "common.ok" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okay"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
     },
     "common.unknown" : {
-      "comment" : "unknown patient ID"
+      "comment" : "unknown patient ID",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekannt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
+          }
+        }
+      }
     },
     "common.unknownError" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekannter Fehler"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown Error"
+          }
+        }
+      }
     },
     "CONFIRM" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bestätigen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Confirm"
-          }
-        }
-      }
-    },
-    "CONFIRM_BODY" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sind Sie sicher?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Are you sure?"
-          }
-        }
-      }
-    },
-    "CONFIRM_HEADLINE" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -336,74 +381,6 @@
         }
       }
     },
-    "DELETE_PERSON" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Person löschen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete Person"
-          }
-        }
-      }
-    },
-    "DUPLICATE_BODY" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eine Person mit dieser PLS-Nummer existiert bereits."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A person with this ID already exists"
-          }
-        }
-      }
-    },
-    "DUPLICATE_CHANGE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PLS-Nummer ändern"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Change ID"
-          }
-        }
-      }
-    },
-    "DUPLICATE_HEADLINE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Duplikat"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Duplicate"
-          }
-        }
-      }
-    },
     "DUPLICATE_IGNORE" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -421,40 +398,6 @@
         }
       }
     },
-    "EMPTY_ERROR_TEXT" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bitte Identifikation eingeben."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please enter a identification."
-          }
-        }
-      }
-    },
-    "EMPTY_ERROR_TITLE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keine Identifikation"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No Identification"
-          }
-        }
-      }
-    },
     "END_TRIAGE" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -468,74 +411,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "End Triage"
-          }
-        }
-      }
-    },
-    "ERROR_DELETE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Der Eintrag konnte nicht gelöscht werden."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Couldn't delete record."
-          }
-        }
-      }
-    },
-    "ERROR_EXPORT" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die Liste konnte nicht exportiert werden."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Couldn't export list."
-          }
-        }
-      }
-    },
-    "ERROR_FETCH" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die Personen konnten nicht abgerufen werden."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Couldn't fetch persons."
-          }
-        }
-      }
-    },
-    "ERROR_HEADLINE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fehler"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error"
           }
         }
       }
@@ -592,38 +467,11 @@
       }
     },
     "exportList.deleteAll" : {
-
-    },
-    "ID_ERROR_TEXT" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eine Person mit dieser Identifikation existiert bereits."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A person with this identification already exists."
-          }
-        }
-      }
-    },
-    "ID_ERROR_TITLE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Doppelte Identifikation"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Duplicate Identification"
+            "value" : "exportList.deleteAll"
           }
         }
       }
@@ -678,25 +526,21 @@
         }
       }
     },
-    "NEXT_TRIAGE" : {
-      "extractionState" : "manual",
+    "NO" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nächste Triage"
+            "value" : "Nein"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Next Triage"
+            "value" : "No"
           }
         }
       }
-    },
-    "NO" : {
-
     },
     "NO_EXPORTED_FILES" : {
       "localizations" : {
@@ -849,7 +693,20 @@
       }
     },
     "pSTaRT" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pSTaRT"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pSTaRT"
+          }
+        }
+      }
     },
     "PULSE" : {
       "extractionState" : "manual",
@@ -884,85 +741,69 @@
         }
       }
     },
-    "SCAN_ERROR_TEXT" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Identifiaktions-Strichcode konnte nicht gescannt werden. Bitte manuell eingeben."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Couldn't scan the identification barcode. Please enter the ID manually."
-          }
-        }
-      }
-    },
-    "SCAN_ERROR_TITLE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scanner Fehler"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scanner error"
-          }
-        }
-      }
-    },
     "SCANNER" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner"
+          }
+        }
+      }
     },
     "SCANNER_CODE_TYPES" : {
-
-    },
-    "SCANNER_CODE_TYPES_TOOLTIP" : {
-
-    },
-    "SCANNING_NOT_SUPPORTED_BODY" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Das verwendete Gerät unterstütz das Scannen von Strichcodes nicht. Verwenden Sie bitte ein Gerät mit Kamera."
+            "value" : "Scanbare Code Arten"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your device does not support scanning a code from an item. Please use a device with a camera."
+            "value" : "Scannable Code Types"
           }
         }
       }
     },
-    "SCANNING_NOT_SUPPORTED_TITLE" : {
-      "extractionState" : "manual",
+    "SCANNER_CODE_TYPES_TOOLTIP" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Das Gerät kann nicht scannen."
+            "value" : "Um falsche Scans zu vermeiden, kann eine Sammlung scanbarer Code Typen ausgewählteren. "
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scanning not supported"
+            "value" : "To prevent wrong scans, a set of scannable codes can be selected."
           }
         }
       }
     },
     "SEARCH_IDENTIFICATION" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifikation suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search ID"
+          }
+        }
+      }
     },
     "SELECT_GROUP %@" : {
       "localizations" : {
@@ -1013,13 +854,52 @@
       }
     },
     "settings.identificationMaxLength.Desc" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limitiere die maximale Anzahl an Zeichen in der Identifikation auf eine Zahl von 1 bis 50. Das limitiert auch die Länge der Zeichenketten, die beim Scannen eingelesen werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limit the maximum length of the ID input to a number between 1 and 50. This also restricts the length of strings taken from a scanned code."
+          }
+        }
+      }
     },
     "settings.identificationMaxLength.Label" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limitieren auf"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limit to"
+          }
+        }
+      }
     },
     "settings.identificationMaxLength.Title" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximale Identifikationslänge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum ID Length"
+          }
+        }
+      }
     },
     "SHARE_IMMEDIATELY" : {
       "extractionState" : "manual",
@@ -1087,7 +967,20 @@
       }
     },
     "Support pSTaRT" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support pSTaRT"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support pSTaRT"
+          }
+        }
+      }
     },
     "T0" : {
       "comment" : "no triage done yet",
@@ -1174,143 +1067,19 @@
         }
       }
     },
-    "THANKS_BODY" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Danke für Deine Unterstützung!"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Thanks for supporting me!"
-          }
-        }
-      }
-    },
-    "THANKS_HEAD" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Danke!"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Thanks!"
-          }
-        }
-      }
-    },
-    "TIP_CURRENT_STATE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Danke, du hast mir bereits %.2f gegeben!"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Thank you, you already gave %.2f!"
-          }
-        }
-      }
-    },
-    "TIP_DESCRIPTION" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%.2f bekomme ich ca für einen 12 Stunden Nachtdienst im örtlichen Rettungsdienst."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%.2f is roughly what I get for one voluntary shift at my local ambulance."
-          }
-        }
-      }
-    },
-    "TIP_NOT_READY_BODY" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In-App-Purchases sind noch nicht bereit."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In-App-Purchases are not ready yet."
-          }
-        }
-      }
-    },
-    "TIP_NOT_READY_HEAD" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nicht bereit"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not Ready"
-          }
-        }
-      }
-    },
-    "TIP_PURCHASE_BUTTON" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%.2f Trinkgeld geben"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Give %.2f tip"
-          }
-        }
-      }
-    },
-    "TIP_SPARE_TIME" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        }
-      }
-    },
     "TIPJAR_BUTTON" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spende"
+            "value" : "Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tip Jar"
           }
         }
       }
@@ -1368,7 +1137,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Danke für deine Unterstützung. Du hast mit diesem Gerät bereits %@ %.2f gegeben seit du die App installiert hast."
           }
         },
@@ -1376,23 +1145,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Thank you for your support. You gave %@ %.2f using this device since you installed the app."
-          }
-        }
-      }
-    },
-    "TIPJAR_TITLE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trinkgeld"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tip Jar"
           }
         }
       }
@@ -1496,25 +1248,21 @@
         }
       }
     },
-    "WAIT_FOR_REQUEST" : {
-      "extractionState" : "manual",
+    "YES" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please wait, die App lädt das Trinkgeld."
+            "value" : "Ja"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please wait, the app is loading the tip."
+            "value" : "Yes"
           }
         }
       }
-    },
-    "YES" : {
-
     }
   },
   "version" : "1.3"

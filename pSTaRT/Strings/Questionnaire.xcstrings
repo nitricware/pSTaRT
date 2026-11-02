@@ -87,7 +87,21 @@
       }
     },
     "INCONCLUSIVE" : {
-      "comment" : "Person dead?"
+      "comment" : "Person dead?",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekannt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
+          }
+        }
+      }
     },
     "MOVEMENT" : {
       "comment" : "Does the person follow simple orders?",

@@ -21,7 +21,7 @@ struct TipJar: View {
     var body: some View {
         NavigationStack {
             VStack (spacing: 20) {
-                Text("🚑")
+                Text(verbatim: "🚑")
                     .frame(maxWidth: .infinity, alignment: .center)
                     .font(.system(size: 200.0, weight: .bold, design: .default))
                 Text("Support pSTaRT")

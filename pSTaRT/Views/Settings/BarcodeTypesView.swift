@@ -18,10 +18,6 @@ struct BarcodeTypesView: View {
         Form {
             section("BARCODE_1D", types: BarcodeType.allCases.filter { !$0.isTwoDimensional })
             section("BARCODE_2D", types: BarcodeType.allCases.filter(\.isTwoDimensional))
-            Section {
-            } footer: {
-                Text("BARCODE_TYPES_FOOTER")
-            }
         }
         .navigationTitle("SCANNER_CODE_TYPES")
     }
