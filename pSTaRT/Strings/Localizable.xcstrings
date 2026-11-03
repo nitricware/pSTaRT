@@ -698,6 +698,54 @@
         }
       }
     },
+    "personsMapView.noLocations.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es sind keine Standortdaten bei den triagierten Personen hinterlegt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There is no location data stored with the triaged persons."
+          }
+        }
+      }
+    },
+    "personsMapView.noLocations.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Standortdaten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Locations"
+          }
+        }
+      }
+    },
+    "personsMapView.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standorte"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locations"
+          }
+        }
+      }
+    },
     "pSTaRT" : {
       "localizations" : {
         "de" : {

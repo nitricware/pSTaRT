@@ -37,6 +37,8 @@
 		4531D246308BA6A900FBEB8F /* LazyShareLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4531D245308BA6A900FBEB8F /* LazyShareLink.swift */; };
 		4531D248308BF02200FBEB8F /* CSVExportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4531D247308BF02200FBEB8F /* CSVExportError.swift */; };
 		453B9C742F9FD6810034350C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453B9C732F9FD6810034350C /* LaunchScreen.storyboard */; };
+		454E80C13099E22200742725 /* PersonsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454E80C03099E22200742725 /* PersonsMapView.swift */; };
+		454E80C43099E74400742725 /* PersonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454E80C33099E74400742725 /* PersonMarker.swift */; };
 		457C08BC2FD9E4D80031CD5C /* NWIAPListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C08BB2FD9E4CE0031CD5C /* NWIAPListener.swift */; };
 		457C6F4525B9739F00F0205B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457C6F4425B9739F00F0205B /* StoreKit.framework */; };
 		458FB815237F0F1B0060A8FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458FB814237F0F1B0060A8FB /* Assets.xcassets */; };
@@ -87,6 +89,8 @@
 		4531D245308BA6A900FBEB8F /* LazyShareLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyShareLink.swift; sourceTree = "<group>"; };
 		4531D247308BF02200FBEB8F /* CSVExportError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVExportError.swift; sourceTree = "<group>"; };
 		453B9C732F9FD6810034350C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		454E80C03099E22200742725 /* PersonsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsMapView.swift; sourceTree = "<group>"; };
+		454E80C33099E74400742725 /* PersonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonMarker.swift; sourceTree = "<group>"; };
 		456D65A13088EC9F009AAB75 /* pSTaRT_TriageLocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pSTaRT_TriageLocation.xcdatamodel; sourceTree = "<group>"; };
 		457C08BB2FD9E4CE0031CD5C /* NWIAPListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWIAPListener.swift; sourceTree = "<group>"; };
 		457C6F4425B9739F00F0205B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -200,6 +204,15 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
+		454E80C23099E73700742725 /* PersonsMapView */ = {
+			isa = PBXGroup;
+			children = (
+				454E80C33099E74400742725 /* PersonMarker.swift */,
+				454E80C03099E22200742725 /* PersonsMapView.swift */,
+			);
+			path = PersonsMapView;
+			sourceTree = "<group>";
+		};
 		457C6F4325B9739F00F0205B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +279,7 @@
 		45ECCA8928CF5621005E4D39 /* PersonsList */ = {
 			isa = PBXGroup;
 			children = (
+				454E80C23099E73700742725 /* PersonsMapView */,
 				45098B0C28D8737900DD524A /* PersonDetail */,
 				45ECCA8A28CF562E005E4D39 /* PersonsList.swift */,
 				45ECCA8C28CF610B005E4D39 /* PersonListSection.swift */,
@@ -380,6 +394,7 @@
 				45ECCA8D28CF610B005E4D39 /* PersonListSection.swift in Sources */,
 				45098B1E28D9D31F00DD524A /* StoreManager.swift in Sources */,
 				457C08BC2FD9E4D80031CD5C /* NWIAPListener.swift in Sources */,
+				454E80C43099E74400742725 /* PersonMarker.swift in Sources */,
 				451E81073094BBDC00E3A183 /* TriageSession.swift in Sources */,
 				451D7973308E545A008150CB /* Settings.swift in Sources */,
 				4531D244308B9F0600FBEB8F /* FileFetchRequest.swift in Sources */,
@@ -389,6 +404,7 @@
 				451E81093094BC3700E3A183 /* TriageDecision.swift in Sources */,
 				451E81033093E7E200E3A183 /* NSManagedObjectContextExtension.swift in Sources */,
 				450C3C0028CDC6C600BEF415 /* pSTaRTApp.swift in Sources */,
+				454E80C13099E22200742725 /* PersonsMapView.swift in Sources */,
 				45E924DD28CF28BC00C5FC9A /* TriageConclusion.swift in Sources */,
 				45098B1528D89BFB00DD524A /* TriageGroupsRow.swift in Sources */,
 				45ECCA8F28CF6449005E4D39 /* PersonDetail.swift in Sources */,

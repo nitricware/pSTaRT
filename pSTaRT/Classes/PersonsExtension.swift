@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import CoreLocation
 
 extension Persons {
     static func predicate(in group: TriageGroup?, matching search: String = "") -> NSPredicate? {
@@ -27,5 +28,10 @@ extension Persons {
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Persons.startTime, ascending: true)]
         request.predicate = predicate(in: group, matching: search)
         return request
+    }
+    
+    var coordinate: CLLocationCoordinate2D? {
+        guard let lat, let lon else { return nil }
+        return CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
     }
 }

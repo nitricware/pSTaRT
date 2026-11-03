@@ -62,6 +62,14 @@ struct PersonsList: View {
                 }
                 .disabled(persons.isEmpty)
             }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    PersonsMapView()
+                } label: {
+                    Label("personsMapView.title", systemImage: "map")
+                }
+                .disabled(persons.isEmpty)
+            }
         }
         .alert("DELETE_ALL", isPresented: $isShowingDeleteAll) {
             Button("CANCEL", role: .cancel) { }

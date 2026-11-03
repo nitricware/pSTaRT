@@ -59,24 +59,17 @@ struct PersonDetail: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
-                    if let lat = person.lat,
-                       let lon = person.lon {
-                        let mapCameraPostion = MapCameraPosition.person(at: CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue), span: 0.0006)
+                    if let coordinate = person.coordinate {
+                        let mapCameraPosition = MapCameraPosition.person(at: coordinate, span: 0.0006)
                         VStack() {
                             Text("INITIAL_LOCATION")
                                 .font(.caption)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.gray)
-                            Map(initialPosition: mapCameraPostion,interactionModes: []) {
-                                Marker(
-                                    person.plsNumber ?? "PERSON",
-                                    systemImage: "cross.case",
-                                    coordinate: CLLocationCoordinate2D(
-                                        latitude: lat.doubleValue,
-                                        longitude: lon.doubleValue
-                                    )
-                                )
+                            Map(initialPosition: mapCameraPosition,interactionModes: []) {
+                                PersonMarker(person: person)
                             }
+                            .id(person.triageGroup)
                             .frame(height: 150)
                             if !person.preciseLocation {
                                 Text("REDUCED_ACCURACY")
