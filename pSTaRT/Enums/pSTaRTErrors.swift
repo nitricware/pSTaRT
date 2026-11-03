@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CodeScanner
 
 enum pSTaRTErrors: LocalizedError {
     // MARK: Database errors
@@ -28,6 +29,19 @@ enum pSTaRTErrors: LocalizedError {
     
     case purchaseUnableToPurchase
     
+    // MARK: Scanner Errors
+    case cameraAccessDenied
+    case scanUnsupportedCodes
+    case scanFailed
+    
+    init(scanError: ScanError) {
+        switch scanError {
+        case .permissionDenied:     self = .cameraAccessDenied
+        case .badOutput:            self = .scanUnsupportedCodes
+        case .badInput, .initError: self = .scanFailed
+        }
+    }
+    
     var errorDescription: String? {
         switch self {
             case .dbFetchError: return String(localized: "error.dbFetch.description", table: "Errors")
@@ -42,6 +56,10 @@ enum pSTaRTErrors: LocalizedError {
             case .identificationTooLong: return String(localized: "error.identificationTooLong.description", table: "Errors")
             
             case .purchaseUnableToPurchase: return String(localized: "error.purchaseUnableToPurchase.description", table: "Errors")
+            
+            case .cameraAccessDenied: return String(localized: "error.cameraAccessDenied.description", table: "Errors")
+            case .scanUnsupportedCodes: return String(localized: "error.scanUnsupportedCodes.description", table: "Errors")
+            case .scanFailed: return String(localized: "error.scanFailed.description", table: "Errors")
         }
     }
 }

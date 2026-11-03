@@ -26,6 +26,9 @@ struct IdentificationInput: View {
     let onStart: (String) -> Void
     
     @AppStorage(AppSettings.Key.scannerCodeTypes) private var storedTypes = AppSettings.Default.scannerCodeTypes
+    @AppStorage(AppSettings.Key.identificationMaxLength) private var maxLength = AppSettings.Default.identificationMaxLength
+    
+    @State private var identificationRejection: Int = 0
     
     var body: some View {
         VStack {
@@ -41,11 +44,15 @@ struct IdentificationInput: View {
                     .keyboardType(.asciiCapable)
                     .onChange(of: identification) { _, newValue in
                         let scalars = newValue.unicodeScalars.filter { !CharacterSet.controlCharacters.contains($0) }
-                        let filtered = String(String.UnicodeScalarView(scalars))
+                        var filtered = String(String.UnicodeScalarView(scalars))
+                        
+                        if filtered.count > maxLength { filtered = String(filtered.prefix(maxLength)) }
                         if filtered != newValue {
                             identification = filtered
+                            identificationRejection += 1
                         }
                     }
+                    .sensoryFeedback(.warning, trigger: identificationRejection)
                 
                 if !identification.isEmpty {
                     Button {
@@ -150,10 +157,16 @@ struct IdentificationInput: View {
         isTorchOn = false
         switch result {
         case .success(let result):
-            self.identification = result.string
+            let scanned = String(result.string.unicodeScalars.filter { !CharacterSet.controlCharacters.contains($0) })
+            if scanned.count > maxLength {
+                self.showsErrorAlert.toggle()
+                self.errorMessage = pSTaRTErrors.identificationTooLong
+            } else {
+                identification = String(scanned)
+            }
         case .failure(let error):
             self.showsErrorAlert.toggle()
-            self.errorMessage = error
+            self.errorMessage = pSTaRTErrors(scanError: error)
         }
     }
 }

@@ -1,6 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "error.cameraAccessDenied.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die App kann die Kamera nicht verwenden. Erlaube den Zugriff in den Systemeinstellungen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app can’t access the camera. Allow access in the system settings."
+          }
+        }
+      }
+    },
     "error.csvExport.description" : {
       "localizations" : {
         "de" : {
@@ -118,7 +134,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Identifikationsnummer war zu lange."
+            "value" : "Die Identifikationsnummer war zu lang."
           }
         },
         "en" : {
@@ -141,6 +157,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Couldn’t complete purchase."
+          }
+        }
+      }
+    },
+    "error.scanFailed.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Fehler ist beim Scannen aufgetreten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An error occurred during the scan."
+          }
+        }
+      }
+    },
+    "error.scanUnsupportedCodes.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Gerät kann die gewählten Code-Typen nicht scannen. Ändere sie in den Einstellungen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device can’t scan the selected code types. Change them in the settings."
           }
         }
       }
