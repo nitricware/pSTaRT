@@ -455,13 +455,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Identifikation;Start;Ende;Aktuelle Triagegruppe"
+            "value" : "Identifikation;Start;Ende;Aktuelle Triagegruppe;Breitengrad;Längengrad;Genauer Standort"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Identification;Start;End;Current Triage Group"
+            "value" : "Identification;Start;End;Current Triage Group;Latitude;Longitude;Precise Location"
           }
         }
       }
@@ -533,6 +533,7 @@
       }
     },
     "NO" : {
+      "comment" : "approximate location",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1479,6 +1480,7 @@
       }
     },
     "YES" : {
+      "comment" : "precise location",
       "localizations" : {
         "de" : {
           "stringUnit" : {

@@ -22,6 +22,9 @@ enum CSVManager {
         df.dateStyle = .medium
         df.timeStyle = .medium
         
+        let yes = NSLocalizedString("YES", comment: "precise location")
+        let no = NSLocalizedString("NO", comment: "approximate location")
+        
         let csv: String = try await context.perform {
             
             let persons = try context.fetchPersons(sortDescriptors: [NSSortDescriptor(keyPath: \Persons.startTime, ascending: false)])
@@ -35,10 +38,15 @@ enum CSVManager {
             let headerComponents: [String] = NSLocalizedString("EXPORT_COLS", comment: "column headings").components(separatedBy: ";")
 
             for person in persons {
+                let coordinate = person.coordinate
+                
                 var fields = [person.plsNumber ?? NSLocalizedString("common.unknown", comment: "unknown patient ID"),
                               person.startTime.map(df.string(from:)) ?? "",
                               person.endTime.map(df.string(from:)) ?? "",
-                              String(person.triageGroup)]
+                              String(person.triageGroup),
+                              coordinate.map { String(format: "%.6f", $0.latitude) } ?? "",
+                              coordinate.map { String(format: "%.6f", $0.longitude) } ?? "",
+                              coordinate == nil ? "" : (person.preciseLocation ? yes : no)]
 
                 let triages = (person.triages?.sortedArray(using: [sort]) as? [Triages]) ?? []
                 for triage in triages {
@@ -97,9 +105,11 @@ enum CSVManager {
         return String(newName.prefix(30))
     }
     
+    /// Escape special characters and make formulas a string when imported
+    /// in programs like Excel. Ignore numbers.
     static func escapeField(_ field: String) -> String {
         var field = field
-        if let first = field.first, "=+-@\t\r".contains(first) {
+        if let first = field.first, "=+-@\t\r".contains(first), Double(field) == nil {
             field = "'" + field
         }
         field = field.replacingOccurrences(of: "\"", with: "\"\"")

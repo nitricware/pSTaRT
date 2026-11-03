@@ -45,7 +45,6 @@ struct Overview: View {
             maxHeight: .infinity,
             alignment: .top
         )
-        .ignoresSafeArea(.keyboard, edges: .bottom)
         .sheet(item: $activeSession) { session in
             NavigationStack {
                 TriageQuestionnaireView(session: session) {
