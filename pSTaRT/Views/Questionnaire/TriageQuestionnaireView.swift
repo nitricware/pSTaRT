@@ -88,13 +88,8 @@ struct TriageQuestionnaireView: View {
         .padding()
         .navigationTitle(Text("TRIAGE_QUESTIONNAIRE"))
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    onClose()
-                }) {
-                    Text("CANCEL_TRIAGE")
-                        .foregroundColor(.red)
-                }
+            ToolbarItem(placement: .cancellationAction) {
+                Button("CANCEL_TRIAGE", role: .destructive) { onClose() }.tint(.red)
             }
         }
         

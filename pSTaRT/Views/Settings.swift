@@ -15,8 +15,7 @@ struct SettingsView: View {
     @AppStorage(AppSettings.Key.identificationMaxLength) var identificationMaxLength: Int = AppSettings.Default.identificationMaxLength
     @AppStorage(AppSettings.Key.iCloudSyncEnabled) var iCloudSyncEnabled: Bool = AppSettings.Default.iCloudSyncEnabled
     @AppStorage(AppSettings.Key.pendingCloudPurge) var pendingCloudPurge: Bool = AppSettings.Default.pendingCloudPurge
-
-    @Binding var isShowingSettings: Bool
+    
     @State private var datePrefix = "1990-02-19_23-00-00"
     @State private var fileNameRejection: Int = 0
     
@@ -153,23 +152,13 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle(Text("SETTINGS"))
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        isShowingSettings.toggle()
-                    }) {
-                        Image(systemName: "xmark")
-                    }
-                }
-            }
+            .toolbar { CloseToolbarItem() }
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        SettingsView(
-            isShowingSettings: .constant(true)
-        )
+        SettingsView()
     }
 }

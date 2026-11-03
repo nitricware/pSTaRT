@@ -9,22 +9,21 @@
 import SwiftUI
 
 struct MainToolbar: ToolbarContent {
-    @Binding public var isShowingTipJar: Bool
-    @Binding public var isShowingSettings: Bool
+    @Binding var sheet: OverviewSheet?
     
     let showsPersonsListLink: Bool
     
     var body: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button(action: {
-                isShowingTipJar.toggle()
+                sheet = .tipJar
             }) {
                 Image(systemName: "giftcard")
             }
         }
         ToolbarItem(placement: .navigationBarTrailing) {
             Button(action: {
-                isShowingSettings.toggle()
+                sheet = .settings
             }) {
                 Image(systemName: "gearshape")
             }
@@ -46,9 +45,7 @@ struct MainToolbar_Previews: PreviewProvider {
         NavigationView {
             Text("Hello, World!")
                 .toolbar {
-                    MainToolbar(
-                        isShowingTipJar: .constant(false),
-                        isShowingSettings: .constant(false),
+                    MainToolbar(sheet: .constant(nil),
                         showsPersonsListLink: false
                     )
                 }

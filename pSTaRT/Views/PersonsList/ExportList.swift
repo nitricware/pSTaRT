@@ -17,8 +17,6 @@ struct ExportList: View {
         animation: .default
     ) private var files
     
-    @Binding public var isShowing: Bool
-    
     @State private var isExporting: Bool = false
     @State public var isShowingDeleteAll: Bool = false
     
@@ -66,13 +64,7 @@ struct ExportList: View {
                 }
         .navigationTitle("CSV_FILES")
         .toolbar {
-            ToolbarItem(placement: .topBarLeading, content: {
-                Button(action: {
-                    isShowing.toggle()
-                }) {
-                    Image(systemName: "xmark")
-                }
-            })
+            CloseToolbarItem()
             ToolbarItem(placement: .topBarTrailing, content: {
                 if shareImmediately {
                     LazyShareLink(Image(systemName: "document.badge.plus")) {
@@ -154,6 +146,6 @@ struct ExportList: View {
 
 #Preview {
     NavigationStack {
-        ExportList(isShowing: .constant(true))
+        ExportList()
     }
 }

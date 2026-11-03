@@ -10,7 +10,6 @@ import SwiftUI
 import StoreKit
 
 struct TipJar: View {
-    @Binding public var isShowingTipJar: Bool
     @StateObject public var storeManager: StoreManager = StoreManager()
     @AppStorage("givenMoney") var tipJar: Double = 0.00
     
@@ -60,15 +59,7 @@ struct TipJar: View {
             }
             .multilineTextAlignment(.center)
             .padding()
-            .toolbar {
-                ToolbarItem {
-                    Button(action: {
-                        self.isShowingTipJar.toggle()
-                    }) {
-                        Image(systemName: "xmark")
-                    }
-                }
-            }
+            .toolbar { CloseToolbarItem() }
             .alert(errorMessage?.localizedDescription ?? String(localized: "common.unknownError"), isPresented: $showsErrorAlert) {
                 Button("common.ok", role: .cancel) { }
             }
@@ -81,9 +72,7 @@ struct TipJar_Previews: PreviewProvider {
     static var previews: some View {
         Spacer()
             .sheet(isPresented: .constant(true)) {
-                TipJar(
-                    isShowingTipJar: .constant(true)
-                )
+                TipJar()
             }
     }
 }

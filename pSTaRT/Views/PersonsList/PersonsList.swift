@@ -55,8 +55,7 @@ struct PersonsList: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button (action: {
-                    //shareCSV()
-                    isShowingCSVExport.toggle()
+                    isShowingCSVExport = true
                 }) {
                     Image(systemName: "tray")
                 }
@@ -86,7 +85,7 @@ struct PersonsList: View {
         }
         .sheet(isPresented: $isShowingCSVExport, content: {
             NavigationStack {
-                ExportList(isShowing: $isShowingCSVExport)
+                ExportList()
             }
         })
     }

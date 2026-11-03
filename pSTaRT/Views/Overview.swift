@@ -9,32 +9,27 @@
 import SwiftUI
 import CoreData
 
+
+
 struct Overview: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @State private var activeSession: TriageSession?
     
-    // MARK: Sheet States
-    @State private var isShowingSettings: Bool = false
-    
-    @State public var isShowingTipJar: Bool = false
+    @State private var sheet: OverviewSheet?
     
     @State public var identification: String = ""
     
     var body: some View {
         VStack {
             IdentificationInput(identification: $identification) { id in
-                activeSession = TriageSession(identification: id)
+                sheet = .triage(TriageSession(identification: id))
             }
             
             TriageGroupsOverview()
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .toolbar {
-            MainToolbar(
-                isShowingTipJar: $isShowingTipJar,
-                isShowingSettings: $isShowingSettings,
-                showsPersonsListLink: horizontalSizeClass == .compact
+            MainToolbar(sheet: $sheet, showsPersonsListLink: horizontalSizeClass == .compact
             )
         }
         .navigationTitle("pSTaRT")
@@ -45,24 +40,25 @@ struct Overview: View {
             maxHeight: .infinity,
             alignment: .top
         )
-        .sheet(item: $activeSession) { session in
-            NavigationStack {
-                TriageQuestionnaireView(session: session) {
-                    activeSession = nil
-                    identification = ""
+        .sheet(item: $sheet) { sheet in
+            switch sheet {
+            case .settings: SettingsView()
+            case .tipJar:   TipJar()
+            case .triage(let session):
+                NavigationStack {
+                    TriageQuestionnaireView(session: session) {
+                        self.sheet = nil
+                        identification = ""
+                    }
                 }
+                .presentationSizing(.page)
+                .interactiveDismissDisabled()
             }
-            .presentationSizing(.page)
-            .interactiveDismissDisabled()
         }
-        .sheet(isPresented: $isShowingTipJar) {
-            TipJar(isShowingTipJar: $isShowingTipJar)
-        }
-        .sheet(isPresented: $isShowingSettings, content: {
-            SettingsView(isShowingSettings: $isShowingSettings)
-        })
     }
 }
+
+
 
 struct Overview_Previews: PreviewProvider {
     static var previews: some View {
