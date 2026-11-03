@@ -1,0 +1,53 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Show map of triaged persons in ${applicationName}." : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "Zeige eine Karte der triagierten Personen in ${applicationName}",
+              "Zeige die ${applicationName}-Karte.",
+              "Zeige die Karte in ${applicationName}."
+            ]
+          }
+        },
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Show map of triaged persons in ${applicationName}.",
+              "Show the ${applicationName} map."
+            ]
+          }
+        }
+      }
+    },
+    "Start triage scanner in ${applicationName}." : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "Starte den Scanner in ${applicationName}.",
+              "Scanne mit ${applicationName}."
+            ]
+          }
+        },
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Start triage scanner in ${applicationName}.",
+              "Scan with ${applicationName}."
+            ]
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.3"
+}

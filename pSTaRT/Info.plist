@@ -52,5 +52,24 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>UIApplicationShortcutItems</key>
+    <array>
+        <dict>
+            <key>UIApplicationShortcutItemType</key>
+            <string>com.nitricware.pstart.scan</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>quickaction.scan</string>
+            <key>UIApplicationShortcutItemIconSymbolName</key>
+            <string>barcode.viewfinder</string>
+        </dict>
+        <dict>
+            <key>UIApplicationShortcutItemType</key>
+            <string>com.nitricware.pstart.map</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>quickaction.map</string>
+            <key>UIApplicationShortcutItemIconSymbolName</key>
+            <string>map</string>
+        </dict>
+    </array>
 </dict>
 </plist>

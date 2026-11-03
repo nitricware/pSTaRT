@@ -15,13 +15,19 @@ struct Overview: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
+    private let router = AppRouter.shared
+    @State private var isShowingScanner = false
+    @State private var deferredAction: AppAction?
+    
     @State private var sheet: OverviewSheet?
     
     @State public var identification: String = ""
     
     var body: some View {
         VStack {
-            IdentificationInput(identification: $identification) { id in
+            IdentificationInput(identification: $identification,
+                                isShowingScanner: $isShowingScanner,
+                                onScannerDismiss: runDeferred) { id in
                 sheet = .triage(TriageSession(identification: id))
             }
             
@@ -40,10 +46,15 @@ struct Overview: View {
             maxHeight: .infinity,
             alignment: .top
         )
-        .sheet(item: $sheet) { sheet in
+        .sheet(item: $sheet, onDismiss: runDeferred) { sheet in
             switch sheet {
             case .settings: SettingsView()
             case .tipJar:   TipJar()
+            case .map:
+                NavigationStack {
+                    PersonsMapView()
+                        .toolbar { CloseToolbarItem() }   // only here – when pushed from PersonsList it has a back button
+                }
             case .triage(let session):
                 NavigationStack {
                     TriageQuestionnaireView(session: session) {
@@ -55,6 +66,32 @@ struct Overview: View {
                 .interactiveDismissDisabled()
             }
         }
+        .onChange(of: router.pending, initial: true) { _, action in
+            guard let action else { return }
+            router.pending = nil
+            if case .triage = sheet { return }
+            if action == .scan && isShowingScanner { return }
+            if sheet != nil || isShowingScanner {
+                deferredAction = action
+                sheet = nil
+                isShowingScanner = false
+            } else {
+                perform(action)
+            }
+        }
+    }
+    
+    private func perform(_ action: AppAction) {
+        switch action {
+        case .scan: isShowingScanner = true
+        case .map:  sheet = .map
+        }
+    }
+
+    private func runDeferred() {
+        guard let action = deferredAction else { return }
+        deferredAction = nil
+        perform(action)
     }
 }
 

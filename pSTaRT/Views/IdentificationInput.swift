@@ -13,17 +13,16 @@ import CoreData
 struct IdentificationInput: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    // MARK: Sheet States
-    @State private var isShowingScanner: Bool = false
+    @Binding public var identification: String
+    @Binding var isShowingScanner: Bool
+    var onScannerDismiss: () -> Void = {}
+    let onStart: (String) -> Void
     
     @State private var isTorchOn: Bool = false
     
     // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
     @State private var errorMessage: Error?
     @State private var showsErrorAlert: Bool = false
-    
-    @Binding public var identification: String
-    let onStart: (String) -> Void
     
     @AppStorage(AppSettings.Key.scannerCodeTypes) private var storedTypes = AppSettings.Default.scannerCodeTypes
     @AppStorage(AppSettings.Key.identificationMaxLength) private var maxLength = AppSettings.Default.identificationMaxLength
@@ -98,7 +97,7 @@ struct IdentificationInput: View {
         }
         
         // MARK: Scanner
-        .sheet(isPresented: $isShowingScanner) {
+        .sheet(isPresented: $isShowingScanner, onDismiss: onScannerDismiss) {
             // https://www.hackingwithswift.com/books/ios-swiftui/scanning-qr-codes-with-swiftui
             ZStack (alignment: .top) {
                 CodeScannerView(
@@ -173,9 +172,8 @@ struct IdentificationInput: View {
 
 struct PLSInput_Previews: PreviewProvider {
     static var previews: some View {
-        IdentificationInput(
-            identification: .constant("TESTTRIAGE")
-        ) { _ in }
+        IdentificationInput(identification: .constant("TESTTRIAGE"),
+                            isShowingScanner: .constant(false)) { _ in }
         .previewLayout(.sizeThatFits)
     }
 }

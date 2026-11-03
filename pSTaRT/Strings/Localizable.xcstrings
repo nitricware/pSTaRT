@@ -515,6 +515,70 @@
         }
       }
     },
+    "intent.showmap.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet die App und zeigt die Karte der Personen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts the app and shows the map of persons."
+          }
+        }
+      }
+    },
+    "intent.showmap.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karte anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Map"
+          }
+        }
+      }
+    },
+    "intent.startscan.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet die App und öffnet den Scanner."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts the app and presents the scanner."
+          }
+        }
+      }
+    },
+    "intent.startscan.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner starten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Scanner"
+          }
+        }
+      }
+    },
     "MOVEMENT" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1177,6 +1241,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Share CSV"
+          }
+        }
+      }
+    },
+    "shortcut.map" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karte"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map"
+          }
+        }
+      }
+    },
+    "shortcut.scan" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner"
           }
         }
       }

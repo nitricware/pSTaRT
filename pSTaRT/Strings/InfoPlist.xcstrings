@@ -52,6 +52,38 @@
           }
         }
       }
+    },
+    "quickaction.map" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karte öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Map"
+          }
+        }
+      }
+    },
+    "quickaction.scan" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner starten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Scanner"
+          }
+        }
+      }
     }
   },
   "version" : "1.3"
