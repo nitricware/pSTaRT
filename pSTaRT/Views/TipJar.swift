@@ -11,7 +11,7 @@ import StoreKit
 
 struct TipJar: View {
     @StateObject public var storeManager: StoreManager = StoreManager()
-    @AppStorage("givenMoney") var tipJar: Double = 0.00
+    @AppStorage(AppSettings.Key.givenMoney) var tipJar: Double = 0.00
     
     // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
     @State private var errorMessage: Error?

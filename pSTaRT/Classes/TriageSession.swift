@@ -25,7 +25,7 @@ final class TriageSession: Identifiable {
     private(set) var noColor: Color = .orange
 
     // How many questions have been asked?
-    @ObservationIgnored private var currentIteration = 0
+    private(set) var currentIteration = 0
     
     var currentGroup: TriageGroup { decisions.last?.group ?? .unidentified }
 

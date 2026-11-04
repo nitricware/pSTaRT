@@ -17,40 +17,6 @@
         }
       }
     },
-    "AIRWAY" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Atmung vorhanden?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Person does breath?"
-          }
-        }
-      }
-    },
-    "ASPIRATION" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inhalationstrauma mit Stridor?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inhalation trauma with stridor?"
-          }
-        }
-      }
-    },
     "BARCODE_1D" : {
       "localizations" : {
         "de" : {
@@ -83,57 +49,6 @@
         }
       }
     },
-    "BLEEDING" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bestehende spritzende Blutung?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uncontrolled bleeding?"
-          }
-        }
-      }
-    },
-    "BREATHING" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Atemfrequenz > 10 bzw. < 30/min?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Breathing frequency > 10 and < 30/min?"
-          }
-        }
-      }
-    },
-    "CANCEL" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abbrechen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
-          }
-        }
-      }
-    },
     "CANCEL_TRIAGE" : {
       "localizations" : {
         "de" : {
@@ -145,7 +60,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "cancel triage"
+            "value" : "Cancel Triage"
           }
         }
       }
@@ -216,7 +131,6 @@
       }
     },
     "CONFIRM" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -313,7 +227,6 @@
       }
     },
     "CSV_FILES" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -345,25 +258,7 @@
         }
       }
     },
-    "DEAD" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nicht mit dem Leben vereinbare Verletzung?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deadly injuries?"
-          }
-        }
-      }
-    },
     "DELETE" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -380,7 +275,6 @@
       }
     },
     "DELETE_ALL" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -397,7 +291,6 @@
       }
     },
     "DELETE_ERROR" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -414,7 +307,6 @@
       }
     },
     "DUPLICATE_IGNORE" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -431,7 +323,6 @@
       }
     },
     "END_TRIAGE" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -515,7 +406,6 @@
       }
     },
     "IDENTIFICATION" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -527,6 +417,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Identification"
+          }
+        }
+      }
+    },
+    "identification.limitReached %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximale Zeichenlänge von %lld erreicht."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identification character limit of %lld reached."
           }
         }
       }
@@ -611,23 +517,6 @@
         }
       }
     },
-    "MOVEMENT" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kann einfache Befehle befolgen?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Does the person follow simple orders?"
-          }
-        }
-      }
-    },
     "NO" : {
       "comment" : "approximate location",
       "localizations" : {
@@ -678,7 +567,6 @@
       }
     },
     "NUM_PERSONS %lld" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -695,7 +583,6 @@
       }
     },
     "OK" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -712,7 +599,6 @@
       }
     },
     "OVERVIEW" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -729,7 +615,6 @@
       }
     },
     "PERSON_DETAIL" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -761,25 +646,7 @@
         }
       }
     },
-    "PERSONS" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Person(en)"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "person(s)"
-          }
-        }
-      }
-    },
     "PERSONS_LIST" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -859,23 +726,6 @@
         }
       }
     },
-    "PULSE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Radialispuls vorhanden?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Person has radial pulse?"
-          }
-        }
-      }
-    },
     "REDUCED_ACCURACY" : {
       "localizations" : {
         "de" : {
@@ -913,7 +763,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scanbare Code Arten"
+            "value" : "Scanbare Code-Typen"
           }
         },
         "en" : {
@@ -929,7 +779,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Um falsche Scans zu vermeiden, kann eine Sammlung scanbarer Code Typen ausgewählt werden. "
+            "value" : "Um falsche Scans zu vermeiden, kann eine Sammlung scanbarer Code-Typen ausgewählt werden."
           }
         },
         "en" : {
@@ -1229,7 +1079,6 @@
       }
     },
     "SHARE_IMMEDIATELY" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1426,23 +1275,6 @@
         }
       }
     },
-    "TIPJAR_BUTTON" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trinkgeld"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tip Jar"
-          }
-        }
-      }
-    },
     "TIPJAR_BUTTON %@" : {
       "localizations" : {
         "de" : {
@@ -1492,7 +1324,6 @@
       }
     },
     "TIPJAR_THANKS %@ %lf" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1525,7 +1356,6 @@
       }
     },
     "TRIAGE_HISTORY" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1573,8 +1403,23 @@
         }
       }
     },
+    "triage.cancel.message" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Fortschritt der Triage der aktuellen Person geht dabei verloren."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress to the triage session for the current person will be lost."
+          }
+        }
+      }
+    },
     "TRIAGEGROUP" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1591,7 +1436,6 @@
       }
     },
     "TRIAGEGROUP %@" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {

@@ -14,22 +14,26 @@ extension NSManagedObjectContext {
     func deleteAll() throws {
         var deletedIDs: [NSManagedObjectID] = []
 
+        defer {
+            if !deletedIDs.isEmpty {
+                NSManagedObjectContext.mergeChanges(
+                    fromRemoteContextSave: [NSDeletedObjectsKey: deletedIDs],
+                    into: [self]
+                )
+            }
+        }
+
         for entity in ["Persons", "Triages"] {
             let request = NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: entity))
             request.resultType = .resultTypeObjectIDs
 
             do {
-                let result = try self.execute(request) as? NSBatchDeleteResult
+                let result = try execute(request) as? NSBatchDeleteResult
                 deletedIDs += result?.result as? [NSManagedObjectID] ?? []
             } catch {
                 throw pSTaRTErrors.dbDeleteError
             }
         }
-
-        NSManagedObjectContext.mergeChanges(
-            fromRemoteContextSave: [NSDeletedObjectsKey: deletedIDs],
-            into: [self]
-        )
     }
     
     func deletePerson(person: Persons) throws {

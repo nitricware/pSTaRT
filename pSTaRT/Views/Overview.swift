@@ -9,8 +9,6 @@
 import SwiftUI
 import CoreData
 
-
-
 struct Overview: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -35,8 +33,7 @@ struct Overview: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .toolbar {
-            MainToolbar(sheet: $sheet, showsPersonsListLink: horizontalSizeClass == .compact
-            )
+            MainToolbar(sheet: $sheet, showsPersonsListLink: horizontalSizeClass == .compact)
         }
         .navigationTitle("pSTaRT")
         .padding()
@@ -94,8 +91,6 @@ struct Overview: View {
         perform(action)
     }
 }
-
-
 
 struct Overview_Previews: PreviewProvider {
     static var previews: some View {

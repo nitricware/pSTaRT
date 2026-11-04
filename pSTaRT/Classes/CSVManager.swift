@@ -17,10 +17,6 @@ enum CSVManager {
         // held here and all managed object work happens inside its perform block.
         // Only the finished String leaves the block.
         let context = PersistenceController.shared.container.newBackgroundContext()
-        let df = DateFormatter()
-        
-        df.dateStyle = .medium
-        df.timeStyle = .medium
         
         let yes = NSLocalizedString("YES", comment: "precise location")
         let no = NSLocalizedString("NO", comment: "approximate location")
@@ -41,8 +37,8 @@ enum CSVManager {
                 let coordinate = person.coordinate
                 
                 var fields = [person.plsNumber ?? NSLocalizedString("common.unknown", comment: "unknown patient ID"),
-                              person.startTime.map(df.string(from:)) ?? "",
-                              person.endTime.map(df.string(from:)) ?? "",
+                              timestamp(for: person.startTime),
+                              timestamp(for: person.endTime),
                               String(person.triageGroup),
                               coordinate.map { String(format: "%.6f", $0.latitude) } ?? "",
                               coordinate.map { String(format: "%.6f", $0.longitude) } ?? "",
@@ -51,7 +47,7 @@ enum CSVManager {
                 let triages = (person.triages?.sortedArray(using: [sort]) as? [Triages]) ?? []
                 for triage in triages {
                     fields.append(String(triage.group))
-                    fields.append(triage.date.map(df.string(from:)) ?? "")
+                    fields.append(timestamp(for: triage.date))
                 }
 
                 overallMaxTriageNum = max(overallMaxTriageNum, triages.count)
@@ -82,10 +78,11 @@ enum CSVManager {
             throw CSVExportError.noDocumentDirectory
         }
         
-        df.locale = Locale(identifier: "en_US_POSIX")
-        df.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
+        let fileDF = DateFormatter()
+        fileDF.locale = Locale(identifier: "en_US_POSIX")
+        fileDF.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
+        let datePrefix = fileDF.string(from: Date())
         
-        let datePrefix = df.string(from: Date())
         let sanitizedFileName = self.sanitizeFilename(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!)
         let separator: String = sanitizedFileName.isEmpty ? "" : "_"
         let file = "\(datePrefix)\(separator)\(sanitizedFileName).csv"
@@ -122,5 +119,24 @@ enum CSVManager {
         } catch {
             throw pSTaRTErrors.csvExportError
         }
+    }
+    
+    private static let dateFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateStyle = .medium
+        f.timeStyle = .none
+        return f
+    }()
+
+    private static let timeFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateStyle = .none
+        f.timeStyle = .medium
+        return f
+    }()
+
+    private static func timestamp(for date: Date?) -> String {
+        guard let date else { return "" }
+        return "\(dateFormatter.string(from: date)) \(timeFormatter.string(from: date))"
     }
 }

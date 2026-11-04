@@ -105,7 +105,7 @@ struct ExportList: View {
                 }
                 .disabled(files.isEmpty)
                 .alert("exportList.deleteAll", isPresented: $isShowingDeleteAll) {
-                    Button("CANCEL", role: .cancel) { }
+                    Button(role: .cancel) { }
                     Button("CONFIRM", role: .destructive) {
                         do {
                             try deleteFiles()

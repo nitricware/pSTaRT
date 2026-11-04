@@ -51,18 +51,11 @@ final class NWLocationProvider: NSObject, CLLocationManagerDelegate {
         guard let latest = locations.last else { return }
         withAnimation {
             location = latest
-            mapCameraPosition = .person(at: latest.coordinate)
+            mapCameraPosition = .focused(on: latest.coordinate)
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
         return
-    }
-}
-
-extension MapCameraPosition {
-    static func person(at coordinate: CLLocationCoordinate2D, span: CLLocationDegrees = 0.001) -> Self {
-        .region(MKCoordinateRegion(center: coordinate,
-                                   span: MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)))
     }
 }

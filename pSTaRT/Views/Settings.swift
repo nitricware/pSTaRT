@@ -19,7 +19,6 @@ struct SettingsView: View {
     @State private var datePrefix = "1990-02-19_23-00-00"
     @State private var fileNameRejection: Int = 0
     
-    /// The value the user wants to switch to; `nil` = no alert.
     private let syncActiveAtLaunch = PersistenceController.shared.isCloudSyncActive
 
     @State private var isShowingSyncAlert = false

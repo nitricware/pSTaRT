@@ -44,11 +44,19 @@ struct IdentificationInput: View {
                     .onChange(of: identification) { _, newValue in
                         let scalars = newValue.unicodeScalars.filter { !CharacterSet.controlCharacters.contains($0) }
                         var filtered = String(String.UnicodeScalarView(scalars))
-                        
-                        if filtered.count > maxLength { filtered = String(filtered.prefix(maxLength)) }
+
+                        let isTooLong = filtered.count > maxLength
+                        if isTooLong { filtered = String(filtered.prefix(maxLength)) }
+
                         if filtered != newValue {
                             identification = filtered
                             identificationRejection += 1
+
+                            if isTooLong {
+                                var message = AttributedString(localized: "identification.limitReached \(maxLength)")
+                                message.accessibilitySpeechAnnouncementPriority = .high
+                                AccessibilityNotification.Announcement(message).post()
+                            }
                         }
                     }
                     .sensoryFeedback(.warning, trigger: identificationRejection)
@@ -74,7 +82,16 @@ struct IdentificationInput: View {
             }
             .frame(maxWidth: .infinity, maxHeight: 50.0)
             .padding()
-            .glassEffect()
+            .background(alignment: .leading) {
+                GeometryReader { geo in
+                    Rectangle()
+                        .fill((fillFraction >= 1 ? Color.orange : Color.accentColor).opacity(0.25))
+                        .frame(width: geo.size.width * fillFraction)
+                }
+            }
+            .animation(.easeOut(duration: 0.15), value: fillFraction)
+            .clipShape(.capsule)
+            .glassEffect(in: .capsule)
             
             Button(action: {
                 do {
@@ -167,6 +184,11 @@ struct IdentificationInput: View {
             self.showsErrorAlert.toggle()
             self.errorMessage = pSTaRTErrors(scanError: error)
         }
+    }
+    
+    private var fillFraction: CGFloat {
+        guard maxLength > 0 else { return 0 }
+        return min(CGFloat(identification.count) / CGFloat(maxLength), 1)
     }
 }
 

@@ -43,8 +43,8 @@ final class NWIAPListener {
         // This is not really required for this app. So whenever handle() fires, we add the price to the
         // internal counter (UserDefaults) which will be reset on re-install of the app anyway.
         if let price = transaction.price {
-            let currentTipJar = UserDefaults.standard.double(forKey: "givenMoney")
-            UserDefaults.standard.set(currentTipJar + Double(truncating: price as NSNumber), forKey: "givenMoney")
+            let currentTipJar = UserDefaults.standard.double(forKey: AppSettings.Key.givenMoney)
+            UserDefaults.standard.set(currentTipJar + Double(truncating: price as NSNumber), forKey: AppSettings.Key.givenMoney)
         }
         
         await transaction.finish()

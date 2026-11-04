@@ -28,8 +28,8 @@ class StoreManager: ObservableObject {
             case .success(let verification):
                 if case .verified(let transaction) = verification {
                     if let price = transaction.price {
-                        let currentTipJar = UserDefaults.standard.double(forKey: "givenMoney")
-                        UserDefaults.standard.set(currentTipJar + Double(truncating: price as NSNumber), forKey: "givenMoney")
+                        let currentTipJar = UserDefaults.standard.double(forKey: AppSettings.Key.givenMoney)
+                        UserDefaults.standard.set(currentTipJar + Double(truncating: price as NSNumber), forKey: AppSettings.Key.givenMoney)
                     }
                     await transaction.finish()
                 }

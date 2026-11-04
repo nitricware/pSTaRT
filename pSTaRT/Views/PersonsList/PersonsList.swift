@@ -71,7 +71,7 @@ struct PersonsList: View {
             }
         }
         .alert("DELETE_ALL", isPresented: $isShowingDeleteAll) {
-            Button("CANCEL", role: .cancel) { }
+            Button(role: .cancel) { }
             Button("CONFIRM", role: .destructive) {
                 do {
                     try managedObjectContext.deleteAll()

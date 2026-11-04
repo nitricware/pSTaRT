@@ -60,7 +60,7 @@ struct PersonDetail: View {
                         }
                     }
                     if let coordinate = person.coordinate {
-                        let mapCameraPosition = MapCameraPosition.person(at: coordinate, span: 0.0006)
+                        let mapCameraPosition = MapCameraPosition.focused(on: coordinate, span: 0.0006)
                         VStack() {
                             Text("INITIAL_LOCATION")
                                 .font(.caption)

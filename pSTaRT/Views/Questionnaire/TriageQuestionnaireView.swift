@@ -14,6 +14,7 @@ struct TriageQuestionnaireView: View {
     let session: TriageSession
     let onClose: () -> Void
     @State private var locationProvider = NWLocationProvider()
+    @State private var isConfirmingCancel: Bool = false
     
     var body: some View {
         VStack {
@@ -89,8 +90,25 @@ struct TriageQuestionnaireView: View {
         .navigationTitle(Text("TRIAGE_QUESTIONNAIRE"))
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("CANCEL_TRIAGE", role: .destructive) { onClose() }.tint(.red)
+                Button("CANCEL_TRIAGE", role: .destructive) {
+                    if session.currentIteration > 0 || !session.decisions.isEmpty {
+                        isConfirmingCancel = true
+                    } else {
+                        onClose()
+                    }
+                }
+                .tint(.red)
+                .alert(
+                    "CANCEL_TRIAGE",
+                    isPresented: $isConfirmingCancel
+                ) {
+                    Button("CANCEL_TRIAGE", role: .destructive) { onClose() }
+                    Button(role: .cancel) { }
+                } message: {
+                    Text("triage.cancel.message")
+                }
             }
+            
         }
         
     }
