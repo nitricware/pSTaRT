@@ -20,23 +20,9 @@ struct SettingsView: View {
     @State private var fileNameRejection: Int = 0
     
     /// The value the user wants to switch to; `nil` = no alert.
-    @State private var requestedSync: Bool?
     private let syncActiveAtLaunch = PersistenceController.shared.isCloudSyncActive
 
-    /// The toggle only asks – nothing is written until the user confirms.
-    private var syncBinding: Binding<Bool> {
-        Binding(
-            get: { iCloudSyncEnabled },
-            set: { requestedSync = $0 }
-        )
-    }
-
-    private var isShowingSyncAlert: Binding<Bool> {
-        Binding(
-            get: { requestedSync != nil },
-            set: { if !$0 { requestedSync = nil } }
-        )
-    }
+    @State private var isShowingSyncAlert = false
 
     private func applySync(_ enable: Bool) {
         iCloudSyncEnabled = enable
@@ -122,23 +108,25 @@ struct SettingsView: View {
                     header: Text("settings.iCloudSync.title"),
                     footer: Text("settings.iCloudSync.description")
                 ) {
-                    Toggle("settings.iCloudSync.label", isOn: syncBinding)
-                        .alert(
-                            requestedSync == true
-                                ? Text("settings.iCloudSync.confirmOn.title")
-                                : Text("settings.iCloudSync.confirmOff.title"),
-                            isPresented: isShowingSyncAlert,
-                            presenting: requestedSync
-                        ) { enable in
-                            if enable {
-                                Button("settings.iCloudSync.confirmOn.button") { applySync(true) }
-                            } else {
-                                Button("settings.iCloudSync.confirmOff.button", role: .destructive) { applySync(false) }
-                            }
-                            Button("CANCEL", role: .cancel) { }
-                        } message: { enable in
-                            Text(enable ? "settings.iCloudSync.confirmOn.message" : "settings.iCloudSync.confirmOff.message")
+                    Toggle("settings.iCloudSync.label", isOn: Binding(
+                        get: { iCloudSyncEnabled },
+                        set: { _ in isShowingSyncAlert = true }
+                    ))
+                    .alert(
+                        iCloudSyncEnabled ? Text("settings.iCloudSync.confirmOff.title")
+                                          : Text("settings.iCloudSync.confirmOn.title"),
+                        isPresented: $isShowingSyncAlert
+                    ) {
+                        if iCloudSyncEnabled {
+                            Button("settings.iCloudSync.confirmOff.button", role: .destructive) { applySync(false) }
+                        } else {
+                            Button("settings.iCloudSync.confirmOn.button", role: .confirm) { applySync(true) }
                         }
+                        Button(role: .cancel) { }
+                    } message: {
+                        Text(iCloudSyncEnabled ? "settings.iCloudSync.confirmOff.message"
+                                               : "settings.iCloudSync.confirmOn.message")
+                    }
 
                     if iCloudSyncEnabled != syncActiveAtLaunch {
                         Label("settings.iCloudSync.restartRequired", systemImage: "arrow.clockwise")

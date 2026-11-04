@@ -28,6 +28,25 @@
 	<string>The camera is used as a scanner to scan PLS numbers.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The location is used to mark the location of a person.</string>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>barcode.viewfinder</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>quickaction.scan</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.nitricware.pstart.scan</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>map</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>quickaction.map</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.nitricware.pstart.map</string>
+		</dict>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -52,24 +71,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>UIApplicationShortcutItems</key>
-    <array>
-        <dict>
-            <key>UIApplicationShortcutItemType</key>
-            <string>com.nitricware.pstart.scan</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>quickaction.scan</string>
-            <key>UIApplicationShortcutItemIconSymbolName</key>
-            <string>barcode.viewfinder</string>
-        </dict>
-        <dict>
-            <key>UIApplicationShortcutItemType</key>
-            <string>com.nitricware.pstart.map</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>quickaction.map</string>
-            <key>UIApplicationShortcutItemIconSymbolName</key>
-            <string>map</string>
-        </dict>
-    </array>
 </dict>
 </plist>

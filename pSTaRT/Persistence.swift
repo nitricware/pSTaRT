@@ -64,7 +64,7 @@ struct PersistenceController {
         description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
         
         if inMemory || !UserDefaults.standard.bool(forKey: AppSettings.Key.iCloudSyncEnabled) {
-            description.cloudKitContainerOptions = nil   // local only
+            description.cloudKitContainerOptions = nil
         }
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -82,7 +82,20 @@ struct PersistenceController {
                 */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
+            if !inMemory, let url = storeDescription.url {
+                Self.excludeFromBackup(url, syncActive: storeDescription.cloudKitContainerOptions != nil)
+            }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+    }
+    
+    private static func excludeFromBackup(_ storeURL: URL, syncActive: Bool) {
+        for suffix in ["", "-wal", "-shm"] {
+            var url = URL(fileURLWithPath: storeURL.path + suffix)
+            guard FileManager.default.fileExists(atPath: url.path) else { continue }
+            var values = URLResourceValues()
+            values.isExcludedFromBackup = !syncActive
+            try? url.setResourceValues(values)
+        }
     }
 }
