@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,13 @@
 		45098B1528D89BFB00DD524A /* TriageGroupsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45098B1428D89BFB00DD524A /* TriageGroupsRow.swift */; };
 		45098B1C28D9CC9900DD524A /* TipJar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45098B1B28D9CC9900DD524A /* TipJar.swift */; };
 		45098B1E28D9D31F00DD524A /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45098B1D28D9D31F00DD524A /* StoreManager.swift */; };
+		450ACB39309B58890050BD21 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450ACB38309B58890050BD21 /* WidgetKit.framework */; };
+		450ACB3B309B58890050BD21 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450ACB3A309B58890050BD21 /* SwiftUI.framework */; };
+		450ACB4C309B588A0050BD21 /* pSTaRTWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 450ACB37309B58890050BD21 /* pSTaRTWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		450ACB52309B591E0050BD21 /* AppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451F7F43309A1A3D00E04BB8 /* AppIntents.swift */; };
+		450ACB53309B59290050BD21 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451F7F3F309A160200E04BB8 /* AppRouter.swift */; };
+		450ACB54309B59350050BD21 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526A730309A31A7006897C3 /* AppAction.swift */; };
+		450ACB55309B5A670050BD21 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45E59A983098BA660083CABC /* Localizable.xcstrings */; };
 		450C3BEF28CCC8F600BEF415 /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BEE28CCC8F600BEF415 /* Overview.swift */; };
 		450C3BF128CCCA3A00BEF415 /* TriageGroupsOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BF028CCCA3A00BEF415 /* TriageGroupsOverview.swift */; };
 		450C3BF728CCCBE200BEF415 /* TriageGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C3BF628CCCBE200BEF415 /* TriageGroup.swift */; };
@@ -66,6 +73,30 @@
 		45ECCA9128D062ED005E4D39 /* TriageRetriage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECCA9028D062ED005E4D39 /* TriageRetriage.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		450ACB4A309B588A0050BD21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 458FB7FD237F0F1A0060A8FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 450ACB36309B58890050BD21;
+			remoteInfo = pSTaRTWidgetsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		450ACB4D309B588A0050BD21 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				450ACB4C309B588A0050BD21 /* pSTaRTWidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		45098B0D28D8739C00DD524A /* PersonDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailRow.swift; sourceTree = "<group>"; };
 		45098B0F28D887EA00DD524A /* MainToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
@@ -73,6 +104,9 @@
 		45098B1428D89BFB00DD524A /* TriageGroupsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupsRow.swift; sourceTree = "<group>"; };
 		45098B1B28D9CC9900DD524A /* TipJar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJar.swift; sourceTree = "<group>"; };
 		45098B1D28D9D31F00DD524A /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		450ACB37309B58890050BD21 /* pSTaRTWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = pSTaRTWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		450ACB38309B58890050BD21 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		450ACB3A309B58890050BD21 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		450C3BEE28CCC8F600BEF415 /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
 		450C3BF028CCCA3A00BEF415 /* TriageGroupsOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupsOverview.swift; sourceTree = "<group>"; };
 		450C3BF628CCCBE200BEF415 /* TriageGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroup.swift; sourceTree = "<group>"; };
@@ -130,7 +164,30 @@
 		45ECCA9028D062ED005E4D39 /* TriageRetriage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageRetriage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		450ACB50309B588A0050BD21 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 450ACB36309B58890050BD21 /* pSTaRTWidgetsExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		450ACB3C309B58890050BD21 /* pSTaRTWidgets */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (450ACB50309B588A0050BD21 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = pSTaRTWidgets; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		450ACB34309B58890050BD21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				450ACB3B309B58890050BD21 /* SwiftUI.framework in Frameworks */,
+				450ACB39309B58890050BD21 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		458FB802237F0F1A0060A8FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,6 +298,8 @@
 			isa = PBXGroup;
 			children = (
 				457C6F4425B9739F00F0205B /* StoreKit.framework */,
+				450ACB38309B58890050BD21 /* WidgetKit.framework */,
+				450ACB3A309B58890050BD21 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -249,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				458FB807237F0F1A0060A8FB /* pSTaRT */,
+				450ACB3C309B58890050BD21 /* pSTaRTWidgets */,
 				458FB806237F0F1A0060A8FB /* Products */,
 				457C6F4325B9739F00F0205B /* Frameworks */,
 			);
@@ -258,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				458FB805237F0F1A0060A8FB /* pSTaRT.app */,
+				450ACB37309B58890050BD21 /* pSTaRTWidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -315,6 +376,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		450ACB36309B58890050BD21 /* pSTaRTWidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 450ACB51309B588A0050BD21 /* Build configuration list for PBXNativeTarget "pSTaRTWidgetsExtension" */;
+			buildPhases = (
+				450ACB33309B58890050BD21 /* Sources */,
+				450ACB34309B58890050BD21 /* Frameworks */,
+				450ACB35309B58890050BD21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				450ACB3C309B58890050BD21 /* pSTaRTWidgets */,
+			);
+			name = pSTaRTWidgetsExtension;
+			packageProductDependencies = (
+			);
+			productName = pSTaRTWidgetsExtension;
+			productReference = 450ACB37309B58890050BD21 /* pSTaRTWidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		458FB804237F0F1A0060A8FB /* pSTaRT */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 458FB81C237F0F1B0060A8FB /* Build configuration list for PBXNativeTarget "pSTaRT" */;
@@ -322,10 +405,12 @@
 				458FB801237F0F1A0060A8FB /* Sources */,
 				458FB802237F0F1A0060A8FB /* Frameworks */,
 				458FB803237F0F1A0060A8FB /* Resources */,
+				450ACB4D309B588A0050BD21 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				450ACB4B309B588A0050BD21 /* PBXTargetDependency */,
 			);
 			name = pSTaRT;
 			packageProductDependencies = (
@@ -343,10 +428,13 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = NW;
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 2710;
 				LastUpgradeCheck = 2630;
 				ORGANIZATIONNAME = "Kurt Frey";
 				TargetAttributes = {
+					450ACB36309B58890050BD21 = {
+						CreatedOnToolsVersion = 27.1;
+					};
 					458FB804237F0F1A0060A8FB = {
 						CreatedOnToolsVersion = 11.2;
 					};
@@ -370,11 +458,20 @@
 			projectRoot = "";
 			targets = (
 				458FB804237F0F1A0060A8FB /* pSTaRT */,
+				450ACB36309B58890050BD21 /* pSTaRTWidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		450ACB35309B58890050BD21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				450ACB55309B5A670050BD21 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		458FB803237F0F1A0060A8FB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,6 +490,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		450ACB33309B58890050BD21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				450ACB54309B59350050BD21 /* AppAction.swift in Sources */,
+				450ACB53309B59290050BD21 /* AppRouter.swift in Sources */,
+				450ACB52309B591E0050BD21 /* AppIntents.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		458FB801237F0F1A0060A8FB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -449,7 +556,80 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		450ACB4B309B588A0050BD21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 450ACB36309B58890050BD21 /* pSTaRTWidgetsExtension */;
+			targetProxy = 450ACB4A309B588A0050BD21 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		450ACB4E309B588A0050BD21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = pSTaRTWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = pSTaRTWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Kurt Frey. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart.pSTaRTWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		450ACB4F309B588A0050BD21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = pSTaRTWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = pSTaRTWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Kurt Frey. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart.pSTaRTWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		458FB81A237F0F1B0060A8FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -486,6 +666,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 19;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -506,6 +687,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -553,6 +735,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 19;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -567,6 +750,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -584,14 +768,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = pSTaRT/pSTaRT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -605,14 +788,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = pSTaRT/pSTaRT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -623,6 +805,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		450ACB51309B588A0050BD21 /* Build configuration list for PBXNativeTarget "pSTaRTWidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				450ACB4E309B588A0050BD21 /* Debug */,
+				450ACB4F309B588A0050BD21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		458FB800237F0F1A0060A8FB /* Build configuration list for PBXProject "pSTaRT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
