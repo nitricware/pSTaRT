@@ -82,6 +82,13 @@
 			remoteGlobalIDString = 450ACB36309B58890050BD21;
 			remoteInfo = pSTaRTWidgetsExtension;
 		};
+		4563E4DC309E112C005DE48E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 458FB7FD237F0F1A0060A8FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 458FB804237F0F1A0060A8FB;
+			remoteInfo = pSTaRT;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -143,6 +150,7 @@
 		454E80C03099E22200742725 /* PersonsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsMapView.swift; sourceTree = "<group>"; };
 		454E80C33099E74400742725 /* PersonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonMarker.swift; sourceTree = "<group>"; };
 		454E80C53099F67B00742725 /* CloseToolbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseToolbarItem.swift; sourceTree = "<group>"; };
+		4563E4D8309E112C005DE48E /* pSTaRTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pSTaRTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		456D65A13088EC9F009AAB75 /* pSTaRT_TriageLocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pSTaRT_TriageLocation.xcdatamodel; sourceTree = "<group>"; };
 		457C08BB2FD9E4CE0031CD5C /* NWIAPListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWIAPListener.swift; sourceTree = "<group>"; };
 		457C6F4425B9739F00F0205B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -178,6 +186,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		450ACB3C309B58890050BD21 /* pSTaRTWidgets */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (450ACB50309B588A0050BD21 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = pSTaRTWidgets; sourceTree = "<group>"; };
+		4563E4D9309E112C005DE48E /* pSTaRTTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = pSTaRTTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +196,13 @@
 			files = (
 				450ACB3B309B58890050BD21 /* SwiftUI.framework in Frameworks */,
 				450ACB39309B58890050BD21 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4563E4D5309E112C005DE48E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +326,7 @@
 		458FB7FC237F0F1A0060A8FB = {
 			isa = PBXGroup;
 			children = (
+				4563E4D9309E112C005DE48E /* pSTaRTTests */,
 				457C6F4325B9739F00F0205B /* Frameworks */,
 				458FB806237F0F1A0060A8FB /* Products */,
 				458FB807237F0F1A0060A8FB /* pSTaRT */,
@@ -322,6 +339,7 @@
 			children = (
 				458FB805237F0F1A0060A8FB /* pSTaRT.app */,
 				450ACB37309B58890050BD21 /* pSTaRTWidgetsExtension.appex */,
+				4563E4D8309E112C005DE48E /* pSTaRTTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -401,6 +419,29 @@
 			productReference = 450ACB37309B58890050BD21 /* pSTaRTWidgetsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		4563E4D7309E112C005DE48E /* pSTaRTTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4563E4E0309E112C005DE48E /* Build configuration list for PBXNativeTarget "pSTaRTTests" */;
+			buildPhases = (
+				4563E4D4309E112C005DE48E /* Sources */,
+				4563E4D5309E112C005DE48E /* Frameworks */,
+				4563E4D6309E112C005DE48E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4563E4DD309E112C005DE48E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4563E4D9309E112C005DE48E /* pSTaRTTests */,
+			);
+			name = pSTaRTTests;
+			packageProductDependencies = (
+			);
+			productName = pSTaRTTests;
+			productReference = 4563E4D8309E112C005DE48E /* pSTaRTTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		458FB804237F0F1A0060A8FB /* pSTaRT */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 458FB81C237F0F1B0060A8FB /* Build configuration list for PBXNativeTarget "pSTaRT" */;
@@ -431,12 +472,17 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = NW;
-				LastSwiftUpdateCheck = 2710;
+				LastSwiftUpdateCheck = 2720;
 				LastUpgradeCheck = 2630;
 				ORGANIZATIONNAME = "Kurt Frey";
 				TargetAttributes = {
 					450ACB36309B58890050BD21 = {
 						CreatedOnToolsVersion = 27.1;
+					};
+					4563E4D7309E112C005DE48E = {
+						CreatedOnToolsVersion = 27.2;
+						LastSwiftMigration = 2720;
+						TestTargetID = 458FB804237F0F1A0060A8FB;
 					};
 					458FB804237F0F1A0060A8FB = {
 						CreatedOnToolsVersion = 11.2;
@@ -462,6 +508,7 @@
 			targets = (
 				458FB804237F0F1A0060A8FB /* pSTaRT */,
 				450ACB36309B58890050BD21 /* pSTaRTWidgetsExtension */,
+				4563E4D7309E112C005DE48E /* pSTaRTTests */,
 			);
 		};
 /* End PBXProject section */
@@ -472,6 +519,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				450ACB55309B5A670050BD21 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4563E4D6309E112C005DE48E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +554,13 @@
 				450ACB54309B59350050BD21 /* AppAction.swift in Sources */,
 				450ACB53309B59290050BD21 /* AppRouter.swift in Sources */,
 				450ACB52309B591E0050BD21 /* AppIntents.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4563E4D4309E112C005DE48E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +627,11 @@
 			target = 450ACB36309B58890050BD21 /* pSTaRTWidgetsExtension */;
 			targetProxy = 450ACB4A309B588A0050BD21 /* PBXContainerItemProxy */;
 		};
+		4563E4DD309E112C005DE48E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 458FB804237F0F1A0060A8FB /* pSTaRT */;
+			targetProxy = 4563E4DC309E112C005DE48E /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -631,6 +697,68 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4563E4DE309E112C005DE48E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PMCWJ9GD9L;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pSTaRTTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pSTaRT.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/pSTaRT";
+				XROS_DEPLOYMENT_TARGET = 27.2;
+			};
+			name = Debug;
+		};
+		4563E4DF309E112C005DE48E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PMCWJ9GD9L;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nitricware.pSTaRTTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pSTaRT.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/pSTaRT";
+				XROS_DEPLOYMENT_TARGET = 27.2;
 			};
 			name = Release;
 		};
@@ -814,6 +942,15 @@
 			buildConfigurations = (
 				450ACB4E309B588A0050BD21 /* Debug */,
 				450ACB4F309B588A0050BD21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4563E4E0309E112C005DE48E /* Build configuration list for PBXNativeTarget "pSTaRTTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4563E4DE309E112C005DE48E /* Debug */,
+				4563E4DF309E112C005DE48E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
