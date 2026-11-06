@@ -15,7 +15,8 @@
             "value" : "%1$@%2$@**%3$@**.csv"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "BARCODE_1D" : {
       "localizations" : {
@@ -28,7 +29,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ondimensional Codes"
+            "value" : "1D Codes"
           }
         }
       }
@@ -44,7 +45,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Twodimensional Codes"
+            "value" : "2D Codes"
           }
         }
       }
@@ -76,7 +77,23 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "clear ID"
+            "value" : "Clear ID"
+          }
+        }
+      }
+    },
+    "common.noDate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Datum"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Date"
           }
         }
       }
@@ -86,13 +103,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Okay"
+            "value" : "OK"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ok"
+            "value" : "OK"
           }
         }
       }
@@ -119,13 +136,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unbekannter Fehler"
+            "value" : "Etwas ist schiefgelaufen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unknown Error"
+            "value" : "Something went wrong."
           }
         }
       }
@@ -167,7 +184,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scan"
+            "value" : "Scannen"
           }
         },
         "en" : {
@@ -199,13 +216,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CSV Dateiname"
+            "value" : "CSV-Dateinamenzusatz"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CSV file suffix"
+            "value" : "File Name Suffix"
           }
         }
       }
@@ -215,13 +232,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Im Dateinamen sind nur die Buchstaben A - Z (in Groß- und Kleinschreibung), die Zahlen 0-9, _ sowie - erlaubt."
+            "value" : "Erlaubt sind nur Buchstaben (A–Z, a–z), Ziffern (0–9), Unterstriche (_) und Bindestriche (-)."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "In the filename, only the letters A - Z (upper and lower case), the numbers 0 - 9, _ as well as - are allowed."
+            "value" : "Only letters (A–Z, a–z), digits (0–9), underscores (_) and hyphens (-) are allowed."
           }
         }
       }
@@ -231,13 +248,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CSV Dateien"
+            "value" : "CSV-Dateien"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CSV files"
+            "value" : "CSV Files"
           }
         }
       }
@@ -285,7 +302,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete all persons?"
+            "value" : "Delete all people?"
           }
         }
       }
@@ -301,7 +318,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Couldn't delete all persons."
+            "value" : "Couldn’t delete all people."
           }
         }
       }
@@ -311,29 +328,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ignorieren und triagieren"
+            "value" : "Trotzdem triagieren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ignore and assess"
-          }
-        }
-      }
-    },
-    "END_TRIAGE" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Triage beenden"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "End Triage"
+            "value" : "Triage Anyway"
           }
         }
       }
@@ -394,13 +395,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle löschen"
+            "value" : "Alle Dateien löschen?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete All"
+            "value" : "Delete All Files?"
           }
         }
       }
@@ -426,13 +427,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maximale Zeichenlänge von %lld erreicht."
+            "value" : "Maximale Länge von %lld Zeichen erreicht."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Identification character limit of %lld reached."
+            "value" : "Maximum of %lld characters reached."
           }
         }
       }
@@ -458,13 +459,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Startet die App und zeigt die Karte der Personen."
+            "value" : "Öffnet pSTaRT und zeigt die Karte der triagierten Personen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Starts the app and shows the map of persons."
+            "value" : "Opens pSTaRT and shows the map of triaged people."
           }
         }
       }
@@ -490,13 +491,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Startet die App und öffnet den Scanner."
+            "value" : "Öffnet pSTaRT und startet den Scanner."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Starts the app and presents the scanner."
+            "value" : "Opens pSTaRT and starts the scanner."
           }
         }
       }
@@ -539,7 +540,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Noch keine Dateien exportier."
+            "value" : "Noch keine Dateien exportiert."
           }
         },
         "en" : {
@@ -555,13 +556,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "keine Person"
+            "value" : "Keine Personen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "no person"
+            "value" : "No People"
           }
         }
       }
@@ -569,31 +570,39 @@
     "NUM_PERSONS %lld" : {
       "localizations" : {
         "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Personen"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Person"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Personen"
+                }
+              }
+            }
           }
         },
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Persons"
-          }
-        }
-      }
-    },
-    "OK" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld person"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld people"
+                }
+              }
+            }
           }
         }
       }
@@ -625,7 +634,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Person Detail"
+            "value" : "Person Details"
           }
         }
       }
@@ -635,13 +644,45 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Personenlisten-Datei"
+            "value" : "Personenliste"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Person List file"
+            "value" : "Person List"
+          }
+        }
+      }
+    },
+    "personDetail.triageEnded.caption" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triage abgeschlossen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triage Concluded"
+          }
+        }
+      }
+    },
+    "personDetail.triageStarted.caption" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triage begonnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triage Started"
           }
         }
       }
@@ -657,7 +698,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Persons"
+            "value" : "People"
           }
         }
       }
@@ -667,13 +708,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es sind keine Standortdaten bei den triagierten Personen hinterlegt."
+            "value" : "Für keine triagierte Person ist ein Standort gespeichert."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "There is no location data stored with the triaged persons."
+            "value" : "None of the triaged people have a saved location."
           }
         }
       }
@@ -724,14 +765,15 @@
             "value" : "pSTaRT"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "REDUCED_ACCURACY" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geringe GPS-Genauigkeit"
+            "value" : "Reduzierte Standortgenauigkeit"
           }
         },
         "en" : {
@@ -779,13 +821,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Um falsche Scans zu vermeiden, kann eine Sammlung scanbarer Code-Typen ausgewählt werden."
+            "value" : "Wähle die Code-Typen, die gescannt werden dürfen, um Fehlscans zu vermeiden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To prevent wrong scans, a set of scannable codes can be selected."
+            "value" : "Select which code types can be scanned to prevent incorrect scans."
           }
         }
       }
@@ -811,13 +853,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gruppe %@ auswählen"
+            "value" : "Gruppe %@ zuordnen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "select Group %@"
+            "value" : "Assign Group %@"
           }
         }
       }
@@ -827,13 +869,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "eigene Triagegruppe sofort wählen (umtriagieren)"
+            "value" : "Triagegruppe manuell wählen (Re-Triage)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "select own Triage Group now (retriage)"
+            "value" : "Choose Triage Group Manually (Re-triage)"
           }
         }
       }
@@ -875,13 +917,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nach dem nächsten App-Start werden Änderungen nicht mehr mit iCloud synchronisiert, und pSTaRT entfernt seine Daten aus iCloud. Die Daten auf diesem Gerät bleiben erhalten. Daten sind auch von Backups zukünftig ausgenommen.\n\nPrüfe vor dem Ausschalten der iCloud-Synchronisierung, ob lokale Gesetze oder die Richtlinien deiner Organisation verlangen, eine Kopie der Daten aufzubewahren – exportiere zum Beispiel vorher eine CSV-Datei.\n\nAndere Geräte, auf denen die iCloud-Synchronisierung noch aktiv ist, können ihre Daten erneut hochladen. Schalte die iCloud-Synchronisierung auf allen Geräten aus, um alle pSTaRT-Daten aus iCloud zu entfernen."
+            "value" : "Nach dem nächsten App-Start werden Änderungen nicht mehr mit iCloud synchronisiert, und pSTaRT entfernt seine Daten aus iCloud. Die Daten auf diesem Gerät bleiben erhalten, werden aber nicht mehr in Backups gesichert.\n\nPrüfe vor dem Ausschalten der iCloud-Synchronisierung, ob lokale Gesetze oder die Richtlinien deiner Organisation verlangen, eine Kopie der Daten aufzubewahren – exportiere zum Beispiel vorher eine CSV-Datei.\n\nAndere Geräte, auf denen die iCloud-Synchronisierung noch aktiv ist, können ihre Daten erneut hochladen. Schalte die iCloud-Synchronisierung auf allen Geräten aus, um alle pSTaRT-Daten aus iCloud zu entfernen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "After the next app launch, changes are no longer synced to iCloud, and pSTaRT removes its data from iCloud. The data on this device is kept. Your on-device data is excluded from backups.\n\nBefore turning iCloud sync off, check whether your local laws or your organisation’s policies require you to keep a copy of the data – for example, export a CSV file first.\n\nOther devices with iCloud Sync still on can upload their data again. Turn off iCloud Sync on every device to remove all pSTaRT data from iCloud."
+            "value" : "After the next app launch, changes are no longer synced to iCloud, and pSTaRT removes its data from iCloud. The data on this device is kept, but no longer included in backups.\n\nBefore turning iCloud Sync off, check whether your local laws or your organization’s policies require you to keep a copy of the data – for example, export a CSV file first.\n\nOther devices with iCloud Sync still on can upload their data again. Turn off iCloud Sync on every device to remove all pSTaRT data from iCloud."
           }
         }
       }
@@ -929,7 +971,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "After the next app launch, the data on this device is uploaded to your private iCloud and synced to all your devices. Also, on-device data is backed up.\n\nBefore turning iCloud Sync on, check whether your local laws and your organisation’s policies allow it."
+            "value" : "After the next app launch, the data on this device is uploaded to your private iCloud and synced to all your devices. The data is also included in backups.\n\nBefore turning iCloud Sync on, check whether your local laws and your organization’s policies allow it."
           }
         }
       }
@@ -961,7 +1003,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pSTaRT can use iCloud to sync data between devices.\n\nBefore turning iCloud Sync on, check whether your local laws and your organisation’s policies allow it.\n\nBefore turning iCloud Sync off, check whether your local laws or your organisation’s policies require you to keep a copy of the data – for example, export a CSV file first.\n\nThis toggle also affects backups of your pSTaRT data."
+            "value" : "pSTaRT can use iCloud to sync data between devices.\n\nBefore turning iCloud Sync on, check whether your local laws and your organization’s policies allow it.\n\nBefore turning iCloud Sync off, check whether your local laws or your organization’s policies require you to keep a copy of the data – for example, export a CSV file first.\n\nThis toggle also affects backups of your pSTaRT data."
           }
         }
       }
@@ -993,7 +1035,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloud data will be deleted at the next app launch while the device is online."
+            "value" : "iCloud data will be deleted at the next app launch, once the device is online."
           }
         }
       }
@@ -1035,13 +1077,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Limitiere die maximale Anzahl an Zeichen in der Identifikation auf eine Zahl von 1 bis 50. Das limitiert auch die Länge der Zeichenketten, die beim Scannen eingelesen werden."
+            "value" : "Begrenzt die Identifikation auf 1 bis 50 Zeichen. Das gilt auch für gescannte Codes."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Limit the maximum length of the ID input to a number between 1 and 50. This also restricts the length of strings taken from a scanned code."
+            "value" : "Limits the ID to 1–50 characters. This also applies to text read from scanned codes."
           }
         }
       }
@@ -1051,7 +1093,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Limitieren auf"
+            "value" : "Begrenzen auf"
           }
         },
         "en" : {
@@ -1089,7 +1131,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Share immediately"
+            "value" : "Share Immediately"
           }
         }
       }
@@ -1105,7 +1147,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "When this toggle is on, creating a new CSV file also triggers a share sheet to appear."
+            "value" : "When enabled, the share sheet opens automatically after a CSV file is created."
           }
         }
       }
@@ -1202,7 +1244,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No triage possible"
+            "value" : "No triage suggestion possible"
           }
         }
       }
@@ -1236,7 +1278,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rapid Treatment"
+            "value" : "Urgent Treatment"
           }
         }
       }
@@ -1253,7 +1295,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Treatment When Practical"
+            "value" : "Delayed Treatment"
           }
         }
       }
@@ -1264,29 +1306,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beobachtung und Schmerzreduktion"
+            "value" : "Beobachtung und Schmerzbehandlung"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Observation"
-          }
-        }
-      }
-    },
-    "TIPJAR_BUTTON %@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schenke %@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Give %@"
+            "value" : "Observation and Pain Relief"
           }
         }
       }
@@ -1296,13 +1322,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ich programmiere die App in meiner Freizeit. Wenn dir gefällt, was du nutzt (inklusive der gratis Upgrades), ziehe eine Spende in betracht. Für einen ehrenamtlichen Dienst bei meiner Rettungsdienststelle, erhalte ich %@."
+            "value" : "Ich programmiere die App in meiner Freizeit. Wenn dir gefällt, was du nutzt (inklusive der kostenlosen Updates), freue ich mich über Trinkgeld. Für einen ehrenamtlichen Dienst bei meiner Rettungsdienststelle, erhalte ich %@."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I'm creating this application in my spare time. If you like what you got (including the free upgrades) and want to further support my work, consider donating. For one voluntary shift at my local ambulance, I receive about %@."
+            "value" : "I'm creating this application in my spare time. If you like what you got (including the free upgrades) and want to further support my work, consider leaving a tip. For one voluntary shift at my local ambulance, I receive about %@."
           }
         }
       }
@@ -1312,45 +1338,45 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lade Trinkgelder..."
+            "value" : "Lade Trinkgelder…"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Loading tips..."
+            "value" : "Loading Tips…"
           }
         }
       }
     },
-    "TIPJAR_THANKS %@ %lf" : {
+    "tipJar.button %@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Danke für deine Unterstützung. Du hast mit diesem Gerät bereits %@ %.2f gegeben seit du die App installiert hast."
+            "value" : "%@ Trinkgeld geben"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thank you for your support. You gave %@ %.2f using this device since you installed the app."
+            "value" : "Tip %@"
           }
         }
       }
     },
-    "TRIAGE_GROUP %@" : {
+    "tipJar.thanks %@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Triagegruppe %@"
+            "value" : "Danke für deine Unterstützung! Seit der Installation hast du auf diesem Gerät %@ Trinkgeld gegeben."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Triage Group %@"
+            "value" : "Thank you for your support! Since installing the app, you've tipped %@ on this device."
           }
         }
       }
@@ -1376,7 +1402,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Triage Fragebogen"
+            "value" : "Triage-Fragebogen"
           }
         },
         "en" : {
@@ -1392,13 +1418,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Triage Beginn"
+            "value" : "Triagebeginn"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Triage start"
+            "value" : "Triage Started"
           }
         }
       }
@@ -1414,7 +1440,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Progress to the triage session for the current person will be lost."
+            "value" : "The triage progress for this person will be lost."
           }
         }
       }

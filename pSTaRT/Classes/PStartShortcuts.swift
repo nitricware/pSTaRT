@@ -23,7 +23,7 @@ struct PStartShortcuts: AppShortcutsProvider {
         AppShortcut(
             intent: ShowMapIntent(),
             phrases: [
-                "Show map of triaged persons in \(.applicationName).",
+                "Show map of triaged people in \(.applicationName).",
                 "Show the \(.applicationName) map."
             ],
             shortTitle: "shortcut.map",

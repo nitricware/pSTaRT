@@ -43,7 +43,7 @@ struct TipJar: View {
                             }
 
                         }) {
-                            Text("TIPJAR_BUTTON \(product.displayPrice)")
+                            Text("tipJar.button \(product.displayPrice)")
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.glassProminent)
@@ -51,8 +51,7 @@ struct TipJar: View {
                 } else {
                     Text("TIPJAR_LOADING")
                 }
-                
-                Text("TIPJAR_THANKS \(Locale.current.currencySymbol ?? "") \(tipJar)")
+                Text("tipJar.thanks \(tipJar.formatted(.currency(code: Locale.current.currency?.identifier ?? "")))")
             }
             .task {
                 await storeManager.getProducts(productIDs: ["4euroTip"])

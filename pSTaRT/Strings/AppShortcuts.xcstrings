@@ -1,16 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Show map of triaged persons in ${applicationName}." : {
+    "Show map of triaged people in ${applicationName}." : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringSet" : {
             "state" : "translated",
             "values" : [
-              "Zeige eine Karte der triagierten Personen in ${applicationName}",
-              "Zeige die ${applicationName}-Karte.",
-              "Zeige die Karte in ${applicationName}."
+              "Zeige eine Karte der triagierten Personen in ${applicationName}.",
+              "Zeige die Karte in ${applicationName}.",
+              "Zeige die ${applicationName}-Karte."
             ]
           }
         },
@@ -18,7 +18,7 @@
           "stringSet" : {
             "state" : "new",
             "values" : [
-              "Show map of triaged persons in ${applicationName}.",
+              "Show map of triaged people in ${applicationName}.",
               "Show the ${applicationName} map."
             ]
           }

@@ -6,13 +6,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die App kann die Kamera nicht verwenden. Erlaube den Zugriff in den Systemeinstellungen."
+            "value" : "Kein Kamerazugriff. Erlaube ihn in den Einstellungen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The app can’t access the camera. Allow access in the system settings."
+            "value" : "No camera access. Allow it in Settings."
           }
         }
       }
@@ -38,13 +38,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Der Eintrag konnte aus der Datenbank nicht gelöscht werden."
+            "value" : "Eintrag konnte nicht gelöscht werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Couldn’t delete from database."
+            "value" : "Couldn’t delete entry."
           }
         }
       }
@@ -54,13 +54,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Daten konnten nicht aus der Datenbank geladen werden."
+            "value" : "Daten konnten nicht geladen werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Couldn’t fetch from database."
+            "value" : "Couldn’t load data."
           }
         }
       }
@@ -70,13 +70,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Daten konnten nicht in die Datenbank gespeichert werden."
+            "value" : "Änderungen konnten nicht gespeichert werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Couldn’t save to database."
+            "value" : "Couldn’t save changes."
           }
         }
       }
@@ -86,13 +86,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Der Eintrag konnte in der Datenbank nicht aktualisiert werden."
+            "value" : "Eintrag konnte nicht aktualisiert werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Couldn’t update record in database."
+            "value" : "Couldn’t update entry."
           }
         }
       }
@@ -102,7 +102,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Identifikationsnummer existiert bereits."
+            "value" : "Diese Identifikation gibt es bereits."
           }
         },
         "en" : {
@@ -118,13 +118,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die bereinigte Eingabe war leer."
+            "value" : "Bitte gib eine Identifikation ein."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The trimmed input was empty."
+            "value" : "Please enter an ID."
           }
         }
       }
@@ -134,13 +134,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Identifikationsnummer war zu lang."
+            "value" : "Die Identifikation ist zu lang."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The ID was too long."
+            "value" : "The ID is too long."
           }
         }
       }
@@ -150,13 +150,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Der Kauf konnte nicht durchgeführt werden."
+            "value" : "Kauf fehlgeschlagen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Couldn’t complete purchase."
+            "value" : "Purchase failed."
           }
         }
       }
@@ -166,13 +166,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ein Fehler ist beim Scannen aufgetreten."
+            "value" : "Scan fehlgeschlagen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "An error occurred during the scan."
+            "value" : "Scan failed."
           }
         }
       }
@@ -188,7 +188,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This device can’t scan the selected code types. Change them in the settings."
+            "value" : "This device can’t scan the selected code types. Change them in Settings."
           }
         }
       }

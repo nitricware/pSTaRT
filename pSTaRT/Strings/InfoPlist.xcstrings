@@ -17,11 +17,11 @@
             "value" : "pSTaRT"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "CFBundleSpokenName" : {
       "comment" : "Accessibility Bundle Name",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -32,7 +32,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pee Start"
+            "value" : "P Start"
           }
         }
       }
@@ -43,13 +43,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Kamera wird zum Scannen von PLS-Nummern benötigt."
+            "value" : "Die Kamera wird zum Scannen von Identifikations-Codes benötigt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The camera is required to scan PLS-Codes."
+            "value" : "The camera is required to scan ID codes."
           }
         }
       }
@@ -60,13 +60,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Während dem triagieren kann die Position der Person gespeichert werden."
+            "value" : "Dein Standort wird verwendet, um festzuhalten, wo eine Person triagiert wurde."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "During triaging, the location of the person can be saved."
+            "value" : "Your location is used to record where each person was triaged."
           }
         }
       }

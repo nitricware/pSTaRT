@@ -81,7 +81,7 @@ struct PersonsList: View {
             }
         }
         .alert("DELETE_ERROR", isPresented: $isShowingDeleteError) {
-            Button("OK", role: .cancel) { }
+            Button("common.ok", role: .cancel) { }
         }
         .sheet(isPresented: $isShowingCSVExport, content: {
             NavigationStack {

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleSpokenName</key>
-	<string>Pee Start</string>
+	<string>P Start</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -27,9 +27,9 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>The camera is used as a scanner to scan PLS numbers.</string>
+	<string>The camera is required to scan ID codes.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>The location is used to mark the location of a person.</string>
+	<string>Your location is used to record where each person was triaged.</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

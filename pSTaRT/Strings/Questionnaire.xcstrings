@@ -7,13 +7,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Atmung vorhanden?"
+            "value" : "Spontanatmung vorhanden?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Person does breath?"
+            "value" : "Is the person breathing?"
           }
         }
       }
@@ -41,13 +41,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bestehende spritzende Blutung?"
+            "value" : "Spritzende Blutung?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uncontrolled bleeding?"
+            "value" : "Spurting bleeding?"
           }
         }
       }
@@ -58,13 +58,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Atemfrequenz >10 bzw. <30/min?"
+            "value" : "Atemfrequenz >10 und <30/min?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Breathing frequency >10 and <30/min?"
+            "value" : "Respiratory rate >10 and <30/min?"
           }
         }
       }
@@ -109,13 +109,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kann einfache Befehle befolgen?"
+            "value" : "Kann einfache Anweisungen befolgen?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Does the person follow simple orders?"
+            "value" : "Does the person follow simple commands?"
           }
         }
       }
@@ -132,7 +132,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Person has radial pulse?"
+            "value" : "Is a radial pulse palpable?"
           }
         }
       }

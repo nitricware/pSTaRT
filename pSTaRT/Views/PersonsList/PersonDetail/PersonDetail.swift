@@ -45,17 +45,17 @@ struct PersonDetail: View {
                     PersonDetailRow(caption: "IDENTIFICATION") {
                         Text(person.plsNumber ?? "4 AS NONUM")
                     }
-                    PersonDetailRow(caption: "START_TRIAGE") {
+                    PersonDetailRow(caption: "personDetail.triageStarted.caption") {
                         Text((person.startTime ?? Date()).formatted())
                     }
-                    PersonDetailRow(caption: "END_TRIAGE") {
+                    PersonDetailRow(caption: "personDetail.triageEnded.caption") {
                         Text((person.endTime ?? Date()).formatted())
                     }
                     PersonDetailRow(caption: "TRIAGEGROUP") {
                         HStack {
                             TriageGroupIcon(triageGroup: TriageGroup(stored: person.triageGroup))
                                 .frame(width: 28.0)
-                            Text("TRIAGE_GROUP \(TriageGroup(stored: person.triageGroup).roman)")
+                            Text("TRIAGEGROUP \(TriageGroup(stored: person.triageGroup).roman)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
@@ -83,7 +83,7 @@ struct PersonDetail: View {
                         HStack {
                             TriageGroupIcon(triageGroup: TriageGroup(stored: triage.group))
                                 .frame(width: 28.0)
-                            Text(triage.date?.formatted() ?? "NO_DATE")
+                            Text(triage.date?.formatted() ?? String(localized:"common.noDate"))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         
