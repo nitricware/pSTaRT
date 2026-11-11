@@ -7,7 +7,7 @@
 //
 
 enum OverviewSheet: Identifiable {
-    case settings, tipJar, map, triage(TriageSession)
+    case settings, tipJar, map, triage(TriageSession), whatsNew
 
     var id: String {
         switch self {
@@ -15,7 +15,7 @@ enum OverviewSheet: Identifiable {
         case .tipJar: "tipJar"
         case .map: "map"
         case .triage(let session): "triage-\(ObjectIdentifier(session))"
-            
+        case .whatsNew: "whatsNew"
         }
     }
 }

@@ -1,0 +1,102 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "whatsnew.v4.icloud.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In dieser Version kann die iCloud-Synchronisation in der App ein- und ausgeschalten werden. Schau dir die Einstellungen an, um mehr zu erfahren.\n\nPrüfe vor dem Einschalten, ob lokale Gesetze und die Richtlinien deiner Organisation das erlauben."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "With this version, iCloud sync can be enabled and disabled within the app. Check out the Settings to learn more.\n\nBefore turning iCloud Sync on, check whether your local laws and your organization’s policies allow it."
+          }
+        }
+      }
+    },
+    "whatsnew.v4.icloud.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud-Synchronisation"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional iCloud Sync"
+          }
+        }
+      }
+    },
+    "whatsnew.v4.map.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schalte Standortdaten ein, um den Standort der Personen während der Triage zu speichern. Sieh dir ihre erste bekannte Position auf einer Karte an und exportiere sie in der CSV-Datei."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Location Services to save the location of people during triage. View their initial locations on a map and include them in the CSV export."
+          }
+        }
+      }
+    },
+    "whatsnew.v4.map.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triageposition"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triage Location"
+          }
+        }
+      }
+    },
+    "whatsnew.v4.siri.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sag Siri, sie soll die Karte anzeigen oder den Scanner starten. Verwende diese Aktionen in der Kurzbefehle-App und füge sie als Knöpfe ins Kontrollzentrum hinzu.\n\nVersuche „Zeige die pSTaRT-Karte.“ oder „Starte den Scanner in pSTaRT.“ zu sagen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask Siri to show the map or start the scanner. Use those actions in a shortcut with the Shortcuts app or add them as buttons to Control Center.\n\nTo get started say \"Show the pSTaRT map\" or \"Scan with pSTaRT“."
+          }
+        }
+      }
+    },
+    "whatsnew.v4.siri.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siri, Kurzbefehle und Kontrollzentrum"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siri, Shortcuts and Control Center"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.3"
+}

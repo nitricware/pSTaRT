@@ -8,11 +8,12 @@
 
 import SwiftUI
 import CoreData
-import WhatsNewKit
 
 struct Overview: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    
+    @AppStorage(AppSettings.Key.onboardingLastVersion) private var onboardingLastVersion: String = AppSettings.Default.onboardingLastVersion
     
     private let router = AppRouter.shared
     @State private var isShowingScanner = false
@@ -62,6 +63,10 @@ struct Overview: View {
                 }
                 .presentationSizing(.page)
                 .interactiveDismissDisabled()
+            case .whatsNew:
+                WhatsNewView() {
+                    self.sheet = .tipJar
+                }
             }
         }
         .onChange(of: router.pending, initial: true) { _, action in
@@ -77,7 +82,13 @@ struct Overview: View {
                 perform(action)
             }
         }
-        .whatsNewSheet()
+        .onAppear() {
+            guard sheet == nil, !router.didReceiveAction else { return }
+            let currentVersion = NWVersion(versionString: Bundle.main.appVersion)
+            if currentVersion.compare(with: onboardingLastVersion) == .newer {
+                sheet = .whatsNew
+            }
+        }
     }
     
     private func perform(_ action: AppAction) {

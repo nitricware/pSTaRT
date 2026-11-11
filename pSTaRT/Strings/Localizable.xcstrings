@@ -82,6 +82,22 @@
         }
       }
     },
+    "common.continue" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
+      }
+    },
     "common.noDate" : {
       "localizations" : {
         "de" : {
@@ -896,6 +912,22 @@
         }
       }
     },
+    "settings.appinfo.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Infos"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Info"
+          }
+        }
+      }
+    },
     "settings.iCloudSync.confirmOff.button" : {
       "localizations" : {
         "de" : {
@@ -1116,6 +1148,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Maximum ID Length"
+          }
+        }
+      }
+    },
+    "settings.whatsnew" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist neu anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show What’s New"
           }
         }
       }
@@ -1473,6 +1521,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Triage Group %@"
+          }
+        }
+      }
+    },
+    "whatsnew.tipjar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trinkgeld geben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give A Tip"
+          }
+        }
+      }
+    },
+    "whatsnew.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist neu in pSTaRT"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What’s new in pSTaRT"
           }
         }
       }

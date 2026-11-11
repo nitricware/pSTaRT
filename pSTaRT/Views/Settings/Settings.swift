@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import WhatsNewKit
 
 struct SettingsView: View {
     @AppStorage(AppSettings.Key.csvFileSuffix) var filesuffix: String = AppSettings.Default.csvFileSuffix
@@ -24,8 +23,7 @@ struct SettingsView: View {
 
     @State private var isShowingSyncAlert: Bool = false
     
-    @State private var whatsNew: WhatsNew?
-    @Environment(\.whatsNew) private var whatsNewEnvironment
+    @State private var whatsNew: Bool = false
 
     private func applySync(_ enable: Bool) {
         iCloudSyncEnabled = enable
@@ -144,14 +142,16 @@ struct SettingsView: View {
                 Section(
                     "settings.appinfo.title"
                 ) {
-                    Button("whatsnew.settings.button") {
-                        whatsNew = whatsNewEnvironment.whatsNewCollection.first
+                    Button("settings.whatsnew") {
+                        whatsNew = true
                     }
                 }
-                .sheet(whatsNew: $whatsNew) 
             }
             .navigationTitle(Text("SETTINGS"))
             .toolbar { CloseToolbarItem() }
+            .sheet(isPresented: $whatsNew) {
+                WhatsNewView()
+            }
         }
     }
 }

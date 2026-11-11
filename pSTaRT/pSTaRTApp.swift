@@ -8,10 +8,10 @@
 
 import Foundation
 import SwiftUI
-import WhatsNewKit
 
 @main
 struct pSTaRTApp: App {
+    
     let persistenceController: PersistenceController
     let iapListener = NWIAPListener()
     
@@ -40,10 +40,6 @@ struct pSTaRTApp: App {
                 let exclude = !persistenceController.isCloudSyncActive
                 await FileManager.applyBackupPolicyToExports(exclude: exclude)
             }
-            .environment(
-                \.whatsNew,
-                PStartWhatsNewEnvironment(collection: self)
-            )
         }
     }
 }

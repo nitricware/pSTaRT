@@ -18,6 +18,7 @@ enum AppSettings {
         static let scannerCodeTypes = "scanner.codetypes"
         static let identificationMaxLength = "identification.maxlength"
         static let givenMoney = "tipjar.givenmoney"
+        static let onboardingLastVersion = "onboarding.lastversion"
     }
     
     enum Default {
@@ -29,6 +30,7 @@ enum AppSettings {
         static let scannerCodeTypes: String = "code39"
         static let identificationMaxLength: Int = 20
         static let givenMoney: Double = 0
+        static let onboardingLastVersion: String = "0.0.0"
     }
 
     static func registerDefaults() {
@@ -40,7 +42,8 @@ enum AppSettings {
             Key.pendingCloudPurge: self.Default.pendingCloudPurge,
             Key.scannerCodeTypes: self.Default.scannerCodeTypes,
             Key.identificationMaxLength: self.Default.identificationMaxLength,
-            Key.givenMoney: self.Default.givenMoney
+            Key.givenMoney: self.Default.givenMoney,
+            Key.onboardingLastVersion: self.Default.onboardingLastVersion
         ])
     }
 }
