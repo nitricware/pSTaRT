@@ -9,13 +9,25 @@
 import Foundation
 
 extension FileManager {
-    public static func excludeFromBackup(at url: URL?, exclude: Bool) throws {
+    public static func excludeFromBackup(at url: URL?, exclude: Bool) {
         guard var url,
               FileManager.default.fileExists(atPath: url.path) else {
-            throw pSTaRTErrors.excludeFromBackupFailed
+            return
         }
         var values = URLResourceValues()
         values.isExcludedFromBackup = exclude
-        try url.setResourceValues(values)
+        try? url.setResourceValues(values)
+    }
+    
+    static func applyBackupPolicyToExports(exclude: Bool) {
+        guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
+              let files = try? FileManager.default.contentsOfDirectory(
+                  at: dir, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+        else { return }
+
+        for file in files where file.pathExtension.lowercased() == "csv" {
+            let current = try? file.resourceValues(forKeys: [.isExcludedFromBackupKey]).isExcludedFromBackup
+            if current != exclude { excludeFromBackup(at: file, exclude: exclude) }
+        }
     }
 }

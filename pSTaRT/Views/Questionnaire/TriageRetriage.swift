@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TriageRetriage: View {
-    @State public var currentGroup: TriageGroup
+    let currentGroup: TriageGroup
     /// This is an explanation for future me: This is a closure.
     /// So you can integrate this View in a parent View like so:
     ///
@@ -39,7 +39,6 @@ struct TriageRetriage: View {
                     Button(action: {
                         do {
                             try onSelect(group)
-                            currentGroup = group
                         } catch {
                             showsErrorAlert = true
                             errorMessage = error

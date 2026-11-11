@@ -25,7 +25,8 @@ enum CloudSync {
         let defaults = UserDefaults.standard
         guard defaults.bool(forKey: AppSettings.Key.pendingCloudPurge),
               !defaults.bool(forKey: AppSettings.Key.iCloudSyncEnabled) else { return }
-
+        
+        
         let container = CKContainer(identifier: containerIdentifier)
         do {
             guard try await container.accountStatus() == .available else { return }

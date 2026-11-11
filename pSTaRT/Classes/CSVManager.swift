@@ -90,7 +90,7 @@ enum CSVManager {
         let fileURL = dir.appendingPathComponent(file)
         
         try csv.write(to: fileURL, atomically: true, encoding: .utf8)
-        try FileManager.excludeFromBackup(at: fileURL, exclude: !PersistenceController.shared.isCloudSyncActive)
+        FileManager.excludeFromBackup(at: fileURL, exclude: !PersistenceController.shared.isCloudSyncActive)
         
         return fileURL
     }

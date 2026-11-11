@@ -23,6 +23,8 @@ final class NWLocationProvider: NSObject, CLLocationManagerDelegate {
     override init() {
         super.init()
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.activityType = .otherNavigation
     }
     
     func start() {
@@ -48,10 +50,21 @@ final class NWLocationProvider: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let latest = locations.last else { return }
-        withAnimation {
-            location = latest
-            mapCameraPosition = .focused(on: latest.coordinate)
+        for candidate in locations {
+            guard candidate.horizontalAccuracy >= 0,
+                  abs(candidate.timestamp.timeIntervalSinceNow) < 120
+            else { continue }
+
+            if let current = location {
+                let isMoreAccurate = candidate.horizontalAccuracy <= current.horizontalAccuracy
+                let currentIsStale = candidate.timestamp.timeIntervalSince(current.timestamp) > 30
+                guard isMoreAccurate || currentIsStale else { continue }
+            }
+
+            withAnimation {
+                location = candidate
+                mapCameraPosition = .focused(on: candidate.coordinate)
+            }
         }
     }
     

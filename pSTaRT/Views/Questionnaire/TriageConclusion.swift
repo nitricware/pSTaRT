@@ -46,6 +46,7 @@ struct TriageConclusion: View {
                 } catch {
                     showsErrorAlert = true
                     errorMessage = error
+                    blockUserInteraction = false
                 }
             }) {
                 Text("SELECT_GROUP \(currentTriage.currentGroup.roman)")

@@ -33,6 +33,7 @@ struct pSTaRTApp: App {
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
             .task {
+                FileManager.applyBackupPolicyToExports(exclude: !persistenceController.isCloudSyncActive)
                 await CloudSync.purgeIfNeeded()
             }
         }
