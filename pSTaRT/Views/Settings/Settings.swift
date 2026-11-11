@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import WhatsNewKit
 
 struct SettingsView: View {
     @AppStorage(AppSettings.Key.csvFileSuffix) var filesuffix: String = AppSettings.Default.csvFileSuffix
@@ -19,9 +20,12 @@ struct SettingsView: View {
     @State private var datePrefix = "1990-02-19_23-00-00"
     @State private var fileNameRejection: Int = 0
     
-    private let syncActiveAtLaunch = PersistenceController.shared.isCloudSyncActive
+    private let syncActiveAtLaunch: Bool = PersistenceController.shared.isCloudSyncActive
 
-    @State private var isShowingSyncAlert = false
+    @State private var isShowingSyncAlert: Bool = false
+    
+    @State private var whatsNew: WhatsNew?
+    @Environment(\.whatsNew) private var whatsNewEnvironment
 
     private func applySync(_ enable: Bool) {
         iCloudSyncEnabled = enable
@@ -137,6 +141,14 @@ struct SettingsView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                Section(
+                    "settings.appinfo.title"
+                ) {
+                    Button("whatsnew.settings.button") {
+                        whatsNew = whatsNewEnvironment.whatsNewCollection.first
+                    }
+                }
+                .sheet(whatsNew: $whatsNew) 
             }
             .navigationTitle(Text("SETTINGS"))
             .toolbar { CloseToolbarItem() }

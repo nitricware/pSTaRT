@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import WhatsNewKit
 
 @main
 struct pSTaRTApp: App {
@@ -37,10 +38,12 @@ struct pSTaRTApp: App {
             }
             .task {
                 let exclude = !persistenceController.isCloudSyncActive
-                Task.detached(priority: .utility) {
-                    await FileManager.applyBackupPolicyToExports(exclude: exclude)
-                }
+                await FileManager.applyBackupPolicyToExports(exclude: exclude)
             }
+            .environment(
+                \.whatsNew,
+                PStartWhatsNewEnvironment(collection: self)
+            )
         }
     }
 }

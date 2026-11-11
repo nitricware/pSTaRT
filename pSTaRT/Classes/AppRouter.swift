@@ -13,8 +13,6 @@ import UIKit
 @MainActor @Observable
 final class AppRouter {
     static let shared = AppRouter()
-    /// Set by the quick action or an intent, consumed (set to `nil`) by `Overview`.
-    var pending: AppAction?
     
     private init() { }
     
@@ -23,5 +21,10 @@ final class AppRouter {
         guard let action = AppAction(rawValue: item.type) else { return false }
         pending = action
         return true
+    }
+    
+    private(set) var didReceiveAction = false
+    var pending: AppAction? {
+        didSet { if pending != nil { didReceiveAction = true } }
     }
 }

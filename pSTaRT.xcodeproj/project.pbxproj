@@ -60,6 +60,8 @@
 		458FB815237F0F1B0060A8FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458FB814237F0F1B0060A8FB /* Assets.xcassets */; };
 		459A6D4030A4967E003D01C9 /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 459A6D3F30A4967E003D01C9 /* WhatsNewKit */; };
 		459A6D4230A49868003D01C9 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A6D4130A49862003D01C9 /* FileManagerExtension.swift */; };
+		459A6D4430A4AA7A003D01C9 /* WhatsNewCollectionProvider.swift in Resources */ = {isa = PBXBuildFile; fileRef = 459A6D4330A4AA7A003D01C9 /* WhatsNewCollectionProvider.swift */; };
+		459A6D4830A4ADF2003D01C9 /* PStartWhatsNewEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A6D4730A4ADF2003D01C9 /* PStartWhatsNewEnvironment.swift */; };
 		459B211F28CE4A6900E8305B /* TriageGroupIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */; };
 		45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 45AA119D25BAF5C000CD5530 /* Configuration.storekit */; };
 		45C0C7F7308E739F002163B5 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0C7F6308E739F002163B5 /* AppSettings.swift */; };
@@ -164,6 +166,8 @@
 		458FB814237F0F1B0060A8FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		458FB819237F0F1B0060A8FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		459A6D4130A49862003D01C9 /* FileManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
+		459A6D4330A4AA7A003D01C9 /* WhatsNewCollectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewCollectionProvider.swift; sourceTree = "<group>"; };
+		459A6D4730A4ADF2003D01C9 /* PStartWhatsNewEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PStartWhatsNewEnvironment.swift; sourceTree = "<group>"; };
 		459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupIcon.swift; sourceTree = "<group>"; };
 		45A4478F308D3E6F0032B776 /* pSTaRT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pSTaRT.entitlements; sourceTree = "<group>"; };
 		45AA119D25BAF5C000CD5530 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
@@ -257,7 +261,6 @@
 				45E924DB28CF249000C5FC9A /* Questionnaire */,
 				45098B0F28D887EA00DD524A /* MainToolbar.swift */,
 				45098B1B28D9CC9900DD524A /* TipJar.swift */,
-				451D7972308E545A008150CB /* Settings.swift */,
 				45E59A953098936C0083CABC /* Settings */,
 			);
 			path = Views;
@@ -280,6 +283,8 @@
 		450C3BF528CCCBCB00BEF415 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				459A6D4730A4ADF2003D01C9 /* PStartWhatsNewEnvironment.swift */,
+				459A6D4330A4AA7A003D01C9 /* WhatsNewCollectionProvider.swift */,
 				459A6D4130A49862003D01C9 /* FileManagerExtension.swift */,
 				451F7F41309A178700E04BB8 /* AppDelegate.swift */,
 				451F7F43309A1A3D00E04BB8 /* AppIntents.swift */,
@@ -377,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				45E59A96309893710083CABC /* BarcodeTypesView.swift */,
+				451D7972308E545A008150CB /* Settings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -547,6 +553,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				459A6D4430A4AA7A003D01C9 /* WhatsNewCollectionProvider.swift in Resources */,
 				453B9C742F9FD6810034350C /* LaunchScreen.storyboard in Resources */,
 				45297A59309230BF00078AD5 /* InfoPlist.xcstrings in Resources */,
 				45F4BC16309E6F9600F97C68 /* pSTaRT-Icon.icon in Resources */,
@@ -621,6 +628,7 @@
 				451E81033093E7E200E3A183 /* NSManagedObjectContextExtension.swift in Sources */,
 				450C3C0028CDC6C600BEF415 /* pSTaRTApp.swift in Sources */,
 				454E80C13099E22200742725 /* PersonsMapView.swift in Sources */,
+				459A6D4830A4ADF2003D01C9 /* PStartWhatsNewEnvironment.swift in Sources */,
 				450ACB5B309B63B20050BD21 /* MapCameraPositionExtension.swift in Sources */,
 				45E924DD28CF28BC00C5FC9A /* TriageConclusion.swift in Sources */,
 				45098B1528D89BFB00DD524A /* TriageGroupsRow.swift in Sources */,
@@ -837,7 +845,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 4;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -900,7 +908,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 4;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

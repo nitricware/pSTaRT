@@ -8,6 +8,7 @@
 
 import SwiftUI
 import CoreData
+import WhatsNewKit
 
 struct Overview: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -76,6 +77,7 @@ struct Overview: View {
                 perform(action)
             }
         }
+        .whatsNewSheet()
     }
     
     private func perform(_ action: AppAction) {
