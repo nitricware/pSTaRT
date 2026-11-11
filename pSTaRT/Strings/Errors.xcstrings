@@ -129,22 +129,6 @@
         }
       }
     },
-    "error.excludeFromBackupFailed.description" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die Datei konnte vom Backup nicht ausgeschlossen werden."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Couldn’t exclude file from backup."
-          }
-        }
-      }
-    },
     "error.identificationTooLong.description" : {
       "localizations" : {
         "de" : {

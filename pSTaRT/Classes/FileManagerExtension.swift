@@ -19,7 +19,8 @@ extension FileManager {
         try? url.setResourceValues(values)
     }
     
-    static func applyBackupPolicyToExports(exclude: Bool) {
+    @concurrent
+    static func applyBackupPolicyToExports(exclude: Bool) async {
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
               let files = try? FileManager.default.contentsOfDirectory(
                   at: dir, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])

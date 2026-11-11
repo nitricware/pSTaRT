@@ -12,7 +12,7 @@ import CoreData
 import MapKit
 
 struct PersonDetail: View {
-    @StateObject public var person: Persons
+    @ObservedObject public var person: Persons
     
     @Environment(\.dismiss) private var dismiss
     

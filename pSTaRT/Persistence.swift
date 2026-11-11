@@ -91,11 +91,8 @@ struct PersistenceController {
     
     public static func excludeFromBackup(_ storeURL: URL, syncActive: Bool) {
         for suffix in ["", "-wal", "-shm"] {
-            var url = URL(fileURLWithPath: storeURL.path + suffix)
-            guard FileManager.default.fileExists(atPath: url.path) else { continue }
-            var values = URLResourceValues()
-            values.isExcludedFromBackup = !syncActive
-            try? url.setResourceValues(values)
+            let url = URL(fileURLWithPath: storeURL.path + suffix)
+            FileManager.excludeFromBackup(at: url, exclude: !syncActive)
         }
     }
 }
