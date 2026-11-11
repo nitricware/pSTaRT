@@ -18,6 +18,7 @@ struct TriageConclusion: View {
     // Once target is iOS 27+, this lays the groundwork for .alert(error, actions)
     @State private var errorMessage: Error?
     @State private var showsErrorAlert: Bool = false
+    @State private var blockUserInteraction: Bool = false
     
     var body: some View {
         VStack {
@@ -37,9 +38,10 @@ struct TriageConclusion: View {
             
             Button(action: {
                 do {
+                    blockUserInteraction = true
                     try currentTriage.finish(in: viewContext,
-                                                 at: locationProvider.location,
-                                                 isPrecise: locationProvider.isPrecise)
+                                             at: locationProvider.location,
+                                             isPrecise: locationProvider.isPrecise)
                     onClose()
                 } catch {
                     showsErrorAlert = true
@@ -55,6 +57,7 @@ struct TriageConclusion: View {
                     .minimumScaleFactor(0.5)
                 
             }
+            .disabled(blockUserInteraction)
             .buttonStyle(.glassProminent)
             .tint(currentTriage.currentGroup.color)
         }
