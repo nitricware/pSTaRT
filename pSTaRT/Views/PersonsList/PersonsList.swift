@@ -46,7 +46,7 @@ struct PersonsList: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    self.isShowingDeleteAll.toggle()
+                    self.isShowingDeleteAll = true
                 }) {
                     Image(systemName: "trash")
                         .tint(.red)
@@ -75,7 +75,7 @@ struct PersonsList: View {
                 do {
                     try managedObjectContext.deleteAll()
                 } catch {
-                    self.isShowingDeleteError.toggle()
+                    self.isShowingDeleteError = true
                 }
             }
         }

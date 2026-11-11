@@ -175,13 +175,13 @@ struct IdentificationInput: View {
         case .success(let result):
             let scanned = String(result.string.unicodeScalars.filter { !CharacterSet.controlCharacters.contains($0) })
             if scanned.count > maxLength {
-                self.showsErrorAlert.toggle()
+                self.showsErrorAlert = true
                 self.errorMessage = pSTaRTErrors.identificationTooLong
             } else {
                 identification = String(scanned)
             }
         case .failure(let error):
-            self.showsErrorAlert.toggle()
+            self.showsErrorAlert = true
             self.errorMessage = pSTaRTErrors(scanError: error)
         }
     }

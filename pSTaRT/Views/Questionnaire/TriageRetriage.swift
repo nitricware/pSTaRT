@@ -39,7 +39,7 @@ struct TriageRetriage: View {
                         do {
                             try onSelect(group)
                         } catch {
-                            showsErrorAlert.toggle()
+                            showsErrorAlert = true
                             errorMessage = error
                         }
                     }) {

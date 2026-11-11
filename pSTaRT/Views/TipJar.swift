@@ -38,7 +38,7 @@ struct TipJar: View {
                                     try await storeManager.purchaseProduct(product: product)
                                 } catch {
                                     errorMessage = error
-                                    showsErrorAlert.toggle()
+                                    showsErrorAlert = true
                                 }
                             }
 

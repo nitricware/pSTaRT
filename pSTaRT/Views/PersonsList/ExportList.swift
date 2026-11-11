@@ -52,7 +52,7 @@ struct ExportList: View {
                                     try deleteFile(with: file.url)
                                 } catch {
                                     errorMessage = error
-                                    showsErrorAlert.toggle()
+                                    showsErrorAlert = true
                                 }
                             }
                         })
@@ -73,7 +73,7 @@ struct ExportList: View {
                         [try await CSVManager.provideCSV()]
                     } onError: { error in
                         errorMessage = error
-                        showsErrorAlert.toggle()
+                        showsErrorAlert = true
                     }
                     .disabled(!exportEnabled)
                 } else {
@@ -85,7 +85,7 @@ struct ExportList: View {
                                 try await CSVManager.provideCSV()
                             } catch {
                                 errorMessage = error
-                                showsErrorAlert.toggle()
+                                showsErrorAlert = true
                             }
                         }
                         
@@ -103,7 +103,7 @@ struct ExportList: View {
             })
             ToolbarItem(placement: .topBarTrailing, content: {
                 Button(role: .destructive, action: {
-                    isShowingDeleteAll.toggle()
+                    isShowingDeleteAll = true
                 }) {
                     Image(systemName: "trash")
                 }
@@ -115,7 +115,7 @@ struct ExportList: View {
                             try deleteFiles()
                         } catch {
                             errorMessage = error
-                            showsErrorAlert.toggle()
+                            showsErrorAlert = true
                         }
                     }
                 }
@@ -132,7 +132,7 @@ struct ExportList: View {
                 try deleteFile(with: files[index].url)
             } catch {
                 errorMessage = error
-                showsErrorAlert.toggle()
+                showsErrorAlert = true
             }
         }
     }

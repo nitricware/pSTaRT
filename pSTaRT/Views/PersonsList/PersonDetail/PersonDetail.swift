@@ -119,7 +119,7 @@ struct PersonDetail: View {
                 do {
                     try delete()
                 } catch {
-                    showsErrorAlert.toggle()
+                    showsErrorAlert = true
                     errorMessage = error
                 }
             }

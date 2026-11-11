@@ -42,7 +42,7 @@ struct TriageConclusion: View {
                                                  isPrecise: locationProvider.isPrecise)
                     onClose()
                 } catch {
-                    showsErrorAlert.toggle()
+                    showsErrorAlert = true
                     errorMessage = error
                 }
             }) {
