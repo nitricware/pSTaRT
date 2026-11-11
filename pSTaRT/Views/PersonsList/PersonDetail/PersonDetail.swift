@@ -12,7 +12,7 @@ import CoreData
 import MapKit
 
 struct PersonDetail: View {
-    public var person: Persons
+    @StateObject public var person: Persons
     
     @Environment(\.dismiss) private var dismiss
     
@@ -96,7 +96,7 @@ struct PersonDetail: View {
             .navigationTitle("PERSON_DETAIL")
             
             GlassEffectContainer {
-                TriageRetriage(currentGroup: TriageGroup(rawValue: person.triageGroup) ?? .unidentified) { try managedObjectContext.retriage(person, to: $0) }
+                TriageRetriage(currentGroup: TriageGroup(stored: person.triageGroup)) { try managedObjectContext.retriage(person, to: $0) }
                 .padding(25)
             }
             .glassEffect()
