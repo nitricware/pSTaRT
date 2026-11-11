@@ -83,7 +83,7 @@ enum CSVManager {
         fileDF.dateFormat = UserDefaults.standard.string(forKey: AppSettings.Key.csvDatePrefix)
         let datePrefix = fileDF.string(from: Date())
         
-        let sanitizedFileName = self.sanitizeFilename(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix)!)
+        let sanitizedFileName = self.sanitizeFilename(UserDefaults.standard.string(forKey: AppSettings.Key.csvFileSuffix) ?? AppSettings.Default.csvFileSuffix)
         let separator: String = sanitizedFileName.isEmpty ? "" : "_"
         let file = "\(datePrefix)\(separator)\(sanitizedFileName).csv"
         
