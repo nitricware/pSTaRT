@@ -89,7 +89,7 @@ struct PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
     
-    private static func excludeFromBackup(_ storeURL: URL, syncActive: Bool) {
+    public static func excludeFromBackup(_ storeURL: URL, syncActive: Bool) {
         for suffix in ["", "-wal", "-shm"] {
             var url = URL(fileURLWithPath: storeURL.path + suffix)
             guard FileManager.default.fileExists(atPath: url.path) else { continue }

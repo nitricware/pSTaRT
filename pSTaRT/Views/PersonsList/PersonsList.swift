@@ -59,7 +59,6 @@ struct PersonsList: View {
                 }) {
                     Image(systemName: "tray")
                 }
-                .disabled(persons.isEmpty)
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
@@ -85,7 +84,7 @@ struct PersonsList: View {
         }
         .sheet(isPresented: $isShowingCSVExport, content: {
             NavigationStack {
-                ExportList()
+                ExportList(exportEnabled: persons.count > 0)
             }
         })
     }

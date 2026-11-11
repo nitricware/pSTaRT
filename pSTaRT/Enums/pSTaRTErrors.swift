@@ -34,6 +34,9 @@ enum pSTaRTErrors: LocalizedError {
     case scanUnsupportedCodes
     case scanFailed
     
+    // MARK: Sync and Backup Errors
+    case excludeFromBackupFailed
+    
     init(scanError: ScanError) {
         switch scanError {
         case .permissionDenied:     self = .cameraAccessDenied
@@ -60,6 +63,7 @@ enum pSTaRTErrors: LocalizedError {
             case .cameraAccessDenied: return String(localized: "error.cameraAccessDenied.description", table: "Errors")
             case .scanUnsupportedCodes: return String(localized: "error.scanUnsupportedCodes.description", table: "Errors")
             case .scanFailed: return String(localized: "error.scanFailed.description", table: "Errors")
+            case .excludeFromBackupFailed: return String(localized: "error.excludeFromBackupFailed.description", table: "Errors")
         }
     }
 }

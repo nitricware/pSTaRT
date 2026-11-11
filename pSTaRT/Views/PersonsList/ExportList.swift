@@ -17,6 +17,8 @@ struct ExportList: View {
         animation: .default
     ) private var files
     
+    public let exportEnabled: Bool
+    
     @State private var isExporting: Bool = false
     @State public var isShowingDeleteAll: Bool = false
     
@@ -73,6 +75,7 @@ struct ExportList: View {
                         errorMessage = error
                         showsErrorAlert.toggle()
                     }
+                    .disabled(!exportEnabled)
                 } else {
                     Button(action: {
                         isExporting = true
@@ -93,6 +96,7 @@ struct ExportList: View {
                             Image(systemName: "document.badge.plus")
                         }
                     }
+                    .disabled(!exportEnabled)
                     .disabled(isExporting)
                     
                 }
@@ -146,6 +150,6 @@ struct ExportList: View {
 
 #Preview {
     NavigationStack {
-        ExportList()
+        ExportList(exportEnabled: true)
     }
 }

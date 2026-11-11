@@ -58,6 +58,8 @@
 		457C08BC2FD9E4D80031CD5C /* NWIAPListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C08BB2FD9E4CE0031CD5C /* NWIAPListener.swift */; };
 		457C6F4525B9739F00F0205B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457C6F4425B9739F00F0205B /* StoreKit.framework */; };
 		458FB815237F0F1B0060A8FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458FB814237F0F1B0060A8FB /* Assets.xcassets */; };
+		459A6D4030A4967E003D01C9 /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 459A6D3F30A4967E003D01C9 /* WhatsNewKit */; };
+		459A6D4230A49868003D01C9 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A6D4130A49862003D01C9 /* FileManagerExtension.swift */; };
 		459B211F28CE4A6900E8305B /* TriageGroupIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */; };
 		45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 45AA119D25BAF5C000CD5530 /* Configuration.storekit */; };
 		45C0C7F7308E739F002163B5 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0C7F6308E739F002163B5 /* AppSettings.swift */; };
@@ -72,6 +74,9 @@
 		45ECCA8D28CF610B005E4D39 /* PersonListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECCA8C28CF610B005E4D39 /* PersonListSection.swift */; };
 		45ECCA8F28CF6449005E4D39 /* PersonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECCA8E28CF6449005E4D39 /* PersonDetail.swift */; };
 		45ECCA9128D062ED005E4D39 /* TriageRetriage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECCA9028D062ED005E4D39 /* TriageRetriage.swift */; };
+		45F4BC15309E6F9600F97C68 /* pSTaRT-Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 45F4BC14309E6F9600F97C68 /* pSTaRT-Icon.icon */; };
+		45F4BC16309E6F9600F97C68 /* pSTaRT-Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 45F4BC14309E6F9600F97C68 /* pSTaRT-Icon.icon */; };
+		45F4BC17309E6F9600F97C68 /* pSTaRT-Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 45F4BC14309E6F9600F97C68 /* pSTaRT-Icon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +163,7 @@
 		458FB812237F0F1A0060A8FB /* pSTaRT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pSTaRT.xcdatamodel; sourceTree = "<group>"; };
 		458FB814237F0F1B0060A8FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		458FB819237F0F1B0060A8FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		459A6D4130A49862003D01C9 /* FileManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		459B211E28CE4A6900E8305B /* TriageGroupIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageGroupIcon.swift; sourceTree = "<group>"; };
 		45A4478F308D3E6F0032B776 /* pSTaRT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pSTaRT.entitlements; sourceTree = "<group>"; };
 		45AA119D25BAF5C000CD5530 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 		45ECCA8C28CF610B005E4D39 /* PersonListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListSection.swift; sourceTree = "<group>"; };
 		45ECCA8E28CF6449005E4D39 /* PersonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetail.swift; sourceTree = "<group>"; };
 		45ECCA9028D062ED005E4D39 /* TriageRetriage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriageRetriage.swift; sourceTree = "<group>"; };
+		45F4BC14309E6F9600F97C68 /* pSTaRT-Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "pSTaRT-Icon.icon"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -212,6 +219,7 @@
 			files = (
 				45E4EB912A5ED6320048ED6C /* CodeScanner in Frameworks */,
 				457C6F4525B9739F00F0205B /* StoreKit.framework in Frameworks */,
+				459A6D4030A4967E003D01C9 /* WhatsNewKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +280,7 @@
 		450C3BF528CCCBCB00BEF415 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				459A6D4130A49862003D01C9 /* FileManagerExtension.swift */,
 				451F7F41309A178700E04BB8 /* AppDelegate.swift */,
 				451F7F43309A1A3D00E04BB8 /* AppIntents.swift */,
 				451F7F3F309A160200E04BB8 /* AppRouter.swift */,
@@ -357,6 +366,7 @@
 				458FB811237F0F1A0060A8FB /* pSTaRT.xcdatamodeld */,
 				45AA119D25BAF5C000CD5530 /* Configuration.storekit */,
 				450C3BFF28CDC6C600BEF415 /* pSTaRTApp.swift */,
+				45F4BC14309E6F9600F97C68 /* pSTaRT-Icon.icon */,
 				450C3C0128CDC6E300BEF415 /* Persistence.swift */,
 				453B9C732F9FD6810034350C /* LaunchScreen.storyboard */,
 			);
@@ -459,6 +469,7 @@
 			name = pSTaRT;
 			packageProductDependencies = (
 				45E4EB902A5ED6320048ED6C /* CodeScanner */,
+				459A6D3F30A4967E003D01C9 /* WhatsNewKit */,
 			);
 			productName = pSTaRT;
 			productReference = 458FB805237F0F1A0060A8FB /* pSTaRT.app */;
@@ -473,7 +484,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = NW;
 				LastSwiftUpdateCheck = 2720;
-				LastUpgradeCheck = 2630;
+				LastUpgradeCheck = 2720;
 				ORGANIZATIONNAME = "Kurt Frey";
 				TargetAttributes = {
 					450ACB36309B58890050BD21 = {
@@ -501,6 +512,7 @@
 			mainGroup = 458FB7FC237F0F1A0060A8FB;
 			packageReferences = (
 				45E4EB8F2A5ED6320048ED6C /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				459A6D3E30A4967E003D01C9 /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
 			);
 			productRefGroup = 458FB806237F0F1A0060A8FB /* Products */;
 			projectDirPath = "";
@@ -519,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				450ACB55309B5A670050BD21 /* Localizable.xcstrings in Resources */,
+				45F4BC15309E6F9600F97C68 /* pSTaRT-Icon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +539,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45F4BC17309E6F9600F97C68 /* pSTaRT-Icon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +549,7 @@
 			files = (
 				453B9C742F9FD6810034350C /* LaunchScreen.storyboard in Resources */,
 				45297A59309230BF00078AD5 /* InfoPlist.xcstrings in Resources */,
+				45F4BC16309E6F9600F97C68 /* pSTaRT-Icon.icon in Resources */,
 				45297A643092994C00078AD5 /* Errors.xcstrings in Resources */,
 				45AA119E25BAF5C000CD5530 /* Configuration.storekit in Resources */,
 				45297A5D3092310300078AD5 /* Questionnaire.xcstrings in Resources */,
@@ -584,6 +599,7 @@
 				450C3BEF28CCC8F600BEF415 /* Overview.swift in Sources */,
 				4531D248308BF02200FBEB8F /* CSVExportError.swift in Sources */,
 				45098B1028D887EA00DD524A /* MainToolbar.swift in Sources */,
+				459A6D4230A49868003D01C9 /* FileManagerExtension.swift in Sources */,
 				451FA2DA261F454A00E25BA0 /* pSTaRT.xcdatamodeld in Sources */,
 				459B211F28CE4A6900E8305B /* TriageGroupIcon.swift in Sources */,
 				451E810C3094C8B800E3A183 /* PersonsExtension.swift in Sources */,
@@ -648,7 +664,7 @@
 				INFOPLIST_FILE = pSTaRTWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = pSTaRTWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Kurt Frey. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -681,7 +697,7 @@
 				INFOPLIST_FILE = pSTaRTWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = pSTaRTWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Kurt Frey. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -708,10 +724,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 27.0;
 				MARKETING_VERSION = 1.0;
@@ -740,10 +757,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = PMCWJ9GD9L;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 27.0;
 				MARKETING_VERSION = 1.0;
@@ -897,12 +915,12 @@
 		458FB81D237F0F1B0060A8FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "pSTaRT-Icon";
 				CODE_SIGN_ENTITLEMENTS = pSTaRT/pSTaRT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -917,12 +935,12 @@
 		458FB81E237F0F1B0060A8FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "pSTaRT-Icon";
 				CODE_SIGN_ENTITLEMENTS = pSTaRT/pSTaRT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19;
 				INFOPLIST_FILE = pSTaRT/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -976,17 +994,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		459A6D3E30A4967E003D01C9 /* XCRemoteSwiftPackageReference "WhatsNewKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/WhatsNewKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.1;
+			};
+		};
 		45E4EB8F2A5ED6320048ED6C /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		459A6D3F30A4967E003D01C9 /* WhatsNewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 459A6D3E30A4967E003D01C9 /* XCRemoteSwiftPackageReference "WhatsNewKit" */;
+			productName = WhatsNewKit;
+		};
 		45E4EB902A5ED6320048ED6C /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 45E4EB8F2A5ED6320048ED6C /* XCRemoteSwiftPackageReference "CodeScanner" */;

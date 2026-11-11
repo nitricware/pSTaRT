@@ -23,6 +23,8 @@ struct PersonDetail: View {
     @State private var errorMessage: Error?
     @State private var showsErrorAlert: Bool = false
     
+    @State private var isShowingDelete: Bool = false
+    
     init(person: Persons) {
         self.person = person
 
@@ -102,12 +104,7 @@ struct PersonDetail: View {
         }.toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    do {
-                        try delete()
-                    } catch {
-                        showsErrorAlert.toggle()
-                        errorMessage = error
-                    }
+                    isShowingDelete = true
                 }) {
                     Image(systemName: "trash")
                 }
@@ -115,6 +112,17 @@ struct PersonDetail: View {
         }
         .alert(errorMessage?.localizedDescription ?? String(localized: "common.unknownError"), isPresented: $showsErrorAlert) {
             Button("common.ok", role: .cancel) { }
+        }
+        .alert("DELETE", isPresented: $isShowingDelete) {
+            Button(role: .cancel) { }
+            Button("CONFIRM", role: .destructive) {
+                do {
+                    try delete()
+                } catch {
+                    showsErrorAlert.toggle()
+                    errorMessage = error
+                }
+            }
         }
     }
     
