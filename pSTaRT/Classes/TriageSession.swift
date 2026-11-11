@@ -16,7 +16,7 @@ final class TriageSession: Identifiable {
     let identification: String
     let triageStart: Date = Date.now
     
-    private(set) var decisions: [TriageDecision] = []
+    var decisions: [TriageDecision] = []
     private(set) var currentQuestion = String(localized: "WALKING", table: "Questionnaire")
     
     // Tint of the button that concludes the questionnaire and assigns a triage group

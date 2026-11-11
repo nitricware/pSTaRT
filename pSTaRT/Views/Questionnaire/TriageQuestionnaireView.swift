@@ -74,7 +74,7 @@ struct TriageQuestionnaireView: View {
                 }
             }
             
-            TriageRetriage {
+            TriageRetriage (currentGroup: session.currentGroup) {
                 session.conclude(assign: $0)
             }
         }
