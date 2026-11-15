@@ -14,6 +14,8 @@ struct CloseToolbarItem: ToolbarContent {
     var body: some ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
             Button(role: .close) { dismiss() }
+                .accessibilityIdentifier("closeButton")
+
         }
     }
 }

@@ -33,6 +33,7 @@ struct IdentificationInput: View {
         VStack {
             HStack {
                 TextField("IDENTIFICATION", text: $identification)
+                    .accessibilityIdentifier("identificationField")
                     .font(
                         .system(size: 36.0, weight: .regular, design: .monospaced)
                     )
@@ -109,6 +110,7 @@ struct IdentificationInput: View {
                 )
                 .frame(maxWidth: .infinity)
             }
+            .accessibilityIdentifier("startTriageButton")
             .buttonStyle(.glassProminent)
             .tint(.green)
         }

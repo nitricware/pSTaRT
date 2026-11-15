@@ -27,6 +27,7 @@ struct MainToolbar: ToolbarContent {
             }) {
                 Image(systemName: "gearshape")
             }
+            .accessibilityIdentifier("settingsButton")
         }
         if showsPersonsListLink {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -35,6 +36,7 @@ struct MainToolbar: ToolbarContent {
                 } label: {
                     Image(systemName: "tablecells")
                 }
+                .accessibilityIdentifier("personsListButton")
             }
         }
     }

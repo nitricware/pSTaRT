@@ -31,6 +31,7 @@ struct TriageQuestion: View {
                     .frame(maxWidth: .infinity)
                 
             }
+            .accessibilityIdentifier("answerYes")
             .buttonStyle(.glassProminent)
             .tint(currentTriage.yesColor)
             

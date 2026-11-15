@@ -58,6 +58,7 @@ struct TriageConclusion: View {
                     .minimumScaleFactor(0.5)
                 
             }
+            .accessibilityIdentifier("assignGroupButton")
             .disabled(blockUserInteraction)
             .buttonStyle(.glassProminent)
             .tint(currentTriage.currentGroup.color)

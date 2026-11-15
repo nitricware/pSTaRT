@@ -38,6 +38,16 @@
                ReferencedContainer = "container:pSTaRT.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "451B450930A73ED40089BE9C"
+               BuildableName = "pSTaRTUITests.xctest"
+               ReferencedContainer = "container:pSTaRT.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

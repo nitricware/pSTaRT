@@ -7,8 +7,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SettingsView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @AppStorage(AppSettings.Key.csvFileSuffix) var filesuffix: String = AppSettings.Default.csvFileSuffix
     @AppStorage(AppSettings.Key.shareImmediately) var shareimmediately: Bool = AppSettings.Default.shareImmediately
     @AppStorage(AppSettings.Key.scannerCodeTypes) private var storedTypes = AppSettings.Default.scannerCodeTypes
@@ -20,11 +23,11 @@ struct SettingsView: View {
     @State private var fileNameRejection: Int = 0
     
     private let syncActiveAtLaunch: Bool = PersistenceController.shared.isCloudSyncActive
-
+    
     @State private var isShowingSyncAlert: Bool = false
     
     @State private var whatsNew: Bool = false
-
+    
     private func applySync(_ enable: Bool) {
         iCloudSyncEnabled = enable
         pendingCloudPurge = !enable
@@ -86,7 +89,7 @@ struct SettingsView: View {
                                 .filter(BarcodeType.decode(storedTypes).contains)
                                 .map(\.displayName)
                                 .formatted(.list(type: .and)))
-                                .lineLimit(1)
+                            .lineLimit(1)
                         }
                     }
                     
@@ -115,7 +118,7 @@ struct SettingsView: View {
                     ))
                     .alert(
                         iCloudSyncEnabled ? Text("settings.iCloudSync.confirmOff.title")
-                                          : Text("settings.iCloudSync.confirmOn.title"),
+                        : Text("settings.iCloudSync.confirmOn.title"),
                         isPresented: $isShowingSyncAlert
                     ) {
                         if iCloudSyncEnabled {
@@ -126,14 +129,14 @@ struct SettingsView: View {
                         Button(role: .cancel) { }
                     } message: {
                         Text(iCloudSyncEnabled ? "settings.iCloudSync.confirmOff.message"
-                                               : "settings.iCloudSync.confirmOn.message")
+                             : "settings.iCloudSync.confirmOn.message")
                     }
-
+                    
                     if iCloudSyncEnabled != syncActiveAtLaunch {
                         Label("settings.iCloudSync.restartRequired", systemImage: "arrow.clockwise")
                             .foregroundStyle(.orange)
                     }
-
+                    
                     if pendingCloudPurge && !iCloudSyncEnabled {
                         Label("settings.iCloudSync.pendingPurge", systemImage: "icloud.slash")
                             .foregroundStyle(.secondary)
@@ -145,6 +148,17 @@ struct SettingsView: View {
                     Button("settings.whatsnew") {
                         whatsNew = true
                     }
+                }
+                
+                Section(
+                    "settings.developerMode.title"
+                ) {
+                    Button {
+                        try? DemoData.replaceAll(in: viewContext)
+                    } label: {
+                        Text(verbatim: "Insert demo data")
+                    }
+                    .accessibilityIdentifier("demoDataButton")
                 }
             }
             .navigationTitle(Text("SETTINGS"))

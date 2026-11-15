@@ -66,6 +66,7 @@ struct PersonsList: View {
                 } label: {
                     Label("personsMapView.title", systemImage: "map")
                 }
+                .accessibilityIdentifier("personsMapButton")
                 .disabled(persons.isEmpty)
             }
         }

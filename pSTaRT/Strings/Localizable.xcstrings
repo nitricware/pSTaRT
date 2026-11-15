@@ -928,6 +928,9 @@
         }
       }
     },
+    "settings.developerMode.title" : {
+
+    },
     "settings.iCloudSync.confirmOff.button" : {
       "localizations" : {
         "de" : {
