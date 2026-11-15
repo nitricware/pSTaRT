@@ -63,3 +63,8 @@ fastlane/test_output
 
 .DS_Store
 fastlane/screenshots/
+fastlane/metadata/
+*.p8
+api_key.json
+*.mobileprovision
+build/

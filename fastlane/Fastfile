@@ -1,0 +1,56 @@
+default_platform(:ios)
+
+# Writes a build setting into the project file (all occurrences)
+def set_project_setting(key, value)
+  sh("sed -i '' -E 's/#{key} = [^;]+;/#{key} = #{value};/' ../pSTaRT.xcodeproj/project.pbxproj")
+end
+
+platform :ios do
+  before_all do
+    app_store_connect_api_key(path: File.expand_path("~/.appstoreconnect/api_key.json"))
+  end
+
+  desc "Create screenshots (Snapfile)"
+  lane :screenshots do
+    capture_screenshots
+  end
+
+  desc "Build the app; build number = latest TestFlight build + 1"
+  lane :build do
+    build_num = latest_testflight_build_number(initial_build_number: 20) + 1
+    set_project_setting("CURRENT_PROJECT_VERSION", build_num)   # visible in Xcode afterwards
+    build_app(
+      project: "pSTaRT.xcodeproj",
+      scheme: "pSTaRT",
+      export_method: "app-store",
+      output_directory: "./build",
+      xcargs: "-allowProvisioningUpdates"
+    )
+  end
+
+  desc "Build and upload to TestFlight only"
+  lane :beta do
+    build
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
+
+  desc "Build, upload metadata and submit for review"
+  lane :release do |options|
+    UI.user_error!("Version missing: fastlane release version:x.y.z") unless options[:version]
+    set_project_setting("MARKETING_VERSION", options[:version])
+    screenshots if options[:screenshots]
+    build
+    upload_to_app_store(
+      force: true,                               # no HTML preview
+      skip_screenshots: !options[:screenshots],
+      overwrite_screenshots: true,
+      submit_for_review: true,
+      automatic_release: true,                   # live right after approval
+      precheck_include_in_app_purchases: false,
+      submission_information: {
+        add_id_info_uses_idfa: false,
+        content_rights_contains_third_party_content: false
+      }
+    )
+  end
+end
