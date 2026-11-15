@@ -79,6 +79,7 @@ final class ScreenshotTests: XCTestCase {
         // The button replaces all persons, so repeated runs start from the same state.
         tap(barItem(ID.settings, in: app), "settings button")
         let demoData = app.buttons[ID.demoData]
+        for _ in 0..<5 where !demoData.exists { app.swipeUp() }
         tap(demoData, "demo data button (Debug builds only)")
         tap(barItem(ID.close, in: app), "close button")
         XCTAssertTrue(demoData.waitForNonExistence(timeout: 10), "Settings did not close")

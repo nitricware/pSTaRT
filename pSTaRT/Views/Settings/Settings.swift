@@ -150,16 +150,18 @@ struct SettingsView: View {
                     }
                 }
                 
-                Section(
-                    "settings.developerMode.title"
-                ) {
+#if DEBUG
+                Section {
                     Button {
                         try? DemoData.replaceAll(in: viewContext)
                     } label: {
                         Text(verbatim: "Insert demo data")
                     }
                     .accessibilityIdentifier("demoDataButton")
+                } header: {
+                    Text(verbatim: "Developer Mode")
                 }
+#endif
             }
             .navigationTitle(Text("SETTINGS"))
             .toolbar { CloseToolbarItem() }
