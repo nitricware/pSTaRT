@@ -52,7 +52,6 @@ struct Overview: View {
             case .map:
                 NavigationStack {
                     PersonsMapView()
-                        .toolbar { CloseToolbarItem() }   // only here – when pushed from PersonsList it has a back button
                 }
             case .triage(let session):
                 NavigationStack {

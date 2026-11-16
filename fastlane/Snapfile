@@ -9,7 +9,7 @@ devices([
 
 languages([
   "de-DE",
-  "en-US"
+  "en-GB"
 ])
 
 project("./pSTaRT.xcodeproj")
