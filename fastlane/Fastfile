@@ -1,24 +1,41 @@
+require "json"
+
 default_platform(:ios)
 
-# Writes a build setting into the project file (all occurrences)
-def set_project_setting(key, value)
-  sh("sed -i '' -E 's/#{key} = [^;]+;/#{key} = #{value};/' ../pSTaRT.xcodeproj/project.pbxproj")
+API_KEY_PATH = File.expand_path("~/.appstoreconnect/api_key.json")
+
+def prepare_screenshots(options)
+  take   = options[:screenshots] == true
+  upload = take || options[:upload_existing_screenshots] == true
+  capture_screenshots if take
+  if upload && Dir.glob("screenshots/*/*.png").empty?
+    UI.user_error!("No screenshots in fastlane/screenshots – run `fastlane snapshot` first, or use screenshots:true")
+  end
+  upload
+end
+
+def submit_to_app_store(with_screenshots:, **extra)
+  upload_to_app_store(
+    force: true,
+    skip_screenshots: !with_screenshots,
+    screenshots_path: "./fastlane/screenshots",
+    overwrite_screenshots: true,
+    submit_for_review: true,
+    automatic_release: true,
+    precheck_include_in_app_purchases: false,
+    submission_information: {
+      add_id_info_uses_idfa: false,
+      content_rights_contains_third_party_content: false
+    },
+    **extra
+  )
 end
 
 platform :ios do
-  before_all do
-    app_store_connect_api_key(path: File.expand_path("~/.appstoreconnect/api_key.json"))
-  end
 
-  desc "Create screenshots (Snapfile)"
-  lane :screenshots do
-    capture_screenshots
-  end
-
-  desc "Build the app; build number = latest TestFlight build + 1"
+  desc "Build the app (version and build number as set in Xcode)"
   lane :build do
-    build_num = latest_testflight_build_number(initial_build_number: 20) + 1
-    set_project_setting("CURRENT_PROJECT_VERSION", build_num)   # visible in Xcode afterwards
+    load_api_key
     build_app(
       project: "pSTaRT.xcodeproj",
       scheme: "pSTaRT",
@@ -34,23 +51,48 @@ platform :ios do
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
 
-  desc "Build, upload metadata and submit for review"
+  desc "Build, upload metadata and submit for review: fastlane release [screenshots:true | upload_existing_screenshots:true]"
   lane :release do |options|
-    UI.user_error!("Version missing: fastlane release version:x.y.z") unless options[:version]
-    set_project_setting("MARKETING_VERSION", options[:version])
-    screenshots if options[:screenshots]
+    load_api_key
+    ensure_metadata
+    with_screenshots = prepare_screenshots(options)
     build
-    upload_to_app_store(
-      force: true,                               # no HTML preview
-      skip_screenshots: !options[:screenshots],
-      overwrite_screenshots: true,
-      submit_for_review: true,
-      automatic_release: true,                   # live right after approval
-      precheck_include_in_app_purchases: false,
-      submission_information: {
-        add_id_info_uses_idfa: false,
-        content_rights_contains_third_party_content: false
-      }
+    submit_to_app_store(with_screenshots: with_screenshots)
+  end
+
+  desc "Submit the most recent build already in App Store Connect – no new build: fastlane release_latest [screenshots:true | upload_existing_screenshots:true]"
+  lane :release_latest do |options|
+    load_api_key
+    ensure_metadata
+    build_number = latest_testflight_build_number
+    version      = lane_context[SharedValues::LATEST_TESTFLIGHT_VERSION]
+    UI.important("Submitting existing build #{build_number} of version #{version}")
+    with_screenshots = prepare_screenshots(options)
+    submit_to_app_store(
+      with_screenshots: with_screenshots,
+      skip_binary_upload: true,
+      app_version: version,
+      build_number: build_number.to_s
     )
+  end
+
+  desc "Load the App Store Connect API key"
+  private_lane :load_api_key do
+    key = JSON.parse(File.read(API_KEY_PATH))
+    app_store_connect_api_key(
+      key_id: key["key_id"],
+      issuer_id: key["issuer_id"],
+      key_content: key["key"],
+      in_house: key.fetch("in_house", false)
+    )
+  end
+
+  desc "Download the current App Store texts if fastlane/metadata is missing, then stop"
+  private_lane :ensure_metadata do
+    unless Dir.exist?("metadata") && !Dir.empty?("metadata")
+      UI.important("fastlane/metadata missing – downloading the current App Store texts")
+      sh("cd .. && fastlane deliver download_metadata --api_key_path #{API_KEY_PATH}")
+      UI.user_error!("Metadata downloaded. Check fastlane/metadata, write release_notes.txt (de-DE, en-US), then run the release again.")
+    end
   end
 end

@@ -36,6 +36,9 @@ struct PersonsMapView: View {
                 .background(.background)
             }
         }
+        .toolbar {
+            CloseToolbarItem()
+        }
         .navigationTitle("personsMapView.title")
         .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(item: $selection) { person in

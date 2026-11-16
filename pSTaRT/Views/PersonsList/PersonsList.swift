@@ -14,6 +14,7 @@ struct PersonsList: View {
     @State public var isShowingDeleteAll: Bool = false
     @State public var isShowingDeleteError: Bool = false
     @State public var isShowingCSVExport: Bool = false
+    @State public var isShowingMap: Bool = false
     
     @Environment(\.managedObjectContext) private var managedObjectContext
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -61,9 +62,9 @@ struct PersonsList: View {
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    PersonsMapView()
-                } label: {
+                Button (action: {
+                    isShowingMap = true
+                }) {
                     Label("personsMapView.title", systemImage: "map")
                 }
                 .accessibilityIdentifier("personsMapButton")
@@ -88,6 +89,11 @@ struct PersonsList: View {
                 ExportList(exportEnabled: persons.count > 0)
             }
         })
+        .sheet(isPresented: $isShowingMap) {
+            NavigationStack {
+                PersonsMapView()
+            }
+        }
     }
 }
 

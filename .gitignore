@@ -68,3 +68,4 @@ fastlane/metadata/
 api_key.json
 *.mobileprovision
 build/
+fastlane/README.md

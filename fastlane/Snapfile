@@ -20,7 +20,6 @@ output_directory("./fastlane/screenshots")
 clear_previous_screenshots(true)
 
 override_status_bar(true)
-erase_simulator(true)
 localize_simulator(true)
 reinstall_app(true)
 app_identifier("com.nitricware.pstart")
